@@ -33,6 +33,27 @@ universality (Bufetov et al., Zbl 1459.60107; Kuijlaars Zbl 1422.60083) — rela
 needed statement. Conclusion unchanged: **SL remains an open (likely true) lemma**, and the
 100% theorem (condp1 run) stays conditional on it. Recorded per provenance discipline.
 
+## SL-lemma 5th pass — random-Gram model identification (manager, 2026-08-15)
+
+Queries: `Toeplitz matrix entries sinc(i-j) eigenvalue distribution Szegő symbol indicator
+half-band discrete prolate spheroidal matrix`; `Gram matrix determinantal point process
+empirical spectral distribution limit sine kernel eigenvalue`. Findings (full derivation:
+reports/sl-lemma-random-gram-probe.md):
+
+1. **Fixed-lattice Gram model ELIMINATED**: G_N = (sinc(i−j)) = I_N (sin(πk) = 0 for
+   integers k ≠ 0) — the "half-band" DPSS endpoint degenerates (Slepian theory consistent;
+   the "symbol 1_{|θ|≤1/2}" intuition is a Poisson-summation artefact). Numerically
+   verified (N = 1500, all eigenvalues 1).
+2. **Random-Gram model reproduces the audited moments exactly**: with c₂ = 1 (Parseval),
+   c₄ = 2/3 (B-spline), E[m₂] = 1 + c₂ − c₄ = 4/3 EXACT (= Lemma C); E[m₃] = 2 EXACT via
+   the DPP ρ₃ expansion (all-distinct correction vanishes exactly: 1 − 3c₄ + 2·∫tri³ = 0);
+   m₃ upgraded from "numerical MC" to exact under the model. E[m₄] = 3 + all-distinct₄ ≈
+   3.2204 (MC, noise ±0.05–0.2) vs 13/4 target — inconclusive; exact value = polytope
+   volume (pending).
+3. SL now precisely located: it asks whether the limiting spectral measure μ of the random
+   sine-process Gram matrix satisfies μ({0}) = 0 and 0 ∈ supp μ. No literature theorem
+   found; SL remains the single open ingredient of the conditional 100% theorem.
+
 ## Lean-snapshot statement check (manager, 2026-08-14)
 
 condp1's claim: the Lean theorem `thmD₀_simple` (comparator form) states N₀ˢ ≥ (2c₁*−1)N with

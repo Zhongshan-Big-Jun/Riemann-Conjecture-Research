@@ -53,12 +53,14 @@ N0* = distinct on-line; N0^s = simple on-line; Nd = distinct. Dyadic interval (T
 | **0.672500703679… = 3/2 − (1/√2)cot(1/√2)** | N0*/N, N0^s/N ≥ 2 − 1/c1, c1 = 0.75329… (Montgomery–Taylor window; optimal in its class [CCLM17, Cor. 14]) | Claude/Anthropic Thm D; expert note |
 | 0.83625… | Nd/N ≥ (3 − 1/c1)/2 | Claude Thm D |
 | **0.6730085279277…** | **N0^s/N ≥ (1,345,000·H_MT − 2,680)/1,340,003 via stability refinement (3-pt 0.672519767, 7-pt 0.673008528)** | **ainta/zeta-simple-zeros (GPT-5.6 Sol). INDEPENDENTLY AUDITED 2026-08-14: two independent re-derivations PASS (audit reports sha256 5F0EDEAA…, 3F554804…), Arb certificates byte-identical (nodes 707901, hashes a9992300/7913c55), manager 50-dp check (reports/independent-arith-checks.md). SUPERSEDED as world record by C₉ = 0.6730536 (extpress run). Residual: paper-level (not Lean end-to-end); Lemma 3.1 rests on [1] Lemma 5.4** |
-| **0.6730536459526…** | **N0^s/N ≥ (6875·H_MT − 1315/96)/6849 — NEW RECORD via k=9 pressure certificate (F₈ ≥ 39/10000, 8-var Arb certificate, 53M nodes)** | **This project (extpress run R-20260814T045000Z-extpress-2f36ae, 2026-08-14); manager-level audit PASS with scope limits (full grid-4000 re-run pending — note: a successful grid-4000 f₉ = 0.00395 certificate (f9push run) subsumes the grid-4000 re-run of the 0.0039 statement, since F₈ ≥ 0.00395 ⟹ F₈ ≥ 0.0039); third-party re-audit recommended** |
-| **0.6730855621335… (PENDING CERTIFICATE)** | N0^s/N ≥ (26,100,000·H_MT − 52,000)/26,000,065 — would-be record at f₉ = 0.00395 (n=253, m=261, A₀=99935/100000<1); arithmetic verified mpmath 70d; certificate F₈ ≥ 395/100000 in certification (f9push run) | this project, runs/…/f9push-d3b58c (release-checklist.md; grid-2000/grid-4000 runs) |
+| **0.6730536459526…** | **N0^s/N ≥ (6875·H_MT − 1315/96)/6849 — NEW RECORD via k=9 pressure certificate (F₈ ≥ 39/10000, 8-var Arb certificate, 53M nodes)** | **This project (extpress run R-20260814T045000Z-extpress-2f36ae, 2026-08-14); manager-level audit PASS with scope limits (a successful f₉ = 0.00392 certificate (f9push run) subsumes the grid-4000 re-run of the 0.0039 statement, since F₈ ≥ 0.00392 ⟹ F₈ ≥ 0.0039); third-party re-audit recommended** |
+| ~~0.6730855621335… (PENDING CERTIFICATE)~~ | ~~would-be record at f₉ = 0.00395~~ — **WITHDRAWN 2026-08-15: the 0.00395 certification FAILED (both grid-2000 and grid-4000): the true minimum of F₈ is ≈ 0.00395005 (configuration [1.0465,1.996,1.9995,1.9995,1.9865,1.04525,1.97575,1.04525], value 0.003950049001339790, exact-kernel verified), margin ≈ 5e-8 vs verifier bound-loss ≈ 1e-5 — 0.00395 infeasible (f9-ladder.md CORRECTION)** | this project, runs/…/f9push-d3b58c/f9-ladder.md |
+| **0.6730664726759… (PENDING CERTIFICATE)** | N0^s/N ≥ (657,500·H_MT − 1,310)/655,001 — would-be record at f₉ = 0.00392 (n=255, m=263, A₀=2499/2500<1); arithmetic verified mpmath 90d; certificate F₈ ≥ 392/100000 in certification (f9push run, pwsh-4 grid-2000) | this project, runs/…/f9push-d3b58c (release-checklist.md retargeted 2026-08-15) |
 | 0.85838 / 0.92919; 0.86864 / 0.93432 | zeros of ξ′: simple on line / distinct (flat / quartic window) | Claude Thm (Remark 7.1); Lean-verified |
 | **0.8678888652** | ξ′ MT-window baseline H_{ξ′}^{MT} = 2 − κ₁(1, cos(√2·)) (new constant, A2-verified two ways) | this project, reports/xi-prime-pressure-method.md |
-| **0.86918353505… (AUDITED CANDIDATE)** | ξ′ pressure method: (6875·H_{ξ′}^{MT} − 1315/96)/6849 — exceeds quartic 0.86864; audits A1–A6 CLOSED manager-level PASS (reports/xi-prime-audit-manager.md); AdmWindow cos blueprint complete (reports/admwindow-cos-instance.md) | this project, reports/xi-prime-cor22-derivation.md; 0.00395 version (0.8692247…) pending its certificate |
-| **0.8692247262342… (PENDING CERTIFICATE)** | ξ′ linked record at f₉ = 0.00395: (26,100,000·H_{ξ′}^{MT} − 52,000)/26,000,065; same certificate as the ζ row above (window-determined kernel, A6 PASS) | this project, reports/linked-ladder.md + f9push run |
+| **0.86918353505… (AUDITED CANDIDATE)** | ξ′ pressure method: (6875·H_{ξ′}^{MT} − 1315/96)/6849 — exceeds quartic 0.86864; audits A1–A6 CLOSED manager-level PASS (reports/xi-prime-audit-manager.md); AdmWindow cos blueprint complete (reports/admwindow-cos-instance.md) | this project, reports/xi-prime-cor22-derivation.md; 0.00392 version (0.8692001…) pending its certificate |
+| ~~0.8692247262342… (PENDING CERTIFICATE)~~ | ~~ξ′ linked record at f₉ = 0.00395~~ — **WITHDRAWN with the ζ 0.00395 row (certification failed; see above)** | this project, reports/linked-ladder.md + f9push run |
+| **0.8692000910966… (PENDING CERTIFICATE)** | ξ′ linked record at f₉ = 0.00392: (657,500·H_{ξ′}^{MT} − 1,310)/655,001; same certificate as the ζ row above (window-determined kernel, A6 PASS) | this project, reports/linked-ladder.md + f9push run |
 | ≤ 0.6818287… | **ceiling** of all bandwidth-one certificates (first two trace moments w/ Fourier support ⊂ [−1,1] + on/off partition) | Claude §7.2 + Lean `Zeta23.PairCeiling.ceiling_law256` |
 
 ### Conditional (RH or conjectures)
@@ -84,10 +86,12 @@ N0* = distinct on-line; N0^s = simple on-line; Nd = distinct. Dyadic interval (T
 4. The OpenAI refinement escapes (1) because it uses gap-dependent inner products (not just the
    two moments); its class ceiling computed at ≈ 0.6730583 (formal m→∞ limit; rigorous
    ≤ 0.6730085 at m ≤ 269) — still below the bandwidth-one ceiling (mainpush R3).
-   k=9 formal class limits (re-verified mpmath 40d, 2026-08-15): at f₉ = 0.0039 →
-   0.67312589466862…; at f₉ = 0.00395 → 0.67315968443292…; at true min 0.0039818 →
-   0.67318118876984…. All formal (uncontrolled large-m spectral monotonicity), not rigor
-   statements on their own.
+   k=9 formal class limits (re-verified mpmath 30d, 2026-08-15): at f₉ = 0.0039 →
+   0.67312589466862…; at f₉ = 0.00392 → 0.67313941016727…; at f₉ = 0.00395 → 0.67315968443292…;
+   at the certified true min ≈ 0.00395005 → 0.67315971822438… (2026-08-15 correction: the
+   previous "true min 0.0039818" was a local minimum; the verified lower configuration
+   (0.003950049) shifts the relevant class limit). All formal (uncontrolled large-m
+   spectral monotonicity), not rigor statements on their own.
 5. 100% unconditionally is out of reach of the rank–trace mechanism: §7.2(f), "RH itself is out of
    reach of the mechanism".
 6. The informal moment values m_k(1) = 1, 3/4, 2, 13/4 are NOT a positive-measure moment sequence

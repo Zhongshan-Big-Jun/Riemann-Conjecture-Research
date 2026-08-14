@@ -1,77 +1,79 @@
-﻿# f₉ = 0.00395 release checklist (2026-08-14)
+# f₉ = 0.00392 release checklist (2026-08-15, retargeted)
 
-To execute the moment either certification run (pwsh-1 grid-4000 / pwsh-2 grid-2000) lands its
-certificate file in `runs/…/f9push-d3b58c/reproducibility/certificates/`.
+**History**: the original 0.00395 target FAILED certification on 2026-08-15 (both grid-2000
+and grid-4000 runs; see f9-ladder.md "CORRECTION" section): the true minimum of F₈ is
+≈ 0.00395005 (configuration [1.0465, 1.996, 1.9995, 1.9995, 1.9865, 1.04525, 1.97575,
+1.04525], value 0.003950049001339790, verified by exact-kernel evaluation + box
+minimization), so the 0.00395 margin is ≈ 5e-8 while the verifier's rigorous box-bound loss
+is ≈ 1e-5 — 0.00395 is infeasible with this machinery. **Release target stepped down to
+f₉ = 0.00392** (margins ≈ 1.1e-5 above the critical leaf bound, ≈ 3.0e-5 above the presumed
+true min). Certification run: pwsh-4 (grid-2000, 8 workers, precision 128, launched
+2026-08-15).
+
+To execute when pwsh-4 lands its certificate file in
+`runs/…/f9push-d3b58c/reproducibility/certificates/`.
 
 ## 1. Certificate validation
-- [ ] File exists: `nine-point-f8-gt-395over100000-grid{2000,4000}.txt`, contains
-      `verified=true`, `target=F8 >= 395/100000`.
-- [ ] `kernel_table_sha256` recorded; recompute on the kernel table for the given
-      (grid, precision) and compare (deterministic). **Expected values (precomputed
-      2026-08-15, manager; recipe: cutoff = floor(15.8·grid)+8, table =
-      build_kernel_table(grid, cutoff, 128), hash = table_sha256(table)):
-      grid-2000: cutoff 31608 → `c23c661cdcc16a175ebb5bf528e657d5efba5a1f28dbc8ed9b75f4a8a52f9b22`;
-      grid-4000: cutoff 63208 → `0861f5203a42977ad41a8a2f0f727e9bed7042bce5133dd05e6f8f62ae099868`.**
-      **Recipe cross-validated 2026-08-15: recomputing the extpress f=0.0039 grid-4000
-      kernel (cutoff 62408) reproduces its recorded hash 7029ac0f… exactly (MATCH).**
-- [ ] `second_derivative_table_sha256` recorded (recompute with
-      build_second_derivative_lower_table(grid, cutoff, second_start=min(⌊0.95·grid⌋, cutoff−2), 128)).
-      **Recipe cross-validated 2026-08-15: recomputing the extpress f=0.0039 grid-4000
-      second-derivative table (cutoff 62408, second_start 3800) reproduces its recorded hash
-      26715cd5…f294e1 exactly (MATCH). Both hash recipes now validated against a known
-      certificate.**
+- [ ] File exists: `nine-point-f8-gt-392over100000-grid2000.txt`, contains
+      `verified=true`, `target=F8 >= 392/100000`.
+- [ ] `kernel_table_sha256` recorded; recompute on the kernel table for (grid, precision).
+      **Expected (precomputed 2026-08-15, manager; recipe: cutoff = floor(15.68·grid)+8 =
+      31368, table = build_kernel_table(2000, 31368, 128), hash = table_sha256(table)):
+      `39a209d3e4a897d982023ab49db27a206401824c769980572433dc4c47387297`.**
+      (Recipe previously cross-validated against the extpress f=0.0039 grid-4000
+      certificate and the 0.00395 grid-2000/4000 tables.)
+- [ ] `second_derivative_table_sha256` recorded (recipe: grid 2000, cutoff 31368,
+      second_start = min(⌊0.95·2000⌋, 31368−2) = 1900, precision 128).
+      **Expected: `29ca4522e12a991b7ab48943838a174fb2350b328ecc2155d9ecba4cb429f32c`.**
 - [ ] `nodes`, `maximum_depth`, `surviving_gap_components_cells` sanity:
-      **expected components (precomputed + cross-validated against the extpress certificate:
-      grid-2000 [(1867,2460);(3508,31024)], grid-4000 [(3736,4921);(7016,62047)]; the
-      component discovery reproduced the extpress f=0.0039 grid-4000 components
-      [3739,4915];[7025,61444] byte-for-byte 2026-08-15).**
-      **initial_boxes = (number of components)^8 = 2^8 = 256 for both runs** (box construction
-      is itertools.product(comps, repeat=8) — NOT the product of component sizes; corrected
-      2026-08-15 after cross-validation). Nodes: grid-4000 ≫ 53M expected (extpress f=0.0039
-      precedent was 53,137,290 at a looser target; the tighter 0.00395 requires more);
-      depth ≥ 73; elapsed consistent with the CPU budget (~243k core-s grid-2000, ~631k
-      grid-4000 at 8 workers). **Expected elapsed_seconds (derived from measured 0.49
-      CPU-s/wall-s per worker, 2026-08-15): grid-2000 ≈ 60–70k s (~17h), grid-4000 ≈
-      150–170k s (~44h); if the host load drops, elapsed shrinks proportionally.**
+      **expected components [[1868,2458];[3511,30823]] (precomputed 2026-08-15);
+      initial_boxes = 2^8 = 256; depth ≥ 73; elapsed consistent with the CPU budget
+      (estimate 20–120k core-s, ≈1–7 h at 8 workers × 0.49 CPU-s/wall-s; the 0.00395
+      grid-2000 run consumed ≈ 52k core-s before its first loud fail — 0.00392 is a
+      strictly smaller search space).**
 
 ## 2. Theorem write-up (candidate_proof.md in the run root)
 - [ ] Chain (general-k derivation; only the certificate changes):
       1. S ≥ H_MT·N − o(N) (Lean Thm D); 2. S ≥ H_MT·N + Δ(M°) − o(N) (audited Lemma 2.1);
-      3. NEW certificate F₈ ≥ 0.00395; 4. block-energy; 5. block-defect
-      (n = ⌈1/0.00395⌉−1 = 253, m = 261, A₀ = 0.99935 < 1); 6. pinching/averaging
-      (A₀/m = 0.99935/261, (m−1)/(500m) = 260/130500); 7. conclusion
-      C₉(0.00395) = (H_MT − 260/130500)/(1 − 0.99935/261) = 0.67308556213350404907…
-- [x] Manager arithmetic re-verification (mpmath 70 digits, 2026-08-15 00:20 +08):
-      H_MT = 0.67250070367941164573437979080329518859340302862626…
-      H_{ξ′}^{MT} = 0.8678888651990519355503147104203403132225704976166306446…
-      (re-derived from reports/xi-prime-mt-window.py at dps=60; matches record)
-      Exact rational forms (pure-mpmath; float64 pitfalls avoided by integer coefficients):
-        C₉(ζ,0.00395)  = (26,100,000·H_MT − 52,000)/26,000,065
-                        = 0.67308556213350404907323549152534827979421663165632441534520277175…
-                        (matches synced record …04907; earlier intermediate check at
-                         …04898 was a float64-division artifact — superseded)
-        C₉(ξ′,0.00395) = (26,100,000·H_{ξ′} − 52,000)/26,000,065
-                        = 0.869224726234155780682210369165264862803577221356718139913624558108218…
-                        (matches synced record …78068)
-      Cross-checks (already-synced ladder, exact forms):
-        C₉(ζ,0.00398)  = (25,900,000·H_MT − 51,600)/25,800,102
-                        = 0.673104634442792575956499574373982916213631188024769810765723008758…
-        C₉(ξ′,0.00398) = 0.8692493389621267827062525179120150033695438835191711139556918072623011…
-      Closed-form identity at f=0.0039: (2,640,000·H − 5,260)/2,630,016
-                        = (6875·H − 1315/96)/6849 verified to 1e-71.
-- [ ] ξ′ linked record: C₉^{ξ′}(0.00395) = 0.86922472623415578068… (reports/linked-ladder.md;
-      same certificate, H_{ξ′}^{MT} = 0.86788886519905193555…).
+      3. NEW certificate F₈ ≥ 0.00392; 4. block-energy; 5. block-defect
+      (n = ⌈1/0.00392⌉−1 = 255, m = 263, A₀ = 0.9996 < 1); 6. pinching/averaging
+      (A₀/m = 2499/657500, (m−1)/(500m) = 131/65750); 7. conclusion
+      C₉(0.00392) = (H_MT − 131/65750)/(1 − 2499/657500) = (657500·H_MT − 1310)/655001
+      = 0.673066472675939665848…
+- [x] Manager arithmetic re-verification (mpmath dps=90, 2026-08-15):
+      H_MT = 3/2 − (1/√2)·cot(1/√2) = 0.67250070367941164573437979080329518859340302862626…
+      H_{ξ′}^{MT} = 0.86788886519905193555031471042034031322257049761663064461430394239118…
+      (canonical dps=120 string, activity log 2026-08-15T05:45Z)
+      Exact rational forms (pure-mpmath; integer coefficients):
+        C₉(ζ,0.00392)  = (657,500·H_MT − 1,310)/655,001
+                        = 0.673066472675939665848379945149956391669879116706338817644865705…
+        C₉(ξ′,0.00392) = (657,500·H_{ξ′} − 1,310)/655,001
+                        = 0.869200091096619161839954323888625751630669422158034337098576708…
+      Cross-check (closed form, already-synced record):
+        C₉(ζ,0.0039) = (2,640,000·H_MT − 5,260)/2,630,016
+                      = 0.673053645952589925209110000745508505608552950085983191119032970…
+                      (matches extpress record 0.6730536459526 ✓ chain form sanity)
+      Ladder cross-checks (same m,n family):
+        C₉(ζ,0.00391) = 0.67305992191189169;  C₉(ξ′,0.00391) ≈ 0.86919430 (ladder).
+- [ ] ξ′ linked record: C₉^{ξ′}(0.00392) = 0.86920009109661916184… (reports/linked-ladder.md;
+      same certificate, H_{ξ′}^{MT} canonical).
 
 ## 3. Ingestion & sync (user requires sync of every result)
-- [ ] index/runs.json updated (status, hashes); FRONTIER.md record rows updated
-      (ζ: 0.6730856; ξ′: 0.8692247).
+- [ ] index/runs.json updated (status, hashes); FRONTIER.md record rows updated:
+      ζ: 0.6730664726759 (0.00392 certificate); ξ′: 0.8692000910966; the 0.00395 row is
+      marked INFEASIBLE (see FRONTIER "f₉=0.00395" note) — the old PENDING rows
+      (0.6730855621335 / 0.8692247262342) must be replaced by the infeasibility note.
 - [ ] validate_pipeline.py --project . clean (0 problems).
 - [ ] git add/commit/push; verify `git status` clean and ls-remote matches HEAD.
 - [ ] activity log entries.
 
 ## 4. Follow-ups
 - [ ] Dispatch independent audit of the new certificate + record theorem (audit request
-      packet pre-prepared: reports/f9-00395-audit-request.md (B1–B5); extpress precedent:
-      manager audit PASS-with-limits; subagents crash-prone — manager-level recommended).
-- [ ] Consider a 0.00396 run only if the 0.00395 runs close comfortably (cost gradient:
-      5-10×).
+      packet: reports/f9-00395-audit-request.md — RETARGETED to 0.00392 in place; B1–B6
+      soundness stack unchanged; expected values in §1 above; extpress precedent: manager
+      audit PASS-with-limits; subagents crash-prone — manager-level recommended).
+- [ ] Premium targets 0.00393/0.00394: margins at the critical leaf are razor-thin
+      (0.00393 grid-4000: 1.02e-5 above the leaf bound; grid-2000: 1.4e-6 — risky); only
+      pursue after the 0.00392 release lands (cost 3–10×, several days).
+- [ ] Document the true-minimum correction (f9-ladder.md CORRECTION section) in the next
+      stage summary; the earlier "true min 0.0039818" scoping claim was a local minimum.
