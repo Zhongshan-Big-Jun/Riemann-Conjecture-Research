@@ -6,7 +6,7 @@
 - **Interrupt reason**: environment resource saturation (CPU 100% — bg3_dx11/WPS/Chrome on the
   host machine); background compute throttled to ~4-8 s CPU/min/worker (vs 60 s/min at full
   speed); ETA under load ~50 h, unacceptable to block on.
-- **Task state**: IN_PROGRESS
+- **Task state:** IN_PROGRESS
 
 ## Completed obligations
 
