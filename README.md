@@ -21,9 +21,12 @@ critical line" — the user goal), and reduces the full goal to precise conjectu
 | 0.6725007036… | 3/2 − (1/√2)cot(1/√2), Montgomery–Taylor window | Anthropic Thm D |
 | 0.6730085279… | 7-point pressure stability refinement | OpenAI/GPT-5.6 Sol draft (independently audited here) |
 | **0.6730536459…** | **(6875·H_MT − 1315/96)/6849, k=9 pressure certificate F₈ ≥ 39/10000** | **This project (extpress run)** |
+| 0.6730856… (pending cert) | (26,100,000·H_MT − 52,000)/26,000,065 at f₉ = 0.00395 | this project (f9push run, certificate running) |
 
 Distinct zeros: N_d/N ≥ 5/6 (0.83625… with MT window). Zeros of ξ′: 0.86864 simple on line
-(quartic window). Bandwidth-one certificate class ceiling: ≈ 0.6818 (Lean-certified).
+(quartic window); **0.8691835… simple on line with MT window (this project, audited A1–A6,
+reports/xi-prime-audit-manager.md)**; 0.8692247… pending the same f₉ certificate. Bandwidth-one
+certificate class ceiling: ≈ 0.6818 (Lean-certified).
 
 ## "Probability 1" status (honest)
 
@@ -59,5 +62,8 @@ state/        RESUME.md, current.json, activity log, stage summaries
 - 2026-08-14: stage B close; new record C₉ = 0.673053646 (k=9 certificate, 53,137,290 nodes);
   independent audits PASS (OpenAI draft ×2, condp1 PASS-CONDITIONAL + F-1 repair);
   manager-level audit PASS-with-limits for C₉; repo synced to GitHub.
-- Next: push f₉ toward 0.00395–0.00398 (C₉ ≈ 0.673086–0.673105); k=11 scoping; SL lemma;
-  window-generalized pressure method.
+- 2026-08-15: ξ′ candidate 0.8691835 audited (A1–A6 PASS, manager-level); AdmWindow cos
+  blueprint complete; f₉ = 0.00395 certification running (grid-2000 + grid-4000, 8 workers
+  each) → records 0.6730856 (ζ) + 0.8692247 (ξ′) on landing.
+- Next: collect the f₉ certificates, run release-checklist.md; independent audit of the
+  record theorem (packet ready); SL lemma; Stage C Lean instances (AtOne pattern).
