@@ -15,5 +15,8 @@ would exceed by 5.8e-4.
 
 Notes: m₉ and A₀ are f₉-determined and identical for both families (pressure chain is
 structural); the ξ′ baseline H_{ξ′}^{MT} = 0.8678888651990519355503… is fixed (A2-verified).
+Optimality check (2026-08-14): C₉(n) is strictly increasing in n (f=0.0039: n=200 →
+0.6730342, n=256 → 0.6730536), so n = ⌈1/f⌉−1 (the largest n with A₀ = f·n < 1) is the
+optimal block parameter; both ladders use it.
 Pending audits: A1 (block structure write-up), A3 (kernel-limit transfer), plus the f₉
 certificate itself.
