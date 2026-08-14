@@ -17,8 +17,14 @@ the limit formulation (F-1).
 
 ## Ideas to return to
 
-- SL (simple-zeros) lemma not found in literature (2 passes) — origin to be located for a
-  fully unconditional statement.
+- SL (simple-zeros) lemma not found in literature (2 passes + 2 web passes 2026-08-15:
+  "sine kernel Gram spectral measure Christoffel function vanishing at origin", "sine kernel
+  operator spectral density Christoffel function zero eigenvalue" — only generic
+  Christoffel/universality literature returned; nothing on the sine-kernel Gram mass gap).
+  Origin to be located for a fully unconditional statement. The operator-level observation
+  (PSWF eigenvalues of the sinc kernel accumulate at 0; λ_min of the m×m sinc Gram decays
+  exponentially) is suggestive but does NOT by itself settle SL(λ) (Λ_m^λ(0) → 0 needs the
+  empirical spectral measure's density at 0, which the moment data m₁..m₄ cannot decide).
 
 ## Open obligations
 
