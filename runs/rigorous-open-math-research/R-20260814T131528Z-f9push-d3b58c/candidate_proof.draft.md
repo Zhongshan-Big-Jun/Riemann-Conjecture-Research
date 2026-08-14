@@ -37,7 +37,7 @@ at m = 261 — the general formula above is used).
   max_depth, surviving components) into reproducibility/certificates/.
 - [DONE 2026-08-15] Exact rational constants (mpmath 70 digits, release-checklist.md):
   C₉(0.00395) = (26,100,000·H_MT − 52,000)/26,000,065
-              = 0.673085562133504049073235491525348279794216631656324415345203…
+              = 0.67308556213350404907323549152534827979421663165632441534520277175…
   A₀ = f₉·n = 99935/100000 = 0.99935; 1 − A₀/m = 1 − 99935/26,100,000;
   (m−1)/(500m) = 260/130,500.
 - ξ′ linked record: C₉^{ξ′}(0.00395) = (26,100,000·H_{ξ′} − 52,000)/26,000,065

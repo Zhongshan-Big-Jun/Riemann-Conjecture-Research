@@ -47,7 +47,7 @@ certificate file in `runs/…/f9push-d3b58c/reproducibility/certificates/`.
       (re-derived from reports/xi-prime-mt-window.py at dps=60; matches record)
       Exact rational forms (pure-mpmath; float64 pitfalls avoided by integer coefficients):
         C₉(ζ,0.00395)  = (26,100,000·H_MT − 52,000)/26,000,065
-                        = 0.673085562133504049073235491525348279794216631656324415345203…
+                        = 0.67308556213350404907323549152534827979421663165632441534520277175…
                         (matches synced record …04907; earlier intermediate check at
                          …04898 was a float64-division artifact — superseded)
         C₉(ξ′,0.00395) = (26,100,000·H_{ξ′} − 52,000)/26,000,065
@@ -55,7 +55,7 @@ certificate file in `runs/…/f9push-d3b58c/reproducibility/certificates/`.
                         (matches synced record …78068)
       Cross-checks (already-synced ladder, exact forms):
         C₉(ζ,0.00398)  = (25,900,000·H_MT − 51,600)/25,800,102
-                        = 0.673104634442792575956499574373982916213631188024769810765723…
+                        = 0.673104634442792575956499574373982916213631188024769810765723008758…
         C₉(ξ′,0.00398) = 0.8692493389621267827062525179120150033695438835191711139556918072623011…
       Closed-form identity at f=0.0039: (2,640,000·H − 5,260)/2,630,016
                         = (6875·H − 1315/96)/6849 verified to 1e-71.
