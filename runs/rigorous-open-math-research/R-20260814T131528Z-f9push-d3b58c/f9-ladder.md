@@ -41,3 +41,20 @@ kk(x) = (sinc(πx−1/√2) + sinc(πx+1/√2))/(2√2·sin(1/√2)): **F_8 = 0.
 Consequence: a certificate at the true minimum (0.00398) would require equality handling and
 is effectively infeasible; **f_9 = 0.00395 (margin 3.2e-5) is the realistic ceiling**, with
 0.00393–0.00394 as fallback steps.
+
+## True-minimum re-verification with the CERTIFICATE kernel (manager, 2026-08-15)
+
+The scoping kernel kk(x) and the certificate kernel k(x) (kernel.py, normalized_kernel:
+k(x) = [sinc(1/√2 − πx) + sinc(1/√2 + πx)]/2 / (√2·sin(1/√2))) are algebraically IDENTICAL
+(sinc evenness + k_zero = √2 sin(1/√2)). Re-evaluated F_8(g) = (1/4000)Σg_i +
+Σ_{s=1..8} (2/(9−s))Σ_i k(span)² with arb enclosures (256-bit) at the same points:
+
+| point | F_8 (certificate kernel, arb) | ladder claim |
+|---|---|---|
+| k9_opt | 0.003981819776026 ± 6e-16 | 0.0039818181719 ✓ (1.6e-9 diff = rounded point coords) |
+| all 2.0 | 0.004355474104594 ± 5e-16 | 0.00436 ✓ |
+| all 1.99 | 0.004947869925822 ± 2e-16 | 0.00495 ✓ |
+
+Conclusion: true min ≈ 0.0039818 confirmed with the actual certificate kernel; the 0.00395
+target margin ≈ 3.2e-5 stands. (Note: F_8 must use w = k², not k — the kernel itself is
+sign-indefinite; the squared form is the pressure weight from the general-k derivation.)
