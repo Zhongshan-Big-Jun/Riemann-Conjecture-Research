@@ -50,6 +50,18 @@
       ],
       "created_at": "2026-08-14T04:45:00Z",
       "updated_at": "2026-08-14T04:45:00Z"
+    },
+    {
+      "run_id": "R-20260814T045000Z-extpress-2f36ae",
+      "task_packet_id": "Q-20260814-criticalline-p1-507bb5",
+      "run_root": "runs/rigorous-open-math-research/R-20260814T045000Z-extpress-2f36ae",
+      "started_at": "2026-08-14T04:50:00Z",
+      "upstream_status_verbatim": "IN_PROGRESS",
+      "summary": "Extend consecutive-zero pressure method beyond 7 points (9/11-point Arb certificates) toward the bandwidth-one ceiling 0.6818; new record > 0.673008528 targeted.",
+      "audit_status": "PENDING",
+      "key_artifacts": [],
+      "created_at": "2026-08-14T04:50:00Z",
+      "updated_at": "2026-08-14T04:50:00Z"
     }
   ]
 }
