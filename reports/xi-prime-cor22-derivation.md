@@ -89,11 +89,15 @@ All apply to the ξ′ simple-on-line Gram blocks verbatim. With m₉ = 264, A�
   in full detail against the XiPrime EF (Lean statements exist for the rank-trace spine;
   the explicit s₁/s₂/p decomposition for ξ′ has not been written out before — this note is
   the first such write-up).
-- A2: verify κ₁(1, v_MT) via an independent method (e.g., high-precision quadrature with a
-  different D₁ truncation/tail, or exact integral evaluation of the cos-autocorrelation).
+- A2: ✅ VERIFIED (2026-08-14): κ₁(1, v_MT) confirmed by an independent path — analytic
+  closed form of the cos autocorrelation vConv(r) = ½[(1−r)cos(√2r) + sin(√2(1−r))/√2]
+  (correcting a first-attempt endpoint slip), same D₁ series: gives
+  2 − κ₁ = 0.86788886519905193555031471042034…, matching the numeric-quadrature path to 20
+  digits; flat window reproduces 0.85838405470921802815… (Lean ≥ 0.85838371).
 - A3: the kernel-limit concentration for ξ′ blocks (structural; same window).
 - A4: N_{ξ′}(I′) ≥ s₁ + 2s₂ + 2p and tr Â = N(1+o(1)) for the MT window at λ = 1.
 
 Status: CANDIDATE derivation complete; independent audit of A1–A4 recommended before
-promoting to a record theorem. Manager's own audit of the arithmetic: C₉^{ξ′} value
-recomputed (mpmath 40 digits) and cross-checks in reports/xi-prime-pressure-method.md.
+promoting to a record theorem. A2 closed; A1/A3/A4 remain (A1 is the substantive one).
+Manager's own audit of the arithmetic: C₉^{ξ′} value recomputed (mpmath 40 digits) and
+cross-checks in reports/xi-prime-pressure-method.md.
