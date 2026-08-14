@@ -3,104 +3,228 @@
   "updated_at": "2026-08-14T04:20:00Z",
   "items": [
     {
-      "id": "P-2026-claude-zeroprop-1bd319",
       "title": "More than two thirds of the zeros of the Riemann zeta function lie on the critical line",
-      "authors": ["Claude (Anthropic)"],
+      "authors": [
+        "Claude (Anthropic)"
+      ],
       "year": 2026,
       "kind": "research_paper_ai_primary",
       "canonical_identity": "Anthropic research note riemann-zeta (2026-08-10, updated 2026-08-13) + paper PDF v2",
       "versions": [
-        {"version": "v1", "date": "2026-08-11", "locator": "https://www-cdn.anthropic.com/95c246936988e43127bc6b2ceb7077c1dad2d68e.pdf", "local": "literature/raw/claude-paper-main.pdf", "sha256": "19F827BEE5834D61AA6DD756CDAEA582492703DDBFD6BDC2058DE10B93F7E814"},
-        {"version": "v2", "date": "2026-08-13", "locator": "https://www-cdn.anthropic.com/564f962e60643842f5fcb4a17c9dbc8f608f1c37.pdf", "local": "literature/raw/claude-paper-main-v2-20260813.pdf", "sha256": "6792988E6CD0E17690621CE898ABD5D534F98407741BC7CB14BBE7D07C77D72F", "preferred": true},
-        {"version": "expert-note", "date": "2026-08-10", "locator": "https://www-cdn.anthropic.com/23455459f8832d06bb175cc0f88d019aed962ef8.pdf", "local": "literature/raw/claude-paper-note.pdf", "sha256": "45E0330AD37965E5531FA1F4F11E5BEBCAE147A5237A3E5B3D029EFA7DDF759D"},
-        {"version": "appendix", "date": "2026-08-10", "locator": "https://www-cdn.anthropic.com/d7f3ecf1d01392d887f8bc974ca187e2a121b1ed.pdf", "local": "literature/raw/claude-appendix.pdf", "sha256": "271ABA2D2083FFA778A53C2994F2061FAD7FDDA450BC296EC49C7CC41E91DD2D"},
-        {"version": "e2-transcript", "date": "2026-08", "locator": "https://www-cdn.anthropic.com/8a0d1add3c637b858a9a181e98c40e9548c3f44f.pdf", "local": "literature/raw/claude-extra.pdf", "sha256": "EBB34C5ED65B1DC96A72BDF76068814A34DA9CEB1675624F68A2088180123ADA"}
+        {
+          "version": "v1",
+          "date": "2026-08-11",
+          "locator": "https://www-cdn.anthropic.com/95c246936988e43127bc6b2ceb7077c1dad2d68e.pdf",
+          "local": "literature/raw/claude-paper-main.pdf",
+          "sha256": "19F827BEE5834D61AA6DD756CDAEA582492703DDBFD6BDC2058DE10B93F7E814"
+        },
+        {
+          "version": "v2",
+          "date": "2026-08-13",
+          "locator": "https://www-cdn.anthropic.com/564f962e60643842f5fcb4a17c9dbc8f608f1c37.pdf",
+          "local": "literature/raw/claude-paper-main-v2-20260813.pdf",
+          "sha256": "6792988E6CD0E17690621CE898ABD5D534F98407741BC7CB14BBE7D07C77D72F",
+          "preferred": true
+        },
+        {
+          "version": "expert-note",
+          "date": "2026-08-10",
+          "locator": "https://www-cdn.anthropic.com/23455459f8832d06bb175cc0f88d019aed962ef8.pdf",
+          "local": "literature/raw/claude-paper-note.pdf",
+          "sha256": "45E0330AD37965E5531FA1F4F11E5BEBCAE147A5237A3E5B3D029EFA7DDF759D"
+        },
+        {
+          "version": "appendix",
+          "date": "2026-08-10",
+          "locator": "https://www-cdn.anthropic.com/d7f3ecf1d01392d887f8bc974ca187e2a121b1ed.pdf",
+          "local": "literature/raw/claude-appendix.pdf",
+          "sha256": "271ABA2D2083FFA778A53C2994F2061FAD7FDDA450BC296EC49C7CC41E91DD2D"
+        },
+        {
+          "version": "e2-transcript",
+          "date": "2026-08",
+          "locator": "https://www-cdn.anthropic.com/8a0d1add3c637b858a9a181e98c40e9548c3f44f.pdf",
+          "local": "literature/raw/claude-extra.pdf",
+          "sha256": "EBB34C5ED65B1DC96A72BDF76068814A34DA9CEB1675624F68A2088180123ADA"
+        }
       ],
       "blog": "https://www.anthropic.com/research/riemann-zeta",
-      "lean_formalization": {"repo": "https://github.com/anthropics/zeta-23-lean", "snapshot_local": "literature/raw/zeta-23-lean", "snapshot_commit": "3635e74826a4c1fcece7d1cd2b6fa75e43a00510", "toolchain": "leanprover/lean4:v4.33.0-rc2", "mathlib_rev": "51e6992efd06126df61a496bebf8f49482a4e129"},
-      "main_theorems": ["N0*/N >= 2/3-o(1), N0^s/N >= 2/3-o(1), Nd/N >= 5/6-o(1)", "MT window: 0.672500703679... (N0*/N,N0^s/N), 0.83625 (Nd/N)", "xi' zeros: 0.85838/0.92919 flat, 0.86864/0.93432 quartic", "bandwidth-one ceiling <= 0.6818287"],
+      "lean_formalization": {
+        "repo": "https://github.com/anthropics/zeta-23-lean",
+        "snapshot_local": "literature/raw/zeta-23-lean",
+        "snapshot_commit": "3635e74826a4c1fcece7d1cd2b6fa75e43a00510",
+        "toolchain": "leanprover/lean4:v4.33.0-rc2",
+        "mathlib_rev": "51e6992efd06126df61a496bebf8f49482a4e129"
+      },
+      "main_theorems": [
+        "N0*/N >= 2/3-o(1), N0^s/N >= 2/3-o(1), Nd/N >= 5/6-o(1)",
+        "MT window: 0.672500703679... (N0*/N,N0^s/N), 0.83625 (Nd/N)",
+        "xi' zeros: 0.85838/0.92919 flat, 0.86864/0.93432 quartic",
+        "bandwidth-one ceiling <= 0.6818287"
+      ],
       "created_at": "2026-08-14T04:20:00Z",
       "updated_at": "2026-08-14T04:20:00Z",
-      "lifecycle": "active"
+      "lifecycle": "active",
+      "paper_id": "P-2026-claude-zeroprop-1bd319"
     },
     {
-      "id": "P-2026-gpt5sol-simplezeros-e29822",
       "title": "More than 67.3% of the zeros of the Riemann zeta function are simple and lie on the critical line (draft)",
-      "authors": ["GPT-5.6 Sol (OpenAI)"],
+      "authors": [
+        "GPT-5.6 Sol (OpenAI)"
+      ],
       "year": 2026,
       "kind": "research_draft_ai_primary",
       "canonical_identity": "github.com/ainta/zeta-simple-zeros (HEAD 040c5e8)",
-      "versions": [{"version": "HEAD", "date": "2026-08-13", "locator": "https://github.com/ainta/zeta-simple-zeros", "local": "literature/raw/zeta-simple-zeros", "sha256_repo_commit": "040c5e899e658aed7b56a2a87f501798fe10761d"}],
+      "versions": [
+        {
+          "version": "HEAD",
+          "date": "2026-08-13",
+          "locator": "https://github.com/ainta/zeta-simple-zeros",
+          "local": "literature/raw/zeta-simple-zeros",
+          "sha256_repo_commit": "040c5e899e658aed7b56a2a87f501798fe10761d"
+        }
+      ],
       "status": "DRAFT — not yet independently verified; status line in repo: 'Research draft generated by GPT-5.6 Sol. Independent verification and peer review are welcome.'",
-      "main_theorems": ["N0^s/N >= (1345000*H_MT - 2680)/1340003 = 0.6730085279277797613...", "3-point variant: 0.672519767", "7-point variant: 0.673008528"],
+      "main_theorems": [
+        "N0^s/N >= (1345000*H_MT - 2680)/1340003 = 0.6730085279277797613...",
+        "3-point variant: 0.672519767",
+        "7-point variant: 0.673008528"
+      ],
       "created_at": "2026-08-14T04:20:00Z",
       "updated_at": "2026-08-14T04:20:00Z",
-      "lifecycle": "active"
+      "lifecycle": "active",
+      "paper_id": "P-2026-gpt5sol-simplezeros-e29822"
     },
     {
-      "id": "P-2025-goldston-suriajaya-fbf623",
       "title": "Zeta Zeros on the Critical Line",
-      "authors": ["Daniel A. Goldston", "Ade Irma Suriajaya"],
+      "authors": [
+        "Daniel A. Goldston",
+        "Ade Irma Suriajaya"
+      ],
       "year": 2025,
       "kind": "research_paper",
       "canonical_identity": "arXiv:2511.20059",
-      "versions": [{"version": "v1", "date": "2025-11", "locator": "https://arxiv.org/abs/2511.20059", "local": "literature/raw/gs-2511.20059.pdf", "sha256": "7B4F638CBD0438123B7A54869FC998FC3D4DEE9B74572C04CEF9DA0463ED4C6F", "preferred": true}],
-      "main_theorems": ["If RH removed from Montgomery's simple-zero proof then 2/3 of zeros simple AND on the critical line (framework paper)"],
+      "versions": [
+        {
+          "version": "v1",
+          "date": "2025-11",
+          "locator": "https://arxiv.org/abs/2511.20059",
+          "local": "literature/raw/gs-2511.20059.pdf",
+          "sha256": "7B4F638CBD0438123B7A54869FC998FC3D4DEE9B74572C04CEF9DA0463ED4C6F",
+          "preferred": true
+        }
+      ],
+      "main_theorems": [
+        "If RH removed from Montgomery's simple-zero proof then 2/3 of zeros simple AND on the critical line (framework paper)"
+      ],
       "created_at": "2026-08-14T04:20:00Z",
       "updated_at": "2026-08-14T04:20:00Z",
-      "lifecycle": "active"
+      "lifecycle": "active",
+      "paper_id": "P-2025-goldston-suriajaya-fbf623"
     },
     {
-      "id": "P-2019-aryan-landaugonek-ce43a2",
       "title": "On an extension of the Landau–Gonek formula",
-      "authors": ["Farzad Aryan"],
+      "authors": [
+        "Farzad Aryan"
+      ],
       "year": 2019,
       "kind": "research_paper",
       "canonical_identity": "arXiv:1902.05473",
-      "versions": [{"version": "v1", "date": "2019-02", "locator": "https://arxiv.org/abs/1902.05473", "preferred": true}],
-      "main_theorems": ["extension of Landau–Gonek formula; unconditional pair-correlation-type estimates; 2/3 simple under zero-density hypothesis"],
+      "versions": [
+        {
+          "version": "v1",
+          "date": "2019-02",
+          "locator": "https://arxiv.org/abs/1902.05473",
+          "preferred": true
+        }
+      ],
+      "main_theorems": [
+        "extension of Landau–Gonek formula; unconditional pair-correlation-type estimates; 2/3 simple under zero-density hypothesis"
+      ],
       "created_at": "2026-08-14T04:20:00Z",
       "updated_at": "2026-08-14T04:20:00Z",
-      "lifecycle": "active"
+      "lifecycle": "active",
+      "paper_id": "P-2019-aryan-landaugonek-ce43a2"
     },
     {
-      "id": "P-2023-bgstb-paircorr-158ba7",
       "title": "Pair Correlation of Zeros of the Riemann Zeta Function (Montgomery's form factor without RH)",
-      "authors": ["Siegfred Alan C. Baluyot", "Daniel Alan Goldston", "Ade Irma Suriajaya", "Caroline L. Turnage-Butterbaugh"],
+      "authors": [
+        "Siegfred Alan C. Baluyot",
+        "Daniel Alan Goldston",
+        "Ade Irma Suriajaya",
+        "Caroline L. Turnage-Butterbaugh"
+      ],
       "year": 2023,
       "kind": "research_paper",
       "canonical_identity": "arXiv:2306.04799",
-      "versions": [{"version": "v1", "date": "2023-06", "locator": "https://arxiv.org/abs/2306.04799", "preferred": true}],
-      "main_theorems": ["Montgomery form factor sum over ALL complex zeros (no RH)"],
+      "versions": [
+        {
+          "version": "v1",
+          "date": "2023-06",
+          "locator": "https://arxiv.org/abs/2306.04799",
+          "preferred": true
+        }
+      ],
+      "main_theorems": [
+        "Montgomery form factor sum over ALL complex zeros (no RH)"
+      ],
       "created_at": "2026-08-14T04:20:00Z",
       "updated_at": "2026-08-14T04:20:00Z",
-      "lifecycle": "active"
+      "lifecycle": "active",
+      "paper_id": "P-2023-bgstb-paircorr-158ba7"
     },
     {
-      "id": "P-2025-bgstb-proportions-cfa991",
       "title": "Pair Correlation of Zeros of the Riemann Zeta Function I: Proportions of Simple Zeros and Critical Zeros",
-      "authors": ["Siegfred Alan C. Baluyot", "Daniel Alan Goldston", "Ade Irma Suriajaya", "Caroline L. Turnage-Butterbaugh"],
+      "authors": [
+        "Siegfred Alan C. Baluyot",
+        "Daniel Alan Goldston",
+        "Ade Irma Suriajaya",
+        "Caroline L. Turnage-Butterbaugh"
+      ],
       "year": 2025,
       "kind": "research_paper",
       "canonical_identity": "arXiv:2501.14545",
-      "versions": [{"version": "v1", "date": "2025-01", "locator": "https://arxiv.org/abs/2501.14545", "preferred": true}],
-      "main_theorems": ["proportions of simple/critical zeros via pair correlation without RH"],
+      "versions": [
+        {
+          "version": "v1",
+          "date": "2025-01",
+          "locator": "https://arxiv.org/abs/2501.14545",
+          "preferred": true
+        }
+      ],
+      "main_theorems": [
+        "proportions of simple/critical zeros via pair correlation without RH"
+      ],
       "created_at": "2026-08-14T04:20:00Z",
       "updated_at": "2026-08-14T04:20:00Z",
-      "lifecycle": "active"
+      "lifecycle": "active",
+      "paper_id": "P-2025-bgstb-proportions-cfa991"
     },
     {
-      "id": "P-2025-glss-pcc-d8a559",
       "title": "Pair Correlation Conjecture for the Zeros of the Riemann Zeta-function I: Simple and Critical Zeros",
-      "authors": ["Goldston", "Lee", "et al."],
+      "authors": [
+        "Goldston",
+        "Lee",
+        "et al."
+      ],
       "year": 2025,
       "kind": "research_paper",
       "canonical_identity": "arXiv:2503.15449",
-      "versions": [{"version": "v1", "date": "2025-03", "locator": "https://arxiv.org/abs/2503.15449", "preferred": true}],
-      "main_theorems": ["PCC with full support implies 100% simple zeros on the critical line"],
+      "versions": [
+        {
+          "version": "v1",
+          "date": "2025-03",
+          "locator": "https://arxiv.org/abs/2503.15449",
+          "preferred": true
+        }
+      ],
+      "main_theorems": [
+        "PCC with full support implies 100% simple zeros on the critical line"
+      ],
       "created_at": "2026-08-14T04:20:00Z",
       "updated_at": "2026-08-14T04:20:00Z",
-      "lifecycle": "active"
+      "lifecycle": "active",
+      "paper_id": "P-2025-glss-pcc-d8a559"
     }
   ]
 }
