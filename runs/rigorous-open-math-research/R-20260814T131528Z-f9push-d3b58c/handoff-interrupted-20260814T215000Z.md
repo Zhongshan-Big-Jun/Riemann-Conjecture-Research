@@ -24,6 +24,11 @@
   grid-2000 0.00395 estimated 60-120k core-s ⇒ ~10-15% done; ETA under current throttling
   10-30 h. Host load (game/office) is the binding constraint; closing those processes would
   give 3-5× speedup.
+- Cost-model update (2026-08-15T00:20Z): calibrated exponent p ≈ 1.23 (cost ∝ margin^-p,
+  from the 0.0038-grid2000 29k and 0.0039-grid4000 76k core-s data points); revised
+  estimates: f=0.00395 grid-2000 ≈ 243k core-s (≈5.5% done at 13.5k), grid-4000 ≈ 631k
+  core-s. ETA at ~40% effective rate: grid-2000 ≈ 15-20 h more; grid-4000 ≈ 40-60 h.
+  Fallback ladder (0.00394/0.00393) remains available if budgets demand a step down.
 
 ## Attempted routes
 
