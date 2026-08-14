@@ -4,8 +4,12 @@
 - **Task packet ID**: Q-20260814-criticalline-p1-507bb5 (obligation O3)
 - **Date**: 2026-08-14T21:50Z
 - **Interrupt reason**: environment resource saturation (CPU 100% — bg3_dx11/WPS/Chrome on the
-  host machine); background compute throttled to ~4-8 s CPU/min/worker (vs 60 s/min at full
-  speed); ETA under load ~50 h, unacceptable to block on.
+  host machine, cyclic: load drops briefly (~89% effective) then returns to saturation);
+  background compute throttled to ~1-8 s CPU/min/worker (vs 60 s/min at full speed);
+  ETA under load 10-60 h, unacceptable to block on. Job-system records were also lost once
+  (stdout unrecoverable) — the verifier was patched with an atomic `--out` file write, and
+  both certification runs were restarted with file output (pwsh-1 grid-4000, pwsh-2
+  grid-2000). Jobs kept alive; they accelerate automatically when the host idles.
 - **Task state:** IN_PROGRESS
 
 ## Completed obligations
