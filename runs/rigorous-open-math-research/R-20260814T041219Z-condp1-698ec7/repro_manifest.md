@@ -25,15 +25,17 @@ approval prompts disabled; no sandbox escalation requested. Python 3.10.11 + num
 
 | Artifact | sha256 |
 |---|---|
-| `problem_contract.md` | computed below in SHA256SUMS |
-| `status_and_literature.md` | computed below |
-| `obligation_graph.md` | computed below |
-| `approach_registry.md` | computed below |
-| `research_ledger.md` | computed below |
-| `counterexample_log.md` | computed below |
-| `candidate_proof.md` | computed below |
-| `audit_report.md` | computed below |
-| `reproducibility/verify_moments_christoffel.py` | (original stub) |
+| `problem_contract.md` | `EB0DD131D778871A5AA2112E257B7E0E1A6D68DD8DAB75CABE2A05108DDAF560` |
+| `status_and_literature.md` | `FA12749DBF23B8A2E1B414D445C760F57D98BA9ECA15830E2A8E3C637F0B16FA` |
+| `obligation_graph.md` | `6772A3BE99A9CB355A2730A5164FBFDB828DAB7F59ED3B873C36075AD8E9DFA4` |
+| `approach_registry.md` | `772A659F009DA8F09CD132EBDF293FCBA36317AD1C628C9D2B277B4C5D5E7E13` |
+| `research_ledger.md` | `82F45F88AB417488D8C5B3B39EA671A81DC4D9BB8F421D900ABF38BF77ADE2C5` |
+| `counterexample_log.md` | `7176894ECEB5D3FC84282BB153FB43081621DE4C58923687C2835A032E8B05A8` |
+| `candidate_proof.md` | `A7F53EAFAA62B105C06DE092768B6C1AD73845A91B28AA7FF2E4C4B5D7A16DDE` |
+| `audit_report.md` | `F608FE7BBE70E0ACDD51EEBC4015309146F4135D2C0AFA39F4861EEE379FC26F` |
+| `repro_manifest.md` | `E8223028C7BD5003DEF26E153BE095C6C0501C601CC9F51E4F5FE0893086EB05` |
+| `SHA256SUMS` | (itself unhashed; self-referential) |
+| `reproducibility/verify_moments_christoffel.py` | `5D6A14764651A4FBB94564C618D3A0566E84BB05833BAB868585A07C469138A8` |
 | `reproducibility/moments_christoffel_full.py` | `FB8E28FDA823EF197744561AF5F95BB99810B10FF59B8C699A061190F6372B28` |
 | `reproducibility/check_lambda2_corrected.py` | `582CA8C5F94ABB9D0278F4A263860ABE81074E6E57F050FDD758B96E1D776DE6` |
 

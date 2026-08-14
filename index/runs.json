@@ -43,15 +43,18 @@
       "task_packet_id": "Q-20260814-criticalline-p1-507bb5",
       "run_root": "runs/rigorous-open-math-research/R-20260814T041219Z-condp1-698ec7",
       "started_at": "2026-08-14T04:12:19Z",
-      "upstream_status_verbatim": "IN_PROGRESS (first solver instance cut off; continuation agent ac664001 running)",
-      "summary": "Conditional HL* route to probability 1; partial: problem_contract.md 14AADF61..., repro_manifest.md CA8CA7DD..., reproducibility/verify_moments_christoffel.py written; candidate proof outstanding.",
-      "audit_status": "PENDING (audit after solver completion)",
+      "upstream_status_verbatim": "RIGOROUS_PARTIAL_RESULT",
+      "summary": "Rigorous conditional theorem: HL* (all k0, all lambda<1) + Spectral Lemma SL => lim N0^s(T,2T)/N(T,2T) = 1; exact resolution of the §7.2(f) moment inconsistency: printed (1,3/4,2,13/4) invalid (det H2=-1/4), corrected (1,4/3,2,13/4) (m2 = 4/3 exact via sine-DPP Lemma C) restores the paper's own Lambda2(0)=5/36 and 13/18 exactly; SOS-witness Christoffel bound (Lemma 3.A) and PSD Christoffel bound (3.B) proved; HL*(4) => N0^s/N >= 13/18; single open ingredient: SL (sine-kernel Gram spectral density at 0).",
+      "audit_status": "PENDING (independent audit agent 2bb08828 running)",
       "key_artifacts": [
-        "problem_contract.md 14AADF61ACF2644A414A8E7FF6448D3E1A6DEFA2BDA37E006D00E4A924B0F4BD",
-        "repro_manifest.md CA8CA7DD84C2B273DC675F7BB0977769EE09A5DF273E893495DE55E6BAF386A7"
+        "candidate_proof.md A7F53EAFAA62B105C06DE092768B6C1AD73845A91B28AA7FF2E4C4B5D7A16DDE",
+        "problem_contract.md EB0DD131D778871A5AA2112E257B7E0E1A6D68DD8DAB75CABE2A05108DDAF560",
+        "status_and_literature.md FA12749DBF23B8A2E1B414D445C760F57D98BA9ECA15830E2A8E3C637F0B16FA",
+        "repro_manifest.md 244BB84FA5BDD70ECE7605C61DA8A8FD9370ADBF2636BFAB58F8715214BB0679 (post-checksum update; SHA256SUMS lists E8223028...)",
+        "SHA256SUMS (solver-generated; repro_manifest.md updated 8s later)"
       ],
       "created_at": "2026-08-14T04:45:00Z",
-      "updated_at": "2026-08-14T04:45:00Z"
+      "updated_at": "2026-08-14T05:30:00Z"
     },
     {
       "run_id": "R-20260814T045000Z-extpress-2f36ae",
