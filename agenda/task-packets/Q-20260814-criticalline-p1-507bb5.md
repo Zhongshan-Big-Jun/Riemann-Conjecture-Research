@@ -157,7 +157,7 @@ roots; the manager records paths and hashes only.
 | BGSTB 2023 | pair correlation no RH | https://arxiv.org/abs/2306.04799 | external |
 | BGSTB 2025 | proportions I | https://arxiv.org/abs/2501.14545 | external |
 | GLSS 2025 | PCC simple/critical | https://arxiv.org/abs/2503.15449 | external |
-| B0 map | frontier + audit trail | literature/maps/FRONTIER.md | 94067C7ACD88B56C1DFCF720DAEC6B644408A164DB76E317D6232E13B72B3B2B |
+| B0 map | frontier + audit trail | literature/maps/FRONTIER.md | EFA1F79919877CE5AA299662EFA10759F2539BE1D1097AD70AB08A40B4250694 |
 
 ## Required run location
 

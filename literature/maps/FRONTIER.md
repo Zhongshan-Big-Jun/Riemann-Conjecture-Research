@@ -84,6 +84,10 @@ N0* = distinct on-line; N0^s = simple on-line; Nd = distinct. Dyadic interval (T
 4. The OpenAI refinement escapes (1) because it uses gap-dependent inner products (not just the
    two moments); its class ceiling computed at ≈ 0.6730583 (formal m→∞ limit; rigorous
    ≤ 0.6730085 at m ≤ 269) — still below the bandwidth-one ceiling (mainpush R3).
+   k=9 formal class limits (re-verified mpmath 40d, 2026-08-15): at f₉ = 0.0039 →
+   0.67312589466862…; at f₉ = 0.00395 → 0.67315968443292…; at true min 0.0039818 →
+   0.67318118876984…. All formal (uncontrolled large-m spectral monotonicity), not rigor
+   statements on their own.
 5. 100% unconditionally is out of reach of the rank–trace mechanism: §7.2(f), "RH itself is out of
    reach of the mechanism".
 6. The informal moment values m_k(1) = 1, 3/4, 2, 13/4 are NOT a positive-measure moment sequence
