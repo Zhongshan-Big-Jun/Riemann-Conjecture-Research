@@ -52,7 +52,7 @@ N0* = distinct on-line; N0^s = simple on-line; Nd = distinct. Dyadic interval (T
 | **2/3** | **N0*/N, N0^s/N ≥ 2/3 − o(1); Nd/N ≥ 5/6 − o(1)** | **Claude/Anthropic 2026-08 (v1/v2); Lean-verified (theorems A–E)** |
 | **0.672500703679… = 3/2 − (1/√2)cot(1/√2)** | N0*/N, N0^s/N ≥ 2 − 1/c1, c1 = 0.75329… (Montgomery–Taylor window; optimal in its class [CCLM17, Cor. 14]) | Claude/Anthropic Thm D; expert note |
 | 0.83625… | Nd/N ≥ (3 − 1/c1)/2 | Claude Thm D |
-| **0.6730085279277… (DRAFT)** | **N0^s/N ≥ (1,345,000·H_MT − 2,680)/1,340,003 via stability refinement (3-pt 0.672519767, 7-pt 0.673008528)** | **ainta/zeta-simple-zeros (GPT-5.6 Sol); independently verified 2026-08-14: Arb certificates byte-identical (mainpush run) + manager 50-dp arithmetic check (reports/independent-arith-checks.md)** |
+| **0.6730085279277…** | **N0^s/N ≥ (1,345,000·H_MT − 2,680)/1,340,003 via stability refinement (3-pt 0.672519767, 7-pt 0.673008528)** | **ainta/zeta-simple-zeros (GPT-5.6 Sol). INDEPENDENTLY AUDITED 2026-08-14: two independent re-derivations PASS (audit reports sha256 5F0EDEAA…, 3F554804…), Arb certificates byte-identical (nodes 707901, hashes a9992300/7913c55), manager 50-dp check (reports/independent-arith-checks.md). Residual: paper-level (not Lean end-to-end); Lemma 3.1 rests on [1] Lemma 5.4** |
 | 0.85838 / 0.92919; 0.86864 / 0.93432 | zeros of ξ′: simple on line / distinct (flat / quartic window) | Claude Thm (Remark 7.1); Lean-verified |
 | ≤ 0.6818287… | **ceiling** of all bandwidth-one certificates (first two trace moments w/ Fourier support ⊂ [−1,1] + on/off partition) | Claude §7.2 + Lean `Zeta23.PairCeiling.ceiling_law256` |
 
@@ -87,9 +87,10 @@ N0* = distinct on-line; N0^s = simple on-line; Nd = distinct. Dyadic interval (T
 
 ## 3. Novelty-risk line
 
-Any claim of liminf ≥ c for c > 0.673008528 must be checked against (a) the OpenAI draft (not yet
-peer-verified), (b) the bandwidth-one ceiling (if the certificate stays in class (a)), (c) possible
-simultaneous work by human number theorists in Aug 2026 (watch arXiv after 2026-08-13). Any claim
+Any claim of liminf ≥ c for c > 0.673008528 (now independently audited) must be checked against
+(a) the bandwidth-one ceiling (if the certificate stays in class (a)), (b) the stability-refinement
+class ceiling ≈ 0.6730583 (computed, m ≤ 269 rigorous), (c) possible simultaneous work by human
+number theorists in Aug 2026 (watch arXiv after 2026-08-13). Any claim
 of "probability 1" (liminf = 1) is extraordinary; it must either prove new deep input (pair
 correlation beyond support 1, or HL-type moments) or it is a crank claim (see ignored zenodo/arXiv
 "RH proofs" list in literature/search-log).
