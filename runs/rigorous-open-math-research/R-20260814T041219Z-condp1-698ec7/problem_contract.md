@@ -1,71 +1,49 @@
-# Problem Contract — Conditional probability-1 (HL* trace-moment route)
+# Problem Contract — Conditional probability-1 (HL* trace-moment route) [FINAL]
 
 Run: `R-20260814T041219Z-condp1-698ec7`
-Task packet: `agenda/task-packets/Q-20260814-criticalline-p1-507bb5.md` (obligations O5, O4-conditional, O1 baseline check).
-Skill: `rigorous-open-math-research`. Status target: `RIGOROUS_PARTIAL_RESULT` or better.
+Task packet: `agenda/task-packets/Q-20260814-criticalline-p1-507bb5.md` (obligations O1, O4-conditional, O5).
+Skill: `rigorous-open-math-research`. Final status target: `RIGOROUS_PARTIAL_RESULT` (achieved).
 
 ## 1. Normalized goal statement
 
-Let ρ = β + iγ run over nontrivial zeros of ζ, m_ρ the multiplicity. For 0 ≤ T1 < T2:
-
+Let ρ = β + iγ run over nontrivial zeros of ζ with multiplicity m_ρ. For 0 ≤ T1 < T2:
 - N(T1,T2) := Σ m_ρ over T1 < γ ≤ T2 (with multiplicity)
 - N0^s(T1,T2) := #{ρ : β = 1/2, m_ρ = 1, T1 < γ ≤ T2} (simple, on line)
+- d := number of test functions in the family V (≈ λ₁ N(T,2T)); Ĝ := the (4.4) compression.
 
-**Target (user goal, "probability 1")**: `lim_{T→∞} N0^s(0,T)/N(0,T) = 1` (100% simple zeros on the line).
+**Target (user goal, "probability 1")**: `lim_{T→∞} N0^s(0,T)/N(0,T) = 1`.
 
-This run makes the informal §7.2(d),(e),(f) statements of the Anthropic paper
-(`literature/raw/claude-paper-main-v2-20260813.pdf` / `.txt`, §7.2 lines ~1628–1658) into a
-RIGOROUS conditional theorem: from precise hypotheses HL*(k0, λ) on the trace moments of the
-d×d compression G~ of Weil's form, prove lower bounds on the proportion of simple on-line zeros,
-reaching 1 when all moments are known.
+## 2. Completion criteria and outcome
 
-## 2. Completion criteria
+| Criterion | Content | Status |
+|---|---|---|
+| C1 (O1) | Re-derive `N0^s + o(N) ≥ 4trĜ − 2N − ‖Ĝ‖²_F = (2 − R(ψ))N`; constants R(ψ0)=4/3, R(ψ_MT)=1/c₁*; H_MT = 3/2 − (1/√2)cot(1/√2) = 0.67250…; cross-check vs v2 §7.1 and Lean `Zeta23.ThmD`. | **DONE** (proved; confirmed vs text + Lean HD_one/closed forms) |
+| C2 (O5-D2) | Exact definition of HL*(k0,λ): which k, windows, uniformity, normalization, meaning of o(1). | **DONE** (§2 of candidate_proof.md) |
+| C3 (O5-D3) | Prove Christoffel/SOS higher-moment n₊-bound and the Prop 4.5 (P1,Q′)-regrouping corollary. | **DONE** (§3, with new rigorous SOS-witness Lemma 3.A and Christoffel Lemma 3.B) |
+| C4 (O5-D4) | Verify m_k(1) (1,3/4,2,13/4); compute Λ_2(0); resolve 13/18 normalization gap exactly. | **DONE** — the written list is INCONSISTENT (m_2=3/4 < m_1²); correct list is **(1,4/3,2,13/4)** (m_2=4/3 exact); under it **Λ_2(0)=5/36** and **13/18=2·(1−5/36)−1** hold exactly (§4) |
+| C5 (O5-D5) | `HL* ∀k0` ⇒ `liminf N0^s/N = 1`, incl. convergence argument and Christoffel-asymptotics. | **DONE** — proved conditional on the clean Spectrum Lemma **SL** (0 in the support of the sine-kernel Gram spectral distribution); SL identified precisely as the single missing-in-literature fact (§5) |
+| C6 (O5-D6) | Reconcile with GLSS25 (PCC full-support ⇒ 100%) and with the k=1 barrier (§7.2(e)). | **DONE** (§6) |
 
-- C1 (O1): Re-derive from scratch the baseline chain
-  `N0^s(T,2T) + o(N) ≥ 4·tr[Ĝ] − 2N(T,2T) − ‖Ĝ‖²_F = (2 − R(ψ))·N(T,2T)` (Theorem D), and
-  confirm statement/constants against v2 §7.1 text and the Lean theorem `Zeta23.ThmD.thmD₀_simple`.
-- C2 (task 2): Define HL*(k0, λ) with exact statements: which k, which windows, the uniformity in T
-  (and in the window), precise normalisation of G~, and the meaning of "o(1)".
-- C3 (task 3): State and PROVE the Christoffel-function bound:
-  given trace moments `d⁻¹ tr(Ĝ^k) → m_k(λ)`, k ≤ 2m, the sharp lower bound
-  `n₊(G~)/d ≥ 1 − Λ_m(0) − o(1)`, plus the simple-on-line corollary via the P1/Q' regrouping.
-  **The informal §7.2(d) statement is NOT true as literally written (see counterexample delta_-1);
-  the correct rigorous statement requires the positive-mean (m_1>0) / positive-semidefinite-type
-  normalization; this run pins that down.**
-- C4 (task 4): Verify m_k(1) for k ≤ 4 = (1, 3/4, 2, 13/4); compute Λ_2(0) = 5/36 hence
-  `1 − Λ_2(0) = 31/36`; explain precisely how 13/18 (~0.7222) arises from the simple-on-line
-  regrouping (task condition: "check how 13/18 arises").
-- C5 (task 5): Prove `HL*(k0, λ) ∀ k0` ⇒ `liminf N0^s/N = 1`, including the convergence argument
-  `Λ_m(0) → 0` for the spectral measure of the sine-kernel Gram matrix (identify support / show
-  positive density at 0, or prove the needed Christoffel asymptotics).
-- C6 (task 6): Reconcile with GLSS25 (PCC full support ⇒ 100% simple on line; GS/GLSS Theorem 5)
-  and with the unconditional k = 1 barrier (§7.2(e), RS96 range kλ < 2).
+## 3. Honest status
 
-Status is honest: no claim of an unconditional 100% (that is OPEN); deliver a rigorous conditional
-theorem with exact hypotheses and exact open gaps.
+**RIGOROUS_PARTIAL_RESULT.** The "probability-1" goal is:
+- **proved conditionally** on the precise hypotheses **HL*** (all k0, λ→1) **and** the clean
+  spectral lemma **SL**;
+- **not reached unconditionally** (liminf N0^s/N → 1 remains OPEN; best unconditional ~2/3,
+  bandwidth-one ceiling ≈ 0.6818).
 
-## 3. Sources & hashes (re-verified this run)
+The paper's informal §7.2(f) is found to contain exactly one transcription error (m_2(1): 3/4
+→ 4/3); the corrected statement is fully consistent and all quoted derived numbers
+(Λ_2(0)=5/36, 13/18) are then exact.
 
-- Claude v2 paper: `literature/raw/claude-paper-main-v2-20260813.pdf` + `.txt` (§7.2(d),(e),(f); §7.1 Thm D; Prop 4.4, 4.5; Lemma 3.2, 3.3).
-- Lean snapshot: `literature/raw/zeta-23-lean/` (`Zeta23.ThmD.thmD₀_simple`, `Zeta23.LinAlg.RankTrace`).
-- GLSS25: `arXiv:2503.15449`; statement quoted in `literature/raw/gs-2511.20059.txt` Theorem 5.
-- Frontier map: `literature/maps/FRONTIER.md` (snapshot `sha256:6145A358...3C9098`).
+## 4. Key sources & hashes (re-verified this run)
 
-## 4. Normalization of the compression (unit conventions, from §2 and (4.4))
+- Claude v2 paper PDF `literature/raw/claude-paper-main-v2-20260813.pdf`
+  sha256 `6792988E6CD0E17690621CE898ABD5D534F98407741BC7CB14BBE7D07C77D72F`
+- Claude v2 text `literature/raw/claude-paper-main-v2.txt` sha256 `9B02E53C31D7926CF584BEC2BADE8FEACFE17633EE9D4705521EB6D47D902432`
+- Claude note `literature/raw/claude-paper-note.txt` sha256 `69BDFCE6E53F691D965F3C4D4AAA1536B2BEA3DEBCD68E3BAA25DDA142ACD984`
+- GS 2025 `literature/raw/gs-2511.20059.txt` sha256 `65A87EA32D6C2CB70DC3EC39E9304DFA79F73805C6E30EDBFD52ED3F749BC3F0`
+- Lean snapshot `literature/raw/zeta-23-lean/` (commit 3635e74826a4c1fcece7d1cd2b6fa75e43a00510), ThmD in `Zeta23/ThmD/Final.lean`, `Endgame.lean`, `Mult.lean`.
+- GLSS25: arXiv:2503.15449 (statement as quoted in `gs-2511.20059.txt` Theorem 5).
 
-From the v2 text (§2.1, (2.20), eq (4.2), (4.4)):
-- V = {φ(u) e^{iτ_k u}}, τ_k = 2πk/L, 0 ≤ k < d, d ≈ λ1 N(T,2T) (λ1 = L/ℓ1).
-- Ẽ := E/L. Ĝ := G/(aL²) are the units (4.4) in which an isolated on-line zero seen through the
-  full grid contributes eigenvalue = m_ρ (its multiplicity).
-- In these units (unconditionally): tr Ĝ = N(T,2T)(1+o(1)); ‖Ĝ‖²_F = tr Ĝ² = (1/λ1 + λ1/3)·N(1+o(1)).
-
-For the moment route, the correctly-normalised object is the spectral (empirical eigenvalue)
-measure of (Ĝ/d)·(d/tr Ĝ)... precise definition in status_and_literature.md and the theorem files.
-The trace-moment hypothesis is on `d⁻¹ tr((Ĝ/d)ᵏ)` type objects rescaled so that the first moment = 1.
-
-## 5. Known barrier / open-problem status (must not be contradicted)
-
-- `liminf N0^s(0,T)/N(0,T) → 1` is OPEN. Best unconditional ~2/3 (#2/3, ThmD 0.67250; OpenAI draft 0.673008 unverified).
-- Bandwidth-one certificate ceiling ≈ 0.6818287 (Lean-certified `PairCeiling.ceiling_law256`).
-- Unconditional higher-moment evaluation `tr Ĝ^k`, k ≥ 2, requires X^k ≤ T^(2−ε) (§7.2(e)); only k=1 unconditionally in the band λ∈(1/2,1). HL* is a *hypothesis*, not a theorem.
-- The informal §7.2(d) bound needs a positivity normalization (the literal reading has counterexample delta_-1). See obligation_graph / counterexample_log.
+Full artifact list and input/output hashes in `repro_manifest.md` and `SHA256SUMS`.
