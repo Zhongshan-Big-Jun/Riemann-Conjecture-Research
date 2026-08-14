@@ -10,8 +10,8 @@ a predecessor of this file) is archived at `audit_report.initial-race.md` (sha25
 empty-root FAIL report (sha256 `042ED9CD…`) is **not** present in this run root; the archived file
 explicitly supersedes it. This file is the independent adversarial report. Auditor-added script:
 `reproducibility/audit_independent_check.py` sha256
-`2EEB5A00BE480B2A064910A763F03FECC2D66628C2520ADB7911071018F59DF2`. This file's own sha256:
-`9CDB25E4796665084A7AE71D99FA48E56E6D30F3C477E86C027DF5A506508961`.
+`2EEB5A00BE480B2A064910A763F03FECC2D66628C2520ADB7911071018F59DF2`. This file's own sha256
+(excluding this self-referential header line): `457B3062FC361483920B6A4413D90A3C5159C39453F562D7B5DD87B1CD333C53`.
 
 ## 1. Verdict (headline)
 
