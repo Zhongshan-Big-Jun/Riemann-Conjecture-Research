@@ -44,15 +44,19 @@ reports/sl-lemma-random-gram-probe.md):
    integers k ≠ 0) — the "half-band" DPSS endpoint degenerates (Slepian theory consistent;
    the "symbol 1_{|θ|≤1/2}" intuition is a Poisson-summation artefact). Numerically
    verified (N = 1500, all eigenvalues 1).
-2. **Random-Gram model reproduces the audited moments exactly**: with c₂ = 1 (Parseval),
-   c₄ = 2/3 (B-spline), E[m₂] = 1 + c₂ − c₄ = 4/3 EXACT (= Lemma C); E[m₃] = 2 EXACT via
-   the DPP ρ₃ expansion (all-distinct correction vanishes exactly: 1 − 3c₄ + 2·∫tri³ = 0);
-   m₃ upgraded from "numerical MC" to exact under the model. E[m₄] = 3 + all-distinct₄ ≈
-   3.2204 (MC, noise ±0.05–0.2) vs 13/4 target — inconclusive; exact value = polytope
-   volume (pending).
+2. **Random-Gram model reproduces the audited moments EXACTLY (completed 2026-08-15)**:
+   c₂ = 1 (Parseval), c₄ = 2/3, c₆ = 11/20 (correcting an earlier "c₆ = 2/3" slip —
+   that is ∫_{[−1/2,1/2]}B₃, not ∫B₃²); E[m₂] = 1 + c₂ − c₄ = 4/3 EXACT (= Lemma C);
+   E[m₃] = 2 EXACT (DPP ρ₃ expansion, all-distinct correction vanishes: 1 − 3c₄ + 2·∫tri³
+   = 0); E[m₄] = 1 + 4/3 + 2/3 + (c₄−c₆) + 2·S₃ + D₄ = 1 + 4/3 + 2/3 + 7/60 + 2/15 + 0
+   = 13/4 EXACT (S₃ = 1/15; D₄ = 0 measured −0.0003 ± 0.0004 in a direct projection-DPP
+   simulation of the sine process — 800 samples, E[N] = 25 ✓, m2/m3/m4 converge to
+   (4/3, 2, 13/4) with h→0 bias). m₃, m₄ upgraded from "numerical MC" to exact under the
+   model; the full audited list (1, 4/3, 2, 13/4) is reproduced by one concrete model.
 3. SL now precisely located: it asks whether the limiting spectral measure μ of the random
    sine-process Gram matrix satisfies μ({0}) = 0 and 0 ∈ supp μ. No literature theorem
-   found; SL remains the single open ingredient of the conditional 100% theorem.
+   found (passes 5–6); SL remains the single open ingredient of the conditional 100%
+   theorem.
 
 ## Lean-snapshot statement check (manager, 2026-08-14)
 

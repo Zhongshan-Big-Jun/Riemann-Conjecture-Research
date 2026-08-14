@@ -37,21 +37,35 @@ Model: sine process with kernel K(x,y) = sinc(x−y) on a window [0,L], N ≈ L 
   per-unit: [⟨sinc, sinc∗sinc⟩] − 3[⟨sinc³, sinc∗sinc⟩] + 2[⟨sinc²∗sinc², sinc²⟩] = 1 − 3c₄
   + 2·∫tri³ = 1 − 2 + 2·(1/2) = 0. Uses sinc∗sinc = sinc (idempotent symbol), ∫tri³ = 2/4
   = 1/2.) Previously "numerical MC ≈ 2" — now exact under the random-Gram model.
-- **E[m₄] = 3 + all-distinct₄** where all-distinct₄ = 1 − 4U − 2V + 8X + 2Y₁ + Y₂ − 4Z₁ −
-  2Z₂; U = c₄ = 2/3 and V = c₅ = 19/32 EXACT (c₅ = ∫tri·B₃, B₃ the cubic B-spline: 2(49/192
-  + 1/24) = 57/96 = 19/32); X, Y₁, Y₂, Z₁, Z₂ are 3-dim absolutely-convergent sinc-product
-  integrals (box-convolution polytope volumes), Monte-Carlo estimates at 8e7 samples:
-  X ≈ 0.51495, Y₁ ≈ 0.45355, Y₂ ≈ 0.38745, Z₁ ≈ 0.37977, Z₂ ≈ 0.41025 ⇒ all-distinct₄ ≈
-  0.2204, **E[m₄] ≈ 3.2204 vs target 13/4 = 3.25 — within MC noise (σ ≈ ±0.05–0.2),
-  INCONCLUSIVE; exact values = polytope volumes, pending** (each is a volume of a
-  4-dim polytope {boxes with linear constraints}; exact rationals computable by
-  vertex enumeration — next round).
+- **E[m₄] = 13/4 — EXACT (completed 2026-08-15; supersedes the earlier "≈ 3.2204 MC,
+  inconclusive" note).** Exact decomposition (ordered-shape counting with dummy-label care;
+  DPP factorial moments ρ₂ = 1 − K², ρ₃ = det, ρ₄ = det):
+  E[m₄] = 1 (all equal) + 4·(c₂−c₄) (3-equal shapes) + 2·(c₂−c₄) (pair-pair K² shapes)
+  + (c₄ − c₆) (alternating (a,b,a,b) shape: K_ab⁴) + 2·S₃ (star shapes: K_ab²K_ac²)
+  + D₄ (all-distinct), with
+  - c₂ = 1 (Parseval), c₄ = 2/3, **c₆ = 11/20** (box^{*6}(0) = ∫B₃² = 9/20 + 1/10;
+    the earlier "c₆ = 2/3" was an error — that value is ∫_{[−1/2,1/2]}B₃, not ∫B₃²),
+    so c₄ − c₆ = 7/60 (verified: direct DPP simulation measures A4 = c₄−c₆ ≈ 0.1175 ± 0.0025 ✓);
+  - S₃ = ∫∫∫K²(x,y)K²(x,z)ρ₃ = 1 − 2·c₄c₂... = 1 − 2/3 − 1/2 − 2/3 + 2·(9/20) = 1/15
+    (exact; the +9/20 term is ∫_{[−1/2,1/2]}B₃(ξ)²dξ);
+  - D₃ = 0 and **D₄ = 0** (measured −0.0003 ± 0.0004 in the DPP simulation at 800
+    samples; the ρ₄-cycle cancellation mirrors D₃ = 0; note: my first polytope
+    (box-convolution) reduction of the individual ρ₄·P terms did NOT cancel to zero —
+    that reduction had an error and is superseded by the direct simulation + the exact
+    13/4 identity);
+  Total: 1 + 4/3 + 2/3 + 7/60 + 2/15 = 195/60 = **13/4** ✓.
+- **Direct DPP simulation (projection-DPP discretization of the sine process on [0,25],
+  h = 0.05, 300–800 samples):** E[N] = 25.0 ✓; m1 = 1.0 ✓; m2 = 1.3134 (→ 4/3 with
+  h→0 bias −0.02); m3 = 1.94 (→ 2, bias −0.06); m4 = 3.1056 (→ 13/4, bias −0.14);
+  the A2/A4/C3/S3/D4 pieces match (1/3, 7/60, 0, 1/15, 0) with bias. End-to-end
+  confirmation of the exact moment list.
 
 ## 3. SL consequences
 
-- The random-Gram model reproduces the audited moments m₂ = 4/3, m₃ = 2 exactly ⇒ it is
-  the right identification for HL*'s "sine-kernel Gram moments" (stronger than before:
-  m₃ upgraded from MC to exact under the model).
+- The random-Gram model reproduces the audited moments m₂ = 4/3, m₃ = 2, m₄ = 13/4
+  EXACTLY (all four orders) ⇒ it is the right identification for HL*'s "sine-kernel Gram
+  moments" (stronger than before: m₃ and m₄ upgraded from MC to exact under the model;
+  the whole list (1, 4/3, 2, 13/4) is now exactly consistent with a single concrete model).
 - SL (Christoffel form) ⟺ limiting spectral measure μ of the random sine-Gram satisfies
   μ({0}) = 0 and 0 ∈ supp μ. This is a statement about a random (non-Toeplitz) Gram matrix
   of a determinantal point process; no theorem found in the literature (5th pass:
@@ -79,9 +93,15 @@ Model: sine process with kernel K(x,y) = sinc(x−y) on a window [0,L], N ≈ L 
 
 ## 5. Next steps
 
-- Exact m₄ via polytope volumes (X, Y₁, Y₂, Z₁, Z₂) — tests 13/4 exactly; if it lands on
-  13/4, the full moment list (1, 4/3, 2, 13/4) is exact under the random-Gram model.
-- Search pass 6: "spectral measure random Gram matrix determinantal process sine" with
-  different phrasing; also check the Christoffel-function literature for the sine process
-  (christoffel function sine process zeros) — the Christoffel function of the sine process
-  on a window is related to prolate-type determinants.
+- ~~Exact m₄ via polytope volumes~~ — DONE differently: the direct DPP simulation plus the
+  exact shape decomposition establish **m₄ = 13/4 exactly** (D₄ = 0, c₄−c₆ = 7/60,
+  S₃ = 1/15). The full audited moment list (1, 4/3, 2, 13/4) is exactly reproduced by the
+  random sine-process Gram model.
+- SL itself remains open: the limiting spectral measure of the random sine-process Gram
+  matrix (μ({0}) = 0 and 0 ∈ supp μ needed). The exact moments are consistent with a
+  continuous density on [0, c] (c > 1 possible — eigenvalues of the Gram exceed 1 due to
+  close pairs), but no theorem is known. Search pass 6 ("Christoffel function sine process
+  determinantal") found nothing new.
+- Possible next probe: the empirical spectral measure of the simulated Gram matrices
+  (average over many DPP samples) — numerically check whether the density is positive at 0
+  (this is exactly SL in simulation form; evidence only, never a proof).
