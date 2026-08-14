@@ -20,6 +20,18 @@ baseline re-run; if the branch-and-bound does not close within a generous budget
 (0.00394, 0.00393, …) — every certified step is a new world record. Numerically indicated true
 minimum of F_8: ≈ 0.00398 (evidence only; extpress scoping).
 
+## Cost gradient vs true minimum (manager, 2026-08-14, second pass)
+
+| f_9 | n | m | A_0 | margin to true min (0.0039818) | note |
+|---|---|---|---|---|---|
+| 0.00395 | 253 | 261 | 0.99935 | 3.18e-5 | practical ceiling (in progress) |
+| 0.00396 | 252 | 260 | 0.99792 | 2.18e-5 | likely 5–10× B&B cost |
+| 0.00397 | 251 | 259 | 0.99647 | 1.18e-5 | likely ≫10× cost |
+| 0.00398 | 251 | 259 | 0.99898 | 1.82e-6 | infeasible (equality case at the min) |
+
+B&B cost grows steeply as the margin shrinks; 0.00395 is the realistic ceiling, with
+0.00393–0.00394 as fallback steps if the 0.00395 runs cannot close.
+
 ## True-minimum verification (manager, 2026-08-14)
 
 Recomputed F_8 at the scoping optimum (k9_opt.npy,
