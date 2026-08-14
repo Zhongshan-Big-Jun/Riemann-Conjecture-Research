@@ -75,7 +75,10 @@ Rearrange with trÂ = N(1+o(1)), ‖Â‖_F² = κ₁N(1+o(1)), N ≥ s₁ + 2s�
 yields s₁ ≥ ((2−κ₁)N + Δ)/2; the tight bound is 4(s₂+p) = 2·(2s₂+2p) ≤ 2(N − s₁), giving
 3s₁ + 4(s₂+p) ≤ s₁ + 2N, hence: (4−κ₁)N + Δ ≤ 3s₁ + 4(s₂+p) ≤ s₁ + 2N ⟹
 s₁ ≥ (2−κ₁)N + Δ. Manager self-audit caught the slip on 2026-08-14; the corrected chain is
-the one used. Same bookkeeping as OpenAI Cor 2.2 → eq (7) → Theorem 1.1 chain.)
+the one used. Cross-check against the OpenAI original (riemann.txt, Corollary 2.2 proof,
+lines 125–142): their step ‖Â‖² ≥ 4trÂ − 3s₁ − 4s₂ − 4p + D(M) ≥ 4trÂ − s₁ − 2N(I′) + D(M)
+uses exactly 4s₂ + 4p ≤ 2N(I′) − 2s₁ — the same tight bound; our corrected chain matches it
+line for line, and the final substitution trÂ = N, ‖Â‖² = κ₁N gives s₁ ≥ (2−κ₁)N + Δ.)
 
 ## 5. Pressure chain (verbatim transfer)
 
