@@ -1,4 +1,4 @@
-# Riemann-Conjucture-Research
+# Riemann-Conjecture-Research
 
 **黎曼猜想：临界线上零点比例攻关** — Proportion of zeros of the Riemann zeta function on the critical line
 
