@@ -21,7 +21,7 @@ Let ρ = β + iγ run over nontrivial zeros of ζ with multiplicity m_ρ. For 0 
 | C2 (O5-D2) | Exact definition of HL*(k0,λ): which k, windows, uniformity, normalization, meaning of o(1). | **DONE** (§2 of candidate_proof.md) |
 | C3 (O5-D3) | Prove Christoffel/SOS higher-moment n₊-bound and the Prop 4.5 (P1,Q′)-regrouping corollary. | **DONE** (§3, with new rigorous SOS-witness Lemma 3.A and Christoffel Lemma 3.B) |
 | C4 (O5-D4) | Verify m_k(1) (1,3/4,2,13/4); compute Λ_2(0); resolve 13/18 normalization gap exactly. | **DONE** — the written list is INCONSISTENT (m_2=3/4 < m_1²); correct list is **(1,4/3,2,13/4)** (m_2=4/3 exact); under it **Λ_2(0)=5/36** and **13/18=2·(1−5/36)−1** hold exactly (§4) |
-| C5 (O5-D5) | `HL* ∀k0` ⇒ `liminf N0^s/N = 1`, incl. convergence argument and Christoffel-asymptotics. | **DONE** — proved conditional on the clean Spectrum Lemma **SL** (0 in the support of the sine-kernel Gram spectral distribution); SL identified precisely as the single missing-in-literature fact (§5) |
+| C5 (O5-D5) | `HL* ∀k0` ⇒ proportion of simple on-line zeros = 1, in the **ε-form / iterated-limit** sense `sup_{λ<1} liminf_T N0^s_λ/N = 1` (limit λ→1⁻ after the m→∞/SL passage), incl. convergence argument and Christoffel-asymptotics. | **DONE** — proved conditional on the clean Spectrum Lemma **SL** (0 in the support of the sine-kernel Gram spectral distribution) and regularity **REG** (audit F-1: the plain `lim_T` at a single λ=1 is not implied by the λ<1 hypothesis domain; F-2: REG stated) |
 | C6 (O5-D6) | Reconcile with GLSS25 (PCC full-support ⇒ 100%) and with the k=1 barrier (§7.2(e)). | **DONE** (§6) |
 
 ## 3. Honest status

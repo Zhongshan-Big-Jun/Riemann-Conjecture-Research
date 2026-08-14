@@ -5,10 +5,12 @@ Status: **RIGOROUS_PARTIAL_RESULT** — a rigorous *conditional* theorem is prov
 precisely stated hypothesis HL* plus one clean spectral lemma; the unconditional goal
 `lim N0^s/N = 1` remains OPEN; the paper's informal §7.2(f) is found to contain exactly
 one transcription error (m_2(1) = 3/4 should be 4/3), and we pin the corrected statement.
+Convergence is stated (as required by adversarial audit, F-1) in the ε-form / iterated-limit
+sense `sup_{λ<1} liminf_T N0^s_λ/N = 1`, not as a plain `lim_T` at a single λ = 1.
 
 All proofs below are complete and self-contained at the level of the linear algebra; the
-only assumption used but not proved inside this document is the *spectral lemma* (SL), which
-is stated precisely and flagged as the single open (missing-in-literature) ingredient.
+assumptions used but not proved inside this document are the *spectral lemma* (SL) and a
+regularity/spectral-radius bound (REG, see F-2), both stated precisely and flagged.
 
 ---
 
@@ -164,20 +166,33 @@ Christoffel–Darboux kernel K_m(0,0) := Σ_{j=0}^m q_j(0)² and Christoffel num
 Λ_m(0) := 1/K_m(0,0). If μ is supported in [0,∞), then
     μ( (0,∞) ) ≥ 1 − Λ_m(0).
 Equivalently, for the PSD Gram compression (or under the hypothesis that the limiting spectral
-measure is a probability measure on [0,∞)), with μ_T → μ weakly and 0 not an atom of μ,
-    liminf_{T→∞} n₊(Ĝ_T)/d ≥ 1 − Λ_m(0) ≥ 1 − μ_{≥ε}-mass,  and  as m→∞ if Λ_m(0)→0 then
-    n₊/d → 1.
+measure is a probability measure on [0,∞)), with μ_T → μ weakly,
+    liminf_{T→∞} n₊(Ĝ_T)/d ≥ 1 − Λ_m(0),   and   as m→∞ if Λ_m(0)→0 then  n₊/d → 1.
 
 **Proof.** Any real polynomial p with p(0) = 1, deg p ≤ m satisfies ∫p² dμ ≥ μ({0})·p(0)² = μ({0})
 (the integrand ≥ 0, and on the singleton {0} it equals 1). Taking the minimum over such p yields
 μ({0}) ≤ min_{p(0)=1, deg≤m} ∫p² dμ = Λ_m(0)   (the L² Christoffel function at 0).
-Since μ is supported on [0,∞) and 0 is not an atom (so the point mass μ({0})=0 does not affect the
-continuity in the limit),
-    μ((0,∞)) = 1 − μ({0}) ≥ 1 − Λ_m(0).
-For the empirical measures: by tightness and moment-determinacy (μ the *unique* measure with the
-limiting moments, from HL*), μ_T ⇒ μ weakly; then n₊(Ĝ_T)/d = μ_T((0,∞)+away-from-0 argument) →
-μ((0,∞)) along the subsequence, and the liminf bound follows from
-sup over ε>0 of μ_∞((ε,∞)) → 1 as ε→0 when Λ_m(0)→0. ∎
+Since μ is supported on [0,∞) and 0 is not an atom (so the point mass μ({0})=0),
+    μ((0,∞)) = 1 − μ({0}) ≥ 1 − Λ_m(0).                                        (3.B')
+
+**[F-3: away-from-0 / atom-continuity step, spelled out.]** For the empirical passage to
+liminf_T n₊(Ĝ_T)/d, we relate the (strictly-positive-index) count to mass away from 0. For any
+η > 0 write
+    liminf_{T} n₊(Ĝ_T)/d  ≥  liminf_{T} μ_T([η,∞))
+because μ_T([η,∞)) counts eigenvalues ≥ η, which are among the positive-index ones (we drop the
+count of eigenvalues in (0,η)). Since μ_T ⇒ μ and η is a continuity point of μ (μ({η})=0 for all but
+countably many η; pick η in the co-countable set),
+    liminf_T μ_T([η,∞)) = μ([η,∞)).
+Therefore liminf_T n₊(Ĝ_T)/d ≥ μ([η,∞)) for every η>0 with μ({η})=0. Let η→0+ along the
+co-countable set: as μ has no atom at 0 and μ((0,∞)) = 1 − μ({0}) = μ((0,∞)), the masses μ([η,∞))
+increase to μ((0,∞)) by downward continuity of μ (for η↓0 with μ({η})=0, [η,∞) ↑ (0,∞) up to the
+possible point 0, which has mass 0). Hence
+    liminf_T n₊(Ĝ_T)/d ≥ μ((0,∞)) ≥ 1 − Λ_m(0),
+where the last step is (3.B'). This is the atom-continuity argument referenced in §5(ii). ∎
+
+[F-3 remark.] If 0 were an atom of μ (μ({0}) > 0), the same argument still yields the limit ≥
+μ((0,∞)) = 1 − μ({0}), and SL (which asserts Λ_m(0)→0, forcing μ({0})=0 by (3.B')) excludes the
+atom. So the 0-atom handling is consistent under SL.
 
 **Remark (the paper's 5/36).** The m = 1 value of (3.B) is 1 − Λ_1(0) = m_1²/m_2 = Lemma 3.3 —
 same as (3.A). For m = 2, with the **corrected** valid moment list m = (1, 4/3, 2, 13/4) (and
@@ -195,8 +210,11 @@ and Prop 4.5 yields
     N0^s(T,2T) ≥ 2·(1 − Λ_m(0) − o(1))·d(T) − N(T,2T) − 2N(I′\I).
 With d/λ₁N → 1 and N(I′\I) ≪ D0 l large but ≪ N·T^{-1/2}-ish (Prop 4.2 tail), at λ = 1:
     liminf N0^s(T,2T)/N(T,2T) ≥ 2·(1 − Λ_m(0)) − 1.                   (Cor 3.C)
-For m = 2 with Λ_2(0) = 5/36 this is exactly **13/18 = 0.7222…** (the paper's number, now
-rigorous under the corrected moments + uniform HL*_4); for m → ∞ it tends to 1 (§6).
+For m = 2 with Λ_2(0) = 5/36 this is exactly **13/18 = 0.7222…** at **λ = 1** (the paper's number,
+now rigorous under the corrected moments + uniform HL*_4); for fixed λ < 1 the same count gives
+`liminf_T N0^s_λ/N ≥ 2·(1 − Λ_2(0))·λ − 1 = (31/18)·λ − 1` (this is the λ-parametrized form used in
+§5(iii); 13/18 alone is the λ = 1 value). As m → ∞ under SL and then λ → 1⁻ (§5) the quantity tends
+to 1 — the ε-form/iterated limit, not a single λ = 1 T-limit (F-1).
 
 **Proof of Cor 3.C.** Combine (3.A)/(3.B) with Prop 4.5: `N0^s ≥ 2n₊^θ(Ĝ) − N(I′) − 2N(I′\I)`,
 and n₊^θ(Ĝ) ≥ n₊(Ĝ) − (#{λ_i ∈ (0,θ]}). The λ_i ∈ (0,θ] are handled by θ = θ0 → 0 (Proposition 4.2),
@@ -222,10 +240,18 @@ Now ∫_ℝ K² = 1 (K² has total integral 1) and ∫_ℝ K⁴ = 2/3 (standard 
 CUE Monte-Carlo in `reproducibility` gives m_2 ≈ 1.3355, m_3 ≈ 2.006, m_4 ≈ 3.264 — consistent
 with 4/3, ≈ 2, ≈ 13/4 within O(1/N).)
 
-**Higher moments (numerical evidence, not used in the theorem).** (3.A)/(3.B) do not require the
-exact m_3,m_4 for the λ=1 results that only use m=2; the CUE simulation supports
-m_3(1) ≈ 2, m_4(1) ≈ 13/4, i.e. essentially the corrected list (1, 4/3, 2, 13/4). Exact closed
-forms for m_3,m_4 are not needed below.
+**[F-4 fix: what the m=2 / 13/18 statement actually uses.**] The ε-form theorem (task 5, §5) and the
+plain 100%-statement use only the *existence* of a valid limit measure and SL; they do *not* need the
+exact values of any finite-order moments beyond convergence. However, **the concrete m=2 corollary
+13/18 (Cor 3.C) genuinely uses the values m_3 = 2 and m_4 = 13/4**, because Λ_2(0) is computed from
+(m_1,m_2,m_3,m_4). Hence 13/18 is a consequence of **HL*_4** (k ≤ 4 moments), which for λ > 1/2 in
+turn rests on the Hardy–Littlewood-type additive prime-power correlation encoded in HL*_4 — it is a
+*hypothesis-conditional* statement, not an unconditional computation. The corrected statement is recorded
+exactly: **HL*_4 (all λ<1) ⇒ liminf_T N0^s_λ/N ≥ 2·(1−Λ_2(0))·λ − 1**, which at λ=1 gives 13/18.
+    (Rephrase of the older sentence: "exact closed forms for m_3,m_4 are not needed for the
+    ε-theorem or for 13/18's mechanism, but the *values* m_3=2, m_4=13/4 enter Λ_2(0) and are
+    therefore assumed within HL*_4; independent exact closed forms for them would lift HL*_4 to a
+    theorem over that band — an open item, not required by the ε-form theorem.)"
 
 ### 4.2 The 13/18 normalization gap — exact resolution.
 
@@ -255,45 +281,72 @@ family m_k(λ) from the sine-kernel Gram spectral measure.
 
 ---
 
-## 5. O5-D5 — Convergence: HL* ∀k0 ⇒ liminf N0^s/N = 1
+## 5. O5-D5 — Convergence: HL* ∀k0 ⇒ proportion of simple on-line zeros = 1 (ε-form / λ→1 iterated limit)
 
-**Theorem (conditional probability-1).** Assume HL* (for all k0, all λ < 1), and assume the
-**Spectral Lemma (SL)**: the limiting spectral distribution μ_λ of the sine-kernel Gram matrix
-(λ ∈ (0,1]) is supported on [0,∞) and has 0 in its support in the sense that its Christoffel
-function at 0 vanishes:
+> **[F-1 fix, audit].** The first version of this section stated `lim_{T→∞} N0^s/N = 1` at a fixed
+> λ = 1. That is **not** implied by HL*, which is assumed only for λ < 1: at fixed λ < 1 the
+> Prop-4.5 ceiling is `2λ − 1 < 1` (d/N → λ < 1), so the plain T-limit cannot reach 1. The
+> hypothesis-consistent conclusion is the **ε-form iterated limit** below (sup_{λ<1} liminf_T = 1).
+> To get the plain T-limit at λ = 1 one would need HL* at λ = 1, or a diagonal λ = λ(T) → 1
+> *with uniformity in λ* — neither is granted (HL* uniformity is over a finite admissible window
+> list; def §2). The paper/Lean reach their own λ = 1 constants via the same ε-form λ→1⁻ passage
+> (`Zeta23.ThmD.Limit.eps_form_*`), consistent with this reading. **Corrected statement below.**
+
+**Theorem (conditional probability-1, ε-form / iterated limit).** Assume HL* (for all k0, all
+λ < 1), and assume the **Spectral Lemma (SL)**: for each λ ∈ (0,1), the limiting spectral
+distribution μ_λ of the sine-kernel Gram matrix is supported on [0,∞) and has 0 in its support in
+the sense that its Christoffel function at 0 vanishes:
     SL(λ):   lim_{m→∞} (1/K_m^{λ}(0,0)) = 0,   K_m^{λ}(0,0) := Σ_{j=0}^{m} q_j^{λ}(0)²
-(the q_j orthonormal polynomials of μ_λ). Equivalently, no mass gap separates 0 from the bulk of
-the spectrum, i.e. μ_λ([ε,∞)) → 1 as ε → 0 and the orthogonal-polynomial kernel is unbounded at 0.
-Then, taking λ → 1 along admissible windows,
-    lim_{T→∞} N0^s(T,2T)/N(T,2T) = 1.
-(i.e. 100% of zeros are simple and on the critical line.)
+(the q_j orthonormal polynomials of μ_λ; equivalently no mass gap separates 0 from the bulk, i.e.
+μ_λ([ε,∞)) → 1 as ε → 0 and the orthogonal-polynomial kernel at 0 is unbounded).
+Then, writing N0^s_λ for the count with the λ-bandwidth admissible family V_λ,
+    sup_{λ<1} liminf_{T→∞} N0^s_λ(T,2T)/N(T,2T)  =  1,
+equivalently for every ε > 0 there exist λ = λ(ε) < 1 and T₀ = T₀(ε,λ) such that
+    N0^s_λ(T,2T)/N(T,2T) ≥ 1 − ε    for all T ≥ T₀.
+(That is, the iterated limit lim_{λ→1⁻} liminf_{T→∞} [N0^s_λ/N], taken after the m→∞ / SL passage,
+equals 1; 100% of zeros are simple and on the critical line, in the λ→1⁻ sense.)
 
-**Proof.** (i) *Tightness and weak convergence.* By HL* the normalized moments m_k^{(T)} of μ_T
-satisfy m_k^{(T)} → m_k(λ) for each k. The family is tight: tr(Ĝ²)/d² = m_2^{(T)}/d → 0 (bounded
-2nd central moment; m_2 finite), and |λ_i|² integrable w.r.t. μ_T uniformly, so by Markov's
-inequality μ_T(|x|>R) ≤ m_2^{(T)}/R² → 0 as R→∞ uniformly in T; hence every subsequence has a
-weakly convergent further subsequence. By determinacy — the moments (m_k(λ)) satisfy Carleman's
-criterion (a compactly-supported-in-limit Gram law has moments bounded by C^k for spectral
-radius ≤ const), hence Carleman holds — the limit of any such subsequence is μ_λ. Therefore
-μ_T ⇒ μ_λ (the whole sequence).
+**Proof.** (i) *Tightness and weak convergence.* Fix λ < 1. By HL* the normalized moments
+m_k^{(T)} := d^{-1}tr(Ĝ_T^k) of μ_T satisfy m_k^{(T)} → m_k(λ) for each k. **Regularity hypothesis
+[F-2]:** the sine-Gram/compression spectral radii are uniformly bounded — equivalently the moment
+sequence satisfies Carleman's criterion sup_k (m_{2k}^{(T)})^{1/(2k)} ≤ C < ∞ uniformly in T (automatic,
+since the sine-kernel Gram is a PSD projection-type Gram with operator norm ≤ const; we state it
+explicitly as a standing regularity fact **REG**, to be proved as Lemma R in a formalization pass).
+Under **REG**, Markov's inequality gives μ_T(|x|>R) ≤ m_2^{(T)}/R² → 0 as R→∞ uniformly in T, and
+the moments satisfy Carleman, so every subsequence of {μ_T} has a weakly convergent further
+subsequence whose limit, being determined by the moments (Carleman), is μ_λ. Hence the whole
+sequence μ_T ⇒ μ_λ.
 
-(ii) *Christoffel bound is sharp.* By (3.B), since μ_λ is supported on [0,∞),
-    μ_T((0,∞)) = n₊(Ĝ)/d  and  liminf n₊(Ĝ)/d ≥ 1 − Λ_m(0)  for every fixed m.
-Under SL, Λ_m(0) → 0, so for every ε > 0 there is m(ε) with 1 − Λ_{m(ε)}(0) ≥ 1 − ε.
+   (F-2 note: if one does not grant REG, replace "weak convergence" by "moment-convergence", which
+   is enough for the Christoffel bound; Carleman becomes a mild additional hypothesis, see
+   obligation_graph O5-D5.)
 
-(iii) *Height-window uniformity.* Choose the admissible window with λ = 1 (λ₁ → 1): d = λ₁N,
-d/N → 1. By HL*(2m(ε)) and Prop 4.5 (Cor 3.C),
-    N0^s(T,2T) ≥ 2·(1 − ε − o_T(1))·d(T) − N(T,2T) − o(N)
-             ≥ (2(1−ε) − 1 − o(1))N  =  (1 − 2ε − o(1))·N.
-Letting ε → 0 gives liminf N0^s/N ≥ 1. Since N0^s ≤ N trivially (a simple on-line zero is
-counted once in N with multiplicity 1 ≤ m_ρ), limsup ≤ 1, hence the limit = 1. Since the choice
-λ in (1−δ,1] is arbitrary and HL* is assumed for all λ<1 (and λ→1 is the "ceiling" value of
-Prop 7.4), the conclusion holds. ∎
+(ii) *Christoffel bound is sharp.* By Lemma 3.B (whose away-from-0/atom-continuity step is spelled
+out in F-3 below), since μ_λ is supported on [0,∞),
+    n₊(Ĝ_T)/d = μ_T((0,∞))  and  liminf_{T} n₊(Ĝ_T)/d ≥ 1 − Λ_m^{λ}(0)   for every fixed m.
+Under SL, Λ_m^{λ}(0) → 0, so for every ε > 0 there is m(ε) with 1 − Λ_{m(ε)}^{λ}(0) ≥ 1 − ε/2.
+
+(iii) *λ-ceiling and ε-closing.* **[F-1 fix]** For fixed λ < 1, d(T) = λ₁(T)N(T,2T)(1+o(1)) with
+λ₁ → λ, so d/N → λ. By HL*(2m(ε)) at this λ and Prop 4.5 (Cor 3.C),
+    N0^s_λ(T,2T) ≥ 2·(1 − ε/2 − o_T(1))·d(T) − N(T,2T) − o(N)
+                 ≥ (2(1 − ε/2)λ − 1 − o(1))·N.
+Thus liminf_T N0^s_λ/N ≥ 2λ(1 − ε/2) − 1 ≥ 2λ − 1 − ε·λ. Now let λ → 1⁻ (λ(ε) chosen with
+2λ(ε) − 1 ≥ 1 − ε, e.g. λ(ε) = 1 − ε/2): liminf_T N0^s_λ/N ≥ 1 − 2ε. Since N0^s_λ ≤ N trivially
+(a simple on-line zero counts once, multiplicity 1 ≤ m_ρ), limsup ≤ 1, and ε > 0 is arbitrary.
+Hence sup_{λ<1} liminf_{T} N0^s_λ/N = 1. ∎
+
+**Remark (what ε-form means; why not the plain T-limit).** The statement is the iterated limit
+lim_{λ→1⁻} liminf_{T→∞}, not a single λ = 1 T-limit. This is forced by the hypothesis domain
+(HL* only for λ < 1) and by the Prop 7.4 ceiling 2λ − 1 → 1 at λ → 1⁻. It is exactly the
+convention under which the v2 paper and the Lean `ThmD` `eps_form_*` passage state the λ = 1
+constants. If one wants the plain `lim_{T→∞} N0^s(T,2T)/N(T,2T) = 1` with d/N → 1, this is the
+stronger "HL* at λ = 1" hypothesis (or λ = λ(T) → 1 with uniformity in λ, which HL*'s finite-window
+uniformity does not grant); we do not assert it.
 
 **Remark (SL is necessary and is the single open ingredient).** It is exactly the assertion that
 the sine-kernel Gram spectral density does not vanish (or at least does not have a mass gap) at
 0. This is not, to our knowledge, a stated theorem anywhere we could verify (see
-`status_and_literature.md` §7); it is a *plausible* concentration-of-small-eigenvalues statement.
+`status_and_literature.md` §5); it is a *plausible* concentration-of-small-eigenvalues statement.
 The theorem above is therefore **conditional on SL**. If SL fails in the direction of a mass gap
 (the spectral density vanishes on a neighbourhood of 0), then the m→∞ limit of the Christoffel
 bound is a constant < 1 and the conclusion becomes only a *positive* lower bound (still ≥ the
@@ -359,10 +412,15 @@ unconditional only for kλ < 2. HL* (all k) and SL both conjectural. No claim of
 4. exact resolution of the 13/18 normalization gap: the moments (1,3/4,2,13/4) are inconsistent,
    the correct list is (1,4/3,2,13/4), under which Λ_2(0) = 5/36 and 13/18 follow exactly
    (O5-D4);
-5. a proof that HL* ∀k0 + SL ⇒ proportion 1 (O5-D5), conditional on the precise spectral lemma SL;
+5. a proof that HL* ∀k0 + SL ⇒ proportion 1 in the ε-form/iterated-limit sense, i.e.
+   sup_{λ<1} liminf_T N0^s_λ/N = 1 (O5-D5), conditional on the precise spectral lemma SL
+   (corrected after adversarial audit, F-1: the plain `lim_T` at a single λ=1 is not implied by
+   the λ<1 hypothesis domain);
 6. the reconciliation with GLSS25 and the k=1 barrier (O5-D6).
 
 The user's "probability 1" goal is **reached conditionally** (on the two clean hypotheses HL*
-and SL) and **remains open unconditionally**, exactly as §7.2(f)/pcc says. The single missing
-literature fact is SL (spectral density of the sine-kernel Gram at 0). No numerical evidence is
-presented as proof.
+and SL, in the λ→1⁻ iterated-limit sense) and **remains open unconditionally**, exactly as
+§7.2(f)/pcc says. The single missing literature fact is SL (spectral density of the sine-kernel
+Gram at 0). Regularity hypothesis REG (uniform spectral-radius bound justifying Carleman, F-2)
+is a standing assumption to be proved in a formalization pass. No numerical evidence is presented
+as proof.

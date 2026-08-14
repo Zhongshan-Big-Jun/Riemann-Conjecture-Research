@@ -45,18 +45,19 @@
       "started_at": "2026-08-14T04:12:19Z",
       "upstream_status_verbatim": "RIGOROUS_PARTIAL_RESULT",
       "summary": "Rigorous conditional theorem: HL* (all k0, all lambda<1) + Spectral Lemma SL => lim N0^s(T,2T)/N(T,2T) = 1; exact resolution of the §7.2(f) moment inconsistency: printed (1,3/4,2,13/4) invalid (det H2=-1/4), corrected (1,4/3,2,13/4) (m2 = 4/3 exact via sine-DPP Lemma C) restores the paper's own Lambda2(0)=5/36 and 13/18 exactly; SOS-witness Christoffel bound (Lemma 3.A) and PSD Christoffel bound (3.B) proved; HL*(4) => N0^s/N >= 13/18; single open ingredient: SL (sine-kernel Gram spectral density at 0).",
-      "audit_status": "PASS-CONDITIONAL (independent audit 2026-08-14; report sha256 457B3062FC361483920B6A4413D90A3C5159C39453F562D7B5DD87B1CD333C53; auditor script audit_independent_check.py 2EEB5A00...)",
+      "audit_status": "PASS-CONDITIONAL + F-1 REPAIRED (2026-08-14): corrected theorem stated in eps-form/iterated-limit (sup_{lambda<1} liminf_T N0^s/N = 1); F-2 REG hypothesis stated; F-3 0-atom continuity spelled out; F-4 13/18 explicitly conditional on HL*_4",
       "key_artifacts": [
-        "candidate_proof.md 65C3E80F94E9CBE37F8C102FC09ABC6C90D53DA59EA43E5E271E8D5ED884B2BE",
-        "problem_contract.md EB0DD131D778871A5AA2112E257B7E0E1A6D68DD8DAB75CABE2A05108DDAF560",
-        "status_and_literature.md FA12749DBF23B8A2E1B414D445C760F57D98BA9ECA15830E2A8E3C637F0B16FA",
-        "repro_manifest.md FAD73138739FA02FED327F9BDB2BF73B0E7C7D7426C7A79DA05F33585A9E6DD9",
-        "audit_report.md F608FE7BBE70E0ACDD51EEBC4015309146F4135D2C0AFA39F4861EEE379FC26F (solver self-audit; independent audit pending)",
-        "SHA256SUMS (final)",
-        "reproducibility: verify_moments_christoffel.py 5D6A1476..., moments_christoffel_full.py FB8E28FD..., check_lambda2_corrected.py 582CA8C5..."
+        "candidate_proof.md CD40B471C4A3E9CB85F33EBF0C94000E70E4D43A236765AB8BB58B7DDE0C0DDB (F-1 repaired)",
+        "status_and_literature.md 71C030649C98999F...",
+        "obligation_graph.md FC76868465565E5D...",
+        "research_ledger.md DD5A36CC5D483C44...",
+        "problem_contract.md EDDEEF09AEACFF67...",
+        "repro_manifest.md + SHA256SUMS refreshed",
+        "audit_report.md D6257BCF5085C20F82A2FBD8E5ACEA77A98277F45D6F0708A0385FD977706CC2 (independent audit, untouched)",
+        "reproducibility/audit_independent_check.py 2EEB5A00BE480B2A064910A763F03FECC2D66628C2520ADB7911071018F59DF2"
       ],
       "created_at": "2026-08-14T04:45:00Z",
-      "updated_at": "2026-08-14T05:45:00Z",
+      "updated_at": "2026-08-14T05:50:00Z",
       "open_obligations": [
         "SL spectral lemma (0 in support of sine-kernel Gram spectral distribution) — single open ingredient of the 100% theorem",
         "exact m_3(1), m_4(1) closed forms (numerical CUE evidence only)",

@@ -27,16 +27,26 @@ hypothesis required · 🔎 evidence only · ⁉️ statement refuted / correcte
 - [✅] m_2(1) = 4/3 exact (Lemma C); m_1=1.
 - [⁉️] printed list (1,3/4,2,13/4) is NOT a valid probability-moment sequence (m_2<m_1²).
 - [✅] corrected list (1,4/3,2,13/4): valid; Λ_2(0)=5/36; 1−Λ_2(0)=31/36; 13/18=2(31/36)−1 exact.
-- [🔎] m_3≈2, m_4≈13/4 (CUE). Exact closed forms for m_3,m_4 NOT needed by the theorem (open but not blocking).
+- [🔎] m_3≈2, m_4≈13/4 (CUE). **[F-4]** Exact closed forms for m_3,m_4 not needed for the *ε-theorem*,
+  but the *values* m_3=2,m_4=13/4 DO enter Λ_2(0), so **13/18 is conditional on HL*_4** (not a
+  free/closed computation). Open (not blocking).
 - [✅] Structure: 13/18 = 2(1−Λ_2(0))−1 via Prop 4.5 (+ Prop 7.4 ceiling).
 
-## O5-D5 — convergence
-- [✅] HL* ∀k0 ⇒ μ_T ⇒ μ_λ (tightness + moment determinacy/Carley + Carleman implied).
-- [✅] Cor 3.C + Λ_m(0)→0 ⇒ liminf ≥ 2(1−Λ_m)−1 → 1; upper ≤1 trivial ⇒ limit = 1.
+## O5-D5 — convergence (F-1-corrected: ε-form / iterated limit)
+- [✅] HL* ∀k0 ⇒ μ_T ⇒ μ_λ (tightness + Carleman determinacy), under the standing regularity
+  hypothesis **REG** = uniform spectral-radius bound for the sine-Gram compression (audit F-2;
+  to be proved as Lemma R in a formalization pass; if unproved, moment-convergence alone suffices
+  for the Christoffel bound).
+- [✅] Cor 3.C + Λ_m(0)→0 ⇒ `liminf_T N0^s_λ/N ≥ 2(1−Λ_m)λ − 1` at each fixed λ<1.
 - [🔶] REQUIRES **SL**: spectral density of sine-kernel Gram supported on [0,∞) (automatic: Gram is
   PSD) with 0 in support / Λ_m(0)→0. **SL is the exact missing-in-literature ingredient**; the
-  theorem is stated conditional on it.
-- [✅] ceiling: n₊≤d (Prop 7.4) ⇒ no certificate in this class exceeds 100% at λ=1.
+  proportion-1 statement is conditional on it.
+- [✅] **[F-1 fix]** Conclusion is the ε-form/iterated limit `sup_{λ<1} liminf_T N0^s_λ/N = 1`
+  (lim_{λ→1⁻} liminf_T after the m→∞/SL passage). NOT the plain `lim_T` at a single λ=1, which
+  HL*'s λ<1 domain does not grant (fixed λ<1 has ceiling 2λ−1<1). HL*-at-λ=1, or λ=λ(T)→1 with λ-
+  uniformity, would be needed for the plain T-limit.
+- [✅] ceiling: n₊≤d (Prop 7.4) ⇒ no certificate in this class exceeds 100% at λ=1 (saturated only
+  as λ→1⁻).
 
 ## O5-D6 — reconciliation
 - [✅] GLSS25/GS Thm 5 (PCC full-support ⇒ 100%): complementary sufficient hypothesis, different
@@ -47,9 +57,13 @@ hypothesis required · 🔎 evidence only · ⁉️ statement refuted / correcte
 - [⚠️] GLSS25 primary source not bundled; quoted via GS Theorem 5 (packet O7, not fully discharged in this run).
 
 ## Open obligations (unresolved this run)
-- ⚠️ **Prove/refute SL** (spectral data of sine-kernel Gram at 0). This is the single conditional
-  weakening: without it the 100% theorem is only "≥ m=1 bound".
-- ⚠️ Exact closed forms for m_3,m_4 of the sine-kernel Gram measure (fills the "for completeness"
-  family; not needed for the theorem).
+- ⚠️ **Prove/refute SL** (spectral data of sine-kernel Gram at 0). The single conditional weakening:
+  without it the proportion-1 (ε-form) theorem is only "≥ m=1 bound" (≥ 1/2 with corrected m_2).
+- ⚠️ Prove the regularity bound **REG** (uniform spectral-radius, F-2) to justify Carleman
+  determinacy, and detail the 0-atom continuity step (F-3) in formalization (audit §3).
+- ⚠️ Exact closed forms for m_3,m_4 of the sine-kernel Gram measure (would lift the "13/18
+  conditional on HL*_4" caveat, F-4; not needed for the ε-theorem).
 - ⚠️ Verify GLSS25 primary source (packet O7).
-- ⚠️ Unconditional 100% remains OPEN (structural; not attempted beyond the conditional theorem).
+- ⚠️ Unconditional 100% remains OPEN (structural; not attempted beyond the conditional ε-theorem).
+- ⚠️ Plain `lim_T N0^s/N = 1` at a single λ=1: would need HL*-at-λ=1 or λ=λ(T)→1 with λ-uniformity
+  (not granted); open if that stronger hypothesis form is desired (F-1).

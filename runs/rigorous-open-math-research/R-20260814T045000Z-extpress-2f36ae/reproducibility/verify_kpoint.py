@@ -74,8 +74,9 @@ def main() -> None:
     # Pressure cutoff: linear term alone proves target once sum(g) >= target*P_DEN.
     cutoff_cells = int(math.floor(TARGET * P_DEN * GRID)) + 8
     # second-derivative table used for convex tangent bounds (w'' stable away
-    # from the removable pole), start at 95% of grid.
-    SECOND_START = int(args.tail_start_frac * (cutoff_cells))
+    # from the removable pole at x ~ 0.225). Start at ~95% of grid (cell
+    # 0.95*GRID ~ x=0.95) so convex pruning is available on most of the domain.
+    SECOND_START = min(int(0.95 * GRID), cutoff_cells - 2)
 
     # c_r = 2/(k-r) for span r=1..d (rational, and binary64 down/up bounds)
     COEFF = {r: math.nextafter(2.0/(k-r), -math.inf) for r in range(1, d+1)}

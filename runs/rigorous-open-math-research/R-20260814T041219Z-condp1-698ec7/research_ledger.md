@@ -44,3 +44,23 @@ Chronological log of derivations, computations, and decisions.
 ## Step 7 — Artifacts
 - Wrote problem_contract (final), status_and_literature, obligation_graph, approach_registry,
   candidate_proof, research_ledger, counterexample_log, audit_report, SHA256SUMS; hashed inputs/outputs.
+
+## Step 8 — Audit repair (F-1 required; F-2..F-4 minor)
+- Independent adversarial audit (report `audit_report.md`, sha256 457B3062...) returned
+  PASS-CONDITIONAL with one required correction and three minor notes.
+- **F-1 (required, quantifier gap):** §5 stated `lim_{T→∞} N0^s/N = 1` at λ=1, but HL* is assumed
+  only for λ < 1; at fixed λ<1 the Prop-4.5 ceiling is 2λ−1 < 1, so the plain T-limit cannot reach 1.
+  **Repair:** restated §5 as the ε-form/iterated limit `sup_{λ<1} liminf_T N0^s_λ/N = 1`
+  (lim_{λ→1⁻} liminf_T after the m→∞/SL passage); noted that a plain λ=1 T-limit would need HL* at
+  λ=1 or λ=λ(T)→1 with λ-uniformity, neither granted; noted the v2/Lean `eps_form_*` λ→1⁻ convention.
+  Also added the fixed-λ formula `liminf_T N0^s_λ/N ≥ 2(1−Λ_2(0))λ − 1 = (31/18)λ − 1` (13/18 at λ=1).
+- **F-2:** Carleman determinacy rests on an asserted uniform spectral-radius bound → stated as
+  standing regularity hypothesis **REG** (§5 proof step (i), §8), to be proved as Lemma R in
+  formalization; noted moment-convergence alone suffices if REG is not granted.
+- **F-3:** Lemma 3.B's away-from-0/0-atom continuity step is now spelled out (17-line argument in §3.B
+  using downward continuity of μ at η-continuity points; 0-atom exclusion consistent with SL).
+- **F-4:** §4.1 rephrased: the *values* m_3=2,m_4=13/4 enter Λ_2(0), so 13/18 is conditional on HL*_4
+  (Hardy–Littlewood-type additive prime correlation), not a free computation; exact closed forms for
+  m_3,m_4 are an open item not required for the ε-theorem.
+- The auditor's `audit_report.md` and `reproducibility/audit_independent_check.py` were left untouched.
+  Hashes of edited artifacts recomputed and refreshed in `SHA256SUMS` / `repro_manifest.md`.

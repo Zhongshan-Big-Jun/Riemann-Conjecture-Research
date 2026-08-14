@@ -3,8 +3,15 @@
 ## 1. Problem status
 
 Target `lim_{T→∞} N0^s(0,T)/N(0,T) = 1` is **OPEN unconditionally**. This run produced a
-**RIGOROUS_PARTIAL_RESULT**: a rigorous conditional theorem (HL* ∀k0 + spectral lemma SL ⇒ 100%)
-and an exact resolution of the moment-list inconsistency §7.2(f).
+**RIGOROUS_PARTIAL_RESULT**: a rigorous conditional theorem (HL* ∀k0 + spectral lemma SL ⇒
+proportion 1 in the ε-form / λ→1⁻ iterated-limit sense `sup_{λ<1} liminf_T N0^s_λ/N = 1`) and an
+exact resolution of the moment-list inconsistency §7.2(f).
+
+> **[F-1 fix, adversarial audit].** The convergence conclusion holds as the iterated/ε-form limit
+> (sup over λ<1 of liminf_T = 1), not as a plain single-λ=1 T-limit. HL* is assumed only for λ < 1;
+> at fixed λ < 1 the Prop-4.5 ceiling is `2λ − 1 < 1`, so the plain T-limit cannot reach 1. A plain
+> `lim_T = 1` at λ = 1 would require HL* at λ = 1 or λ = λ(T)→1 with uniformity in λ (not granted).
+> The v2 paper and Lean `ThmD.eps_form_*` reach their λ = 1 constants by the same λ→1⁻ passage.
 
 ## 2. Exact known unconditional bounds (must not be contradicted)
 
@@ -49,7 +56,17 @@ support** (positive density at 0 / no mass gap), equivalently that its Christoff
 vanishes, Λ_m(0)→0. That is the clean lemma our convergence theorem (§5) requires. It is plausible
 (the sine kernel is a positive definite projection-type kernel, so Gram realizations are PSD and
 small eigenvalues should accumulate at 0) but we found no citable theorem. We therefore label it
-**SL** and make the 100% theorem explicitly conditional on it.
+**SL** and make the proportion-1 theorem explicitly conditional on it.
+
+A second, milder regularity hypothesis **REG** (uniform spectral-radius bound for the sine-Gram
+compression, justifying Carleman determinacy; audit F-2) is stated in §5/§8 of candidate_proof.md
+and is to be proved as an explicit lemma (Lemma R) in a formalization pass.
+
+**13/18 is HL*_4-conditional (audit F-4):** the concrete m=2 bound uses the values m_3=2, m_4=13/4
+inside Λ_2(0), so 13/18 is a consequence of HL*_4 (Hardy–Littlewood-type additive prime correlation)
+across all λ<1, evaluated at λ=1: `liminf_T N0^s_λ/N ≥ 2(1−Λ_2(0))λ − 1 = (31/18)λ − 1`, which is
+13/18 at λ=1. Exact closed forms for m_3,m_4 would lift this over the band (open item), not required
+for the ε-theorem.
 
 ## 6. Novelty/risk
 

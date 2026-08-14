@@ -7,3 +7,4 @@
 {"ts":"2026-08-14T05:25:00Z","event":"manager_verifies_christoffel","detail":"Exact rational arithmetic confirms: corrected moments (1,4/3,2,13/4) give Lambda2(0)=5/36 and 13/18 exactly; written (1,3/4,2,13/4) invalid (det H2=-1/4, Lambda2=143/100>1); sinc identities numerically confirmed (1, 2/3)"}
 {"ts":"2026-08-14T05:35:00Z","event":"condp1_complete","detail":"RIGOROUS_PARTIAL_RESULT: conditional 100% theorem (HL* + SL); §7.2(f) transcription error m2=3/4->4/3 resolved exactly (Lambda2(0)=5/36, 13/18); 12 artifact hashes verified; audit 2bb08828 running"}
 {"ts":"2026-08-14T05:45:00Z","event":"condp1_audit","detail":"PASS-CONDITIONAL (457B3062...): core claims verified; F-1 quantifier repair sent to solver; F-2/F-3/F-4 minor"}
+{"ts":"2026-08-14T05:50:00Z","event":"condp1_F1_repaired","detail":"eps-form/iterated-limit theorem statement (sup_{lambda<1} liminf_T = 1); F-2 REG, F-3 continuity, F-4 HL*_4-conditional; hashes verified"}
