@@ -1,0 +1,374 @@
+    More than 67.3% of the zeros of the Riemann zeta function are
+                  simple and lie on the critical line
+
+
+
+                                                          Abstract
+          Let N (T, 2T ) count the zeros of the Riemann zeta function with ordinates in (T, 2T ], with
+       multiplicity, and let N0s (T, 2T ) count the simple zeros on the critical line in that interval. We
+       reﬁne the rank–trace argument of Claude [1] and prove
+
+                                             N0s (T, 2T )
+                                       lim inf            ≥ 0.673008527927 . . . .
+                                        T →∞ N (T, 2T )
+
+       The proof uses the analytic estimates of Theorem D in [1] and a rigorously veriﬁed seven-point
+       inequality for the simple-zero vectors.
+
+
+1    Statement and setup
+We use the notation and normalisations of [1, §§2,4,7.1]. Put
+                        T
+             ℓ := log      ,         I := (T, 2T ],        D0 := T 1/2 ,              I 0 := (T − D0 , 2T + D0 ].
+                        2π
+For the optimised test family of Theorem D, L = ℓ and
+                                                          √     !1/2
+                                                           2u
+                                        ϕ(u) = cos                     ϱ(L/2 − |u|),
+                                                           ℓ
+
+where the ﬁxed-width ramp ϱ is deﬁned in [1, §2.2]. Let
+                             Z                                                                             
+                         1                         b :=     G                         A                   LT
+                  a :=             ϕ(u)2 du,       G           ,          Ab :=          ,     d :=          .
+                         L     R                           aL2                       aL2                  2π
+As in [1, §4.1], divide the zeros in I 0 into the simple critical-line zeros S1 , the distinct multiple
+critical-line zeros S2 , and the unordered oﬀ-line pairs P. Write
+
+                                     s1 := #S1 ,          s2 := #S2 ,             p := #P.
+
+Then
+                                                 N (I 0 ) ≥ s1 + 2s2 + 2p.                                          (1)
+For ρ ∈ S1 , deﬁne
+                                                                                        uρ
+                                         b ρ−τ )                                  vρ := √ .
+                                              k 0≤k<d ∈ R ,
+                                                         d
+                                   uρ := ϕ(γ
+                                                                                         aL
+The simple-zero part of Ab is                                      X
+                                                 P1 = V V T =             vρ vρT ,
+                                                                   ρ∈S1
+
+
+                                                              1
+where the columns of V are the vρ . By Lemma 2.2 of [1], kvρ k ≤ 1. For
+
+                                                   Q0 := Ab − P1 ,
+
+the decomposition in the proof of Proposition 4.4 of [1] gives
+
+                                                 n+ (Q0 ) ≤ s2 + p.                           (2)
+
+    Set
+                                  3    1     1
+                         HMT :=     − √ cot √ = 0.6725007036794116457 . . . .
+                                  2     2     2
+Theorem D of [1] proves the lower bound HMT . We prove the following reﬁnement.
+
+Theorem 1.1. One has
+                  N0s (T, 2T )   1,345,000HMT − 2,680
+             lim inf           ≥                      = 0.6730085279277797613 . . . .
+             T →∞ N (T, 2T )            1,340,003
+
+2    A stability reﬁnement of the rank–trace inequality
+Deﬁne the convex function                          (
+                                                      (t − 1)2 , 0 ≤ t ≤ 2,
+                                        Ψ(t) :=                                               (3)
+                                                      2t − 3,    t ≥ 2.
+For a positive semideﬁnite matrix M , let
+
+                                                D(M ) := tr Ψ(M ).
+
+Lemma 2.1 (Stability-enhanced rank–trace inequality). Let V be a d × r matrix whose columns
+have norm at most one. Put P = V V ∗  0 and M = V ∗ V , and let Q be Hermitian with n+ (Q) ≤ b.
+Then
+                         kP + Qk2F ≥ 4 tr(P + Q) − 3r − 4b + D(M ).                          (4)
+
+Proof. Write Q = Q+ − Q− with Q±  0, Q+ Q− = 0, and rank Q+ ≤ b. Since P, Q+  0,
+
+                                      kP + Qk2F ≥ kP − Q− k2F + kQ+ k2F .
+
+If qj > 0 are the nonzero eigenvalues of Q+ , then qj2 ≥ 4qj − 4, so
+
+                                               kQ+ k2F ≥ 4 tr Q+ − 4b.                        (5)
+
+Let p1 ≥ · · · ≥ pr ≥ 0 be the eigenvalues of M (the nonzero eigenvalues of P , padded by zeros),
+and let n1 ≥ n2 ≥ · · · ≥ 0 be the eigenvalues of Q− . Von Neumann’s trace inequality gives
+             P
+tr(P Q− ) ≤ i≤r pi ni , hence
+                                                              X                      
+                             kP − Q− k2F + 4 tr Q− ≥                (pi − ni )2 + 4ni .
+                                                              i≤r
+
+For p ≥ 0,                                        (
+                                                  p2 ,    0 ≤ p ≤ 2,
+                       min (p − n) + 4n =
+                                  2
+                                                                      = 2p − 1 + Ψ(p).
+                       n≥0                         4p − 4, p ≥ 2,
+
+
+                                                          2
+Therefore
+                              kP − Q− k2F ≥ 2 tr P − r + D(M ) − 4 tr Q− .                      (6)
+Combining (5) and (6) gives
+                          kP + Qk2F ≥ 4 tr(P + Q) − 2 tr P − r − 4b + D(M ).
+Since tr P is the sum of the squared column norms of V , tr P ≤ r.
+
+Corollary 2.2. With M := V T V ,
+                                                 b 2 − 2N (I 0 ) + D(M ).
+                                 s1 ≥ 4 tr Ab − kAk F                                           (7)
+After removing the tails as in Proposition 4.2 of [1],
+                         N0s (T, 2T ) ≥ HMT N (T, 2T ) + D(M ◦ ) − o(N (T, 2T )),               (8)
+where M ◦ is the Gram matrix of the retained central simple zeros.
+                                    b Equations (1) and (2) give
+Proof. Apply Lemma 2.1 to P1 + Q0 = A.
+              b 2 ≥ 4 tr A
+             kAk                                           b − s1 − 2N (I 0 ) + D(M ),
+                         b − 3s1 − 4s2 − 4p + D(M ) ≥ 4 tr A
+                 F
+
+which is (7).
+   Use the same comparison Ab = G  b−E b and tail estimates as in Propositions 4.2 and 4.4 of [1].
+Pinching the full Gram matrix into the retained central block and its complement gives D(M ) ≥
+D(M ◦ ) because X 7→ tr Ψ(X) is convex and unitarily invariant. Moreover N (I 0 ) = N (T, 2T ) +
+o(N (T, 2T )), and Theorem D gives
+                                                                            
+                       b = N (T, 2T )(1 + o(1)),        b 2 =       1
+                    tr G                               kGk              + o(1) N (T, 2T ),
+                                                           F
+                                                                    c∗1
+where 2 − 1/c∗1 = HMT . Substitution in (7) yields (8).
+
+
+3    The Montgomery–Taylor overlap kernel
+Put h := 2π/L and deﬁne the normalised ordinate
+                                                γρ − T   L(γρ − T )
+                                      xρ :=            =            .
+                                                   h        2π
+Lemma 3.1. Fix R0 > 0. Delete the simple zeros in strips of normalised width L2 at the two
+ends of the grid. The number deleted is o(N (T, 2T )), and uniformly for retained simple zeros with
+|xρ − xρ0 | ≤ R0 ,
+                                  hvρ , vρ0 i = k(xρ − xρ0 ) + o(1),                            (9)
+where
+                                        K(x)
+                              k(x) :=        ,                                                (10)
+                                        K(0)
+                                        Z 1/2    √
+                              K(x) :=        cos( 2 t) cos(2πxt) dt
+                                        −1/2
+                                                  √                   √
+                                      sin(πx − 1/ 2) sin(πx + 1/ 2)
+                                    =           √       +           √   ,                     (11)
+                                         2πx − 2             2πx + 2
+             √           √
+and K(0) =       2 sin(1/ 2). The singularities in (11) are removable.
+
+                                                      3
+Proof. For the full Gabor grid, Lemma 2.2 of [1] gives
+
+                            1 Xb                                  0
+                                              b 0 − τj ) = Φ(γ − γ ) ,                    c2 .
+                                   ϕ(γ − τj ) ϕ(γ                                       Φ=ϕ
+                           aL2 j∈Z                            aL
+
+For points at normalised distance at least L2 from the grid ends, the terms with j ∈
+                                                                                   / [0, d) contribute
+O(L−2 ), uniformly when |xρ − xρ0 | is bounded, by the r−2 decay used in [1, §5.3].
+   For ﬁxed x, substitution u = Lt gives the normalised full-grid overlap
+                                                 Z 1/2
+                                                         ϕ(Lt)2 e−2πixt dt
+                                  Φ(hx)           −1/2                               K(x)
+                                        =            Z 1/2                      −→        .          (12)
+                                   aL                                2               K(0)
+                                                              ϕ(Lt) dt
+                                                       −1/2
+                        √
+Indeed, ϕ(Lt)2 → cos( 2 t)1[−1/2,1/2] (t) in L1 ; the ﬁxed-width taper has rescaled length O(L−1 ).
+The convergence in (12) is uniform for x in compact sets. Together with the tail estimate, this
+proves (9). Finally, the deleted strips have ordinate length O(L) and contain O(L2 ) = o(N (T, 2T ))
+zeros, since N (t + 1) − N (t)  log(t + 3).
+
+    Set
+                                                      w(x) := k(x)2 .
+
+
+4    A seven-point local inequality
+For nonnegative gaps g1 , . . . , g6 , deﬁne
+
+                                               1 X  6       X6        X
+                                                                  2 7−r
+                   F6 (g1 , . . . , g6 ) :=            gi +               w(gi + · · · + gi+r−1 ).   (13)
+                                              3000 i=1      r=1
+                                                                7 − r i=1
+
+The second term contains all 21 pairwise separations among seven ordered points.
+
+Proposition 4.1 (Certiﬁed local inequality). For every g1 , . . . , g6 ≥ 0,
+                                                                            19
+                                                 F6 (g1 , . . . , g6 ) ≥        .                    (14)
+                                                                           5000
+Veriﬁcation. The veriﬁer at
+                            https://github.com/ainta/zeta-simple-zeros
+uses Arb interval arithmetic through python-flint. It evaluates the entire-sinc expression
+                                               √                 √ !
+                                 1 sin(πx − 1/ 2) sin(πx + 1/ 2)
+                        K(x) =                √    +            √
+                                 2     πx − 1/ 2        πx + 1/ 2
+
+at 128-bit precision and constructs rigorous lower bounds for w on a grid of mesh 1/4000. If
+P
+   gi ≥ 11.4, the linear term proves the claim. On the remaining compact region, the one-variable
+term
+                                                 g    1
+                                       U (g) :=     + w(g)
+                                                3000 3
+
+
+
+                                                                4
+reduces each coordinate to three certiﬁed unions of grid cells. The resulting 36 boxes are proved by
+interval lower bounds, a certiﬁed convex tangent bound when applicable, or bisection of the widest
+coordinate. The program fails if a terminal box remains unresolved.
+    The committed certiﬁcate records verified=true, grid 4000, precision 128 bits, 707,901 visited
+nodes, and maximum depth 37. It also records the hashes of the interval tables used in the
+search.
+
+Lemma 4.2. Let y1 < · · · < ym with m ≥ 7, and put
+                                                     X
+                                   Em := 2                w(yj − yi ).
+                                                1≤i<j≤m
+
+Then
+                                        1                19
+                               Em +        (ym − y1 ) ≥      (m − 6).                           (15)
+                                       500              5000
+Proof. Write gi = yi+1 − yi and sum (14) over the m − 6 consecutive seven-point windows. A pair
+spanning r gaps occurs at most 7 − r times and has coeﬃcient 2/(7 − r) each time, so its total
+contribution is at most 2w(yj − yi ). Each single gap occurs at most six times, giving at most
+
+                                        X
+                                    6 m−1         1
+                                            gi =     (ym − y1 ).
+                                   3000 i=1      500
+
+
+
+Lemma 4.3. If G  0 is Hermitian, then
+                                                                          
+                                                          X               
+                                 tr Ψ(G) ≥ min 1, 2              |Gij |2       .                (16)
+                                                                          
+                                                           i<j
+
+
+Proof. If every eigenvalue of G is at most 2, then Ψ(G) = (G − I)2 , and
+                                                                 X
+                                tr Ψ(G) = tr(G − I)2 ≥ 2               |Gij |2 .
+                                                                 i<j
+
+If some eigenvalue λ > 2, then Ψ(λ) = 2λ − 3 > 1.
+
+   Take
+                                                19            4997
+                          m := 269,          A0 :=  (m − 6) =      < 1.                   (17)
+                                               5000           5000
+Let B be a block of 269 consecutive retained simple zeros. Write GB for its Gram matrix. If
+span(B)/500 ≥ A0 , then (18) below is immediate. Otherwise span(B) < 500, so Lemma 3.1 applies
+uniformly to every pair in B. Since m is ﬁxed,
+                                       X
+                                   2         |(GB )ij |2 = Em + o(1).
+                                       i<j
+
+Lemmas 4.2 and 4.3 give, uniformly in B,
+                                               1
+                               D(GB ) +           span(B) ≥ A0 − o(1).                          (18)
+                                              500
+
+
+
+                                                     5
+5      Shifted block pinching
+Let
+                                                  x1 < · · · < x S ◦
+be the normalised ordinates of the retained central simple zeros. Then
+
+                                        S ◦ = N0s (T, 2T ) − o(N (T, 2T )).                    (19)
+
+For each of the m = 269 oﬀsets, partition the ordered points into full consecutive blocks of size
+m, leaving at most 2(m − 1) endpoint points. Pinching M ◦ to the full principal blocks and the
+remaining block gives                          X
+                                    D(M ◦ ) ≥     D(GB ).                                    (20)
+                                                           B
+
+This follows because pinching is an average of unitary conjugations and X 7→ tr Ψ(X) is convex
+and unitarily invariant.
+   For each oﬀset, sum (18) over the full blocks and use (20); then average over the m oﬀsets. The
+average number of full blocks is S ◦ /m + O(1). Each gap xj+1 − xj belongs to a block span for at
+most m − 1 oﬀsets, and
+                                      T   LT
+                        xS ◦ − x1 ≤     =    = d + O(1) = N (T, 2T ) + o(N (T, 2T ))
+                                      h   2π
+by the Riemann–von Mangoldt formula. The blockwise o(1) term in (18) is uniform, so its total is
+o(N (T, 2T )). Therefore
+
+                                      A0 s            m−1
+                         D(M ◦ ) ≥      N0 (T, 2T ) −      N (T, 2T ) − o(N (T, 2T )).         (21)
+                                      m               500m
+With m = 269 and A0 = 4997/5000,
+                                  4997                     268
+                    D(M ◦ ) ≥             N0s (T, 2T ) −         N (T, 2T ) − o(N (T, 2T )).   (22)
+                                1,345,000                134,500
+
+      Substitute (22) into (8). This gives
+                                                                   4997
+                            N0s (T, 2T ) ≥ HMT N (T, 2T ) +               N s (T, 2T )
+                                                                 1,345,000 0
+                                                    268
+                                              −           N (T, 2T ) − o(N (T, 2T )).
+                                                  134,500
+Hence                                                               
+                       4997                           268
+                  1−           N0s (T, 2T ) ≥ HMT −         N (T, 2T ) − o(N (T, 2T )).
+                     1,345,000                      134,500
+Divide by N (T, 2T ) and let T → ∞ to obtain
+
+                    N0s (T, 2T )   1,345,000HMT − 2,680
+              lim inf            ≥                      = 0.6730085279277797613 . . . .
+               T →∞ N (T, 2T )            1,340,003
+
+This proves Theorem 1.1.
+
+
+
+
+                                                          6
+Reproducibility
+Proposition 4.1 is the only computer-assisted input. Its source, tests, trust-base description, and
+certiﬁcate are available at
+
+                        https://github.com/ainta/zeta-simple-zeros.
+
+The veriﬁer reconstructs every transcendental interval enclosure from the stated formulas.
+
+
+References
+ [1] Claude, More than two thirds of the zeros of the Riemann zeta function lie on the critical line,
+     preprint, August 10, 2026, available online.
+
+ [2] F. Johansson, Arb: eﬃcient arbitrary-precision midpoint-radius interval arithmetic, IEEE
+     Trans. Comput. 66 (2017), no. 8, 1281–1292.
+
+ [3] H. L. Montgomery, The pair correlation of zeros of the zeta function, in: Analytic Number
+     Theory (St. Louis, 1972), Proc. Sympos. Pure Math. 24, Amer. Math. Soc., 1973, 181–193.
+
+ [4] H. L. Montgomery, Distribution of the zeros of the Riemann zeta function, in: Proceedings
+     of the International Congress of Mathematicians (Vancouver, 1974), Vol. 1, Canad. Math.
+     Congress, 1975, 379–381.
+
+
+
+
+                                                 7
+

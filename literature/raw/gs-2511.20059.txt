@@ -1,0 +1,542 @@
+                                                                      ZETA ZEROS ON THE CRITICAL LINE
+
+                                                                       DANIEL A. GOLDSTON AND ADE IRMA SURIAJAYA
+
+
+                                                  Abstract. Montgomery in 1973 introduced the pair correlation method to study the vertical dis-
+                                                  tribution of Riemann zeta-function zeros. This work assumed the Riemann Hypothesis (RH). One
+                                                  striking application was a short proof that at least 2/3 of zeta-zeros are simple zeros, the first result
+                                                  of its type. Over the last 50 years, most work on pair correlation of zeta-zeros has continued to
+                                                  assume RH. Here we show that if RH could be removed from Montgomery’s simple zero proof, then
+arXiv:2511.20059v2 [math.NT] 5 Feb 2026
+
+
+
+
+                                                  this would also give a proof that 2/3 of the zeros are simple and on the critical line. This idea has
+                                                  been applied in several recent papers to obtain other results on the zeros.
+
+
+
+
+                                                                                          1. Introduction
+                                             In 1973 Montgomery [Mon73] proved, assuming the Riemann Hypothesis (RH), that at least
+                                          2/3 of the zeros of the Riemann zeta-function are simple. Prior to this, it was not known either
+                                          unconditionally or on RH that there were even infinitely many simple zeros. Currently, by a refined
+                                          version of Levinson’s method, K. Pratt, N. Robles, A. Zaharescu, and D. Zeindler [PRZZ20] in 2020
+                                          proved that at least 41.7% of the zeros of ζ(s) are on the critical line, and at least 40.7% of the
+                                          zeros are on the critical line and simple. By large scale computation with careful error analysis,
+                                          Platt and Trudgian [PT21] in 2021 showed that in the critical strip up to height 3,000,175,332,800,
+                                          there are exactly 12,363,153,437,138 zeros and all of them are on the critical line and are simple.
+                                          Conditionally, under the RH assumption one can obtain that at least 67.92% of the zeros of ζ(s)
+                                          are simple using Montgomery’s pair correlation method [CGdL20], and with a different method
+                                          [CGG98, BHB13] one obtains at least 70.37% of the zeros are simple.
+
+                                                                         2. Zeros of the Riemann zeta-function
+                                             Let s = σ + it denote any point in the complex plane. The meromorphic function ζ(s) has a
+                                          simple pole at s = 1 with     Presidue      Q is analytic
+                                                                                   1, and                  elsewhere. For σ > 1, we have the Euler
+                                          product formula ζ(s) := ∞       n=1 n −s =
+                                                                                         p (1 − p s )−1 , where the product runs over the primes p.
+
+                                          Thus we see that ζ(s) ̸= 0 in the half-plane σ > 1 since the individual terms in the Euler product
+                                          are not zero and converge      to 1 as p → ∞. By the functional equation ζ(s) = χ(s)ζ(1 − s), where
+                                          χ(s) = 2s π s−1 sin πs
+                                                                  
+                                                                2   Γ(1 − s), we now obtain the analytic continuation of ζ(s) for σ < 0 where we
+                                          see the only zeros in this half-plane are the trivial zeros s = −2, −4, −6, −8, . . . coming from the
+                                          factor sin(πs/2) in χ(s). Thus all the complex zeros of ζ(s) lie within the strip 0 ≤ σ ≤ 1. Each
+                                          of the two proofs of the prime number theorem in 1896 by Hadamard and by de la Vallée Poussin
+                                          gave different proofs that there are no zeros on the line σ = 1, and therefore all the zeros must lie
+                                          in the critical strip 0 < σ < 1.
+                                             There is one further property of the Riemann zeta-function that is so easy to prove that its
+                                          importance can often be overlooked; namely that there are no zeros on the real axis s = σ for
+                                          0 ≤ σ < 1. This follows from the formula
+                                                                                           ∞
+                                                                                          X    (−1)n+1
+                                                                       (1 − 21−s )ζ(s) =                  , for 0 < σ < 1,
+                                                                                                  ns
+                                                                                             n=1
+
+                                              Date: February 6, 2026.
+                                              2010 Mathematics Subject Classification. 11M06, 11M26.
+                                              Key words and phrases. Riemann zeta-function, zeros, pair correlation, simple zeros, critical zeros.
+                                                                                                     1
+2                                                GOLDSTON AND SURIAJAYA
+
+
+since this shows that (1 − 21−σ )ζ(σ) > 0 so that ζ(σ) < 0 on the real line for 0 < σ < 1. We also
+see immediately from the functional equation that ζ(0) = −1/2.
+   If an analytic function F (s) is real on a segment of the real axis it will satisfy the reflection
+principle that F (s̄) = F (s) in the symmetric region on either side of that segment where F is
+analytic. Denoting the complex zeros of the Riemann zeta-function by ρ = β + iγ, we see that
+ζ(ρ) = 0 = ζ(ρ̄) and the functional equation gives as well ζ(ρ) = 0 = ζ(1 − ρ). Thus, all nontrivial
+zeros come in pairs symmetric with the real axis, therefore we have the zeros ρ = β + iγ and
+ρ̄ = β − iγ, and zeros with β ̸= 1/2 come in symmetric quadruples with respect to both the real
+axis and the critical line (namely, the vertical line σ = 1/2): ρ = β + iγ, ρ̄ = β − iγ, 1 − ρ =
+1 − β − iγ, 1 − ρ̄ = 1 − β + iγ. This elementary fact turns out to be fundamental later in this paper.
+
+                                          3. Counting zeros with multi-sets
+   Since the zeros are symmetric about the real axis, we only need to study the zeros above the real
+axis. Analytic function have their zeros counted by the argument principle, which counts zeros with
+their multiplicity. Thus a zero ρ with multiplicity mρ is counted as mρ zeros. Therefore, rather than
+using “sets” of zeros we will use in this paper multi-sets of zeros where a zero ρ with multiplicity
+mρ has mρ copies of itself in the multiset. Thus we replace the set Z(T ) = {ρ : 0 < γ ≤ T } of
+complex zeros ρ up to height T by the multiset
+(3.1)                                 Z(T ) = {ρ : 0 < γ ≤ T, ρ has mρ copies}.
+The set Z(T ) is called the support of Z(T ), written Supp(Z(T )), and is the set of distinct zeros.
+   Let N (T ) denote the number of zeros in the critical strip with 0 < γ ≤ T . In 1905 von Mangoldt
+proved that, for T ≥ 3,
+                                         X           T      T     T
+(3.2)                 N (T ) = |Z(T )| =       1=      log     −     + O(log T ),
+                                                    2π      2π 2π
+                                                     ρ∈Z(T )
+
+and we have the useful special cases
+                      T
+(3.3)     N (T ) ∼       log T as T → ∞,                          and            N (T + 1) − N (T ) = O(log T ).
+                     2π
+                                4. Montgomery’s RH proof of simple zeros
+    In this section we assume RH so that ρ = 1/2 + iγ, and prove the following result.
+Theorem 1 (Montgomery). Assuming RH, at least 2/3 of the zeros of ζ(s) are simple.
+    The proof is based on the following inequality
+                                                                        !2
+                                           sin( 21 (γ − γ ′ ) log T )
+                                                                                               
+            X                  X                                                     4              T
+(4.1)                  1≤                     1         ′
+                                                                             =         + o(1)          log T,   as   T → ∞.
+                                              2 (γ − γ ) log T
+                                                                                     3              2π
+         ρ,ρ′ ∈Z(T )        ρ,ρ′ ∈Z(T )
+            γ=γ ′
+
+Here the first inequality is trivially true. The asymptotic formula for the Fejér kernel sum over
+differences of zeros was proved by Montgomery assuming RH; the interested reader may see the
+proof in [Mon73]. The Fejér kernel sum itself is obtained without RH from the formula
+                                                       !2
+                                                                         2
+                            sin( 12 (γ − γ ′ ) log T )
+                    X                                        Z 1 X
+                                                                     iαγ
+(4.2)                          1         ′
+                                                          =2       T       (1 − α) dα,
+                    ′          2 (γ − γ ) log T
+                       ρ,ρ ∈Z(T )                             0                      ρ∈Z(T )
+
+which follows immediately from the elementary formula
+                                                                 !2
+                                                      sin( 12 w)
+                                  Z 1
+                                       iwα
+(4.3)                        2 Re     e (1 − α) dα =     1          .
+                                   0                     2w
+                                             ZETA ZEROS ON THE CRITICAL LINE                               3
+
+
+Thus in (4.1) the double sums are over two copies of the sequence of zeros with 0 < γ ≤ T , where
+each sequence already has mγ copies of each zero of multiplicity mγ .
+   Now consider the first sum in (4.1) with the condition that γ = γ ′ . If we think of the terms as
+ordered pairs (γ, γ ′ ) where γ = γ ′ , then a simple zero gets counted once, but a double zero with
+mγ = 2 gets counted 4 times, since γ1 = γ2 = γ1′ = γ2′ and we get the 4 terms (γ1 , γ1′ ), (γ1 , γ2′ ),
+(γ2 , γ1′ ), (γ2 , γ2′ ). Thus a single zero of multiplicity mγ gets counted m2γ times. The proof of Theorem
+1 is now just three lines.
+
+Proof of Theorem 1. Since by RH, γ = γ ′ is true if and only if ρ = ρ′ , we have
+                                                   
+                 X           X             4          T
+(4.4)                  1=        mρ ≤        + o(1)      log T,     as      T → ∞.
+                 ′
+                                           3          2π
+                    ρ,ρ ∈Z(T )         ρ∈Z(T )
+                       γ=γ ′
+
+Note the simple inequality
+                 X         X        X    X        X
+(4.5)                1+      mρ = 2   1+   mρ ≥ 2   1 = 2N (T ).
+                    ρ∈Z(T )        ρ∈Z(T )          ρ∈Z(T )    ρ∈Z(T )      ρ∈Z(T )
+                    ρ simple                         mρ =1      mρ ≥2
+
+Then using (3.2) and (3.3), we have as T → ∞,
+                                                                         X
+         X                    X               4      T            2
+               1 ≥ 2N (T ) −       mρ ≥ 2 − + o(1)      log T =     + o(1)     1.
+                                              3      2π           3
+         ρ∈Z(T )                       ρ∈Z(T )                                              ρ∈Z(T )
+         ρ simple
+
+                                                                                                          □
+
+                5. Montgomery’s Simple Zero Method if RH is not assumed
+   For 50 years it never seemed to occur to anyone (including the first-named author of this paper)
+to seriously think about this proof when RH is not assumed. As we will see in a moment, the key
+idea here is that, despite the title of this section, not assuming RH is not enough; what you have
+to do is take seriously the possibility that RH is false. The result of this mental block is we spent
+almost two years proving (4.1) holds with conditions weaker than RH without seeing the connection
+to zeros on the critical line, which we call for brevity critical zeros in the rest of this exposition.
+   Recall for the first sum in (4.1) and (4.4) we saw that, assuming RH, the condition γ = γ ′ is
+equivalent to ρ = ρ′ . But if RH is false then this is also sometimes false, since then there are in
+Z(T ) at least two symmetric zeros ρ = β + iγ and 1 − ρ = 1 − β + iγ with β ̸= 1/2. Hence, if
+β ̸= 1/2 then the pairs of zeros (β + iγ, 1 − β + iγ) and (1 − β + iγ, β + iγ) are also solutions of the
+equation γ = γ ′ on the horizontal line t = γ. We call these “symmetric diagonal terms”. Thus, in
+addition to the diagonal terms ρ = ρ′ in (4.4), which occur for every zero whether RH is assumed
+or not, we also need to include the symmetric diagonal terms for zeros with β ̸= 1/2. This is not
+the end. Since we are working with pairs of zeros, if there are three or more zeros on the same
+horizontal line, we can also have terms which are not diagonal and not symmetric.
+   To conclude, we have
+                            X            X            X                X
+(5.1)                            1 =           mρ +        mρ +                1,
+                               ρ,ρ′ ∈Z(T )       ρ∈Z(T )      ρ∈Z(T )     ρ,ρ′ ∈Z(T )
+                                  γ=γ ′                        β̸= 12    β+β ′ ̸=1, γ=γ ′
+
+where the first sum on the right-hand side comes from the diagonal terms, the second is given by
+the symmetric diagonal terms, and the rest in the third sum are non-symmetric horizontal terms.
+  We can now immediately prove our RH-free version of Montgomery’s simple zero result.
+4                                            GOLDSTON AND SURIAJAYA
+
+
+Theorem 2. Suppose there exists a constant C where 1 ≤ C < 2 and that, as T → ∞,
+                                X                 T
+(5.2)                                 1 ≤ C + o(1)      log T.
+                                ′
+                                                     2π
+                                         ρ,ρ ∈Z(T )
+                                            γ=γ ′
+
+Then asymptotically at least the proportion 2 − C of the zeros of ζ(s) are simple, and at least the
+proportion 2 − C of the zeros of ζ(s) are on the critical line.
+   We first remark on the restrictions on the constant C in our assumption. Note that
+                X             X             X             X                 T
+(5.3)                 1 ≥            1 =         mρ ≥          1 = N (T ) ∼    log T
+                ′             ′
+                                                                            2π
+             ρ,ρ ∈Z(T )         ρ,ρ ∈Z(T )            ρ∈Z(T )          ρ∈Z(T )
+                γ=γ ′              ρ=ρ′
+
+as T → ∞. Thus C in our assumption has to satisfy C ≥ 1. We also restrict C < 2, since for C ≥ 2
+the method fails to give a positive proportion.
+
+Proof of Theorem 2. Substituting (5.1) into (5.2), we have
+           X          X               X                   T
+(5.4)          mρ +        mρ +               1 ≤ C + o(1)     log T,                         as   T → ∞.
+                                      ′
+                                                            2π
+         ρ∈Z(T )          ρ∈Z(T )            ρ,ρ ∈Z(T )
+                           β̸= 12           β+β ′ ̸=1, γ=γ ′
+
+In this inequality, removing any sum on the left-hand side results in a smaller quantity since each
+is non-negative. First, we have
+                          X                  T
+                               mρ ≤ C + o(1)       log T,     as T → ∞,
+                                                2π
+                            ρ∈Z(T )
+
+which is (4.4) with C = 4/3, and the identical argument (4.5) used there gives
+                        X                      T
+(5.5)                        1 ≥ 2 − C + o(1)        log T,    as T → ∞,
+                                                  2π
+                           ρ∈Z(T )
+                           ρ simple
+
+which proves that the proportion of simple zeros of ζ(s) is ≥ 2 − C.
+  Next, for the symmetric diagonal terms, we have, as T → ∞,
+                           X                    T             X
+                                mρ ≤ C + o(1)         log T −        mρ .
+                                                   2π
+                               ρ∈Z(T )                                         ρ∈Z(T )
+                                β̸=1/2
+
+Recalling the lower bound in (5.3), we obtain
+                       X                     T
+(5.6)                       mρ ≤ C − 1 + o(1)     log T,                         as      T → ∞.
+                                               2π
+                          ρ∈Z(T )
+                           β̸=1/2
+
+Thus
+            X              X              X                        X                        T
+                     1=             1−             1 ≥ N (T ) −             mρ ≥ 2 − C + o(1)    log T
+                                                                                              2π
+           ρ∈Z(T )        ρ∈Z(T )        ρ∈Z(T )                  ρ∈Z(T )
+            β=1/2                         β̸=1/2                   β̸=1/2
+
+as T → ∞, and we have proved that the proportion of zeros of ζ(s) on the critical line is ≥ 2−C.            □
+                                ZETA ZEROS ON THE CRITICAL LINE                                        5
+
+
+        6. Simple and critical zeros using diagonal and symmetric diagonal terms
+   While we cannot improve either result in Theorem 2, we can obtain further results on zeros that
+are both simple and critical, simple or critical, and also the average of the proportion of simple
+zeros and the proportion of critical zeros.
+
+Theorem 3. Suppose there exists a constant C ≥ 1 and that, as T → ∞,
+                        X            X                   T
+(6.1)                         mρ +        mρ ≤ C + o(1)        log T.
+                                                           2π
+                           ρ∈Z(T )     ρ∈Z(T )
+                                        β̸= 12
+
+Then asymptotically,
+    (i) the proportion of zeros of ζ(s) which are simple and on the critical line is ≥ 2 − C,
+   (ii) the average of the proportions of simple zeros and of critical zeros of ζ(s) is ≥ (3 − C)/2,
+  (iii) the proportion of zeros of ζ(s) which are either simple or critical or both is ≥ (4 − C)/3.
+
+Remark 1. Notice that the proof of Theorem 2 actually only uses the assumption (6.1), and (i)
+of Theorem 3 already implies Theorem 2. The diagonal and symmetric diagonal terms are easy
+to analyze in terms of the properties of “simple” and “critical”, while we have dropped the non-
+symmetric horizontal terms which are more complicated. We return to this in the next section
+where we make use of “horizontal multiplicity”.
+
+Remark 2. Note that if C = 4/3 as in Theorem 1, then by (ii) of Theorem 3 the average of the
+proportions of simple zeros and critical zeros is asymptotically ≥ 5/6. Thus at least one of these
+proportions is ≥ 5/6, although the method doesn’t determine which. This agrees with the RH result
+in Theorem 1 where the proportion of simple zeros is ≥ 2/3 and proportion of critical zeros is 1,
+thus giving an average proportion ≥ 5/6. We obtain in (iii) of Theorem 3 that ≥ 8/9 of the zeros
+are either simple or critical or both. Equivalently, the proportion of zeros that are multiple zeros
+off the critical line is ≤ 1/9 .
+
+  Recall the multiset Z(T ) from (3.1), and the set of distinct zeros Z(T ) = {ρ : 0 < γ ≤ T } =
+Supp(Z(T )). We will consider Z(T ) the universe in what follows and take subsets A ⊂ Z(T ), and
+define the complement of A′ in Z(T ) to be A′ = {ρ : ρ ∈
+                                                       / A, 0 < γ ≤ T }. Similarly, we define the
+multiset A formed from A by multiplicity and the complement A′ in the universe Z(T ) by
+(6.2)        A = {ρ ∈ A : 0 < γ ≤ T, ρ has mρ copies},       A′ = {ρ ∈
+                                                                     / A : 0 < γ ≤ T }.
+We will count the number of elements of A in two ways: N (A) = |A| where we count zeros with
+multiplicity, and N ∗ (A) where we count zeros with multiplicity and also weighted by mρ . Thus
+                                      X                        X
+(6.3)                       N (A) :=        1,    N ∗ (A) :=       mρ .
+                                       ρ∈A                     ρ∈A
+                                      0<γ≤T                   0<γ≤T
+
+Note also that
+                             N (A′ ) = N (Z) − N (A) = N (T ) − N (A).
+  We will now work with the sets of simple zeros S and critical zeros C defined by
+(6.4) S := {ρ : 0 < γ ≤ T, ρ simple (mρ = 1)},        C := {ρ : 0 < γ ≤ T, ρ critical (β = 1/2)}.
+We thus have the multisets S and C as defined in (6.2); note here S = S. With this preparation,
+we are now ready to prove Theorem 3.
+6                                       GOLDSTON AND SURIAJAYA
+
+
+Proof of Theorem 3. With the usual Venn diagram for the two sets S and C, we partition the zeros
+in Z(T ) into the usual four disjoint sets according to being or not being simple/critical, form the
+corresponding multisets, and count with multiplicity to obtain
+
+(6.5)             N (Z) = N (T ) = N (S ∩ C) + N (S ′ ∩ C) + N (S ∩ C ′ ) + N (S ′ ∩ C ′ ).
+
+The same decomposition in (6.1) gives on counting with multiplicity and weighting by multiplicity
+
+(6.6)        N ∗ (S ∩ C) + N ∗ (S ′ ∩ C) + 2N ∗ (S ∩ C ′ ) + 2N ∗ (S ′ ∩ C ′ ) ≤ (C + o(1))N (T ).
+
+Since N ∗ (S ∩ C) = N (S ∩ C) and N ∗ (S ∩ C ′ ) = N (S ∩ C ′ ), this equation becomes
+
+              N (S ∩ C) + N ∗ (S ′ ∩ C) + 2N (S ∩ C ′ ) + 2N ∗ (S ′ ∩ C ′ ) ≤ (C + o(1))N (T ).
+
+We eliminate the last two N ∗ ’s in this equation using N ∗ (S ′ ∩ C) ≥ 2N (S ′ ∩ C) and N ∗ (S ′ ∩ C ′ ) ≥
+2N (S ′ ∩ C ′ ), where these are equalities if S ′ only contains double zeros. Thus we obtain
+
+(6.7)          N (S ∩ C) + 2N (S ′ ∩ C) + 2N (S ∩ C ′ ) + 4N (S ′ ∩ C ′ ) ≤ (C + o(1))N (T ).
+
+Now by (6.5) we see
+
+                      N (S ′ ∩ C) + N (S ∩ C ′ ) + N (S ′ ∩ C ′ ) = N (T ) − N (S ∩ C),
+
+and substituting this into (6.7), we obtain
+
+                 N (S ∩ C) + 2(N (T ) − N (S ∩ C)) + 2N (S ′ ∩ C ′ ) ≤ (C + o(1))N (T ).
+
+Thus we obtain
+
+(6.8)                       N (S ∩ C) ≥ (2 − C + o(1))N (T ) + 2N (S ′ ∩ C ′ ).
+
+From this we immediately have N (S ∩ C) ≥ (2 − C + o(1))N (T ), which proves (i) of Theorem 3.
+  To prove (ii) of Theorem 3, we begin with the equalities
+
+(6.9) N (S ∪ C) = N (S) + N (C) − N (S ∩ C)       and    N (S ∪ C) = N (S ∩ C ′ ) + N (S ∩ C) + N (S ′ ∩ C),
+
+which on combining gives
+
+                         N (S) + N (C) = 2N (S ∩ C) + N (S ′ ∩ C) + N (S ∩ C ′ ).
+
+On applying (6.5), this gives
+
+                           N (S) + N (C) = N (S ∩ C) + N (T ) − N (S ′ ∩ C ′ ),
+
+and by (6.8) produces
+
+              N (S) + N (C) ≥ (3 − C + o(1))N (T ) + N (S ′ ∩ C ′ ) ≥ (3 − C + o(1))N (T ).
+
+    To prove (iii) of Theorem 3, first note that by (6.7) and the second equation in (6.9) that
+
+                       2N (S ∪ C) − N (S ∩ C) + 4N (S ′ ∩ C ′ ) ≤ (C + o(1))N (T ).
+
+Next, since (S ∪ C)′ = S ′ ∩ C ′ , we have N (S ′ ∩ C ′ ) = N (T ) − N (S ∪ C), and substituting this gives
+
+                     (4 − C + o(1))N (T ) ≤ 2N (S ∪ C) + N (S ∩ C) ≤ 3N (S ∪ C).
+
+                                                                                                           □
+                                     ZETA ZEROS ON THE CRITICAL LINE                                          7
+
+
+               7. Simple and critical zeros using horizontal multiplicity
+   Soundararajan pointed out to us an alternative approach for obtaining the results in the last two
+sections. He also showed us (iii) of Theorem 3.
+   In place of (5.2) and (5.4), we now use
+              X           X                    T                               X
+(7.1)                1=         H(γ) ≤ C + o(1)      log T, where H(γ) :=              1.
+              ′
+                                                  2π                           ′
+           ρ,ρ ∈Z(T )      ρ∈Z(T )                                                            ρ ∈Z(T )
+              γ=γ ′                                                                             γ ′ =γ
+
+If we assume RH, then H(γ) = mρ = mγ the usual multiplicity of the zero ρ. Without RH, then
+H(γ) counts with multiplicity the number of zeros on the horizontal line t = γ. Thus H(γ) is a
+“horizontal multiplicity” for the multiset of zeros on each horizontal line t = γ. Thus we see, for
+example:
+     • If H(γ) = 1, then on the line t = γ, we have one simple zero on the critical line.
+     • If H(γ) = 2, then on the line t = γ, we have either a double zero on the critical line or a
+       pair of two symmetric simple zeros.
+     • If H(γ) = 3, then on the line t = γ, we have either a triple zero on the critical line, or a
+       simple zero on the critical line and a pair of two symmetric simple zeros.
+Note that to have at least a double zero off the critical line on the line t = γ, H(γ) needs to be at
+least 4.
+
+Proof of Theorem 3. Note Z(T ) is partitioned into disjoint multisets of zeros by
+
+                               H(k) := {ρ ∈ Z(T ) : H(γ) = k},               k ∈ N.
+
+We also see from above that
+
+   H(1) ⊂ S ∩ C,        H(2) ⊂ (S ′ ∩ C) ∪ (S ∩ C ′ ),     H(3) ⊂ (S ∩ C) ∪ (S ′ ∩ C) ∪ (S ∩ C ′ ) = S ∪ C.
+
+  We now assume (7.1). If H(γ) = 1, using an argument analogous to (4.5), we have
+                            X          X
+              N (S ∩ C) ≥        1≥         (2 − H(γ)) ≥ (2 − C + o(1))N (T ),
+                                  ρ∈Z(T )        ρ∈Z(T )
+                                  H(γ)=1
+
+which proves (i) of Theorem 3. Next,
+                                  X                 X    X
+          (3 − C + o(1))N (T ) ≤     (3 − H(γ)) ≤ 2   1+   1
+                                       ρ∈Z(T )                   ρ∈Z(T )       ρ∈Z(T )
+                                                                 H(γ)=1        H(γ)=2
+                                                                                 ′
+                                     ≤ 2N (S ∩ C) + N (S ′ ∩ C) + N (S ∩ C ) = N (S) + N (C),
+
+which proves (ii) of Theorem 3. For (iii) of Theorem 3, we have, since H(3) is disjoint from H(1)
+and H(2) and contained in S ∪ C,
+                             X                     X          X          X
+     (4 − C + o(1))N (T ) ≤       (4 − H(γ)) ≤ 3        1+2         1+         1
+                                 ρ∈Z(T )                   ρ∈Z(T )         ρ∈Z(T )       ρ∈Z(T )
+                                                           H(γ)=1          H(γ)=2        H(γ)=3
+                                                                              ′
+                              ≤ 3N (S ∩ C) + 2N (S ′ ∩ C) + 2N (S ∩ C ) = 2N (S ∪ C) + N (S ∩ C)
+                              ≤ 3N (S ∪ C).
+
+                                                                                                              □
+8                                        GOLDSTON AND SURIAJAYA
+
+
+                               8. Two Results on Critical Zeros
+    Using Theorem 3, we proved in [BGSTB25] the following result.
+Theorem 4 (Baluyot, Goldston, Suriajaya, Turnage-Butterbaugh). Assume that all of the zeros of
+ζ(s) with T < γ ≤ 2T lie in the region
+                                                 1        b
+(8.1)                 Bb = {s = σ + it : σ −       <          , T < t ≤ 2T }.
+                                                 2    2 log T
+Then if b = 0.3185, we have for the zeros of ζ(s) with T < γ ≤ 2T that at least 2/3 are simple and
+on the critical line.
+   We define the average spacing between consecutive zeros by
+                        Length of [0, T ]      T         2π
+(8.2)                                     ∼ T        ∼       , as T → ∞.
+                             N (T )         2π log T
+                                                       log T
+Thus in Theorem 4 we are assuming all the zeros are within a vertical distance of b/(4π) times the
+average spacing between consecutive zeros at height T .
+  The following conjecture gives an asymptotic formula for the number of pairs of zeros counted
+with multiplicity within a distance λ times the average spacing.
+Pair Correlation Conjecture (PCC). For fixed λ > 0 and T → ∞,
+                                                    ! !
+                                             sin πu 2
+                                Z λ        
+                      X                                    T
+                             1∼       1−               du    log T.
+                      ′           0            πu         2π
+                        ρ,ρ ∈Z(T )
+                                 2πλ
+                      0<γ−γ ′ ≤ log T
+
+Montgomery first made this conjecture in [Mon73]. From this conjecture sprung the discovery that
+the zeros of L-functions obey a random matrix eigenvalue model; for ζ(s) this is the Gaussian
+Unitary Ensemble (GUE) model.
+   Since PCC only concerns the non-zero vertical distance between zeros, it is unaffected by RH
+and nothing in PCC by itself implies directly that any zeros are on the critical line. Montgomery’s
+reasoning to support PCC used RH, but Gallagher and Mueller [GM78] proved that PCC implies
+asymptotically 100% of the zeros are simple using a different method based on unconditional results
+of Selberg and Fujii. However, since RH was assumed and used in many parts of [GM78], we clarified
+this in [GLSS25a] to show the results on PCC hold without RH. As a consequence, by Theorem 2,
+we also obtain that asymptotically 100% of the zeros are on the critical line.
+Theorem 5 (Goldston, Lee, Suriajaya, Schettler). The Pair Correlation Conjecture implies asymp-
+totically 100% of the zeros of the ζ(s) are simple and on the critical line.
+    The proof of Theorem 5 actually depends on the following property of PCC.
+Essential Simplicity (ES). If λ → 0 as T → ∞, then we have
+                                X                  T
+(8.3)                                  1 = 1 + o(1)     log T.
+                                ′
+                                                     2π
+                                     ρ,ρ ∈Z(T )
+                                              2πλ
+                                   |γ−γ ′ |≤ log T
+
+   Clearly (8.3) implies C = 1, thus Theorems 2 and 3 follows from ES. This reduces the proof of
+Theorem 5 to proving without RH that PCC implies ES.
+   Other pair correlation conjectures besides PCC also imply ES. In [GLSS25b] we proved that the
+Alternative Hypothesis (AH) gives a different pair correlation density function from PCC, which
+in one form implies ES and thus Theorem 4 with PCC replaced by that form of AH.
+   We mention that Selberg [Sel92] and Bombieri and Hejhal [BH95] have both made use of ES
+in their work on linear combinations of L-functions. In particular, the latter paper made use of
+Montgomery’s Fejér kernel method used in Theorem 1 to obtain partial results without using ES.
+                                      ZETA ZEROS ON THE CRITICAL LINE                                               9
+
+
+                                      Acknowledgment of Funding
+  The authors thank the American Institute of Mathematics for its hospitality and providing
+a pleasant environment where our work on this project began. The second author is currently
+supported by the Inamori Research Grant 2024, JSPS KAKENHI Grant Number 22K13895, and
+Kyushu University International Research Leader Training Program (EBXU0101).
+
+                                                   References
+[BGSTB25] Siegfred Alan C. Baluyot, Daniel Alan Goldston, Ade Irma Suriajaya, and Caroline L. Turnage-
+          Butterbaugh. Pair correlation of zeros of the Riemann zeta function I: Proportions of simple zeros and
+          critical zeros. arXiv:2501.14545, 2025.
+[BH95]    E. Bombieri and D. A. Hejhal. On the distribution of zeros of linear combinations of euler products. Duke
+          Math. J., 80(3):821–862, 1995.
+[BHB13]   H. M. Bui and D. R. Heath-Brown. On simple zeros of the Riemann zeta-function. Bull. Lond. Math.
+          Soc., 45(5):953–961, 2013.
+[CGdL20] Andrés Chirre, Felipe Gonçalves, and David de Laat. Pair correlation estimates for the zeros of the zeta
+          function via semidefinite programming. Adv. Math., 361:106926, 22, 2020.
+[CGG98]   J. B. Conrey, A. Ghosh, and S. M. Gonek. Simple zeros of the Riemann zeta-function. Proc. London
+          Math. Soc. (3), 76(3):497–522, 1998.
+[GLSS25a] Daniel A. Goldston, Junghun Lee, Jordan Schettler, and Ade Irma Suriajaya. Pair Correlation Conjecture
+          for the zeros of the Riemann zeta-function I: simple and critical zeros. arXiv:2503.15449 [math.NT], 2025.
+[GLSS25b] Daniel A. Goldston, Junghun Lee, Jordan Schettler, and Ade Irma Suriajaya. Pair Correlation Conjecture
+          for the zeros of the Riemann zeta-function II: The alternative hypothesis. arXiv:2507.06823 [math.NT],
+          2025.
+[GM78]    P. X. Gallagher and Julia H. Mueller. Primes and zeros in short intervals. J. Reine Angew. Math.,
+          303/304:205–220, 1978.
+[Mon73]   H. L. Montgomery. The pair correlation of zeros of the zeta function. In Analytic number theory (Proc.
+          Sympos. Pure Math., Vol. XXIV, St. Louis Univ., St. Louis, Mo., 1972), volume Vol. XXIV of Proc.
+          Sympos. Pure Math., pages 181–193. Amer. Math. Soc., Providence, RI, 1973.
+[PRZZ20] Kyle Pratt, Nicolas Robles, Alexandru Zaharescu, and Dirk Zeindler. More than five-twelfths of the zeros
+          of ζ are on the critical line. Res. Math. Sci., 7(2):Paper No. 2, 74, 2020.
+[PT21]    D. Platt and T. Trudgian. The riemann hypothesis is true up to 3 · 1012 . Bull. of the LMS, 53(3):792–797,
+          2021.
+[Sel92]   Atle Selberg. Old and new conjectures and results about a class of Dirichlet series. Univ. Salerno, Salerno,
+          1992.
+
+  Department of Mathematics and Statistics, San Jose State University
+  Email address: daniel.goldston@sjsu.edu
+
+  Faculty of Mathematics, Kyushu University
+  Email address: adeirmasuriajaya@math.kyushu-u.ac.jp
+

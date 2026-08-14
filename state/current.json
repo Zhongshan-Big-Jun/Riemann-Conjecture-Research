@@ -1,18 +1,32 @@
 {
   "schema_version": 1,
   "project_id": "MRP-20260814-riemann-critical-line-c13b8d",
-  "lifecycle_state": "SETUP",
-  "current_stage": "initialization",
-  "current_objective": "Define scope and begin the first literature pass.",
-  "active_direction_ids": [],
-  "active_paper_ids": [],
-  "active_problem_ids": [],
-  "active_task_ids": [],
-  "active_run_ids": [],
+  "lifecycle_state": "ACTIVE",
+  "current_stage": "stage-B-research",
+  "current_objective": "Push the proportion of zeros of zeta on the critical line toward 1: verify OpenAI draft (0.6730085), attempt improvements, prove conditional probability-1 theorems, report exact obstructions.",
+  "active_direction_ids": ["D1", "D2"],
+  "active_paper_ids": [
+    "P-2026-claude-zeroprop-1bd319",
+    "P-2026-gpt5sol-simplezeros-e29822",
+    "P-2025-goldston-suriajaya-fbf623",
+    "P-2019-aryan-landaugonek-ce43a2",
+    "P-2023-bgstb-paircorr-158ba7",
+    "P-2025-bgstb-proportions-cfa991",
+    "P-2025-glss-pcc-d8a559"
+  ],
+  "active_problem_ids": ["O-2026-criticalline-proportion"],
+  "active_task_ids": ["Q-20260814-criticalline-p1-507bb5"],
+  "active_run_ids": [
+    "R-20260814T041219Z-mainpush-3cdc81",
+    "R-20260814T041219Z-oaidraft-7c3e73",
+    "R-20260814T041219Z-condp1-698ec7"
+  ],
   "latest_checkpoint_path": null,
   "next_actions": [
-    "Complete PROJECT.md scope and inclusion criteria.",
-    "Create the first dated literature search log."
+    "Collect the three solver runs (mainpush / oaidraft / condp1).",
+    "Ingest upstream status labels verbatim; run adversarial audits; promote only verified results.",
+    "Stage C formalization for any CANDIDATE_COMPLETE_PROOF / 已证 result.",
+    "Write stage summary + interruption handoff; git sync."
   ],
   "blockers": [],
   "budget": {
@@ -20,6 +34,6 @@
     "recorded_effective_hours": 0.0,
     "remaining_hours": null
   },
-  "last_literature_cutoff": null,
-  "updated_at": "2026-08-14T04:03:56Z"
+  "last_literature_cutoff": "2026-08-14",
+  "updated_at": "2026-08-14T04:25:00Z"
 }

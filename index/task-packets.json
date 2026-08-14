@@ -1,5 +1,21 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-08-14T04:03:56Z",
-  "items": []
+  "updated_at": "2026-08-14T04:25:00Z",
+  "items": [
+    {
+      "id": "Q-20260814-criticalline-p1-507bb5",
+      "title": "Critical-line zero proportion toward probability 1 (Anthropic + OpenAI methods)",
+      "path": "agenda/task-packets/Q-20260814-criticalline-p1-507bb5.md",
+      "status": "DISPATCHED",
+      "directions": ["D1", "D2"],
+      "run_ids": [
+        "R-20260814T041219Z-mainpush-3cdc81",
+        "R-20260814T041219Z-oaidraft-7c3e73",
+        "R-20260814T041219Z-condp1-698ec7"
+      ],
+      "novelty_preflight": "complete (openness verdict 2026-08-14, audit path in literature/maps/FRONTIER.md)",
+      "created_at": "2026-08-14T04:20:00Z",
+      "updated_at": "2026-08-14T04:25:00Z"
+    }
+  ]
 }
