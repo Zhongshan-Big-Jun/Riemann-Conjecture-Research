@@ -30,7 +30,9 @@ certificate file in `runs/…/f9push-d3b58c/reproducibility/certificates/`.
       2026-08-15 after cross-validation). Nodes: grid-4000 ≫ 53M expected (extpress f=0.0039
       precedent was 53,137,290 at a looser target; the tighter 0.00395 requires more);
       depth ≥ 73; elapsed consistent with the CPU budget (~243k core-s grid-2000, ~631k
-      grid-4000 at 8 workers).
+      grid-4000 at 8 workers). **Expected elapsed_seconds (derived from measured 0.49
+      CPU-s/wall-s per worker, 2026-08-15): grid-2000 ≈ 60–70k s (~17h), grid-4000 ≈
+      150–170k s (~44h); if the host load drops, elapsed shrinks proportionally.**
 
 ## 2. Theorem write-up (candidate_proof.md in the run root)
 - [ ] Chain (general-k derivation; only the certificate changes):
