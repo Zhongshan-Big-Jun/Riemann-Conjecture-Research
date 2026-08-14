@@ -1,5 +1,33 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-08-14T04:03:56Z",
-  "items": []
+  "updated_at": "2026-08-14T04:45:00Z",
+  "items": [
+    {
+      "artifact_id": "A-R-20260814T041219Z-mainpush-3cdc81-candidate-958f2b",
+      "run_id": "R-20260814T041219Z-mainpush-3cdc81",
+      "kind": "candidate_proof",
+      "path": "runs/rigorous-open-math-research/R-20260814T041219Z-mainpush-3cdc81/candidate_proof.md",
+      "sha256": "958F2B1FBA0B0951D91DB5CD60045DE35B22B9069FB9E94B61357471786492E0",
+      "claims": ["R1: OpenAI draft Theorem 1.1 verified (0.6730085279277...)", "R2: PCC(ES) implies N0/N -> 1", "R3: OpenAI certificate class ceiling 0.6730583 formal / 0.6730085 rigorous at m<=269"],
+      "created_at": "2026-08-14T04:45:00Z"
+    },
+    {
+      "artifact_id": "A-R-20260814T041219Z-mainpush-3cdc81-repro-46bbef",
+      "run_id": "R-20260814T041219Z-mainpush-3cdc81",
+      "kind": "repro_manifest",
+      "path": "runs/rigorous-open-math-research/R-20260814T041219Z-mainpush-3cdc81/repro_manifest.md",
+      "sha256": "46BBEFBBEE11C59C672C95059B9F2FCFDED50C602BEE2227FC50DC6C9E8B8FF7",
+      "env": "Python 3.10.11, python-flint 0.9.0 (Arb), numpy 2.2.6, mpmath 1.3.0",
+      "created_at": "2026-08-14T04:45:00Z"
+    },
+    {
+      "artifact_id": "A-R-20260814T041219Z-oaidraft-7c3e73-candidate-3414a1",
+      "run_id": "R-20260814T041219Z-oaidraft-7c3e73",
+      "kind": "candidate_proof",
+      "path": "runs/rigorous-open-math-research/R-20260814T041219Z-oaidraft-7c3e73/candidate_proof.md",
+      "sha256": "3414A1F2151392B13A06EA2AB49654C71B120E34E9649E3376485E43592CB4E5",
+      "claims": ["OpenAI draft fully verified: Lemma 2.1 analytic, F6>=19/5000 finite Arb certificate, constants match Lean Thm D"],
+      "created_at": "2026-08-14T04:45:00Z"
+    }
+  ]
 }
