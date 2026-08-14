@@ -9,7 +9,7 @@
       "started_at": "2026-08-14T04:12:19Z",
       "upstream_status_verbatim": "RIGOROUS_PARTIAL_RESULT",
       "summary": "OpenAI draft Theorem 1.1 (0.6730085279) independently verified (Arb certificates byte-identical, chain re-derived vs Lean Thm D); R2: PCC(ES)/full-support PCC [GLSS25]+[GS25] implies N0/N -> 1; R3: OpenAI certificate class ceiling 0.6730583 formal limit, rigorous <= 0.6730085 at m<=269, class does not escape bandwidth-one ceiling 0.6818; probability-1 target reduced to PCC and shown obstructed unconditionally.",
-      "audit_status": "PENDING_REAUDIT (first-round auditor hit empty root race; re-audit agent 6f8cdac3 running)",
+      "audit_status": "PASS (independent re-audit 2026-08-14; report sha256 5F0EDEAACCC09B496431317FC1748028051396F0E0B4C16FE9A189DD0F9FD6F2; stale race report archived as audit_report.initial-race.md)",
       "key_artifacts": [
         "problem_contract.md 73E100A19E3303BDE51961B253AC519338AF5E8D175A41E6D4D7C5AAA3CEBDD4",
         "candidate_proof.md 958F2B1FBA0B0951D91DB5CD60045DE35B22B9069FB9E94B61357471786492E0",
@@ -17,16 +17,17 @@
         "audit_report.md DCE3B765D6C1F6642AADC3032DAB9CE34265C92527F5528CEE228BBBE834505E (stale race report; to be replaced)"
       ],
       "created_at": "2026-08-14T04:45:00Z",
-      "updated_at": "2026-08-14T04:45:00Z"
+      "updated_at": "2026-08-14T05:20:00Z",
+      "audit_findings": "R1 verified (constant + full chain + byte-identical certificates); R2 faithful to GS25 Thm2 + ES + GLSS25; R3 ceiling correct (C(269)=0.6730085, limit 0.6730583 < 0.6818287); residual: R1 chain paper-level (not Lean end-to-end), R3 monotonicity wording 'computed max', O5 moment normalization open, O7 CCLM17 traceability gap"
     },
     {
       "run_id": "R-20260814T041219Z-oaidraft-7c3e73",
       "task_packet_id": "Q-20260814-criticalline-p1-507bb5",
       "run_root": "runs/rigorous-open-math-research/R-20260814T041219Z-oaidraft-7c3e73",
       "started_at": "2026-08-14T04:12:19Z",
-      "upstream_status_verbatim": "INDEPENDENTLY_AUDITED_PROOF (solver-declared; independent audit pending)",
+      "upstream_status_verbatim": "INDEPENDENTLY_AUDITED_PROOF",
       "summary": "Focused audit of the OpenAI/GPT-5.6 draft: every step re-derived; both Arb certificates reproduced byte-for-byte; Lemma 2.1 analytic; Prop 4.1 F6>=19/5000 finite universally-quantified Arb verification; imported Theorem-D estimates match Lean ThmD.Mult.thmD0_simple_mult constant H_MT; O7 bibliographic IDs resolved.",
-      "audit_status": "PENDING_REAUDIT (first-round auditor hit empty root race; re-audit agent 10faa089 running; solver self-audit audit_report.md FB7AD416... to be replaced)",
+      "audit_status": "PASS (independent re-audit 2026-08-14; report sha256 3F554804C7061061C63561890ED7EC0E76672D5CC5A61F788E3451C03AB9B51A; solver self-audit archived as audit_report.solver-draft.md)",
       "key_artifacts": [
         "problem_contract.md 090FB488701195B22F602CA8D710802A2B1563AC41789975A4373A02DE7BBDE7",
         "candidate_proof.md 3414A1F2151392B13A06EA2AB49654C71B120E34E9649E3376485E43592CB4E5",
@@ -34,7 +35,8 @@
         "audit_report.md FB7AD41660F8995504E0F49436705F30475B4B8E70116B7F5571C923921EA1A3 (solver self-audit; to be replaced)"
       ],
       "created_at": "2026-08-14T04:45:00Z",
-      "updated_at": "2026-08-14T04:45:00Z"
+      "updated_at": "2026-08-14T05:20:00Z",
+      "audit_findings": "Imported base = Lean exactly (thmD0_simple_mult + HD_one = H_MT); Lemma 2.1/Cor 2.2/algebra verified; Lemma 3.1 paper-level sketch (relies on [1] Lemma 5.4, not Lean-formalized); F6>=19/5000 finite universally-quantified Arb certificate reproduced exactly (nodes 707901, hashes a9992300/7913c55); 3-point eps4>=221e-6 reproduced; bibliography resolved. Residuals: Lemma 3.1 dependency, F6 not proof-assistant-checked, counterexample_log.md absent (process gap)"
     },
     {
       "run_id": "R-20260814T041219Z-condp1-698ec7",
