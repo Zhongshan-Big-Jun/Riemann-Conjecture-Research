@@ -17,11 +17,16 @@ certificate file in `runs/…/f9push-d3b58c/reproducibility/certificates/`.
 - [ ] `second_derivative_table_sha256` recorded (recompute with
       build_second_derivative_lower_table(grid, cutoff, second_start=min(⌊0.95·grid⌋, cutoff−2), 128)).
 - [ ] `nodes`, `maximum_depth`, `surviving_gap_components_cells` sanity:
-      **expected initial_boxes / components (precomputed):
-      grid-2000: initial_boxes 16,345,098, components [(1867,2460);(3508,31024)];
-      grid-4000: initial_boxes 65,267,952, components [(3736,4921);(7016,62047)].**
-      Nodes ≥ initial_boxes (each box visited ≥ once); depth ≥ 73; elapsed consistent
-      with the CPU budget (~300k core-s grid-2000, ~800k grid-4000 at 8 workers).
+      **expected components (precomputed + cross-validated against the extpress certificate:
+      grid-2000 [(1867,2460);(3508,31024)], grid-4000 [(3736,4921);(7016,62047)]; the
+      component discovery reproduced the extpress f=0.0039 grid-4000 components
+      [3739,4915];[7025,61444] byte-for-byte 2026-08-15).**
+      **initial_boxes = (number of components)^8 = 2^8 = 256 for both runs** (box construction
+      is itertools.product(comps, repeat=8) — NOT the product of component sizes; corrected
+      2026-08-15 after cross-validation). Nodes: grid-4000 ≫ 53M expected (extpress f=0.0039
+      precedent was 53,137,290 at a looser target; the tighter 0.00395 requires more);
+      depth ≥ 73; elapsed consistent with the CPU budget (~243k core-s grid-2000, ~631k
+      grid-4000 at 8 workers).
 
 ## 2. Theorem write-up (candidate_proof.md in the run root)
 - [ ] Chain (general-k derivation; only the certificate changes):
