@@ -1,0 +1,24 @@
+{
+  "schema_version": 1,
+  "project_id": "MRP-20260814-riemann-critical-line-c13b8d",
+  "name": "Riemann Conjecture: Critical-Line Zero Proportion",
+  "slug": "riemann-critical-line",
+  "created_at": "2026-08-14T04:03:56Z",
+  "updated_at": "2026-08-14T04:03:56Z",
+  "lifecycle_state": "SETUP",
+  "scope": "",
+  "research_budget": {
+    "mode": "effective_time",
+    "target_hours": null,
+    "scope": "project",
+    "counting_policy": "evidence_backed",
+    "configured_by": "unset",
+    "configured_at": "2026-08-14T04:03:56Z"
+  },
+  "literature_cutoff": null,
+  "upstream_skill": "$rigorous-open-math-research",
+  "git_sync": {
+    "push_order": ["origin"]
+  },
+  "notes": []
+}
