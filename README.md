@@ -39,6 +39,11 @@ certificate class ceiling: ≈ 0.6818 (Lean-certified).
   HL* (all trace moments = sine-kernel Gram moments) + Spectral Lemma SL ⇒ 100% (proved in
   this project, ε-form/iterated limit; condp1 run). The Anthropic paper §7.2(f) contains one
   transcription error (m₂: 3/4 → 4/3), resolved exactly here (Λ₂(0) = 5/36, 13/18).
+  **2026-08-15: the random sine-process Gram model reproduces the full audited moment list
+  (1, 4/3, 2, 13/4) EXACTLY** (m₂ = 4/3, m₃ = 2, m₄ = 13/4 — the latter two upgraded from
+  MC to exact; DPP simulation confirms end-to-end); SL (Christoffel form) is supported by
+  eigenvalue-scaling and Christoffel-decay evidence (Λ_m(0) ≈ 0.32, 0.13, 0.045, 0.023 →
+  0) but remains open as a theorem (reports/sl-lemma-random-gram-probe.md).
 
 ## Repository structure
 
