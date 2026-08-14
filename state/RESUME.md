@@ -2,52 +2,48 @@
 
 - **Project:** Riemann Conjecture: Critical-Line Zero Proportion
 - **Project ID:** `MRP-20260814-riemann-critical-line-c13b8d`
-- **Updated:** 2026-08-14T04:25:00Z
+- **Updated:** 2026-08-14T05:40:00Z
 
 ## Current objective
 
 Push liminf N0^s(T,2T)/N(T,2T) (and N0/N, Nd/N) toward 1:
-(1) independently verify the OpenAI/GPT-5.6 draft constant 0.6730085279277...;
-(2) attempt unconditional improvements (gap-structure certificates, >7-point, better windows);
-(3) prove conditional "probability 1" (HL*(all k0) ⇒ 100%, PCC full support ⇒ 100% [GLSS25]);
-(4) report exact obstructions to unconditional probability 1.
+(1) ✅ OpenAI draft constant 0.6730085279277797613 verified (2 independent audits PASS + manager 50-dp check);
+(2) ⏳ extpress run: 9/11-point pressure certificates for a new record > 0.6730085 (running);
+(3) ✅ conditional "probability 1" theorem proved (HL* ∀k0 + SL ⇒ 100%; §7.2(f) transcription error m₂=3/4→4/3 resolved; Λ₂(0)=5/36, 13/18 exact) — audit 2bb08828 running;
+(4) ✅ exact obstruction report (bandwidth-one 0.6818; class ceiling 0.6730583; k=1 moment barrier; ghost configuration; PCC/HL* routes).
 
 ## Read these files first
 
 1. `literature/maps/FRONTIER.md` (B0 audit trail, exact known results, barriers)
-2. `agenda/task-packets/Q-20260814-criticalline-p1-507bb5.md` (contract, obligations O1–O8, sources+hashes)
+2. `agenda/task-packets/Q-20260814-criticalline-p1-507bb5.md`
 3. `state/current.json` and `project.json`
 4. Latest handoff under `runs/` (if any stage was interrupted)
 
 ## Key sources (all local, hashed)
 
-- Claude/Anthropic paper v2 (preferred): `literature/raw/claude-paper-main-v2-20260813.pdf`
-- Lean snapshot: `literature/raw/zeta-23-lean/` (commit 3635e748; Lean v4.33.0-rc2)
-- OpenAI draft: `literature/raw/zeta-simple-zeros/` (commit 040c5e8; paper/riemann.pdf; src/ verifier)
+- Claude/Anthropic paper v2: `literature/raw/claude-paper-main-v2-20260813.pdf`
+- Lean snapshot: `literature/raw/zeta-23-lean/` (commit 3635e748; Lean v4.33.0-rc2; local lake 4.31.0 — use elan to pin)
+- OpenAI draft: `literature/raw/zeta-simple-zeros/` (commit 040c5e8)
 
-## Last completed action
+## Run status matrix
 
-Stage A complete: project initialized, preflight OK (0 problems), B0 novelty preflight done,
-7 papers registered, packet Q-20260814-criticalline-p1-507bb5 dispatched to three solver runs
-(R-20260814T041219Z-{mainpush-3cdc81, oaidraft-7c3e73, condp1-698ec7}).
+| Run | Status | Audit |
+|---|---|---|
+| R-…-mainpush-3cdc81 | RIGOROUS_PARTIAL_RESULT (R1 verified, R2 PCC⇒100%, R3 ceiling 0.6730583) | ✅ PASS (5F0EDEAA…) |
+| R-…-oaidraft-7c3e73 | INDEPENDENTLY_AUDITED_PROOF (draft 0.673008528 verified) | ✅ PASS (3F554804…) |
+| R-…-condp1-698ec7 | RIGOROUS_PARTIAL_RESULT (HL*+SL⇒100%; m₂ 3/4→4/3) | ⏳ audit 2bb08828 running |
+| R-…-extpress-2f36ae | IN_PROGRESS (9/11-pt pressure) | pending |
 
-## Active tasks and runs
+## Exact next actions
 
-| Run | Task |
-|---|---|
-| R-…-mainpush-3cdc81 | verify OpenAI draft + improve constants + probability-1 attack + numerics |
-| R-…-oaidraft-7c3e73 | focused independent audit of OpenAI draft (O2, O7) |
-| R-…-condp1-698ec7 | conditional probability-1 theorems (O5, O4-cond) |
-
-## Exact next action
-
-Collect run outputs (job ids in session log), ingest status labels verbatim into
-`index/runs.json` + `index/artifacts.json`, run adversarial audits, then decide Stage C
-(Lean formalization of any qualified result) — gate: only `CANDIDATE_COMPLETE_PROOF`/`已证`.
+1. Collect condp1 audit verdict (2bb08828) + extpress result (f4d9e0c3); verify hashes.
+2. If extpress certifies a new constant > 0.673008528: reconstruct full proof chain, dispatch audit.
+3. Ingest all verdicts; write stage summary (assets/stage-summary.template.md → state/stage-summaries/); update FRONTIER; run validate_pipeline; commit + push.
+4. Report to user: honest final state (achieved conditionally / reduced / blocked unconditionally).
 
 ## Blockers or missing inputs
 
-None. (arXiv API rate-limited 429/503 on 2026-08-14; use abs-page fetches with backoff.)
+None. (Note: GLSS25 primary PDF arXiv:2503.15449 not bundled — quoted via GS Thm 5; verify before relying on it.)
 
 ## Budget remaining
 
