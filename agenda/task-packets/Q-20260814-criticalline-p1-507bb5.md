@@ -134,9 +134,10 @@ roots; the manager records paths and hashes only.
   unconditional c > 0.673008528 (or a verified proof of that constant) is novel.
 - **Novelty audit path:** `literature/maps/FRONTIER.md` §1–§2 (divergent search log with
   query → result → locator; exact known theorems; barrier list; excluded crank noise).
-- **Snapshot hash:** `sha256:6145A358969439BC118F48FE283C0C1C70F11BBD980D027E152B62BC1C3A9098`
-  (content hash of the B0 artifact literature/maps/FRONTIER.md; knowledge base empty at
-  dispatch, no accepted-knowledge dependencies; dispatch commit recorded per run's repro_manifest).
+- **Snapshot hash:** `sha256:5D6F139FD7E4A6F8CBCC7B1446569C8CE1653D105DEAB88C30BF264CFCCA23CD`
+  (content hash of the B0 artifact literature/maps/FRONTIER.md, refreshed 2026-08-14 after the
+  audits upgraded the OpenAI-draft row; knowledge base empty at dispatch, no
+  accepted-knowledge dependencies; dispatch commit recorded per run's repro_manifest).
 - **Backfill:** literature/maps/FRONTIER.md refreshed 2026-08-14; index/papers.json has 7
   registered papers; novel-risk line in FRONTIER.md §3.
 
@@ -156,7 +157,7 @@ roots; the manager records paths and hashes only.
 | BGSTB 2023 | pair correlation no RH | https://arxiv.org/abs/2306.04799 | external |
 | BGSTB 2025 | proportions I | https://arxiv.org/abs/2501.14545 | external |
 | GLSS 2025 | PCC simple/critical | https://arxiv.org/abs/2503.15449 | external |
-| B0 map | frontier + audit trail | literature/maps/FRONTIER.md | 6145A358969439BC118F48FE283C0C1C70F11BBD980D027E152B62BC1C3A9098 |
+| B0 map | frontier + audit trail | literature/maps/FRONTIER.md | 5D6F139FD7E4A6F8CBCC7B1446569C8CE1653D105DEAB88C30BF264CFCCA23CD |
 
 ## Required run location
 
