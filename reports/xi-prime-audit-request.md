@@ -1,4 +1,4 @@
-# Audit request — ξ′ pressure-method candidate record (packet for independent auditor)
+﻿# Audit request — ξ′ pressure-method candidate record (packet for independent auditor)
 
 Run roots to audit: `reports/xi-prime-cor22-derivation.md`, `reports/xi-prime-pressure-method.md`,
 `reports/xi-prime-mt-window.py`, `reports/linked-ladder.md` (project `F:\LaTeX\Riemann Conjecture`).
@@ -17,7 +17,7 @@ welcomed; this packet is retained for that purpose.
 Unconditional (pending audit):
 
     liminf N0^s_{ξ′}(T,2T)/N_{ξ′}(T,2T) ≥ C₉^{ξ′} := (6875·H_{ξ′}^{MT} − 1315/96)/6849
-                                        = 0.8691835350528274770392388622387462383908672479612151585…
+                                        = 0.8691835350528274770392388622387462383907877798872344889847675481490341…
     H_{ξ′}^{MT} := 2 − κ₁(1, v_MT) = 0.86788886519905193555031471042034031322264966515680426…,
     v_MT(s) = cos(√2 s), κ₁(λ,v) = 1/cWin(D₁,λ,v) (Lean XiPrime formula, zeta-23-lean@3635e748).
 

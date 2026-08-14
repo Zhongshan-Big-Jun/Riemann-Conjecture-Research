@@ -1,4 +1,4 @@
-# Candidate Proof — C₉ at f₉ = 0.00395 (DRAFT, awaiting certificate)
+﻿# Candidate Proof — C₉ at f₉ = 0.00395 (DRAFT, awaiting certificate)
 
 Run: `R-20260814T131528Z-f9push-d3b58c`. Status: **RIGOROUS_PARTIAL_RESULT (pending the
 certificate; draft prepared 2026-08-14, numbers pre-computed and manager-verified)**.
@@ -41,6 +41,6 @@ at m = 261 — the general formula above is used).
   A₀ = f₉·n = 99935/100000 = 0.99935; 1 − A₀/m = 1 − 99935/26,100,000;
   (m−1)/(500m) = 260/130,500.
 - ξ′ linked record: C₉^{ξ′}(0.00395) = (26,100,000·H_{ξ′} − 52,000)/26,000,065
-  = 0.869224726234155780682210369165264862803577221356718139899266…
+  = 0.869224726234155780682210369165264862803577221356718139913624558108218…
   (same certificate; H_{ξ′}^{MT} = 0.8678888651990519355503147104203403132225704976166306446…;
   reports/linked-ladder.md).

@@ -1,4 +1,4 @@
-# f₉ = 0.00395 release checklist (2026-08-14)
+﻿# f₉ = 0.00395 release checklist (2026-08-14)
 
 To execute the moment either certification run (pwsh-1 grid-4000 / pwsh-2 grid-2000) lands its
 certificate file in `runs/…/f9push-d3b58c/reproducibility/certificates/`.
@@ -51,12 +51,12 @@ certificate file in `runs/…/f9push-d3b58c/reproducibility/certificates/`.
                         (matches synced record …04907; earlier intermediate check at
                          …04898 was a float64-division artifact — superseded)
         C₉(ξ′,0.00395) = (26,100,000·H_{ξ′} − 52,000)/26,000,065
-                        = 0.869224726234155780682210369165264862803577221356718139899266…
+                        = 0.869224726234155780682210369165264862803577221356718139913624558108218…
                         (matches synced record …78068)
       Cross-checks (already-synced ladder, exact forms):
         C₉(ζ,0.00398)  = (25,900,000·H_MT − 51,600)/25,800,102
                         = 0.673104634442792575956499574373982916213631188024769810765723…
-        C₉(ξ′,0.00398) = 0.869249338962126782706252517912015003369543883519171113941332…
+        C₉(ξ′,0.00398) = 0.8692493389621267827062525179120150033695438835191711139556918072623011…
       Closed-form identity at f=0.0039: (2,640,000·H − 5,260)/2,630,016
                         = (6875·H − 1315/96)/6849 verified to 1e-71.
 - [ ] ξ′ linked record: C₉^{ξ′}(0.00395) = 0.86922472623415578068… (reports/linked-ladder.md;
