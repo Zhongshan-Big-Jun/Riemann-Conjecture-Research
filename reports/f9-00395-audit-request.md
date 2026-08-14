@@ -46,6 +46,14 @@ branch-and-bound, 128-bit), then unconditionally:
 - B5 (dependency honesty): no numerical evidence masquerading as proof; the certificate is
   the only new computational input over the extpress record; everything else is audited
   paper-level (Lean: Thm D baseline, XiPrime formula; extpress: PASS-with-limits).
+- B6 (soundness stack, all verified manager-level 2026-08-15): (i) rounding directions —
+  down_* are strict binary64 lower bounds (nextafter toward −inf); (ii) component discovery
+  keeps a superset (conservative lower-bound test); (iii) truncation soundness — the +8 slack
+  in cutoff = ⌊0.00395·4000·grid⌋+8 gives linear-only bound > target_upper at the last
+  in-table cell (grid-2000: 0.003950875 at idx 31607; grid-4000: 0.0039504375 at idx 63207),
+  so no counterexample involves a gap cell ≥ cutoff; (iv) loud-fail exit 2 on terminal
+  violations; (v) kernel identity — scoping kernel = certificate kernel (sinc evenness);
+  (vi) true minimum ≈ 0.0039818 re-verified with the actual kernel (margin 3.2e-5).
 
 ## Expected verdict format
 
