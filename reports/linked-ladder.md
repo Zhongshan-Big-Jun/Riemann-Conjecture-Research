@@ -31,5 +31,8 @@ structural); the ξ′ baseline H_{ξ′}^{MT} = 0.8678888651990519355503… is 
 Optimality check (2026-08-14): C₉(n) is strictly increasing in n (f=0.0039: n=200 →
 0.6730342, n=256 → 0.6730536), so n = ⌈1/f⌉−1 (the largest n with A₀ = f·n < 1) is the
 optimal block parameter; both ladders use it.
+**Optimality re-verified 2026-08-15 (mpmath 40d): strict increase confirmed on n ∈
+{1,50,100,150,200,220,240,255,256,257} (n=257 has A₀ = 1.0023 ≥ 1, excluded); n=200 →
+0.673034197303917, n=256 → 0.67305364595259 — matches the quoted values.**
 Pending audits: A1 (block structure write-up), A3 (kernel-limit transfer), plus the f₉
 certificate itself.
