@@ -50,6 +50,7 @@ certificate file in `runs/…/f9push-d3b58c/reproducibility/certificates/`.
 
 ## 4. Follow-ups
 - [ ] Dispatch independent audit of the new certificate + record theorem (audit request
-      packet; extpress precedent: manager audit PASS-with-limits).
+      packet pre-prepared: reports/f9-00395-audit-request.md (B1–B5); extpress precedent:
+      manager audit PASS-with-limits; subagents crash-prone — manager-level recommended).
 - [ ] Consider a 0.00396 run only if the 0.00395 runs close comfortably (cost gradient:
       5-10×).
