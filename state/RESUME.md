@@ -2,7 +2,7 @@
 
 - **Project:** Riemann Conjecture: Critical-Line Zero Proportion
 - **Project ID:** `MRP-20260814-riemann-critical-line-c13b8d`
-- **Updated:** 2026-08-14T05:40:00Z
+- **Updated:** 2026-08-15T00:25:00Z
 
 ## Current objective
 
@@ -43,10 +43,12 @@ against OpenAI Cor 2.2 line-for-line; audits A1–A6 packet ready (reports/xi-pr
 
 ## Exact next actions
 
-1. Collect f₉=0.00395 certification results (pwsh-43 grid-2000, pwsh-44 grid-4000); verify
-   certificates; if certified → new ζ record C₉ = 0.6730855621335 and ξ′ linked record
-   0.8692247262342 (ladder in reports/linked-ladder.md).
-2. Run the A1–A6 independent audit of the ξ′ candidate (audit request packet prepared).
+1. Collect f₉=0.00395 certification results (jobs pwsh-1 grid-4000, pwsh-2 grid-2000 — 8 workers
+   each, running since 2026-08-14T23:13Z; est. 17–44h under host throttling); verify
+   certificates; if certified → new ζ record C₉ = 0.6730855621335040490732 and ξ′ linked record
+   0.8692247262341557806822 (exact forms in release-checklist.md, verified mpmath 70 digits).
+2. Run the A1–A6 independent audit of the ξ′ candidate (audit request packet prepared;
+   manager-level audit is the working pattern — subagents crash-prone).
 3. Update FRONTIER/stage summary; run validate_pipeline; commit + push (per user: sync every result).
 
 ## Blockers or missing inputs

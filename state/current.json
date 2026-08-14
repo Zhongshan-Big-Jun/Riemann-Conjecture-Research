@@ -19,13 +19,15 @@
   "active_run_ids": [
     "R-20260814T041219Z-mainpush-3cdc81",
     "R-20260814T041219Z-oaidraft-7c3e73",
-    "R-20260814T041219Z-condp1-698ec7"
+    "R-20260814T041219Z-condp1-698ec7",
+    "R-20260814T041219Z-extpress-2f36ae",
+    "R-20260814T131528Z-f9push-d3b58c"
   ],
   "latest_checkpoint_path": null,
   "next_actions": [
-    "Collect the three solver runs (mainpush / oaidraft / condp1).",
-    "Ingest upstream status labels verbatim; run adversarial audits; promote only verified results.",
-    "Stage C formalization for any CANDIDATE_COMPLETE_PROOF / 已证 result.",
+    "Collect f9=0.00395 certificates (pwsh-1 grid-4000 / pwsh-2 grid-2000, 8 workers each, running since 2026-08-14T23:13Z); on landing, execute release-checklist.md in R-20260814T131528Z-f9push-d3b58c.",
+    "Arithmetic of final constants verified at mpmath 70 digits with exact rational forms (2026-08-15): C9(zeta,0.00395) = (26100000*H_MT - 52000)/26000065 = 0.6730855621335040490732; C9(xip,0.00395) = 0.8692247262341557806822.",
+    "Audit A1-A6 packet ready (reports/xi-prime-audit-request.md); subagents crash-prone, manager-level audit is the working pattern.",
     "Write stage summary + interruption handoff; git sync."
   ],
   "blockers": [],
@@ -35,5 +37,5 @@
     "remaining_hours": null
   },
   "last_literature_cutoff": "2026-08-14",
-  "updated_at": "2026-08-14T04:25:00Z"
+  "updated_at": "2026-08-15T00:25:00Z"
 }

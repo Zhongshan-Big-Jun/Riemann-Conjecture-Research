@@ -16,7 +16,8 @@ then, unconditionally,
 At f₉ = 0.0039 (certified, extpress): n = 256, m = 264, A₀ = 0.9984, and the formula reduces
 to the closed form (6875·H_MT − 1315/96)/6849 = 0.67305364595258992520… .
 At f₉ = 0.00395 (this run): n = 253, m = 261, A₀ = 0.99935 < 1 ✓,
-C₉(0.00395) = 0.67308556213350404907…   (manager, mpmath 60 digits;
+C₉(0.00395) = 0.67308556213350404907…   (manager, mpmath 70 digits,
+exact rational form: (26,100,000·H_MT − 52,000)/26,000,065;
 note: the (6875·H_MT − 1315/96)/6849 closed form is specific to m = 264 and does NOT apply
 at m = 261 — the general formula above is used).
 
@@ -34,10 +35,12 @@ at m = 261 — the general formula above is used).
 
 - Insert the certificate file (kernel_table_sha256, second_derivative_sha256, nodes,
   max_depth, surviving components) into reproducibility/certificates/.
-- Verify: 1 − A₀/m = 1 − 0.99935/261 = 260.00065/261… (exact rational: A₀ = 99935/100000,
-  m = 261 ⟹ 1 − 99935/26,100,000; C₉ final fraction (6875·H_MT − 1315/96)/6849 unchanged in
-  form? NO — the final fraction depends on (m−1)/(500m) and A₀/m; recompute exactly:
-  (H_MT − 260/130,500)/(1 − 99935/26,100,000)). Manager recomputed numerically
-  = 0.67308556213350404907…; exact fraction to be written at certification time.
-- ξ′ linked record: C₉^{ξ′}(0.00395) = 0.86922472623415578068… (same certificate;
+- [DONE 2026-08-15] Exact rational constants (mpmath 70 digits, release-checklist.md):
+  C₉(0.00395) = (26,100,000·H_MT − 52,000)/26,000,065
+              = 0.673085562133504049073235491525348279794216631656324415345203…
+  A₀ = f₉·n = 99935/100000 = 0.99935; 1 − A₀/m = 1 − 99935/26,100,000;
+  (m−1)/(500m) = 260/130,500.
+- ξ′ linked record: C₉^{ξ′}(0.00395) = (26,100,000·H_{ξ′} − 52,000)/26,000,065
+  = 0.869224726234155780682210369165264862803577221356718139899266…
+  (same certificate; H_{ξ′}^{MT} = 0.8678888651990519355503147104203403132225704976166306446…;
   reports/linked-ladder.md).

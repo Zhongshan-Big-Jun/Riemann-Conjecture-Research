@@ -20,7 +20,24 @@ certificate file in `runs/…/f9push-d3b58c/reproducibility/certificates/`.
       (n = ⌈1/0.00395⌉−1 = 253, m = 261, A₀ = 0.99935 < 1); 6. pinching/averaging
       (A₀/m = 0.99935/261, (m−1)/(500m) = 260/130500); 7. conclusion
       C₉(0.00395) = (H_MT − 260/130500)/(1 − 0.99935/261) = 0.67308556213350404907…
-- [ ] Manager arithmetic re-verification (mpmath ≥ 30 digits).
+- [x] Manager arithmetic re-verification (mpmath 70 digits, 2026-08-15 00:20 +08):
+      H_MT = 0.67250070367941164573437979080329518859340302862626…
+      H_{ξ′}^{MT} = 0.8678888651990519355503147104203403132225704976166306446…
+      (re-derived from reports/xi-prime-mt-window.py at dps=60; matches record)
+      Exact rational forms (pure-mpmath; float64 pitfalls avoided by integer coefficients):
+        C₉(ζ,0.00395)  = (26,100,000·H_MT − 52,000)/26,000,065
+                        = 0.673085562133504049073235491525348279794216631656324415345203…
+                        (matches synced record …04907; earlier intermediate check at
+                         …04898 was a float64-division artifact — superseded)
+        C₉(ξ′,0.00395) = (26,100,000·H_{ξ′} − 52,000)/26,000,065
+                        = 0.869224726234155780682210369165264862803577221356718139899266…
+                        (matches synced record …78068)
+      Cross-checks (already-synced ladder, exact forms):
+        C₉(ζ,0.00398)  = (25,900,000·H_MT − 51,600)/25,800,102
+                        = 0.673104634442792575956499574373982916213631188024769810765723…
+        C₉(ξ′,0.00398) = 0.869249338962126782706252517912015003369543883519171113941332…
+      Closed-form identity at f=0.0039: (2,640,000·H − 5,260)/2,630,016
+                        = (6875·H − 1315/96)/6849 verified to 1e-71.
 - [ ] ξ′ linked record: C₉^{ξ′}(0.00395) = 0.86922472623415578068… (reports/linked-ladder.md;
       same certificate, H_{ξ′}^{MT} = 0.86788886519905193555…).
 
