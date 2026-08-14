@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-08-14T04:45:00Z",
+  "updated_at": "2026-08-15T01:00:00Z",
   "items": [
     {
       "run_id": "R-20260814T041219Z-mainpush-3cdc81",
@@ -87,6 +87,30 @@
       "created_at": "2026-08-14T04:50:00Z",
       "updated_at": "2026-08-14T17:35:00Z",
       "audit_findings": "All arithmetic independently re-verified at 60+ digits; chain structure re-derived (k=7, k=3 reproductions exact; threshold f9* ~0.003829 < certified 0.0039); certificate file integrity + hashes match; verifier validated byte-identically on k=7 (manager re-run: a9992300..., 707901 nodes); numerical-evidence discipline upheld. Scope limits: full k=9 grid-4000 re-run not performed (~1h); k=11 infeasible; class limit formal; third-party re-audit recommended."
+    },
+    {
+      "run_id": "R-20260814T131528Z-f9push-d3b58c",
+      "task_packet_id": "Q-20260814-criticalline-p1-507bb5",
+      "run_root": "runs/rigorous-open-math-research/R-20260814T131528Z-f9push-d3b58c",
+      "started_at": "2026-08-14T13:15:28Z",
+      "upstream_status_verbatim": "IN_PROGRESS",
+      "summary": "Certifying f_9 = 0.00395 (F_8 >= 395/100000, 8-var Arb B&B, grid 2000 + grid 4000, 128-bit, 8 workers each) for the next records: C_9(zeta) = (26,100,000*H_MT - 52,000)/26,000,065 = 0.6730855621335040490732 and linked C_9(xi') = 0.8692247262341557806822 (same window-determined kernel; A6 PASS). Final-constant arithmetic verified mpmath 70 digits with exact rational forms; release-checklist.md, candidate_proof.draft.md, whiteboard.md prepared; both validation gates clean.",
+      "audit_status": "pending (certificate in progress; on landing run release-checklist.md: verify hashes/nodes, finalize candidate_proof.md, update FRONTIER/index, gates, git sync)",
+      "key_artifacts": [
+        "release-checklist.md",
+        "candidate_proof.draft.md",
+        "f9-ladder.md",
+        "whiteboard.md",
+        "reproducibility/verify_kpoint_parallel.py (--out atomic write)",
+        "reproducibility/certificates/ (pending: nine-point-f8-gt-395over100000-grid{2000,4000}.txt)"
+      ],
+      "created_at": "2026-08-14T13:15:28Z",
+      "updated_at": "2026-08-15T01:00:00Z",
+      "open_obligations": [
+        "certificates (ETA ~28h at current host throttling)",
+        "independent audit of the 0.00395 certificate + record theorem (manager-level pattern)",
+        "Lean AdmWindow instance for cos(sqrt2 s) (Stage C, blueprint ready)"
+      ]
     }
   ]
 }
