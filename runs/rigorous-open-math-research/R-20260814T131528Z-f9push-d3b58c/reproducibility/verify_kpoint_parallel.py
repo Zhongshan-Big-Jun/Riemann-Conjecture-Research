@@ -176,6 +176,8 @@ def main():
     ap.add_argument('--precision',type=int,default=128)
     ap.add_argument('--no-tangent',action='store_true')
     ap.add_argument('--workers',type=int,default=cpu_count())
+    ap.add_argument('--out',type=str,default=None,
+                    help='write the certificate report to this file (atomic write on success)')
     args=ap.parse_args()
     k=args.k; d=k-1; P_DEN=500*d
     tn,td=args.target.split('/'); target_n=int(tn); target_d=int(td)
@@ -229,6 +231,20 @@ def main():
                  'workers':workers,
                  'second_derivative_table_sha256':table_sha256(second_table0)})
     print(rep.to_text())
+    if args.out:
+        import tempfile
+        od = os.path.dirname(os.path.abspath(args.out)) or '.'
+        os.makedirs(od, exist_ok=True)
+        fd, tmp = tempfile.mkstemp(dir=od, suffix='.tmp')
+        try:
+            with os.fdopen(fd, 'w', encoding='utf-8') as fh:
+                fh.write(rep.to_text())
+            os.replace(tmp, args.out)
+        except BaseException:
+            try: os.unlink(tmp)
+            except OSError: pass
+            raise
+        print("written:", args.out)
 
 if __name__=='__main__':
     main()

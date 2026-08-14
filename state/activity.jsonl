@@ -15,3 +15,4 @@
 {"ts":"2026-08-14T21:35:00Z","event":"f9push_restart","detail":"22-workers spawn stalls (worker CPU flat); 8 workers verified healthy; grid-2000 (pwsh-43) and grid-4000 (pwsh-44) f9=0.00395 runs in parallel"}
 {"ts":"2026-08-14T21:44:00Z","event":"f9push_waiting","detail":"f9=0.00395 certifications running (grid-2000 pwsh-43, grid-4000 pwsh-44, 8 workers each); system-throttled ~45s CPU/min; ETA several hours; all independent prep synced"}
 {"ts":"2026-08-14T21:56:00Z","event":"f9push_speedup","detail":"Host load dropped: effective rate 89.4%; ETA grid-2000 ~2-4h, grid-4000 ~4-8h at full speed"}
+{"ts":"2026-08-14T23:15:00Z","event":"f9push_restart2","detail":"Job records + stdout lost (job system reset); verifier patched with --out atomic file write; orphans killed; grid-4000 (pwsh-1) and grid-2000 (pwsh-2) f9=0.00395 restarted with file output"}
