@@ -16,6 +16,16 @@ C₉(ζ) = 0.6730855621335040490732…, C₉(ξ′) = 0.8692247262341557806822�
 - 0.00395 runs launched 2026-08-14T23:13Z (pwsh-1 grid-4000, pwsh-2 grid-2000), still running [PARTIAL]
 - Final constants verified via exact rational forms (mpmath 70 digits) [SUCCEEDED]
 - whiteboard + release-checklist + candidate_proof.draft prepared [SUCCEEDED]
+- ξ′ candidate audits A1–A6 CLOSED manager-level PASS; AdmWindow cos blueprint complete
+  (reports/admwindow-cos-instance.md) [SUCCEEDED]
+- Canonical ξ′ computation script established (analytic vConv, dps=120; nested-quadrature
+  noise documented); all record tails digit-exact (dps=80/120 pure-mpmath) [SUCCEEDED]
+- Release expectations precomputed + cross-validated against TWO known certificates
+  (0.0039 grid-4000, 0.0038 grid-2000: components + kernel hashes byte-for-byte);
+  initial_boxes = (count)^8 = 256 interpretation corrected [SUCCEEDED]
+- Soundness stack B6 (i–vii) complete: rounding, components, truncation, loud-fail,
+  kernel identity, true minimum 0.0039818, tangent-pruning convexity audit [SUCCEEDED]
+- Records consistency audit across FRONTIER/README/index (no drift) [SUCCEEDED]
 
 ## Ideas to return to
 
