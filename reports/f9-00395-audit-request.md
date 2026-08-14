@@ -27,7 +27,10 @@ branch-and-bound, 128-bit), then unconditionally:
   grid-2000 `c23c661cdcc16a175ebb5bf528e657d5efba5a1f28dbc8ed9b75f4a8a52f9b22` (cutoff
   31608), grid-4000 `0861f5203a42977ad41a8a2f0f727e9bed7042bce5133dd05e6f8f62ae099868`
   (cutoff 63208)** — and `second_derivative_table_sha256` (second_start =
-  min(⌊0.95·grid⌋, cutoff−2)); sanity on `nodes` (expect ≫ 53M grid-4000; extpress f=0.0039
+  min(⌊0.95·grid⌋, cutoff−2)); both recipes were cross-validated 2026-08-15 against the
+  extpress f=0.0039 grid-4000 certificate (kernel 7029ac0f…, second-derivative 26715cd5…
+  reproduced exactly; details in the run's release-checklist.md §1); sanity on `nodes`
+  (expect ≫ 53M grid-4000; extpress f=0.0039
   precedent 53,137,290 at a looser target; grid-2000 smaller), `maximum_depth` (≥ 73),
   `surviving_gap_components_cells` (expected [(1867,2460);(3508,31024)] grid-2000 /
   [(3736,4921);(7016,62047)] grid-4000 — discovery logic cross-validated byte-for-byte
