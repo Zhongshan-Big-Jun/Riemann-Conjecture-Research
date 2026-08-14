@@ -16,6 +16,10 @@ certificate file in `runs/…/f9push-d3b58c/reproducibility/certificates/`.
       kernel (cutoff 62408) reproduces its recorded hash 7029ac0f… exactly (MATCH).**
 - [ ] `second_derivative_table_sha256` recorded (recompute with
       build_second_derivative_lower_table(grid, cutoff, second_start=min(⌊0.95·grid⌋, cutoff−2), 128)).
+      **Recipe cross-validated 2026-08-15: recomputing the extpress f=0.0039 grid-4000
+      second-derivative table (cutoff 62408, second_start 3800) reproduces its recorded hash
+      26715cd5…f294e1 exactly (MATCH). Both hash recipes now validated against a known
+      certificate.**
 - [ ] `nodes`, `maximum_depth`, `surviving_gap_components_cells` sanity:
       **expected components (precomputed + cross-validated against the extpress certificate:
       grid-2000 [(1867,2460);(3508,31024)], grid-4000 [(3736,4921);(7016,62047)]; the
