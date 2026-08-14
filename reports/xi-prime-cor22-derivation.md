@@ -71,9 +71,11 @@ Apply Lemma 2.1 to (P₁, Q₀) with r = s₁, b = s₂ + p (n₊(Q₀) ≤ s₂
   ‖Â‖_F² ≥ 4trÂ − 3s₁ − 4(s₂+p) + Δ(M°),   M° := VᵀV (the s₁×s₁ Gram of the simple on-line zeros).
 Rearrange with trÂ = N(1+o(1)), ‖Â‖_F² = κ₁N(1+o(1)), N ≥ s₁ + 2s₂ + 2p:
   s₁ ≥ (2 − κ₁)N + Δ(M°) − o(N),   i.e.  **S₁ ≥ H_{ξ′}^{MT}·N_{ξ′} + Δ(M°) − o(N_{ξ′})**.
-(Algebra: 3s₁ + 4(s₂+p) ≤ 2s₁ + 2(s₁+2s₂+2p) = 2s₁ + 2N − o(N) ⟹ s₁ ≥ 4N − κ₁N − 2N + Δ = (2−κ₁)N + Δ; the
-same bookkeeping as OpenAI Cor 2.2 → eq (7) → Theorem 1.1 chain, with the ζ numbers replaced
-by the ξ′ ones. No step depends on ζ-specific arithmetic.)
+(CORRECTED algebra — a first draft used the loose bound 3s₁ + 4(s₂+p) ≤ 2s₁ + 2N, which only
+yields s₁ ≥ ((2−κ₁)N + Δ)/2; the tight bound is 4(s₂+p) = 2·(2s₂+2p) ≤ 2(N − s₁), giving
+3s₁ + 4(s₂+p) ≤ s₁ + 2N, hence: (4−κ₁)N + Δ ≤ 3s₁ + 4(s₂+p) ≤ s₁ + 2N ⟹
+s₁ ≥ (2−κ₁)N + Δ. Manager self-audit caught the slip on 2026-08-14; the corrected chain is
+the one used. Same bookkeeping as OpenAI Cor 2.2 → eq (7) → Theorem 1.1 chain.)
 
 ## 5. Pressure chain (verbatim transfer)
 
