@@ -8,3 +8,4 @@
 {"ts":"2026-08-14T05:35:00Z","event":"condp1_complete","detail":"RIGOROUS_PARTIAL_RESULT: conditional 100% theorem (HL* + SL); §7.2(f) transcription error m2=3/4->4/3 resolved exactly (Lambda2(0)=5/36, 13/18); 12 artifact hashes verified; audit 2bb08828 running"}
 {"ts":"2026-08-14T05:45:00Z","event":"condp1_audit","detail":"PASS-CONDITIONAL (457B3062...): core claims verified; F-1 quantifier repair sent to solver; F-2/F-3/F-4 minor"}
 {"ts":"2026-08-14T05:50:00Z","event":"condp1_F1_repaired","detail":"eps-form/iterated-limit theorem statement (sup_{lambda<1} liminf_T = 1); F-2 REG, F-3 continuity, F-4 HL*_4-conditional; hashes verified"}
+{"ts":"2026-08-14T17:35:00Z","event":"extpress_new_record","detail":"NEW UNCONDITIONAL RECORD C9 = 0.6730536459526 (k=9 pressure certificate F8>=39/10000, 53.1M nodes); manager-level audit PASS with scope limits; k=7 verifier validation byte-identical; C9-C7 = 4.51e-5"}

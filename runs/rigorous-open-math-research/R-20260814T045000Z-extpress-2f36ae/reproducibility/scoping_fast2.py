@@ -26,11 +26,11 @@ def make_grad_F(k):
 
     def F(g):
         g = np.asarray(g, float)
-        total = float(g.sum())/(500.0*(k-1))
+        total=float(g.sum())/(500.0*(k-1))
         for span in range(1, k):
-            coef = 2.0/(k-span)
+            coef=2.0/(k-span)
             for i in range(k-span):
-                total += coef*float(kk(g[i:i+span].sum()))
+                total += coef*float(kk(g[i:i+span].sum())**2)
         return total
     return F
 

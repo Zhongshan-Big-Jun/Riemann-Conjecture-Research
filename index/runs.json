@@ -71,12 +71,22 @@
       "task_packet_id": "Q-20260814-criticalline-p1-507bb5",
       "run_root": "runs/rigorous-open-math-research/R-20260814T045000Z-extpress-2f36ae",
       "started_at": "2026-08-14T04:50:00Z",
-      "upstream_status_verbatim": "IN_PROGRESS",
-      "summary": "Extend consecutive-zero pressure method beyond 7 points (9/11-point Arb certificates) toward the bandwidth-one ceiling 0.6818; new record > 0.673008528 targeted.",
-      "audit_status": "PENDING",
-      "key_artifacts": [],
+      "upstream_status_verbatim": "RIGOROUS_PARTIAL_RESULT",
+      "summary": "NEW UNCONDITIONAL RECORD: liminf N0^s(T,2T)/N(T,2T) >= C_9 = (6875*H_MT - 1315/96)/6849 = 0.673053645952589925209110000745... (improves C_7 = 0.6730085279 by 4.51e-5). New k=9 pressure certificate F_8 >= 39/10000 (8-variable exhaustive Arb branch-and-bound, grid 4000, 128-bit, 53,137,290 nodes, kernel hash 7029ac0f..., elapsed 3464s/22 workers). General-k chain derived symbolically (reproduces k=7 and k=3 exactly); block-energy/block-defect (m_9=264, A_0=624/625<1)/pinching verified. Honest caveats: f_9=0.00395 attempt uncertified within budget; true min ~0.00398 numerical only; k=11 infeasible; class limit 0.673126 formal only; N0/N->1 remains OPEN.",
+      "audit_status": "PASS with scope limits (manager-level independent audit 2026-08-14; two agent audits crashed without artifacts; report audit_report.md; solver self-audit archived as audit_report.solver-draft.md)",
+      "key_artifacts": [
+        "candidate_proof.md 43214E4B95567EFC... (NEW RECORD C9 = 0.6730536459...)",
+        "candidate_proof.general-k-derivation.md 9930B309CD6CE8D0...",
+        "repro_manifest.md EADC6C319FA180C6...",
+        "reproducibility/verify_kpoint_parallel.py 4B028360...",
+        "reproducibility/certificates/nine-point-f8-gt-39over10000.txt D8FB68246BB90BEC...",
+        "reproducibility/certificates/nine-point-f8-gt-19over5000-grid2000.txt 27D67F76F1CFC489...",
+        "audit_report.md (manager-level PASS with scope limits)",
+        "audit_report.solver-draft.md D0E1E115CD401D36... (archived self-audit)"
+      ],
       "created_at": "2026-08-14T04:50:00Z",
-      "updated_at": "2026-08-14T04:50:00Z"
+      "updated_at": "2026-08-14T17:35:00Z",
+      "audit_findings": "All arithmetic independently re-verified at 60+ digits; chain structure re-derived (k=7, k=3 reproductions exact; threshold f9* ~0.003829 < certified 0.0039); certificate file integrity + hashes match; verifier validated byte-identically on k=7 (manager re-run: a9992300..., 707901 nodes); numerical-evidence discipline upheld. Scope limits: full k=9 grid-4000 re-run not performed (~1h); k=11 infeasible; class limit formal; third-party re-audit recommended."
     }
   ]
 }
