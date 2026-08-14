@@ -5,9 +5,10 @@
 
 ## Current plan
 
-Certify f₉ = 0.00392 (F₈ ≥ 392/100000, grid-2000, run pwsh-4 launched 2026-08-15) and
-release the new records: C₉(ζ) = 0.673066472675939665848…, C₉(ξ′) = 0.86920009109661916184…
-(one window-determined kernel serves both families).
+✅ RELEASE EXECUTED 2026-08-15: f₉ = 0.00392 certified (grid-2000, 64,748,524 nodes;
+all expected values matched). New records: C₉(ζ) = 0.673066472675939665848…,
+C₉(ξ′) = 0.86920009109661916184… (candidate_proof.md, FRONTIER, index/runs.json,
+audit_report.md all updated; manager-level audit PASS).
 
 **2026-08-15 correction**: the original 0.00395 target FAILED certification (both grid-2000
 and grid-4000): true min of F₈ ≈ 0.00395005 (configuration
@@ -32,6 +33,8 @@ lower basin. Release retargeted to 0.00392 (margins 1.1e-5 / 3.0e-5).
 - 0.00395 runs FAILED (loud fail at leaf boxes; bounds 0.0039314/0.00394017 below target) [FAILED] (informative: pinned true min ≈ 0.00395005)
 - 0.00392 constants precomputed (exact forms (657,500·H_MT − 1,310)/655,001; mpmath dps=90) [SUCCEEDED]
 - 0.00392 grid-2000 certification launched (pwsh-4, 8 workers) 2026-08-15 [PARTIAL]
+- 0.00392 grid-2000 certificate LANDED 2026-08-15T04:59+08 (verified=true, nodes 64,748,524, depth 80; all precomputed expected values matched; kernel sha 39a209d3…, second 29ca4522…, components [[1868,2458];[3511,30823]], initial_boxes 256) [SUCCEEDED]
+- Release executed: candidate_proof.md finalized; FRONTIER/index/RESUME updated (records ζ 0.673066472675939665848, ξ′ 0.86920009109661916184); manager-level audit PASS (audit_report.md); checklist items checked [SUCCEEDED]
 - Expected certificate values precomputed for 0.00392 grid-2000: cutoff 31368, kernel sha256 39a209d3e4a897d982023ab49db27a206401824c769980572433dc4c47387297, components [[1868,2458];[3511,30823]], initial_boxes 256, second-deriv sha256 29ca4522e12a991b7ab48943838a174fb2350b328ecc2155d9ecba4cb429f32c [SUCCEEDED]
 
 ## Ideas to return to
@@ -46,11 +49,12 @@ lower basin. Release retargeted to 0.00392 (margins 1.1e-5 / 3.0e-5).
 
 ## Open obligations
 
-- Collect the 0.00392 grid-2000 certificate (pwsh-4; estimate 20–120k core-s ≈ 1–7 h);
-  run release-checklist.md (precomputed expected values in §1).
-- Independent audit of the 0.00392 certificate + record theorem (manager-level pattern;
-  packet reports/f9-00395-audit-request.md retargeted to 0.00392).
-- Update FRONTIER / index; validate_pipeline clean; git commit + push (per-user sync).
+- Independent (third-party) re-audit of the 0.00392 certificate + record theorem
+  (audit-dispatch-prompt.md; manager-level pattern; subagents crash-prone).
+- Optional premium step 0.00393 grid-4000 (razor-thin margin 1.02e-5 at the critical
+  leaf) — only if a premium record is wanted.
+- SL lemma (open theorem; moment side exact, spectral evidence strong).
+- Stage C Lean instances (AdmWindow cos blueprint ready).
 
 ## Key artifacts
 

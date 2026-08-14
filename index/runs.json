@@ -93,25 +93,26 @@
       "task_packet_id": "Q-20260814-criticalline-p1-507bb5",
       "run_root": "runs/rigorous-open-math-research/R-20260814T131528Z-f9push-d3b58c",
       "started_at": "2026-08-14T13:15:28Z",
-      "upstream_status_verbatim": "IN_PROGRESS",
-      "summary": "Certifying f_9 = 0.00392 (F_8 >= 392/100000, 8-var Arb B&B, grid 2000, 128-bit, 8 workers; pwsh-4) for the next records: C_9(zeta) = (657,500*H_MT - 1,310)/655,001 = 0.673066472675939665848 and linked C_9(xi') = 0.86920009109661916184 (same window-determined kernel; A6 PASS). RETARGETED 2026-08-15: the original 0.00395 target FAILED certification (both grid-2000 and grid-4000 loud fails): true min of F_8 = 0.003950049001339790 (exact-kernel verified; the earlier 0.0039818 was a local minimum), margin ~5e-8 below the verifier bound loss ~1e-5 — infeasible (f9-ladder.md CORRECTION). All release artifacts prepared and verified (release-checklist.md with precomputed expected values, candidate_proof.draft.md, audit-dispatch-prompt.md); fallback f_9 = 0.00391 constants ready.",
-      "audit_status": "pending (certificate in progress; on landing run release-checklist.md: verify hashes/nodes, finalize candidate_proof.md, update FRONTIER/index, gates, git sync; dispatch audit via audit-dispatch-prompt.md)",
+      "upstream_status_verbatim": "RIGOROUS_PARTIAL_RESULT — CERTIFIED RECORD",
+      "summary": "NEW UNCONDITIONAL WORLD RECORD 2026-08-15: liminf N0^s(T,2T)/N(T,2T) >= C_9(zeta) = (657,500*H_MT - 1,310)/655,001 = 0.673066472675939665848... (improves extpress 0.67305364595258992520 by 1.28e-5) and linked C_9(xi') = 0.86920009109661916184... (improves the audited 0.86918353505282747704 by 1.66e-5; exceeds quartic 0.86864 by 5.6e-4). Certificate nine-point-f8-gt-392over100000-grid2000.txt: verified=true, F8 >= 392/100000, grid 2000, 128-bit, nodes 64,748,524, maximum_depth 80, initial_boxes 256, kernel sha 39a209d3..., second-deriv sha 29ca4522..., components [[1868,2458];[3511,30823]], elapsed 8,765.75 s; certificate file sha256 7F25401A14F897CD1EC26C4B0E0A25A5F87943CFB656329012CB17919280FAC3. All precomputed expected values matched exactly. Original 0.00395 target withdrawn as infeasible (true min 0.003950049001339790). Chain: n=255, m=263, A_0 = 2499/2500 < 1.",
+      "audit_status": "CERTIFIED (manager-level audit 2026-08-15: B1-B6 verified — every precomputed expected value matched; see runs/.../f9push-d3b58c/audit_report.md); independent re-audit dispatchable via audit-dispatch-prompt.md",
       "key_artifacts": [
-        "release-checklist.md (0.00392)",
-        "candidate_proof.draft.md (0.00392)",
+        "candidate_proof.md",
+        "release-checklist.md (0.00392, executed)",
         "f9-ladder.md (CORRECTION section)",
         "whiteboard.md",
         "problem_contract.md (retargeted 0.00392)",
         "audit-dispatch-prompt.md",
+        "audit_report.md",
         "reproducibility/verify_kpoint_parallel.py (--out atomic write)",
-        "reproducibility/certificates/ (pending: nine-point-f8-gt-392over100000-grid2000.txt)"
+        "reproducibility/certificates/nine-point-f8-gt-392over100000-grid2000.txt (sha256 7F25401A14F897CD1EC26C4B0E0A25A5F87943CFB656329012CB17919280FAC3)"
       ],
       "created_at": "2026-08-14T13:15:28Z",
-      "updated_at": "2026-08-15T04:30:00Z",
+      "updated_at": "2026-08-15T05:05:00Z",
       "open_obligations": [
-        "certificate f_9 = 0.00392 grid-2000 (pwsh-4; ~24k core-s of an estimated 20-120k as of 2026-08-15T04:30Z)",
-        "independent audit of the 0.00392 certificate + record theorem (audit-dispatch-prompt.md; manager-level pattern)",
-        "Lean AdmWindow instance for cos(sqrt2 s) (Stage C, blueprint ready)"
+        "independent (third-party) re-audit of the 0.00392 certificate + record theorem (audit-dispatch-prompt.md)",
+        "Lean AdmWindow instance for cos(sqrt2 s) (Stage C, blueprint ready)",
+        "unconditional liminf N0^s/N -> 1 remains OPEN (conditional routes HL*+SL / PCC proved)"
       ]
     }
   ]

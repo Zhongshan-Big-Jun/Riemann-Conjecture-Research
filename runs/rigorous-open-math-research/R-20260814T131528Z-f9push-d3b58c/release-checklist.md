@@ -14,23 +14,16 @@ To execute when pwsh-4 lands its certificate file in
 `runs/…/f9push-d3b58c/reproducibility/certificates/`.
 
 ## 1. Certificate validation
-- [ ] File exists: `nine-point-f8-gt-392over100000-grid2000.txt`, contains
-      `verified=true`, `target=F8 >= 392/100000`.
-- [ ] `kernel_table_sha256` recorded; recompute on the kernel table for (grid, precision).
-      **Expected (precomputed 2026-08-15, manager; recipe: cutoff = floor(15.68·grid)+8 =
-      31368, table = build_kernel_table(2000, 31368, 128), hash = table_sha256(table)):
-      `39a209d3e4a897d982023ab49db27a206401824c769980572433dc4c47387297`.**
-      (Recipe previously cross-validated against the extpress f=0.0039 grid-4000
-      certificate and the 0.00395 grid-2000/4000 tables.)
-- [ ] `second_derivative_table_sha256` recorded (recipe: grid 2000, cutoff 31368,
-      second_start = min(⌊0.95·2000⌋, 31368−2) = 1900, precision 128).
-      **Expected: `29ca4522e12a991b7ab48943838a174fb2350b328ecc2155d9ecba4cb429f32c`.**
-- [ ] `nodes`, `maximum_depth`, `surviving_gap_components_cells` sanity:
-      **expected components [[1868,2458];[3511,30823]] (precomputed 2026-08-15);
-      initial_boxes = 2^8 = 256; depth ≥ 73; elapsed consistent with the CPU budget
-      (estimate 20–120k core-s, ≈1–7 h at 8 workers × 0.49 CPU-s/wall-s; the 0.00395
-      grid-2000 run consumed ≈ 52k core-s before its first loud fail — 0.00392 is a
-      strictly smaller search space).**
+- [x] File exists: `nine-point-f8-gt-392over100000-grid2000.txt`, contains
+      `verified=true`, `target=F8 >= 392/100000`. (Landed 2026-08-15T04:59+08; sha256
+      7F25401A14F897CD1EC26C4B0E0A25A5F87943CFB656329012CB17919280FAC3.)
+- [x] `kernel_table_sha256` = **39a209d3e4a897d982023ab49db27a206401824c769980572433dc4c47387297** ✓ (MATCHES expected; independently recomputed in the audit).
+- [x] `second_derivative_table_sha256` = **29ca4522e12a991b7ab48943838a174fb2350b328ecc2155d9ecba4cb429f32c** ✓ (MATCHES expected; recomputed in the audit).
+- [x] `nodes`, `maximum_depth`, `surviving_gap_components_cells` sanity:
+      **components [[1868,2458];[3511,30823]] ✓ MATCH; initial_boxes 2^8 = 256 ✓;
+      maximum_depth 80 ≥ 73 ✓; nodes 64,748,524; elapsed 8,765.75 s @ 8 workers
+      (≈ 34.8k core-s, within the 20–120k estimate); pruning split
+      tangent 11,393,731 / interval 20,874,136 / pressure 106,523.**
 
 ## 2. Theorem write-up (candidate_proof.md in the run root)
 - [ ] Chain (general-k derivation; only the certificate changes):
