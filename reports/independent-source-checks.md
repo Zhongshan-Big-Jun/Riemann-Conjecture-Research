@@ -23,6 +23,20 @@ implies lim N0(T)/N(T) = 1 and N0^s/N → 1") is consistent with the primary sou
 exact definition of ES (8.3) in GLSS25 and the proof that PCC ⇒ ES without RH — these live in
 arXiv:2503.15449, which the audit agent must verify against the actual paper.
 
+## Lean-snapshot statement check (manager, 2026-08-14)
+
+condp1's claim: the Lean theorem `thmD₀_simple` (comparator form) states N₀ˢ ≥ (2c₁*−1)N with
+2c₁*−1 = 0.50659 (Cauchy–Schwarz constant), while the paper's rank–trace constant
+2 − 1/c₁* = 0.67250 lives in the multiplicity forms. Verified against the snapshot:
+
+- `Zeta23/ThmD/Final.lean` L11/L119: `thmD₀_simple : ∀ε>0, ∃T₀, ∀T≥T₀, (2*c₁* − 1 − ε)·N(T,2T) ≤ N₀ˢ(T,2T)` ✓ (CS form, 0.50659).
+- Same file L15–18: the fixed-λ constants are HD λ = 2 − 1/c*(λ), 2c*(λ) − 1, c*(λ) — "Numerically 0.67250…, 0.50659…, 0.75329…".
+- `comparator/ChallengeDeps.lean` L113: "Theorem D's three proportions are 2 − 1/c₁* = 0.67250…, 2c₁* − 1 = 0.50659… and …".
+- `comparator/Solution/Multiplicity.lean` L40: `two_thirds_simple_on_critical_line` imports `Zeta23.ThmD.thmD₀_simple_mult` (the multiplicity form carrying the 0.67250 rank–trace constant, per the oaidraft audit lines 435/441 + HD_one).
+
+Verdict: condp1's statement-fidelity note is CORRECT; both constants are part of Theorem D's
+Lean statement set, with the simple (non-multiplicity) comparator form being the weaker CS bound.
+
 ## Numerical corroboration datum (evidence only)
 
 GS25 intro (line 30): "By large scale computation with careful error analysis, there are exactly

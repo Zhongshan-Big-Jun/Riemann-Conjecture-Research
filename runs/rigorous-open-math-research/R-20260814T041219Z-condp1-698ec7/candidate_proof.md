@@ -273,7 +273,7 @@ satisfy m_k^{(T)} → m_k(λ) for each k. The family is tight: tr(Ĝ²)/d² = m_
 2nd central moment; m_2 finite), and |λ_i|² integrable w.r.t. μ_T uniformly, so by Markov's
 inequality μ_T(|x|>R) ≤ m_2^{(T)}/R² → 0 as R→∞ uniformly in T; hence every subsequence has a
 weakly convergent further subsequence. By determinacy — the moments (m_k(λ)) satisfy Carleman's
-criterion (a compactly-supported-in-limit Gram Gram law has moments bounded by C^k for spectral
+criterion (a compactly-supported-in-limit Gram law has moments bounded by C^k for spectral
 radius ≤ const), hence Carleman holds — the limit of any such subsequence is μ_λ. Therefore
 μ_T ⇒ μ_λ (the whole sequence).
 
