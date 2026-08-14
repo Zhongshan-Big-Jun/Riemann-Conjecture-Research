@@ -27,8 +27,17 @@ Define v_ρ ∈ ℂ^d by (v_ρ)_k = φ̂(γ_ρ − τ_k)/√(aL²) (normalised a
 Poisson–Gabor identity Σ_k φ̂(τ−τ_k)² = aL² gives ‖v_ρ‖² ≤ 1 with equality up to the
 truncation tail o(1)). Let Â := (aL²)^{-1}·G be the ξ′ compression of Weil's form for ξ′
 (the explicit formula for ξ′/ξ′ is the XiPrime EF; the matrix is real symmetric because the
-functional equation pairs ρ ↦ 1−ρ̄ with v_{1−ρ̄} = v_ρ, using that φ̂ is even — the window
-is even — and γ_{1−ρ̄} = γ_ρ).
+functional equation pairs ρ ↦ 1−ρ̄ with v_{1−ρ̄} = v_ρ, using that γ_{1−ρ̄} = γ_ρ — the
+involution 1−ρ̄ PRESERVES the imaginary part — and the conjugate pair ρ̄ gives the
+conjugate vector, so the imaginary parts cancel).
+
+[Mechanism check for v_{1−ρ̄} = v_ρ, both ζ and ξ′: ρ = β+iγ, 1−ρ̄ = 1−β+iγ; the vector
+(v_ρ)_k = φ̂(γ − τ_k) depends only on γ, which is equal for both. No parity of φ̂ is needed —
+only that the vector is indexed by ordinates. For the real-symmetry: v_{ρ̄} = conj(v_ρ)
+(φ̂ real), and ρ̄ is a zero whenever ρ is (real coefficients), so
+v_ρv_ρᵀ + v_{ρ̄}v_{ρ̄}ᵀ = 2(Re v_ρ)(Re v_ρ)ᵀ − 2(Im v_ρ)(Im v_ρ)ᵀ ∈ ℝ^{d×d}. For ξ′ the
+same holds: ξ′ has real coefficients and ξ′(1−s) = −ξ′(s), so zeros are closed under
+ρ ↦ ρ̄ and ρ ↦ 1−ρ (hence under ρ ↦ 1−ρ̄).]
 
 Zero-side decomposition (structural, same as ζ Prop 4.1):
 
