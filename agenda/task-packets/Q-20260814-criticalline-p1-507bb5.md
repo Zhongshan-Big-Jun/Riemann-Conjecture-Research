@@ -1,4 +1,4 @@
-# Task packet Q-20260814-criticalline-p1-507bb5
+﻿# Task packet Q-20260814-criticalline-p1-507bb5
 
 - **Task ID:** `Q-20260814-criticalline-p1-507bb5`
 - **Project ID:** `MRP-20260814-riemann-critical-line-c13b8d`
@@ -157,7 +157,7 @@ roots; the manager records paths and hashes only.
 | BGSTB 2023 | pair correlation no RH | https://arxiv.org/abs/2306.04799 | external |
 | BGSTB 2025 | proportions I | https://arxiv.org/abs/2501.14545 | external |
 | GLSS 2025 | PCC simple/critical | https://arxiv.org/abs/2503.15449 | external |
-| B0 map | frontier + audit trail | literature/maps/FRONTIER.md | EFA1F79919877CE5AA299662EFA10759F2539BE1D1097AD70AB08A40B4250694 |
+| B0 map | frontier + audit trail | literature/maps/FRONTIER.md | A457B4D0D412B6E7F18D60F79A9AA865C6ACDF0AC93FFD8CC0FFFBFD993DB487 |
 
 ## Required run location
 
