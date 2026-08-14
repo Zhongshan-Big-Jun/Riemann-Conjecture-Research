@@ -19,3 +19,13 @@ All rows satisfy the rigor condition A_0 < 1. Strategy: attempt 0.00395 (grid 40
 baseline re-run; if the branch-and-bound does not close within a generous budget, step down
 (0.00394, 0.00393, …) — every certified step is a new world record. Numerically indicated true
 minimum of F_8: ≈ 0.00398 (evidence only; extpress scoping).
+
+## True-minimum verification (manager, 2026-08-14)
+
+Recomputed F_8 at the scoping optimum (k9_opt.npy,
+[1.0471, 1.9927, 2.0018, 2.0024, 2.0024, 2.0018, 1.9927, 1.0471]) using the scoping kernel
+kk(x) = (sinc(πx−1/√2) + sinc(πx+1/√2))/(2√2·sin(1/√2)): **F_8 = 0.0039818181719** ≈ 0.00398 ✓
+(extpress claim confirmed). Reference points: all-2.0 → 0.00436; all-1.99 → 0.00495.
+Consequence: a certificate at the true minimum (0.00398) would require equality handling and
+is effectively infeasible; **f_9 = 0.00395 (margin 3.2e-5) is the realistic ceiling**, with
+0.00393–0.00394 as fallback steps.
