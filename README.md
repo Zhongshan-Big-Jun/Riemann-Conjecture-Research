@@ -2,6 +2,8 @@
 
 **黎曼猜想：临界线上零点比例攻关** — Proportion of zeros of the Riemann zeta function on the critical line
 
+> 🌏 [中文说明 / Chinese README](README.zh-CN.md)
+
 > Research program (DSH `math-research-workflow` pipeline: manage → rigorous research → audit).
 > Status: **active**. Latest unconditional world record:
 > **liminf N₀ˢ(T,2T)/N(T,2T) ≥ 0.6730536459525899252…** (C₉, 2026-08-14, this project).
