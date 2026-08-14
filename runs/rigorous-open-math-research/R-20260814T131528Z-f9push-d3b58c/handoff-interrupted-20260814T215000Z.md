@@ -20,6 +20,10 @@
   realistic ceiling (margin 3.2e-5); 0.00393/0.00394 fallback steps quantified.
 - All preparatory math synced: ladder tables (ζ + ξ′), ξ′ candidate C₉^{ξ′} = 0.8691835 with
   corrected+cross-checked derivation, audit packet A1–A6, k=11 feasibility, kernel analysis.
+- Progress snapshot (2026-08-14T23:40Z): each run at ~9k core-s (worker CPU ~560s × 8);
+  grid-2000 0.00395 estimated 60-120k core-s ⇒ ~10-15% done; ETA under current throttling
+  10-30 h. Host load (game/office) is the binding constraint; closing those processes would
+  give 3-5× speedup.
 
 ## Attempted routes
 
