@@ -7,11 +7,19 @@ certificate file in `runs/…/f9push-d3b58c/reproducibility/certificates/`.
 - [ ] File exists: `nine-point-f8-gt-395over100000-grid{2000,4000}.txt`, contains
       `verified=true`, `target=F8 >= 395/100000`.
 - [ ] `kernel_table_sha256` recorded; recompute on the kernel table for the given
-      (grid, precision) and compare (deterministic).
-- [ ] `nodes`, `maximum_depth`, `surviving_gap_components_cells` sanity: expect ≥ 53M nodes
-      (grid-4000), depth ≥ 73, components near [1872,2451];[3521,30289] (grid-2000, from the
-      f=0.0038 grid-2000 pattern) — tighter target shifts the tight region slightly.
-- [ ] `second_derivative_table_sha256` recorded.
+      (grid, precision) and compare (deterministic). **Expected values (precomputed
+      2026-08-15, manager; recipe: cutoff = floor(15.8·grid)+8, table =
+      build_kernel_table(grid, cutoff, 128), hash = table_sha256(table)):
+      grid-2000: cutoff 31608 → `c23c661cdcc16a175ebb5bf528e657d5efba5a1f28dbc8ed9b75f4a8a52f9b22`;
+      grid-4000: cutoff 63208 → `0861f5203a42977ad41a8a2f0f727e9bed7042bce5133dd05e6f8f62ae099868`.**
+- [ ] `second_derivative_table_sha256` recorded (recompute with
+      build_second_derivative_lower_table(grid, cutoff, second_start=min(⌊0.95·grid⌋, cutoff−2), 128)).
+- [ ] `nodes`, `maximum_depth`, `surviving_gap_components_cells` sanity:
+      **expected initial_boxes / components (precomputed):
+      grid-2000: initial_boxes 16,345,098, components [(1867,2460);(3508,31024)];
+      grid-4000: initial_boxes 65,267,952, components [(3736,4921);(7016,62047)].**
+      Nodes ≥ initial_boxes (each box visited ≥ once); depth ≥ 73; elapsed consistent
+      with the CPU budget (~300k core-s grid-2000, ~800k grid-4000 at 8 workers).
 
 ## 2. Theorem write-up (candidate_proof.md in the run root)
 - [ ] Chain (general-k derivation; only the certificate changes):

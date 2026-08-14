@@ -23,10 +23,14 @@ branch-and-bound, 128-bit), then unconditionally:
 ## Audit items
 
 - B1 (certificate): file exists; `verified=true`; `target` = F8 >= 395/100000; recompute
-  `kernel_table_sha256` (deterministic kernel tables) and `second_derivative_table_sha256`;
-  sanity on `nodes` (expect ≫ 53M for grid-4000; grid-2000 smaller), `maximum_depth` (≥ 73),
-  `surviving_gap_components_cells`; no terminal boxes outside the verified region (loud-fail
-  semantics of the verifier).
+  `kernel_table_sha256` (deterministic) — **expected (precomputed 2026-08-15, manager):
+  grid-2000 `c23c661cdcc16a175ebb5bf528e657d5efba5a1f28dbc8ed9b75f4a8a52f9b22` (cutoff
+  31608), grid-4000 `0861f5203a42977ad41a8a2f0f727e9bed7042bce5133dd05e6f8f62ae099868`
+  (cutoff 63208)** — and `second_derivative_table_sha256` (second_start =
+  min(⌊0.95·grid⌋, cutoff−2)); sanity on `nodes` (≥ initial_boxes: 16,345,098 grid-2000 /
+  65,267,952 grid-4000), `maximum_depth` (≥ 73), `surviving_gap_components_cells`
+  (expected [(1867,2460);(3508,31024)] grid-2000 / [(3736,4921);(7016,62047)] grid-4000);
+  no terminal boxes outside the verified region (loud-fail semantics of the verifier).
 - B2 (formula): C₉(f) = (H − (m−1)/(500m))/(1 − f·n/m) with n = ⌈1/f⌉−1, m = (k−1)+n, k = 9;
   exact rational identity at f = 0.00395: 1 − A₀/m = 1 − 99935/26100000 = 26000065/26100000,
   and (H − 260/130500)·26100000 = 26100000·H − 52000 (since 26100000/130500 = 200), so
