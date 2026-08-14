@@ -91,7 +91,10 @@ by the same argument.
 
 **PASS (manager-level) for A1–A6 at math level**, with two open items, neither of which is a
 math gap:
-1. Lean `admWindow_phiV` instance for cos(√2s) (template work, AtOne pattern; Stage C).
+1. Lean `admWindow_phiV` instance for cos(√2s): **math-level blueprint now complete** —
+   reports/admwindow-cos-instance.md (ModFactor A = 1, B = 2; cMod = cRho + 4, better than
+   quartic's cRho + 15.75; all elementary bounds verified at 40 digits). Remaining work is
+   Lean code following the quartic template (AtOne pattern; Stage C).
 2. The f₉ = 0.00395 certificate itself (running; when it lands, rerun A6 for the new file
    and update this report).
 

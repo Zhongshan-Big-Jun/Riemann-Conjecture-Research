@@ -40,8 +40,9 @@ Push liminf N0^s(T,2T)/N(T,2T) (and N0/N, Nd/N) toward 1:
 ξ′ pressure method with MT window: **C₉^{ξ′} = 0.8691835350528** (exceeds quartic 0.86864).
 H_{ξ′}^{MT} = 0.86788886519905193555 (A2 verified two ways); derivation corrected & cross-checked
 against OpenAI Cor 2.2 line-for-line; **audits A1–A6 CLOSED at manager level (PASS) —
-reports/xi-prime-audit-manager.md** (open items: Lean AdmWindow instance for cos = AtOne
-template work; f₉=0.00395 certificate).
+reports/xi-prime-audit-manager.md**; A1's formalization gap has a complete math blueprint
+(reports/admwindow-cos-instance.md: ModFactor A=1, B=2, cMod = cRho+4, all bounds verified
+40 dp). Remaining: Lean instance (Stage C, AtOne pattern); f₉=0.00395 certificate.
 
 ## Exact next actions
 
