@@ -13,3 +13,4 @@
 {"ts":"2026-08-14T13:00:00Z","event":"git_sync","detail":"Pushed to https://github.com/Zhongshan-Big-Jun/Riemann-Conjucture-Research (public, branch main) commit ca808fc; trees identical local/remote; README merged from remote init"}
 {"ts":"2026-08-14T13:20:00Z","event":"f9push_started","detail":"f9push run created (R-...-f9push-d3b58c); subagent attempts failed; manager executing directly: baseline k=9 grid-4000 re-run launched (pwsh-41); README rewritten"}
 {"ts":"2026-08-14T21:35:00Z","event":"f9push_restart","detail":"22-workers spawn stalls (worker CPU flat); 8 workers verified healthy; grid-2000 (pwsh-43) and grid-4000 (pwsh-44) f9=0.00395 runs in parallel"}
+{"ts":"2026-08-14T21:44:00Z","event":"f9push_waiting","detail":"f9=0.00395 certifications running (grid-2000 pwsh-43, grid-4000 pwsh-44, 8 workers each); system-throttled ~45s CPU/min; ETA several hours; all independent prep synced"}
