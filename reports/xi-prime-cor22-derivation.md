@@ -86,16 +86,24 @@ All apply to the ξ′ simple-on-line Gram blocks verbatim. With m₉ = 264, A�
 ## 7. Audit requirements (open items)
 
 - A1: verify the ξ′ zero-side block structure (Prop 4.1-type: n₊(Q₀) ≤ s₂ + p, tr P₁ ≤ s₁)
-  in full detail against the XiPrime EF (Lean statements exist for the rank-trace spine;
-  the explicit s₁/s₂/p decomposition for ξ′ has not been written out before — this note is
-  the first such write-up).
+  in full detail against the XiPrime EF. STATUS: the structure is provided by the Lean
+  generic ZeroSide machinery instantiated at the ξ′ ZeroConfig — XiPrime's WindowZeroSide
+  (poisson/tail/a_half, Assembly.lean §A3) mirrors Zeta23/ThmD/ZeroSideD.lean exactly, and
+  the "c = 2, 3 seams" consume the same rank-trace zero side for any zero config. The
+  explicit s₁/s₂/p write-up for ξ′ is this note (§1); independent audit of the note's
+  bookkeeping remains the open part of A1.
 - A2: ✅ VERIFIED (2026-08-14): κ₁(1, v_MT) confirmed by an independent path — analytic
   closed form of the cos autocorrelation vConv(r) = ½[(1−r)cos(√2r) + sin(√2(1−r))/√2]
   (correcting a first-attempt endpoint slip), same D₁ series: gives
   2 − κ₁ = 0.86788886519905193555031471042034…, matching the numeric-quadrature path to 20
   digits; flat window reproduces 0.85838405470921802815… (Lean ≥ 0.85838371).
-- A3: the kernel-limit concentration for ξ′ blocks (structural; same window).
-- A4: N_{ξ′}(I′) ≥ s₁ + 2s₂ + 2p and tr Â = N(1+o(1)) for the MT window at λ = 1.
+- A3: the kernel-limit concentration for ξ′ blocks. STATUS: structural (fixed m, window
+  kernel w, gap-sum distances; the same argument as the ζ chain); formalized by the ζ
+  kernel-limit lemma whose proof uses only the window — transfer flagged for audit.
+- A4: N_{ξ′}(I′) ≥ s₁ + 2s₂ + 2p and tr Â = N(1+o(1)). STATUS: covered by the Lean
+  RvM/local-count and PoissonSq facts of XiPrime (same spine as ζ Prop 4.2); the MT-window
+  instance at λ = 1 is the family-hypotheses instance familyHyps_atV with v = v_MT
+  (WindowProfile holds for the smooth cos profile).
 
 Status: CANDIDATE derivation complete; independent audit of A1–A4 recommended before
 promoting to a record theorem. A2 closed; A1/A3/A4 remain (A1 is the substantive one).
