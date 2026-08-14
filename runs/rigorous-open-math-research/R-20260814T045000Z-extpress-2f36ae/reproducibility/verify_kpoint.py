@@ -272,7 +272,7 @@ def main() -> None:
     rep = VerificationReport(
         certificate=f"{k}-point",
         verified=True,
-        target=f"F{'{'}{d}{'}'} >= {TARGET_N}/{TARGET_D}",
+        target=f"F{d} >= {TARGET_N}/{TARGET_D}",
         grid=GRID,
         precision_bits=PRECISION_BITS,
         kernel_table_sha256=table_sha256(table),
