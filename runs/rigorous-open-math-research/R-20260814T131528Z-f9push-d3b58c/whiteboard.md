@@ -29,9 +29,9 @@ lower basin. Release retargeted to 0.00392 (margins 1.1e-5 / 3.0e-5).
 - Release expectations precomputed + cross-validated against TWO known certificates (0.0039 grid-4000, 0.0038 grid-2000: components + kernel hashes byte-for-byte); initial_boxes = (count)^8 = 256 interpretation corrected [SUCCEEDED]
 - Soundness stack B6 (i–vii) complete: rounding, components, truncation, loud-fail, kernel identity, true minimum 0.0039818, tangent-pruning convexity audit [SUCCEEDED] — **note: B6(vi) "true minimum 0.0039818" SUPERSEDED 2026-08-15 (local minimum only; see CORRECTION)**
 - Records consistency audit across FRONTIER/README/index (no drift) [SUCCEEDED]
-- 0.00395 runs FAILED (loud fail at leaf boxes; bounds 0.0039314/0.00394017 below target) [FAILED — informative: pinned true min ≈ 0.00395005]
+- 0.00395 runs FAILED (loud fail at leaf boxes; bounds 0.0039314/0.00394017 below target) [FAILED] (informative: pinned true min ≈ 0.00395005)
 - 0.00392 constants precomputed (exact forms (657,500·H_MT − 1,310)/655,001; mpmath dps=90) [SUCCEEDED]
-- 0.00392 grid-2000 certification launched (pwsh-4, 8 workers) 2026-08-15 [IN PROGRESS]
+- 0.00392 grid-2000 certification launched (pwsh-4, 8 workers) 2026-08-15 [PARTIAL]
 - Expected certificate values precomputed for 0.00392 grid-2000: cutoff 31368, kernel sha256 39a209d3e4a897d982023ab49db27a206401824c769980572433dc4c47387297, components [[1868,2458];[3511,30823]], initial_boxes 256, second-deriv sha256 29ca4522e12a991b7ab48943838a174fb2350b328ecc2155d9ecba4cb429f32c [SUCCEEDED]
 
 ## Ideas to return to
