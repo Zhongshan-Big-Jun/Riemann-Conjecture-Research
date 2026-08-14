@@ -12,6 +12,8 @@ certificate file in `runs/…/f9push-d3b58c/reproducibility/certificates/`.
       build_kernel_table(grid, cutoff, 128), hash = table_sha256(table)):
       grid-2000: cutoff 31608 → `c23c661cdcc16a175ebb5bf528e657d5efba5a1f28dbc8ed9b75f4a8a52f9b22`;
       grid-4000: cutoff 63208 → `0861f5203a42977ad41a8a2f0f727e9bed7042bce5133dd05e6f8f62ae099868`.**
+      **Recipe cross-validated 2026-08-15: recomputing the extpress f=0.0039 grid-4000
+      kernel (cutoff 62408) reproduces its recorded hash 7029ac0f… exactly (MATCH).**
 - [ ] `second_derivative_table_sha256` recorded (recompute with
       build_second_derivative_lower_table(grid, cutoff, second_start=min(⌊0.95·grid⌋, cutoff−2), 128)).
 - [ ] `nodes`, `maximum_depth`, `surviving_gap_components_cells` sanity:
