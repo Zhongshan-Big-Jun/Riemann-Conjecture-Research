@@ -134,8 +134,9 @@ roots; the manager records paths and hashes only.
   unconditional c > 0.673008528 (or a verified proof of that constant) is novel.
 - **Novelty audit path:** `literature/maps/FRONTIER.md` §1–§2 (divergent search log with
   query → result → locator; exact known theorems; barrier list; excluded crank noise).
-- **Snapshot hash:** `sha256:git-78dc593` (project commit at dispatch; empty knowledge base, no
-  accepted-knowledge dependencies; binding snapshot recorded in each run's repro_manifest).
+- **Snapshot hash:** `sha256:6145A358969439BC118F48FE283C0C1C70F11BBD980D027E152B62BC1C3A9098`
+  (content hash of the B0 artifact literature/maps/FRONTIER.md; knowledge base empty at
+  dispatch, no accepted-knowledge dependencies; dispatch commit recorded per run's repro_manifest).
 - **Backfill:** literature/maps/FRONTIER.md refreshed 2026-08-14; index/papers.json has 7
   registered papers; novel-risk line in FRONTIER.md §3.
 
