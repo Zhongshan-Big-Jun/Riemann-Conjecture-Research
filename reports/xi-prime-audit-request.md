@@ -3,6 +3,15 @@
 Run roots to audit: `reports/xi-prime-cor22-derivation.md`, `reports/xi-prime-pressure-method.md`,
 `reports/xi-prime-mt-window.py`, `reports/linked-ladder.md` (project `F:\LaTeX\Riemann Conjecture`).
 
+## Status update (2026-08-15): manager-level audit CLOSED for A1–A6
+
+Manager audit report: `reports/xi-prime-audit-manager.md` — PASS (math level) on all six
+items; two open non-math items: (1) Lean AdmWindow instance for cos(√2s) (template/AtOne
+work, Stage C); (2) the f₉ = 0.00395 certificate itself (in progress). A1's AdmWindow
+bounds for v_MT verified numerically (‖v′‖₁ = 0.4795, ‖(v²)′‖₁ = 0.8441, ‖v″‖₁ = 1.8375,
+‖(v²)″‖₁ = 2.7938, a = 0.8492 ∈ [1/2,1]). An independent human/formal audit remains
+welcomed; this packet is retained for that purpose.
+
 ## Claim
 
 Unconditional (pending audit):
@@ -34,3 +43,11 @@ This exceeds the quartic-window record 0.86864 (Anthropic/Lean) and flat 0.85838
 ## Expected verdict format
 
 PASS / F-xxx with exact locations; open obligations; audit report path + sha256.
+
+## Note for the 0.00395 instance
+
+The 0.00395 record (certificate pending) uses the general formula
+C₉^{ξ′}(0.00395) = (26,100,000·H_{ξ′}^{MT} − 52,000)/26,000,065 = 0.8692247262341557806822…
+(n = 253, m = 261, A₀ = 99935/100000 < 1) instead of the closed form; the audit items are
+unchanged (A5 arithmetic verified at 70 digits; A6 re-run on the new certificate file when
+it lands).

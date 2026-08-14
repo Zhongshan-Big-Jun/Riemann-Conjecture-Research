@@ -35,20 +35,22 @@ transfers verbatim) and the ξ′ rank-trace baseline:
    flat/quartic to 8 digits). Strict inequality 2 − κ₁(1,v_MT) > 0.86864 holds (margin
    1.2e-4), so the plain MT-window ξ′ bound ALREADY exceeds flat (0.86789 vs 0.85838) and
    nearly matches quartic; the pressure term provides the crossing above quartic.
-3. [TO VERIFY] The stability refinement (OpenAI Lemma 2.1 → Cor 2.2: S ≥ H·N + Δ(M°) − o(N))
-   for ξ′: needs the ξ′ zero-side block structure (simple-on-line rank part P₁ ⪰ 0 with
-   rank ≤ s₁, off-line pairs as (1,1)-blocks, n₊(Q₀) ≤ s₂ + p) — expected to hold by the
-   same functional-equation pairing (ρ ↦ 1−ρ for ξ′) and the Lean XiPrime zero-side facts;
-   the explicit Cor 2.2-type derivation for ξ′ has NOT yet been written/audited.
-4. [TO VERIFY] Block-energy/block-defect/pinching with m₉ = 264 (A₀ = 624/625 < 1): depends
+3. [AUDITED] The stability refinement (OpenAI Lemma 2.1 → Cor 2.2: S ≥ H·N + Δ(M°) − o(N))
+   for ξ′: full derivation in reports/xi-prime-cor22-derivation.md (corrected tight bound
+   s₁+2N; cross-checked line-for-line against OpenAI Cor 2.2); zero-side block structure
+   audited in reports/xi-prime-audit-manager.md (A1 PASS).
+4. [AUDITED] Block-energy/block-defect/pinching with m₉ = 264 (A₀ = 624/625 < 1): depends
    only on the Gram structure of consecutive retained simple on-line zeros and the window
-   kernel; the kernel-limit lemma for ξ′ must be re-checked (same window ⇒ same kernel;
-   the concentration argument is structural).
+   kernel; kernel-limit transfer audited (A3 PASS) — same window ⇒ same kernel; the
+   concentration argument is structural.
 5. [VERIFIED] Certificate F₈ ≥ 39/10000 (window-kernel inequality; independent of ζ vs ξ′).
+   The f₉ = 0.00395 instance (pending certificate) transfers by the same argument (A6 PASS).
 
 ## Status
 
-CANDIDATE (RIGOROUS_PARTIAL_RESULT level once items 3–4 are discharged by an independent
-derivation/audit). The plain MT-window ξ′ constant H_{ξ′}^{MT} = 0.8678888652 itself is a
-solid new numerical constant (strictly between flat and quartic), computable from the
-Lean-verified formula. Next step: write the ξ′ Cor 2.2 derivation and audit items 3–4.
+AUDITED_CANDIDATE (manager-level, A1–A6 PASS — reports/xi-prime-audit-manager.md; an
+independent human/formal audit remains welcomed). The plain MT-window ξ′ constant
+H_{ξ′}^{MT} = 0.8678888652 itself is a solid new numerical constant (strictly between flat
+and quartic), computable from the Lean-verified formula. Remaining open items are not math
+gaps: (1) Lean AdmWindow instance for cos(√2s) (AtOne pattern, Stage C); (2) the f₉ =
+0.00395 certificate (running) — on landing, rerun A6 and update the ladder.

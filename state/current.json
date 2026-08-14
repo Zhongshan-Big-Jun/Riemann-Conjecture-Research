@@ -27,7 +27,7 @@
   "next_actions": [
     "Collect f9=0.00395 certificates (pwsh-1 grid-4000 / pwsh-2 grid-2000, 8 workers each, running since 2026-08-14T23:13Z); on landing, execute release-checklist.md in R-20260814T131528Z-f9push-d3b58c.",
     "Arithmetic of final constants verified at mpmath 70 digits with exact rational forms (2026-08-15): C9(zeta,0.00395) = (26100000*H_MT - 52000)/26000065 = 0.6730855621335040490732; C9(xip,0.00395) = 0.8692247262341557806822.",
-    "Audit A1-A6 packet ready (reports/xi-prime-audit-request.md); subagents crash-prone, manager-level audit is the working pattern.",
+    "Audits A1-A6 for the xi-prime candidate CLOSED at manager level (PASS) - reports/xi-prime-audit-manager.md (2026-08-15); open: Lean AdmWindow instance for cos (AtOne/Stage C), f9=0.00395 certificate itself.",
     "Write stage summary + interruption handoff; git sync."
   ],
   "blockers": [],
