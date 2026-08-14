@@ -35,6 +35,7 @@ $$\liminf_{T\to\infty}\ \frac{N_0^s(T,2T)}{N(T,2T)}$$
   - PCC 全支撑 ⇒ 100%(GLSS25,arXiv:2503.15449);
   - HL*(所有迹矩 = sine-kernel Gram 矩)+ 谱引理 SL ⇒ 100%(本项目证明,ε-形式/迭代极限,condp1 run)。
   - Anthropic 论文 §7.2(f) 含一处转录错误(m₂:3/4 → 4/3),本项目精确解决(Λ₂(0) = 5/36、13/18)。
+  - **2026-08-15:随机 sine-process Gram 模型精确重现审计矩列 (1, 4/3, 2, 13/4)**(m₂ = 4/3、m₃ = 2、m₄ = 13/4,后两者由数值 MC 升级为精确;DPP 模拟端到端验证);SL(Christoffel 形式)有特征值标度与 Christoffel 衰减证据支持(Λ_m(0) ≈ 0.32、0.13、0.045、0.023 → 0),但仍为开放引理(reports/sl-lemma-random-gram-probe.md)。
 
 ## 方法与来源
 
