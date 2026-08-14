@@ -31,15 +31,23 @@ Push liminf N0^s(T,2T)/N(T,2T) (and N0/N, Nd/N) toward 1:
 |---|---|---|
 | R-…-mainpush-3cdc81 | RIGOROUS_PARTIAL_RESULT (R1 verified, R2 PCC⇒100%, R3 ceiling 0.6730583) | ✅ PASS (5F0EDEAA…) |
 | R-…-oaidraft-7c3e73 | INDEPENDENTLY_AUDITED_PROOF (draft 0.673008528 verified) | ✅ PASS (3F554804…) |
-| R-…-condp1-698ec7 | RIGOROUS_PARTIAL_RESULT (HL*+SL⇒100%; m₂ 3/4→4/3) | ⏳ audit 2bb08828 running |
-| R-…-extpress-2f36ae | IN_PROGRESS (9/11-pt pressure) | pending |
+| R-…-condp1-698ec7 | RIGOROUS_PARTIAL_RESULT (HL*+SL⇒100%; m₂ 3/4→4/3) | ✅ PASS-CONDITIONAL + F-1 repaired |
+| R-…-extpress-2f36ae | RIGOROUS_PARTIAL_RESULT — **NEW RECORD C₉ = 0.673053646** (k=9 certificate F₈≥39/10000) | ✅ PASS with scope limits (manager audit) |
+| R-…-f9push-d3b58c | IN_PROGRESS — certify f₉ = 0.00395 → C₉ = 0.6730856 (ζ) + 0.8692247 (ξ′); grid-2000/grid-4000 8-worker runs | pending |
+
+## Candidate (reports/xi-prime-pressure-method.md, xi-prime-cor22-derivation.md)
+
+ξ′ pressure method with MT window: **C₉^{ξ′} = 0.8691835350528** (exceeds quartic 0.86864).
+H_{ξ′}^{MT} = 0.86788886519905193555 (A2 verified two ways); derivation corrected & cross-checked
+against OpenAI Cor 2.2 line-for-line; audits A1–A6 packet ready (reports/xi-prime-audit-request.md).
 
 ## Exact next actions
 
-1. Collect condp1 audit verdict (2bb08828) + extpress result (f4d9e0c3); verify hashes.
-2. If extpress certifies a new constant > 0.673008528: reconstruct full proof chain, dispatch audit.
-3. Ingest all verdicts; write stage summary (assets/stage-summary.template.md → state/stage-summaries/); update FRONTIER; run validate_pipeline; commit + push.
-4. Report to user: honest final state (achieved conditionally / reduced / blocked unconditionally).
+1. Collect f₉=0.00395 certification results (pwsh-43 grid-2000, pwsh-44 grid-4000); verify
+   certificates; if certified → new ζ record C₉ = 0.6730855621335 and ξ′ linked record
+   0.8692247262342 (ladder in reports/linked-ladder.md).
+2. Run the A1–A6 independent audit of the ξ′ candidate (audit request packet prepared).
+3. Update FRONTIER/stage summary; run validate_pipeline; commit + push (per user: sync every result).
 
 ## Blockers or missing inputs
 
