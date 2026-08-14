@@ -23,6 +23,16 @@ implies lim N0(T)/N(T) = 1 and N0^s/N → 1") is consistent with the primary sou
 exact definition of ES (8.3) in GLSS25 and the proof that PCC ⇒ ES without RH — these live in
 arXiv:2503.15449, which the audit agent must verify against the actual paper.
 
+## SL-lemma literature re-check (manager, 2026-08-14, second pass)
+
+Query: `sine kernel Gram matrix spectral measure eigenvalue distribution support "sine process" density at zero`.
+Result: no direct theorem found stating that 0 lies in the support of the spectral distribution
+of the sine-kernel Gram matrix (or that its Christoffel function at 0 vanishes). Hits were
+generic Gram-matrix spectral statistics (Hoyle 2004) and sine-point-process conditional-measure
+universality (Bufetov et al., Zbl 1459.60107; Kuijlaars Zbl 1422.60083) — related but not the
+needed statement. Conclusion unchanged: **SL remains an open (likely true) lemma**, and the
+100% theorem (condp1 run) stays conditional on it. Recorded per provenance discipline.
+
 ## Lean-snapshot statement check (manager, 2026-08-14)
 
 condp1's claim: the Lean theorem `thmD₀_simple` (comparator form) states N₀ˢ ≥ (2c₁*−1)N with
