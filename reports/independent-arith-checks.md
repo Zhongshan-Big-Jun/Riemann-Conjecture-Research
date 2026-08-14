@@ -33,6 +33,18 @@ signature (1,1) blocks; the "limiting spectral distribution" is signed). The 13/
 numbers need the paper's exact convention; this is the normalization gap the condp1 run is
 pinning down. (Recorded in runs/.../condp1-698ec7 counterexample_log.)
 
+## Natural-normalization probe (manager, 2026-08-14)
+
+Candidate "sine-kernel Gram" conventions for m₂(1) (window length 1, mass-normalized trace m₁=1):
+
+- sinc kernel: m₂ = 2∫₀¹(1−h)·sinc²(πh) dh = **0.65583740648596181465** (variance −0.344 < 0 ⇒
+  even this natural PSD-operator candidate fails mass-normalized positivity).
+- Fejér kernel (1−|h|): m₂ = 2∫₀¹(1−h)² dh = **2/3**.
+
+Neither equals 3/4 = 0.75: the informal values m_k(1) = 1, 3/4, 2, 13/4 do not match the obvious
+operator normalizations; the paper's exact convention (likely signed measure of the unnormalized
+G̃/d, or bandwidth-λ family m_k(λ) with λ = 1) remains to be pinned by the condp1 run.
+
 ## Environment
 
 - Python 3.10.11, mpmath 1.3.0; elan 4.1.1 present (Lean toolchain pinning possible for Stage C).
