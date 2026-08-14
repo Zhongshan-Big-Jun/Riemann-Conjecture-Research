@@ -57,7 +57,16 @@ branch-and-bound, 128-bit), then unconditionally:
   in-table cell (grid-2000: 0.003950875 at idx 31607; grid-4000: 0.0039504375 at idx 63207),
   so no counterexample involves a gap cell ≥ cutoff; (iv) loud-fail exit 2 on terminal
   violations; (v) kernel identity — scoping kernel = certificate kernel (sinc evenness);
-  (vi) true minimum ≈ 0.0039818 re-verified with the actual kernel (margin 3.2e-5).
+  (vi) true minimum ≈ 0.0039818 re-verified with the actual kernel (margin 3.2e-5);
+  (vii) tangent-pruning soundness (audited 2026-08-15 by code reading): s =
+  coeff_signed(span, second_min(L,R)) is a pointwise lower bound of the Hessian block
+  coefficient (sign-aware coefficient rounding + nextafter-down + min of cell lower bounds);
+  Hessian ⪰ Σ s·J_block (all-ones J PSD); arb_PD (exact arb Cholesky, pivot > 0) is the
+  authoritative convexity check (in_heuristic is only a fast pre-filter); for convex F₈ the
+  first-order enclosure lower = value − Σ|grad_j|·rad_j is a rigorous lower bound (exact
+  rational midpoints, arb kernel evaluation, upper-rounded |drv|); comparison against the
+  exact rational target; any precondition failure returns None (no prune); second-derivative
+  table pole-avoided (cells ≥ 0.95·grid) while box_lower uses the singularity-free sinc form.
 
 ## Expected verdict format
 
