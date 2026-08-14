@@ -6,7 +6,7 @@
 - **Interrupt reason**: environment resource saturation (CPU 100% — bg3_dx11/WPS/Chrome on the
   host machine); background compute throttled to ~4-8 s CPU/min/worker (vs 60 s/min at full
   speed); ETA under load ~50 h, unacceptable to block on.
-- **Task state**: IN_PROGRESS (suspended; jobs kept alive)
+- **Task state**: `IN_PROGRESS`
 
 ## Completed obligations
 
@@ -17,7 +17,7 @@
 - All preparatory math synced: ladder tables (ζ + ξ′), ξ′ candidate C₉^{ξ′} = 0.8691835 with
   corrected+cross-checked derivation, audit packet A1–A6, k=11 feasibility, kernel analysis.
 
-## Attempted routes (with outcomes)
+## Attempted routes
 
 - [FAILED] 22-worker multiprocessing spawn for k=9: worker CPU frozen (observed twice:
   pwsh-41 8 h, pwsh-42 90 min). Mechanism: 22 spawned workers + 128-bit Arb tables +
@@ -36,7 +36,7 @@
   certified (reports/linked-ladder.md).
 - ξ′ candidate audit A1–A6 (reports/xi-prime-audit-request.md).
 
-## Next actions (resume)
+## Next actions
 
 1. Poll pwsh-43/pwsh-44 (job_output) — when system load drops, compute accelerates; collect
    certificate on completion (compare hashes; verify target=395/100000, grid, nodes).
