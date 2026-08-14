@@ -62,6 +62,13 @@ Model: sine process with kernel K(x,y) = sinc(x−y) on a window [0,L], N ≈ L 
 
 ## 3. SL consequences
 
+- **Christoffel-decay probe (2026-08-15; evidence only):** from the L = 50 simulation,
+  empirical moments m₁..m₈ = (1.0, 1.322, 1.966, 3.171, 5.435, 9.770, 18.245, 35.148)
+  (m₂..m₄ consistent with (4/3, 2, 13/4) up to the h-bias; m₄ measured 3.17 vs 3.25) give
+  Hankel Christoffel values Λ₁(0) = 0.322, Λ₂(0) = 0.133 (exact 5/36 = 0.1389 ✓),
+  Λ₃(0) = 0.0454, Λ₄(0) = 0.0228 — **decaying roughly by half at each degree**,
+  consistent with Λ_m(0) → 0 (positive density at 0, no atom): exactly SL's Christoffel
+  form. Evidence only; not a theorem.
 - **Scaling probe (2026-08-15; evidence only):** projection-DPP simulation of the random
   Gram at L = 25 (500 samples) and L = 50 (200 samples, h = 0.05, E[N] = 49.9):
   smallest-eigenvalue statistics — L=25: mean 0.035, median 0.024, p05 0.0022; L=50:
