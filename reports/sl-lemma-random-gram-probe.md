@@ -62,6 +62,15 @@ Model: sine process with kernel K(x,y) = sinc(x−y) on a window [0,L], N ≈ L 
 
 ## 3. SL consequences
 
+- **Scaling probe (2026-08-15; evidence only):** projection-DPP simulation of the random
+  Gram at L = 25 (500 samples) and L = 50 (200 samples, h = 0.05, E[N] = 49.9):
+  smallest-eigenvalue statistics — L=25: mean 0.035, median 0.024, p05 0.0022; L=50:
+  mean 0.0105, median 0.0075, p05 0.0012. Per-eigenvalue fraction in [0, 0.01): 0.0096
+  (L=25) → 0.0151 (L=50), i.e. GROWING with the window. Interpretation: the smallest Gram
+  eigenvalues shrink with L (faster than 1/N) and the density near 0 does not vanish —
+  consistent with eigenvalues accumulating at 0: 0 ∈ supp μ and μ({0}) = 0 (no mass gap),
+  which is exactly SL's content. Evidence only; not a theorem (finite-window effects cannot
+  be ruled out by simulation).
 - The random-Gram model reproduces the audited moments m₂ = 4/3, m₃ = 2, m₄ = 13/4
   EXACTLY (all four orders) ⇒ it is the right identification for HL*'s "sine-kernel Gram
   moments" (stronger than before: m₃ and m₄ upgraded from MC to exact under the model;
