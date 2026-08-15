@@ -142,6 +142,29 @@
         "formalize the Christoffel atom theorem + compact-support determinacy in Lean",
         "unconditional liminf N0^s/N -> 1 remains OPEN (conditional routes HL*+SL / PCC proved)"
       ]
+    },
+    {
+      "run_id": "R-20260815T130000Z-slmoments-a3f9",
+      "task_packet_id": "Q-20260814-criticalline-p1-507bb5",
+      "run_root": "runs/rigorous-open-math-research/R-20260815T130000Z-slmoments-a3f9",
+      "started_at": "2026-08-15T13:00:00Z",
+      "upstream_status_verbatim": "NUMERICAL_EVIDENCE / RIGOROUS_PARTIAL_RESULT (composite)",
+      "summary": "SL moment-route pass COMPLETED 2026-08-15/16: (1) FAITHFUL projection-DPP discretization built and validated on TWO independent gates — Gate A exact-joint (Kulesza-Taskar sampler vs L-ensemble joint law within sampling error) + Gate B exact moments (E[N]=24.9, m2~1.313->4/3, m3~1.94->2, m4~3.10->13/4 at L=25 h=0.05; naive diag-1 kernel FAILS with E[N]=27.5 — occupancy kernel A_ij = h*sinc(x_i-x_j) is the correct one). (2) First trustworthy fermionic/Wick evidence: D_3=-0.0009+-0.0025, D_4=+0.0000+-0.0010, D_5=-0.00008+-0.00038 (MC L=25), D_6=+0.0005+-0.0004 (L=20); exact-structure Gauss integrals corroborate D_5~-1e-4, D_6~-1e-5 (4 orders below m_5~5.5). (3) Extended-moment Hankel decay evidence (L=50, mpmath 50d): Lambda_1=0.245, Lambda_2=0.133, Lambda_3=0.092 decaying. (4) Closing-lemma framework: Lemma M (D_k=0 exact) -> Lemma P (m_k = size<=2 matched-block matching-sum) -> Lemma H (matching-sum Hankel ratio -> 0) -> SL; three precise gaps G1/G2/G3 itemized. SL NOT closed; the D_5 exact-0 rational proof was not achieved in budget (honest limit).",
+      "audit_status": "self-review recorded (audit_report.md); external audit not dispatched in this pass (solver self-review + dual-gate validation)",
+      "key_artifacts": [
+        "candidate_proof.md DD12111DDA55C9A3539B08CB9C89420B48D5D6E48A14E3187561000E11C71165",
+        "research_ledger.md FC76C13C83EFF6579AE795FF257FB1AE445B44590613B781AE42F5DEB60B5773",
+        "problem_contract.md / status_and_literature.md / whiteboard.md / obligation_graph.md / counterexample_log.md / repro_manifest.md / audit_report.md (see SHA256SUMS)",
+        "reproducibility/projection_dpp_sampler.py B33E0DC928C6D552F751A2650239981D9F4BFAD2DE92BD7AE84A4D8872E953DA (validated sampler), sampler_correctness.py + gate_target_moments.py (Gates A/B), probe_Dk_fast.py + check_Ck_fast.py (D_k), exact_Dk_integral.py + exact_D5_integral.py (exact-structure integrals), extended_moments_hankel.py, exact_moment_decomposition.py"
+      ],
+      "created_at": "2026-08-15T13:00:00Z",
+      "updated_at": "2026-08-16T01:45:00Z",
+      "open_obligations": [
+        "G1: prove D_k=0 exactly for all k>=3 (D_3,D_4 exact; D_5,D_6 evidence only)",
+        "G2: prove the only surviving m_k shapes are the size<=2 matched blocks (Lemma P)",
+        "G3: prove the matching-sum moment sequence has Lambda_m(0)->0 (Lemma H; determinacy + Hankel / Szego-Widom) — the hard step",
+        "SL itself and unconditional liminf -> 1 remain OPEN"
+      ]
     }
   ]
 }

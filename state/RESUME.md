@@ -61,11 +61,19 @@ reports/xi-prime-audit-manager.md**; A1's formalization gap has a complete math 
    SL ⟺ μ_λ({0})=0 ⟺ lim_m det(H_m)/det(H_m⁽⁰⁰⁾)=0 (Hankel criterion, Λ₁(0)=1/4, Λ₂(0)=5/36
    EXACT); load-bearing clause sharpened (0∈supp not needed). SL remains OPEN; closure route:
    D_k=0 ∀k≥3 (fermionic/Wick) ⇒ exact high moments ⇒ Hankel ratio → 0.
-4. IN FLIGHT (2026-08-15 session): T1 formalizer (subagent 5e03176d) — T1a/T1b/T1d + record_c9
-   machine-checked (MACHINE_ACCEPTED_PENDING_AUDIT), T1c bridge OPEN; after its closing
-   report: dispatch the T1 independent verifier (fresh subagent) per lean-verify protocol.
-5. PENDING: independent (third-party) re-audit of the 0.00392 record theorem (audit-dispatch-prompt.md).
-6. PENDING: premium ladder 0.00393 grid-4000 — BORDERLINE (margin 1.017e-5 ≈ bound loss 1e-5;
+4. ✅ DONE 2026-08-15/16: SL moment-route pass (run R-20260815T130000Z-slmoments-a3f9,
+   NUMERICAL_EVIDENCE / RIGOROUS_PARTIAL_RESULT): FAITHFUL projection-DPP sampler validated on
+   two gates (exact-joint + exact moments; occupancy kernel A=h·sinc is the correct
+   discretization); first trustworthy D₃–D₆≈0 evidence (fermionic/Wick through k=6, MC +
+   exact-structure integrals); Hankel decay evidence; closing-lemma framework M→P→H→SL with
+   gaps G1/G2/G3 itemized. SL NOT closed.
+5. ✅ DONE 2026-08-16: T1 REPAIR + RE-AUDIT — wMT placeholder finding CLOSED (repaired to the
+   certificate's true normalized MT kernel kMT; algebraic identity + ≥49.7-digit agreement;
+   statement freeze confirmed; machine checks exit 0; commits e1604b5 + 2adea2c). T1 stands
+   MACHINE_ACCEPTED_PENDING_AUDIT with open analytic bridges (kernel-limit lemma Cfun→kMT,
+   deltaMT/stability) + T2 certificate + T3 ξ′.
+6. PENDING: independent (third-party) re-audit of the 0.00392 record theorem (audit-dispatch-prompt.md).
+7. PENDING: premium ladder 0.00393 grid-4000 — BORDERLINE (margin 1.017e-5 ≈ bound loss 1e-5;
    exact form (13,100,000·H_MT − 26,100)/13,050,089 = 0.673072744423451254556223736062);
    k=10/k=11 assessed POOR VALUE / INFEASIBLE (reports/k-family-feasibility.md); only
    recovered-gain route = exact-arithmetic certifier (cap ≈ +1.5e-5). NOT launched.
