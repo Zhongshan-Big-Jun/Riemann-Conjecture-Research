@@ -1,0 +1,29 @@
+# machine_check.log — Lean baseline verification (2026-08-15)
+
+## Environment (recorded 2026-08-15)
+
+- lean: v4.33.0-rc2 (d8b18978322de05a8f3dba51ef03cf5461676c17), installed manually at
+  C:\Users\HuangZY\.elan\toolchains\leanprover--lean4---v4.33.0-rc2 (elan toolchain install
+  blocked by schannel revocation; downloaded via curl + extracted from
+  lean-4.33.0-rc2-windows.tar.zst)
+- lake: 5.0.0-src+d8b1897 (Lean 4.33.0-rc2)
+- snapshot: literature/raw/zeta-23-lean @ 3635e748 (lake-manifest.json sha 491590487526a398;
+  lean-toolchain sha 4bad8e3fbd71a33f)
+- mathlib4 pinned rev: 51e6992efd06126df61a496bebf8f49482a4e129 (git-fetched OK; lakefile.lean
+  contains upstream guillemets «cache-test» — parses fine with the pinned toolchain)
+- TLS notes: elan/lake native downloads fail with CRYPT_E_NO_REVOCATION_CHECK; fixed via
+  %USERPROFILE%\.curlrc ssl-no-revoke for curl-based paths (the mathlib cache tool uses curl).
+
+## sorry/admit/axiom scan (comment-aware, nested blocks handled)
+
+Scope: Zeta23/ (the build target). 316 .lean files. **0 real hits.**
+(False positives investigated: AdditiveCombination.lean «axiom qc/hqc» are doc-comment text
+inside a /-- ... -/ block containing a nested /- -/ example comment; comparator/Challenge*
+sorries belong to the separate challenge layer, not in the Zeta23 default target.)
+
+## Build status
+
+- `lake build Zeta23`: NOT YET RUN — mathlib olean cache download in progress
+  (lakecache.blob.core.windows.net/mathlib4-master/f/*.ltar, per-module; restart 2026-08-15).
+- First cache attempt was orphaned after ~114MB (job record lost); restarted as background job.
+- After the cache completes: run `lake build Zeta23`, record exit code + first error if any.

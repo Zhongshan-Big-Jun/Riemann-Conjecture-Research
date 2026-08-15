@@ -1,0 +1,25 @@
+{
+  "verdict": "VERIFICATION_INCOMPLETE",
+  "verdict_note": "Baseline (O1) machine build in progress (mathlib cache download); O2-O5 (chain + certificate + records) are OPEN formalization obligations; static scan of Zeta23 passed (0 sorry/admit/axiom); statement fidelity O1 = FAITHFUL (checked 2026-08-15).",
+  "machine": {
+    "lean_version": "4.33.0-rc2 (d8b18978322de05a8f3dba51ef03cf5461676c17)",
+    "lake_version": "5.0.0-src+d8b1897",
+    "snapshot": "zeta-23-lean @ 3635e748, mathlib4 @ 51e6992e",
+    "build_passed": false,
+    "build_note": "lake build Zeta23 not yet run; mathlib olean cache download in progress (per-module .ltar from lakecache.blob.core.windows.net/mathlib4-master/f/)",
+    "sorry_axiom_hits": []
+  },
+  "statement_fidelity": [
+    {"obligation": "O1", "result": "FAITHFUL", "notes": "thmD0_simple_mult / thmD0_simple_mult' (eps-form, dyadic (T,2T], Ncount/N0simple conventions, constant 3/2 - (1/sqrt2)*cot(1/sqrt2) written out; unconditional via zetaZeroConfig)"}
+  ],
+  "critical_errors": [],
+  "gaps": [
+    {"location": "lean-proof/obligation_map.md O2", "issue": "chain9_eps theorem not formalized (general-k chain paper-level)"},
+    {"location": "lean-proof/obligation_map.md O3", "issue": "certificate F8 >= 392/100000 not formalized (T2 reflection route planned)"},
+    {"location": "lean-proof/obligation_map.md O4", "issue": "record_c9 conclusion not formalized (depends on O2+O3)"},
+    {"location": "lean-proof/obligation_map.md O5", "issue": "xi-prime record not formalized (depends on O2)"},
+    {"location": "machine", "issue": "lake build result pending (cache download)"}
+  ],
+  "repair_hints": "Wait for the mathlib cache download + lake build Zeta23; then update this file with the build exit code. For O2-O5: dispatch the lean-verify formalizer (T1 chain eps-form; T2 certificate via reflection with box-data emission from verify_kpoint_parallel.py; T3 XiPrime import; AdmWindow cos blueprint ready).",
+  "run_manifest_ref": "lean-proof/run-manifest.json (to be completed at build time)"
+}
