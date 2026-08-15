@@ -188,6 +188,50 @@
         "symbolic (exact-arithmetic vertex-enumeration) verification of the reconstructed I_pi rationals (isolated remaining step)",
         "G2 (Lemma P) + G3 (Lemma H) unchanged; SL and unconditional liminf -> 1 remain OPEN"
       ]
+    },
+    {
+      "run_id": "R-20260816T040000Z-xipAtOne-3078",
+      "task_packet_id": "Q-20260814-criticalline-p1-507bb5",
+      "run_root": "runs/rigorous-open-math-research/R-20260816T040000Z-xipAtOne-3078",
+      "started_at": "2026-08-16T04:00:00Z",
+      "upstream_status_verbatim": "FINITE_COMPUTATIONAL_RESULT (math) / MACHINE_ACCEPTED_PENDING_AUDIT (Lean module)",
+      "summary": "T3 M3-open-A COMPLETED 2026-08-16: certified AtOne sandwich kappa_9 <= kappa_1(1,vMT) <= kappa_9+eps_9 for the xi-prime MT-window constant. Exact closed forms: int vMT = sqrt2 sin(1/sqrt2) = 0.91872536986556843778..., aMT = int vMT^2 = 1/2+sin(sqrt2)/(2sqrt2) = 0.84922799931830417992..., bMT = int vMT^4 = 0.73784297545060818785..., vConv vMT r = (1/2)(1-r)cos(sqrt2 r)+sin(sqrt2(1-r))/(2sqrt2) (>=0 on [0,1]). J1 = 2∫_0^1 D1trunc9·vConv vMT = 0.10633754139274846 +- 1.8e-16 (rigorous composite Simpson, global M4 bound); kappa_9 = (aMT+J1)/(int vMT)^2 = 1.132111133800997 +- 2e-16; eps_9 = 1024/2990212875 (formally-verified D1 tail). Canonical kappa_1(1,vMT) = 1.132111134800948064449685289579659686777429502383... and H_xip = 2-kappa_1 = 0.8678888651990519355503147104203403132225704976166306446... both INSIDE the sandwich (contain-checks True). Lean module lean-proof/Record9/Record9/XiPrimeAtOne.lean declares IvMT/aMT/bMT/vConvMTcl/J1MT/kappaXiOne_MT + kappaXi_one_vMT_mem (kappaXi 1 vMT ∈ Icc kappa_9 (kappa_9+eps_9)) + H_xip_vMT_mem; lake build Record9.XiPrimeAtOne exit 0 (8846 jobs, manager re-verified); #print axioms base-only. Honest notes: kappa_9 is NOT an exact rational for v_MT (real constant enclosed to ~1e-16) — unlike the flat/quartic case; transcription typo in FORMALIZATION_STATUS_XIP.md (int vMT value) corrected; F1-F5 implementation defects caught and recorded.",
+      "audit_status": "self-audit included (audit_kappa.py independent mpmath cross-check; |H-canonical| ~ 1.4e-56); formal adversarial review of closed-form steps recommended for O5-O8",
+      "key_artifacts": [
+        "candidate_proof.md + run_report.md (sandwich derivation + machine evidence)",
+        "reproducibility/atone_xip_mt.py (rigorous ARB certificate), audit_kappa.py (independent cross-check), atone_cert.txt, audit_kappa_out.txt, README.md",
+        "Lean: lean-proof/Record9/Record9/XiPrimeAtOne.lean (MACHINE_ACCEPTED)",
+        "SHA256SUMS (13 entries)"
+      ],
+      "created_at": "2026-08-16T04:00:00Z",
+      "updated_at": "2026-08-16T03:45:00Z",
+      "open_obligations": [
+        "M3-open-A formal (Lean): promote the analytic facts (int vMT = IvMT, vConv = vConvMTcl, Fubini, jWin(D1trunc9)=J1MT) from hypotheses to real lemmas",
+        "M3-open-B: xiChain (pressure-method/stability) bridge — unchanged",
+        "M1-open-C: the four §1 profile L1-norms as Lean lemmas — unchanged"
+      ]
+    },
+    {
+      "run_id": "R-20260816T040000Z-kernellimit-b9e1",
+      "task_packet_id": "Q-20260814-criticalline-p1-507bb5",
+      "run_root": "runs/rigorous-open-math-research/R-20260816T040000Z-kernellimit-b9e1",
+      "started_at": "2026-08-16T04:00:00Z",
+      "upstream_status_verbatim": "RIGOROUS_PARTIAL_RESULT",
+      "summary": "Kernel-limit lemma (T1c item 3) analysis-level proof COMPLETED 2026-08-16. Exact Lean-ready statement: with L = lambda*log(T/2pi), MT window phi(u) = sqrt(cos(sqrt2 lambda u/L))·rho((L/2-|u|)/w), atoms v_gamma = phi·e^{i gamma u}, normalized separation x = (gamma-gamma')·L/(2pi): <v_gamma,v_gamma'> = (phi^2)^(gamma-gamma') (Fourier cross-frequency overlap); |<v_gamma,v_gamma'>/L - K_lambda(x)| <= 2w/L uniform in x (Eq. 2); <v_gamma,v_gamma'>/<v_gamma,v_gamma> -> K_lambda(x)/K_lambda(0) at rate O(w/L); K_1(x)/K_1(0) = kMT(x) = [sinc(1/sqrt2-pi x)+sinc(1/sqrt2+pi x)]/(2 sqrt2 sin(1/sqrt2)) EXACTLY (product-to-sum, removable singularities) — matches Chain9.lean:70-72 and the Arb certificate normalized_kernel. IMPORTANT correction: the 'Cfun -> kMT' framing is imprecise — Cfun (Window.lean:1211) is the profile AUTOCORRELATION (J-moment object; phase sqrt2 lambda y/L u-independent; normalized limit independent of x, verified numerically), NOT the beat-frequency overlap; the correct object is the Fourier overlap pinned to the snapshot's Gram-entry definition (Defs.lean Gsummand/Gentry). Numerical verification (mpmath 40d): ratio converges to kMT with err*L ~ const (x=0.3->2.4, x=1.0->9.4, x=1.9->8.9), confirming O(w/L). Lean formalization NOT done in this pass (analysis-level; statement ready for lean-verify follow-up).",
+      "audit_status": "self-checked (numerical verification + derivation); formal audit recommended at the Lean formalization step",
+      "key_artifacts": [
+        "problem_contract.md (exact statement + normalization resolution)",
+        "candidate_proof.md (Eq. 1-4 full derivation)",
+        "numerical_evidence.md + reproducibility/kernel_limit_verify.py + ramp_rate_verify.py",
+        "SHA256SUMS (904 bytes)"
+      ],
+      "created_at": "2026-08-16T04:00:00Z",
+      "updated_at": "2026-08-16T03:35:00Z",
+      "open_obligations": [
+        "Lean formalization of the kernel-limit lemma (T1c-3 bridge) — the exact statement is now pinned (Fourier overlap, not Cfun)",
+        "T1c-1/T1c-2 (stability_eps, stability_averaged_eps for the true delta(M°)) unchanged",
+        "T2 certificate reflection unchanged"
+      ]
     }
   ]
 }

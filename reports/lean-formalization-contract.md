@@ -44,8 +44,21 @@ needs the mathlib fetch/build, doable in a later session).
   (~months of Lean work). Route (a) is preferred: emit the certificate's surviving-box
   structure from verify_kpoint_parallel.py, then a Lean checker walks the (finite) box
   tree with exact rational arithmetic — a realistic few-weeks task.
-- **T3 (ξ′ side)**: import XiPrime.lean + T1 to get C₉(ξ′) (the AdmWindow cos instance
-  blueprint is ready: reports/admwindow-cos-instance.md).
+  **Scoping note (2026-08-16)**: the certificate file is METADATA-ONLY (571 B: hashes,
+  node counts, surviving components [[1868,2458];[3511,30823]]; NO box tree). The
+  branch-and-bound visits 64,748,524 nodes (depth 80) — direct reflection over the full
+  tree is not feasible. The realistic T2 design: (i) instrument verify_kpoint_parallel.py
+  to emit a COMPRESSED pruning certificate (per initial box: the split tree with each
+  terminal node's pruning bound — or, more cheaply, a coarser certified partition of the
+  2^8 initial boxes into regions with rigorous exact-rational lower bounds ≥ target);
+  (ii) a Lean checker recomputes box_lower exactly (rational kernel-table values +
+  interval arithmetic with fmpq) and verifies the partition covers [0,∞)^8. The
+  kernel-table data (31368 entries × 128-bit ≈ 500 KB) is embeddable. This is the
+  few-weeks-scale task; not started.
+- **T3 (ξ′ side)**: DONE 2026-08-16 at the machine-accepted level (`Record9.XiPrimeMT`:
+  AdmWindow cos instance with cMT = cRho+4, windowZeroSide_atV_MT, record_c9xip with the
+  ξ′ chain as explicit bridge). Remaining: AtOne κ₁(1,vMT) certificate (run
+  R-20260816T040000Z-xipAtOne-3078, in progress) and the xiChain bridge.
 - **T4 (optional)**: the SL/conditional-100% theorems (condp1 run) — linear-algebra
   formalization (Christoffel/SOS), not currently planned.
 

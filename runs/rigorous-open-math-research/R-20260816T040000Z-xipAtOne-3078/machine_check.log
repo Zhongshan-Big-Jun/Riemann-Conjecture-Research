@@ -1,0 +1,45 @@
+# Machine check log — M3-open-A (AtOne κ₁(1,vMT) certificate)
+
+Every command's exit code recorded.  Run `R-20260816T040000Z-xipAtOne-3078`, project root
+`F:\LaTeX\Riemann Conjecture`.
+
+## Environment
+- Python 3.10 (`py -3.10`), python-flint 0.9.0, sympy 1.13.1, mpmath.
+- Lean: `leanprover/lean4:v4.33.0-rc2` (pinned `lean-toolchain`); `lake` at
+  `C:\Users\HuangZY\.elan\bin\`.  Record9 project reuses snapshot packages (no network).
+- `$env:PYTHONUTF8=1` set for Python runs.
+
+## Python (math certificate + independent audit)
+| # | Command (workdir = project root) | Exit |
+|---|---|---|
+| 1 | `py -3.10 runs/.../reproducibility/atone_xip_mt.py` | **0** |
+| 2 | `py -3.10 runs/.../reproducibility/audit_kappa.py` | **0** |
+
+Intermediate failures (already reflected in the final scripts):
+- atone_xip_mt.py had exit-1 runs during development (F1 arb vConv; F3 naive per-panel f4;
+  F4 `sp.NegativeOne`) — all root-caused and fixed; final run (line 1) exits 0.
+
+## Lean build
+| # | Command (workdir = lean-proof/Record9) | Exit |
+|---|---|---|
+| 3 | `lake build Record9.XiPrimeAtOne` | **0** (final) |
+
+Iteration history for the build (all the dependencies cached; the only target recompiled is
+`Record9.XiPrimeAtOne`):
+- iteration 1 (initial): exit 1 — `kappaXi_one_vMT_mem` lower/upper algebra not unfolded (nlinarith).
+- iteration 2 (unfold+field_simp lower; calc `≤` step used `ring`): exit 1 —
+  `ring` cannot close an `≤` goal that is the equality `aMT+(J1MT+x) = (aMT+J1MT)+x`.
+- iteration 3 (made that calc step `=`): exit **0**.  See BUILD_LOG addition.
+
+Warnings during the build are pre-existing deprecations in the snapshot (e.g.
+`intervalIntegral.integral_finset_sum` deprecated, unused-variable linters in
+`XiPrimeMT.lean`) — none affect correctness.
+
+## sorry/admit/axiom scan
+`Record9/XiPrimeAtOne.lean`: no `sorry`, `admit`, or `axiom` declaration.  The only occurrence
+of the word "axiom" is in the header docstring "axiom-free hypotheses" (documentation text).
+The open analytic facts are plain theorem hypotheses, not axioms.
+
+## Statement freeze check
+- `kappaXi 1 vMT` (Defs.kappaXi), `H_xip = 2 − kappaXi 1 vMT` (XiPrimeMT) — unchanged.
+- `kappaXiOne_MT = (aMT + J1MT)/(IvMT)^2` — the AtOne κ₉ for v_MT.
