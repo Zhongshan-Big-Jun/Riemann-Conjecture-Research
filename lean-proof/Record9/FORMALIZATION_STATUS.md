@@ -23,7 +23,7 @@ The declarations are opened in the `Zeta23.ThmD` namespace, so their full names 
 
 | Obligation | Status | Machine evidence | Remaining gap |
 |---|---|---|---|
-| **T1a — statement** (`chain9_eps`, `CERTIFIED_F8_GE`, pressure `F8`, bridge hypotheses) | **DONE** | `lake env lean Record9/Chain9.lean` exit 0; `#check Zeta23.ThmD.chain9_eps` types the conclusion `(1 − (2499:ℝ)/2500/263)·N₀ˢ ≥ (HD 1 − 262/131500 − ε)·N`; `CERTIFIED_F8_GE : Prop` | none (statement faithful; see Fidelity notes) |
+| **T1a — statement** (`chain9_eps`, `CERTIFIED_F8_GE`, pressure `F8`, bridge hypotheses) | **DONE** | `lake env lean Record9/Chain9.lean` exit 0; `#check Zeta23.ThmD.chain9_eps` types the conclusion `(1 − (2499:ℝ)/2500/263)·N₀ˢ ≥ (HD 1 − 262/131500 − ε)·N`; `CERTIFIED_F8_GE : Prop` | none (statement faithful; kernel = the certificate's true normalized MT kernel `kMT`, repaired 2026-08-15) |
 | **T1b — algebra core** (`chain9_algebra_core`, `chain9_eps_from_hypotheses`, `chain9_eps`) | **DONE** | Same build exit 0; `chain9_algebra_core` proves the ε-form implication from the two bridge hypotheses | none |
 | **T1c — analytic bridge** (stability step 2; block-defect + pinching/averaging steps 5–6) | **OPEN** (explicit hypotheses) | represented as `stability_eps` and `stability_averaged_eps`, bundled in `record9Bridge`; not faked, not machine-proved | exact statements below |
 | **T1d — constant identity + O4** (`A0_eq_f9n9`, `cLHS_pos`, `c9Const_eq`, `record9_constant_identity`, `record_c9`) | **DONE** | Same build exit 0; `record_c9` states liminf N₀ˢ/N ≥ C₉ = (657,500·H_MT − 1,310)/655,001 in ε-form | none (conditional on T1b closure + bridge) |
@@ -71,13 +71,26 @@ F₈ = (1/(500·8))·Σ_{i<8} g_i  +  Σ_{s0=0}^{7} (2/(8−s0))·Σ_{i<8−s0} 
 cover the 8 gaps 0..7 with the paper's `2/(k−s)` weighing. `F8 : Fin 8 → ℝ → ℝ` adapts the
 0-based vector.
 
-The kernel `wMT x = (sincMT x)²`, `sincMT x = if x = 0 then 1 else sin x / x`, is the
-**normalized Montgomery–Taylor overlap kernel fixed structurally** (even, w(0)=1, nonneg,
-sinc-shaped) per the paper. Its precise identity with the finite-window overlap autocorrelation
-in the high-T limit (the *kernel-limit lemma*) is **not assumed and not machine-tied here**; it
-is an analytic-bridge sub-obligation (bounded handling of M4). `CERTIFIED_F8_GE` is therefore a
-statement about the intended (structurally-fixed) kernel; the numerical certificate asserting it
-is T2.
+The kernel is the **true normalized Montgomery–Taylor overlap kernel** (repaired 2026-08-15,
+T1 repair round): `wMT x = (kMT x)²` where
+```
+kMT x = [sinc((√2)⁻¹ − πx) + sinc((√2)⁻¹ + πx)] / (2·√2·sin((√2)⁻¹)),
+sincMT z = if z = 0 then 1 else sin z / z  (guarded sinc).
+```
+This matches the certificate's `normalized_kernel` exactly (OpenAI
+`zeta_simple_zeros/kernel.py:43-54`, normalization constant `k_zero = √2·sin((√2)⁻¹)` from
+lines 32-40), since (√2−2πx)/2 = (√2)⁻¹−πx and (√2+2πx)/2 = (√2)⁻¹+πx and
+K(x)/K(0) = [sinc(1/√2−πx)+sinc(1/√2+πx)]/(2·√2·sin(1/√2)). Sanity: kMT(0) = 1, so wMT(0) = 1.
+The denominator is invertible (`kMT_den_pos : 0 < √2·sin((√2)⁻¹)`, sin positive on (0,π) with
+(√2)⁻¹ ∈ (0,π)). So `CERTIFIED_F8_GE` states **exactly** what the Arb certificate
+`nine-point-f8-gt-392over100000-grid2000.txt` certifies (F₈ ≥ 392/100000).
+
+Its precise agreement with the finite-window overlap autocorrelation in the high-T limit (the
+*kernel-limit lemma* relating `kMT` to `Window.Cfun`, Window.lean:1211) is **not assumed and not
+machine-tied here**; it is an analytic-bridge sub-obligation (T1c item 3), carried as an OPEN
+bridge — the same bridge point as before, whose *target* is now the true `kMT` (previously the
+opaque "structurally-fixed sinc²" placeholder). `CERTIFIED_F8_GE` is therefore a statement about
+the certified kernel; the numerical certificate asserting it is T2.
 
 ## T1c — analytic bridge (OPEN), exact statements
 
@@ -100,8 +113,10 @@ hypotheses; the machine content is only that they *imply* the ε-form chain.
    ```
    i.e. `Δ(M°) ≥ (A₀/m)·S − ((m−1)/(500m))·N − o(N)`.
 
-3. The **kernel-limit lemma** linking `wMT` with the finite-window MT overlap (needed to reach
-   the block-defect from the energy bound) is likewise an open analytic sub-obligation.
+3. The **kernel-limit lemma** linking `wMT` (= `kMT²`, the true normalized MT kernel) with the
+   finite-window MT overlap `Window.Cfun` (Window.lean:1211) in the high-T limit is likewise an
+   open analytic sub-obligation (T1c item 3). This is now the *only* open kernel item: the
+   definition `wMT` itself is the certificate's `normalized_kernel`, so no placeholder remains.
 
 No `axiom` is used: these are plain theorem hypotheses (`Prop` fields of `record9Bridge`).
 Closing T1c = supplying correct Lean proofs of `stability_eps` and `stability_averaged_eps`
@@ -141,10 +156,8 @@ cLHS), giving the liminf N₀ˢ/N ≥ C₉ = 0.673066472675939665848…
 - `lake env lean` probe appending `#check Zeta23.ThmD.chain9_eps / CERTIFIED_F8_GE / F8 /
   stability_eps / stability_averaged_eps / record_c9 / c9Const / chain9_algebra_core`:
   **exit 0**; printed types match the contract (see BUILD_LOG.md).
-- `lake build Record9.Chain9` (path-dep project): **not completed by the formalizer** — the
-  path-dep graph resolution exceeded the 10-min budget (killed); the source is identical to the
-  `lake env lean` exit-0 compile and to `Record9.M1Baseline`'s successful `lake build`. The
-  independent verifier re-runs it with a long timeout.
+- `lake build Record9.Chain9` (path-dep project): **exit 0** — "Built Record9.Chain9 (42s)";
+  "Build completed successfully (8838 jobs)" (T1 repair round, long timeout).
 - sorry/admit/axiom scan of `Record9/{Chain9,M1Baseline}.lean`: clean (matches only in the
   header docstring disclaimer).
 - Snapshot `literature/raw/zeta-23-lean/lakefile.toml`: **unchanged**; no Record9 files exist
@@ -154,6 +167,26 @@ Earlier in this session the module content also built via temporary __in-snapsho
 (`lake build Zeta23.Record9.{M1Baseline,Chain9}` exit 0); those transfers were removed by the
 manager (auto-sync instability) and are **not** part of the final state. The authoritative
 sources are solely `lean-proof/Record9/Record9/`.
+
+## T1 repair round (2026-08-15) — kernel fidelity
+
+The independent verifier found a **statement-layer fidelity defect** (verifier finding #1 in
+`lean-proof/lean-audit-report.md`, "T1 verifier pass" section): `wMT` had been formalized as the
+plain `sinc²` placeholder. **Repaired** — the kernel is now the certificate's true normalized
+Montgomery–Taylor overlap kernel:
+
+- Added `kMT : ℝ → ℝ` (the normalized overlap kernel matching `zeta_simple_zeros/kernel.py`'s
+  `normalized_kernel`) and redefined `wMT x = (kMT x)²`.
+- Kept `sincMT` as the guarded sinc building block (`if z = 0 then 1 else sin z / z`).
+- Added `kMT_den_pos : 0 < √2·sin((√2)⁻¹)` (denominator invertibility; realizes
+  `Real.sin_pos_of_pos_of_lt_pi` with (√2)⁻¹ ∈ (0,π)).
+- `CERTIFIED_F8_GE`'s docstring and the header fidelity note now state that `wMT` IS the
+  certificate kernel; the kernel-limit lemma (finite-window `Cfun` → `kMT`) is the remaining
+  OPEN bridge (T1c item 3).
+
+**Statement freeze honored:** the ε-form statement, quantifiers, constants, and bridge
+hypotheses of `chain9_eps` / `record_c9` are unchanged (see `#check` probes). Only the kernel
+definition and its docs were touched.
 
 ## Status label for this pass
 

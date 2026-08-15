@@ -6,7 +6,7 @@ leanprover/lean4:v4.33.0-rc2, mathlib4 @ 51e6992e). Verification workspace: lean
 | Obl | Contract statement | Lean declaration(s) | Fidelity | Status |
 |---|---|---|---|---|
 | O1 | Baseline: ∀ε>0 ∃T₀ ∀T≥T₀: (H_MT − ε)·N(T,2T) ≤ N₀ˢ(T,2T), H_MT = 3/2 − (1/√2)cot(1/√2) | `Zeta23.ThmD.Mult.thmD₀_simple_mult` (HD 1 − ε form) and `thmD₀_simple_mult'` (constant written out: 3/2 − (√2)⁻¹·cos(1/√2)/sin(1/√2)); cumulative form `thmD₀_simple_mult_cumulative` | **FAITHFUL** (checked line-by-line 2026-08-15: ε-form, dyadic (T,2T], Ncount = N with multiplicity, N0simple = simple-on-line; unconditional via zetaZeroConfig + paperInputs_zeta) | ✅ formalized upstream; **machine build COMPLETE** (`lake build Zeta23` exit 0, 9010 jobs; `#print axioms` on all headline theorems = {propext, Classical.choice, Quot.sound}, lean-proof/axioms-check.log) |
-| O2 | Chain: (1 − A₀/m)·N₀ˢ(T,2T) ≥ (H_MT − (m−1)/(500m) − ε)·N(T,2T) given certified F₈ ≥ 392/100000 (m=263, A₀=2499/2500) | `Zeta23.ThmD.chain9_eps` (in extension `Record9.Chain9`, full name `Zeta23.ThmD.chain9_eps`) — **written, compiles**; proven with `hF : CERTIFIED_F8_GE` + bundled bridge `b : record9Bridge` (T1) | **FAITHFUL** (T1a; see "T1 formalizer pass" below) | 🟨 T1a/T1b/T1d DONE (machine-accepted); **T1c analytic bridge OPEN** (explicit hypotheses) |
+| O2 | Chain: (1 − A₀/m)·N₀ˢ(T,2T) ≥ (H_MT − (m−1)/(500m) − ε)·N(T,2T) given certified F₈ ≥ 392/100000 (m=263, A₀=2499/2500) | `Zeta23.ThmD.chain9_eps` (in extension `Record9.Chain9`, full name `Zeta23.ThmD.chain9_eps`) — **written, compiles**; proven with `hF : CERTIFIED_F8_GE` + bundled bridge `b : record9Bridge` (T1) | **FAITHFUL** (T1a; kernel repaired 2026-08-15 to certificate kernel `kMT` — see "T1 repair round") | 🟨 T1a/T1b/T1d DONE (machine-accepted, re-audit pending); **T1c analytic bridge OPEN** (explicit hypotheses) |
 | O3 | Certificate: F₈ ≥ 392/100000 (grid-2000, 128-bit, 64,748,524 nodes; kernel table 31368 entries) | (target: `Zeta23.Pressure.f8_cert`) — NOT yet written | — (B1–B6 computational audit PASS; certificate sha 7F25401A…) | ❌ OPEN (T2, reflection route) |
 | O4 | Conclusion: liminf N₀ˢ/N ≥ (657,500·H_MT − 1,310)/655,001 | (target: `Zeta23.ThmD.record_c9`; arithmetic verified dps=130) | — (exact rational identity (657,500/65,750 = 10) verified) | ❌ OPEN (O2+O3) |
 | O5 | ξ′ record: liminf N₀ˢ_{ξ′}/N_{ξ′} ≥ (657,500·H_{ξ′} − 1,310)/655,001 | (target: `Zeta23.XiPrime.record_c9xip`; imports `Zeta23.XiPrime.*` + O2) | — (A1–A6 manager PASS; AdmWindow cos blueprint ready) | ❌ OPEN (T3) |
@@ -66,3 +66,26 @@ leanprover/lean4:v4.33.0-rc2, mathlib4 @ 51e6992e). Verification workspace: lean
 
 **T1 pass verdict:** `MACHINE_ACCEPTED_PENDING_AUDIT` (T1a/T1b/T1d compile with zero
 sorry/axiom; T1c open as explicit hypotheses).
+
+## T1 repair round (2026-08-15) — O2/T1a kernel fidelity
+
+The independent verifier's finding #1 (statement-layer defect) is **repaired**. `wMT` was a
+plain `sinc²` placeholder; it is now the certificate's **true normalized Montgomery–Taylor
+overlap kernel**:
+
+- `sincMT z = if z = 0 then 1 else sin z / z` (guarded sinc, unchanged).
+- `kMT x = [sincMT((√2)⁻¹ − πx) + sincMT((√2)⁻¹ + πx)] / 2 / (√2·sin((√2)⁻¹))` — matches
+  `zeta_simple_zeros/kernel.py` `normalized_kernel` (openai, zeta-simple-zeros:43-54;
+  `k_zero = √2·sin((√2)⁻¹)`, lines 32-40).
+- `wMT x = (kMT x)²`; added `kMT_den_pos : 0 < √2·sin((√2)⁻¹)`.
+
+`CERTIFIED_F8_GE` now states exactly what the Arb certificate
+`nine-point-f8-gt-392over100000-grid2000.txt` certifies. **Statement freeze honored**: the
+ε-form statement, quantifiers, constants and bridge hypotheses of `chain9_eps` / `record_c9`
+are unchanged (verified by `#check` in this round). Kernel-limit lemma (finite-window
+`Cfun` → `kMT`) remains an **open analytic bridge** (T1c item 3); T2, T3 unchanged.
+
+**Status:** `MACHINE_ACCEPTED_PENDING_AUDIT` — repaired file compiles clean
+(`lake env lean` exit 0; `lake build Record9.Chain9` exit 0, 8838 jobs), no
+sorry/admit/axiom, statement shape unchanged. **Re-audit pending** (fidelity of the repaired
+kernel statement).

@@ -33,9 +33,11 @@ Fidelity notes:
     Ncount = N (with multiplicity) are the baseline snapshot counts.
   • `CERTIFIED_F8_GE` is the paper certificate statement "F₈ ≥ 392/100000 for all gᵢ ≥ 0",
     where F₈ is the k=9 pressure function built from the normalized Montgomery–Taylor
-    overlap kernel w. The kernel `wMT` is fixed *structurally* (squared, even, w(0)=1,
-    sinc MT-shape); its precise agreement with the finite-window overlap in the high-T
-    limit (the kernel-limit lemma) is an analytic-bridge sub-obligation, not assumed here.
+    overlap kernel w. Here `wMT = kMT²` IS the true normalized MT kernel (matching the
+    certificate's `normalized_kernel`: kMT(x) = [sinc((√2)⁻¹−πx) + sinc((√2)⁻¹+πx)] /
+    (2·√2·sin((√2)⁻¹))), so `CERTIFIED_F8_GE` states exactly what the Arb certificate
+    certifies. Its precise agreement with the finite-window overlap in the high-T limit
+    (the kernel-limit lemma) is an analytic-bridge sub-obligation, not assumed here.
   • `chain9_eps` is stated with the certified-pressure hypothesis `hF : CERTIFIED_F8_GE`
     (the contract) AND the bundled bridge `b : record9Bridge` (the honest routing of the
     open analytic steps 2,5,6). The proof only uses the algebra and the ε-lift.
@@ -52,14 +54,42 @@ namespace ThmD
 
 /-! ## Pressure function (k=9) and the certified-bound statement (T1a) -/
 
-/-- normalized Montgomery–Taylor overlap kernel k(x) := K(x)/K(0), so that w(x) := k(x)²,
-w(0) = 1 (general-k §1, §2). Fixed here in the sinc MT shape; the precise identity with the
-finite-window overlap in the high-T limit is an analytic-bridge sub-obligation (see header).
-Kept total on ℝ via the `if x = 0 then 1` guard. -/
+/-- the guarded sinc: `sinc(z) = sin z / z`, with `sinc 0 = 1` (total on ℝ via the guard). -/
 def sincMT (x : ℝ) : ℝ := if x = 0 then 1 else Real.sin x / x
 
-/-- the squared normalized MT overlap kernel w(x) = k(x)². -/
-def wMT (x : ℝ) : ℝ := (sincMT x) ^ 2
+/-- the normalized Montgomery–Taylor overlap kernel k(x) = K(x)/K(0):
+    [sinc((√2)⁻¹ − πx) + sinc((√2)⁻¹ + πx)] / (2 · √2 · sin((√2)⁻¹)).
+This matches the certificate's `normalized_kernel` (OpenAI repo
+`zeta_simple_zeros/kernel.py:43-54`, with `k_zero = √2 · sin((√2)⁻¹)` from
+`kernel_constants` lines 32-40), since (√2 − 2πx)/2 = (√2)⁻¹ − πx and
+(√2 + 2πx)/2 = (√2)⁻¹ + πx. So `CERTIFIED_F8_GE` states exactly what the Arb
+certificate `nine-point-f8-gt-392over100000-grid2000.txt` (F₈ ≥ 392/100000) certifies.
+The high-T limit of the finite-window overlap `Cfun` (Zeta23.ThmD.Window.Cfun,
+Window.lean:1211) to this `k` is the kernel-limit lemma, an OPEN analytic bridge
+(T1c item 3; see header). -/
+def kMT (x : ℝ) : ℝ :=
+  (sincMT ((Real.sqrt 2)⁻¹ - Real.pi * x) + sincMT ((Real.sqrt 2)⁻¹ + Real.pi * x))
+    / 2 / (Real.sqrt 2 * Real.sin ((Real.sqrt 2)⁻¹))
+
+/-- the squared normalized MT overlap kernel w(x) = k(x)² (so w(0) = 1). -/
+def wMT (x : ℝ) : ℝ := (kMT x) ^ 2
+
+/-- positivity of the normalization constant `√2 · sin((√2)⁻¹)` (kMT's denominator), so it is
+    an invertible total fraction: `sin` is positive on (0, π) and (√2)⁻¹ ∈ (0, π). -/
+lemma kMT_den_pos : 0 < Real.sqrt 2 * Real.sin ((Real.sqrt 2)⁻¹) := by
+  have hsqrt_pos : (0 : ℝ) < Real.sqrt 2 := by positivity
+  have hinv_pos : (0 : ℝ) < (Real.sqrt 2)⁻¹ := by positivity
+  have hinv_le_one : (Real.sqrt 2)⁻¹ ≤ (1 : ℝ) := by
+    rw [inv_le_one₀ hsqrt_pos]
+    have hsqrt_ge_one : (1 : ℝ) ≤ Real.sqrt 2 := by
+      rw [← Real.sqrt_one]
+      exact Real.sqrt_le_sqrt (by norm_num : (1 : ℝ) ≤ (2 : ℝ))
+    exact hsqrt_ge_one
+  have h1_lt_pi : (1 : ℝ) < Real.pi := by
+    linarith [Real.pi_gt_three]
+  have hsin : 0 < Real.sin ((Real.sqrt 2)⁻¹) :=
+    Real.sin_pos_of_pos_of_lt_pi hinv_pos (lt_of_le_of_lt hinv_le_one h1_lt_pi)
+  exact mul_pos hsqrt_pos hsin
 
 /-- `gapSpan g i len` = g_i + g_{i+1} + ⋯ + g_{i+len-1}  (sum of `len` consecutive gaps
 starting at gap index `i`, 0-based). -/
@@ -77,7 +107,10 @@ def F8gaps (w : ℝ → ℝ) (g : ℕ → ℝ) : ℝ :=
 /-- `F8gaps` for the canonical MT kernel `wMT`, on a vector `g : Fin 8 → ℝ` (0-based). -/
 def F8 (g : Fin 8 → ℝ) : ℝ := F8gaps wMT (fun n : ℕ => g ⟨n % 8, Nat.mod_lt n (by decide)⟩)
 
-/-- the certified k=9 pressure bound: F₈(g₁,…,g₈) ≥ 392/100000 for all gᵢ ≥ 0. -/
+/-- the certified k=9 pressure bound: F₈(g₁,…,g₈) ≥ 392/100000 for all gᵢ ≥ 0, where F₈ is
+    built from the true normalized Montgomery–Taylor overlap kernel `wMT` (i.e. `kMT`², matching
+    the certificate's `normalized_kernel`), so this is exactly the statement the Arb certificate
+    `nine-point-f8-gt-392over100000-grid2000.txt` certifies. -/
 def CERTIFIED_F8_GE : Prop :=
   ∀ g : Fin 8 → ℝ, (∀ i : Fin 8, 0 ≤ g i) → (392 : ℝ) / 100000 ≤ F8 g
 

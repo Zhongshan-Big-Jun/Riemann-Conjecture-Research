@@ -20,7 +20,7 @@ Record9 files and its `lakefile.toml` is unchanged.
 | Command (workdir = lean-proof/Record9) | Exit | Evidence |
 |---|---|---|
 | `lake build Record9.M1Baseline` | **0** | "Build completed successfully (8838 jobs)": replays snapshot + builds the plumbing. |
-| `lake build Record9.Chain9` | (not completed this pass) | path-dep graph-resolution latency exceeded the 10-min budget (killed; driver never reached the compile child). The source is identical to the `lake env lean` exit-0 compile and to `Record9.M1Baseline`'s successful build, so a failure would be environmental. The independent verifier re-runs this with a long timeout. |
+| `lake build Record9.Chain9` | (see "T1 repair round" below) | path-dep graph latency exceeded 10-min in the first pass; **completed exit 0 in the repair round** (long timeout). |
 | `lake build Record9` (library target) | 1 | known lake limitation with cross-project (path-dep) library aggregation ("bad imports"); the module targets above are the authoritative checks. |
 
 ## `lake env lean` compile checks (used to iterate on proofs, from the snapshot dir; fast)
@@ -56,6 +56,41 @@ These copies were killed by an intermittent external Git auto-sync and then remo
 (commit 706d71e). They are recorded here only as additional evidence that the code builds via
 `lake build`, but they are **not** part of the final deliverable; the canonical sources are solely
 `lean-proof/Record9/Record9/`.
+
+## T1 repair round (2026-08-15) — kernel fidelity repair
+
+Replace `wMT = sinc²` placeholder with the certificate's true normalized MT kernel `kMT`
+(and `wMT = kMT²`, `kMT_den_pos`), per verifier finding #1. Python-level source verified
+against `literature/raw/zeta-simple-zeros/src/zeta_simple_zeros/kernel.py:32-54`
+(`normalized_kernel`, `k_zero = √2·sin((√2)⁻¹)`). Statement shape of `chain9_eps` /
+`record_c9` / bridge hypotheses / constants left unchanged.
+
+| Command (workdir = lean-proof/Record9 unless noted) | Exit | Evidence |
+|---|---|---|
+| `lake env lean Record9/Record9/Chain9.lean` (workdir = snapshot `literature/raw/zeta-23-lean`) | **0** | full type-check of repaired file; only pre-existing `hF` unused-linter warning (unchanged `chain9_eps`) |
+| `lake env lean Record9/Probe_T1repair_copy.lean` (workdir = Record9; scratch, deleted) | **0** | `#check Zeta23.ThmD.chain9_eps` / `record_c9` / `CERTIFIED_F8_GE` / `F8` / `kMT` / `wMT` / `sincMT` / `kMT_den_pos`; statement types match contract |
+| `lake build Record9.Chain9` (workdir = Record9) | **0** | "Built Record9.Chain9 (42s)"; "Build completed successfully (8838 jobs)" |
+| sorry/admit/axiom scan of `Record9/{Chain9,M1Baseline}.lean` | clean | grep matches only the header docstring disclaimer ("NO sorry/admit/axiom appear…"); no declaration |
+
+### `#check` transcript (T1 repair round, statement-shape unchanged)
+
+```
+Zeta23.ThmD.chain9_eps (hF : CERTIFIED_F8_GE) (b : record9Bridge) (ε : ℝ) :
+  ε > 0 → ∃ T₀, ∀ T ≥ T₀,
+    (1 - 2499 / 2500 / 263) * ↑(N0simple T (2 * T)) ≥ (HD 1 - 262 / 131500 - ε) * ↑(Ncount T (2 * T))
+Zeta23.ThmD.record_c9 (hF : CERTIFIED_F8_GE) (b : record9Bridge) (ε : ℝ) :
+  ε > 0 → ∃ T₀, ∀ T ≥ T₀, (c9Const - ε) * ↑(Ncount T (2 * T)) ≤ ↑(N0simple T (2 * T))
+Zeta23.ThmD.CERTIFIED_F8_GE : Prop
+Zeta23.ThmD.F8 (g : Fin 8 → ℝ) : ℝ
+Zeta23.ThmD.kMT (x : ℝ) : ℝ
+Zeta23.ThmD.wMT (x : ℝ) : ℝ
+Zeta23.ThmD.sincMT (x : ℝ) : ℝ
+Zeta23.ThmD.kMT_den_pos : 0 < √2 * Real.sin (√2)⁻¹
+```
+
+> Earlier pass note: the first formalization pass left `lake build Record9.Chain9` uncompleted
+> (path-dep graph latency exceeded a 10-min budget). In this **repair round** the build completed
+> with exit 0 (long timeout).
 
 ## sorry / admit / axiom scan
 
