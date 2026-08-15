@@ -134,7 +134,7 @@ roots; the manager records paths and hashes only.
   unconditional c > 0.673008528 (or a verified proof of that constant) is novel.
 - **Novelty audit path:** `literature/maps/FRONTIER.md` §1–§2 (divergent search log with
   query → result → locator; exact known theorems; barrier list; excluded crank noise).
-- **Snapshot hash:** `sha256:9B128E116842DBCEC4F1FE9961C6CF255D2E16CE1B88B68082858D81FC25C54D`
+- **Snapshot hash:** `sha256:94F920E5A572976BBE0F4A8443C63F24E2F4BB68B84DD8CA4CACB37FDB752129`
   (content hash of the B0 artifact literature/maps/FRONTIER.md, refreshed 2026-08-15 after
   the SL run ingestion (SL row: load-bearing form = μ_λ({0})=0, Hankel criterion) and the
   k-family feasibility update; previous hash 88D0AC0B… recorded at the f₉ = 0.00392
@@ -160,7 +160,7 @@ roots; the manager records paths and hashes only.
 | BGSTB 2023 | pair correlation no RH | https://arxiv.org/abs/2306.04799 | external |
 | BGSTB 2025 | proportions I | https://arxiv.org/abs/2501.14545 | external |
 | GLSS 2025 | PCC simple/critical | https://arxiv.org/abs/2503.15449 | external |
-| B0 map | frontier + audit trail | literature/maps/FRONTIER.md | 9B128E116842DBCEC4F1FE9961C6CF255D2E16CE1B88B68082858D81FC25C54D |
+| B0 map | frontier + audit trail | literature/maps/FRONTIER.md | 94F920E5A572976BBE0F4A8443C63F24E2F4BB68B84DD8CA4CACB37FDB752129 |
 
 ## Required run location
 

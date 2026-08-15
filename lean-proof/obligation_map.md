@@ -9,7 +9,7 @@ leanprover/lean4:v4.33.0-rc2, mathlib4 @ 51e6992e). Verification workspace: lean
 | O2 | Chain: (1 − A₀/m)·N₀ˢ(T,2T) ≥ (H_MT − (m−1)/(500m) − ε)·N(T,2T) given certified F₈ ≥ 392/100000 (m=263, A₀=2499/2500) | `Zeta23.ThmD.chain9_eps` (in extension `Record9.Chain9`, full name `Zeta23.ThmD.chain9_eps`) — **written, compiles**; proven with `hF : CERTIFIED_F8_GE` + bundled bridge `b : record9Bridge` (T1) | **FAITHFUL** (T1a; kernel repaired 2026-08-15 to certificate kernel `kMT` — see "T1 repair round") | 🟨 T1a/T1b/T1d DONE (machine-accepted, re-audit pending); **T1c analytic bridge OPEN** (explicit hypotheses) |
 | O3 | Certificate: F₈ ≥ 392/100000 (grid-2000, 128-bit, 64,748,524 nodes; kernel table 31368 entries) | (target: `Zeta23.Pressure.f8_cert`) — NOT yet written | — (B1–B6 computational audit PASS; certificate sha 7F25401A…) | ❌ OPEN (T2, reflection route) |
 | O4 | Conclusion: liminf N₀ˢ/N ≥ (657,500·H_MT − 1,310)/655,001 | (target: `Zeta23.ThmD.record_c9`; arithmetic verified dps=130) | — (exact rational identity (657,500/65,750 = 10) verified) | ❌ OPEN (O2+O3) |
-| O5 | ξ′ record: liminf N₀ˢ_{ξ′}/N_{ξ′} ≥ (657,500·H_{ξ′} − 1,310)/655,001 | (target: `Zeta23.XiPrime.record_c9xip`; imports `Zeta23.XiPrime.*` + O2) | — (A1–A6 manager PASS; AdmWindow cos blueprint ready) | ❌ OPEN (T3) |
+| O5 | ξ′ record: liminf N₀ˢ_{ξ′}/N_{ξ′} ≥ (657,500·H_{ξ′} − 1,310)/655,001 | (target: `Zeta23.XiPrime.record_c9xip`; imports `Zeta23.XiPrime.*` + O2) | — (A1–A6 manager PASS; AdmWindow cos blueprint ready) | 🟨 **T3 DONE (statement + AdmWindow + zero side)** — `Zeta23.XiPrime.admWindow_phiV_MT` (c=cRho+4), `record_c9xip`; re-audit pending; AtOne/H-chain open |
 | O6 | Evidence discipline: no numerical evidence labeled as proof | candidate_proof.md honest status; this map | **FAITHFUL** | ✅ |
 
 ## Fidelity notes (O1, 2026-08-15)
@@ -89,3 +89,39 @@ are unchanged (verified by `#check` in this round). Kernel-limit lemma (finite-w
 (`lake env lean` exit 0; `lake build Record9.Chain9` exit 0, 8838 jobs), no
 sorry/admit/axiom, statement shape unchanged. **Re-audit pending** (fidelity of the repaired
 kernel statement).
+
+## T3 formalizer pass (2026-08-16, Stage C) — appended results for O5 (ξ′)
+
+**What was formalized** (new extension module `Record9.XiPrimeMT`, full names
+`Zeta23.XiPrime.*`; `lean-proof/Record9/Record9/XiPrimeMT.lean`; snapshot pristine).
+Details in `lean-proof/Record9/FORMALIZATION_STATUS_XIP.md`.
+
+- **M1** — `Zeta23.XiPrime.vMT s = cos(√2·s)`; profile even/nonneg/le_one/C² on |s|≤1/2
+  (≥ 3/4 via `Real.one_sub_sq_div_two_le_cos`); `ModFactor (fc L) L 1 2` for
+  `fc L u = √(max 0 cos(√2·u/L))` with `abs_deriv_fc_le ≤ 1/L`, `abs_deriv2_fc_le ≤ 2/L²`
+  (via the sharper |f″| ≤ 8/(3√3 L²) < 2/L²); `admWindow_phiV_MT :
+  AdmWindow (P.phiV vMT T) (P.L T) P.w (cMT P.ϱ)` with `cMT ϱ = cRho ϱ + 1 + 1² + 2 = cRho + 4`
+  — strictly better than the quartic's cRho + 15.75.
+- **M2** — `aV_range_MT : 1/2 ≤ (P.atV vMT T).a T ≤ 1` at 8w ≤ L (profile a_MT = 1/2 +
+  sin(√2)/(2√2) = 0.8492…), and `windowZeroSide_atV_MT : WindowZeroSide Z P (P.atV vMT)`
+  installed via `windowZeroSide_atV_of`.
+- **M3 (stretch)** — `H_xip = 2 − κ₁(1, vMT)`, `c9ConstXip = (657500·H_xip − 1310)/655001`;
+  exact record-algebra identities; `xiChain` (the ξ′ ε-form chain) carried as an explicit
+  axiom-free hypothesis; `record_c9xip : (xiChain) → ∀ε>0 ∃T₀ ∀T≥T₀,
+  (c9ConstXip − ε)·N_{ξ′}(T,2T) ≤ N₀ˢ_{ξ′}(T,2T)`.
+
+**Machine evidence:** `lake env lean Record9/XiPrimeMT.lean` exit 0 (no sorry/admit/axiom);
+`#print axioms` base set preserved; c9ConstXip decimal = 0.8692000910966191618396… verified to
+40 dp (matches paper 0.86920009109661916184); H_xip = 0.86788886519905193555…. `lake build
+Record9.XiPrimeMT` re-verified the dependency replay graph.
+
+**Remaining gaps (exact, not faked):**
+- **M3-open A** — the AtOne κ₁(1, vMT) certificate content (exact rational ∫vMT, ∫vMT², ∫vMT⁴,
+  vConv vMT and the D₁ sandwich ⇒ H_xip in Lean), mirroring AtOne.lean.
+- **M3-open B** — the ξ′ chain `xiChain` (pressure method + stability, i.e. the ξ′ analogue of
+  T1c), currently an explicit hypothesis of `record_c9xip`.
+- **M1-open C** — the four §1 profile L¹-norms (paper constants; NOT AdmWindow fields, see
+  FORMATLIZATION_STATUS_XIP.md note).
+
+**T3 pass verdict:** `MACHINE_ACCEPTED_PENDING_AUDIT` — M1+M2 fully machine-checked (AdmWindow +
+zero side); M3 statement + algebra compile; AtOne certificate + ξ′ chain open.

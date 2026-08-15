@@ -1,0 +1,26 @@
+{
+ "3": {
+  "D_float": -4.440892098500626e-16,
+  "D_exact": "0",
+  "maxdenom": 3,
+  "max_fit_residual": 6.661338147750939e-16,
+  "I_id": "1",
+  "nonzero_cycletype_sums": 3
+ },
+ "4": {
+  "D_float": -2.55351295663786e-15,
+  "D_exact": "0",
+  "maxdenom": 30,
+  "max_fit_residual": 2.7755575615628914e-15,
+  "I_id": "1",
+  "nonzero_cycletype_sums": 5
+ },
+ "5": {
+  "D_float": -5.667688540711424e-14,
+  "D_exact": "0",
+  "maxdenom": 180,
+  "max_fit_residual": 7.993605777301127e-15,
+  "I_id": "1",
+  "nonzero_cycletype_sums": 7
+ }
+}

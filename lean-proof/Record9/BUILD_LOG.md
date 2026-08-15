@@ -97,3 +97,11 @@ Zeta23.ThmD.kMT_den_pos : 0 < √2 * Real.sin (√2)⁻¹
 `grep` for `sorry|admit|axiom` over `lean-proof/Record9/Record9/*.lean` finds matches only in the
 header docstring disclaimer text ("NO sorry/admit/axiom appear…"), never a declaration. No `axiom`
 is introduced; the analytic bridge is plain theorem hypotheses.
+
+## T3 (Record9.XiPrimeMT) — machine evidence (2026-08-16)
+- lake env lean Record9/XiPrimeMT.lean (workdir snapshot, PATH+=~/.elan/bin): exit 0, no sorry/admit/axiom.
+- lake build Record9.XiPrimeMT (workdir lean-proof/Record9): 'Built Record9.XiPrimeMT (38s)', 'Build completed successfully (8845 jobs)', EXIT=0.
+- #print axioms Zeta23.XiPrime.{admWindow_phiV_MT, windowZeroSide_atV_MT, record_c9xip} = [propext, Classical.choice, Quot.sound] (base only).
+- c9ConstXip decimal (mpmath, 40 dp): 0.869200091096619161839638412765782036974; matches paper 0.86920009109661916184.
+- Snapshot literature/raw/zeta-23-lean pristine; Chain9.lean / M1Baseline.lean untouched.
+

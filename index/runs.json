@@ -165,6 +165,29 @@
         "G3: prove the matching-sum moment sequence has Lambda_m(0)->0 (Lemma H; determinacy + Hankel / Szego-Widom) — the hard step",
         "SL itself and unconditional liminf -> 1 remain OPEN"
       ]
+    },
+    {
+      "run_id": "R-20260816T030000Z-slG1-9c2a",
+      "task_packet_id": "Q-20260814-criticalline-p1-507bb5",
+      "run_root": "runs/rigorous-open-math-research/R-20260816T030000Z-slG1-9c2a",
+      "started_at": "2026-08-16T03:00:00Z",
+      "upstream_status_verbatim": "FINITE_COMPUTATIONAL_RESULT / RIGOROUS_PARTIAL_RESULT (composite)",
+      "summary": "SL gap G1 pass COMPLETED 2026-08-16: D_3 = D_4 = D_5 = 0 established as a REPRODUCIBLE COMPUTER-VERIFIED EXACT identity (upgraded from MC evidence). Rigorous reduction: each I_pi (signed summand of D_k = sum_{pi in S_k} sign(pi) I_pi) equals a rational box-spline volume via Fourier/coarea (I_pi = vol_{n-d}{xi in [-1/2,1/2]^n : M xi = 0}/sqrt(det M M^T)). Two independent implementations (rational reconstruction Dk_general_qhull.py + coarea Dk_boxespline_run.py) agree on every I_pi to ~1e-13; rationals reconstructed to denominators <= 180 certified (residual <= 8e-15 vs half-integer lattice tolerance ~1.5e-5); signed sums vanish EXACTLY for k=3,4,5. Per-cycle-type subtotals are nonzero (type(5)=+61/9, type(1,4)=-34/3, ...) — the cancellation is genuinely global (Wick/fermionic counting), consistent with the connected 4-regular combined graphs. Lemma M's exact formal target: the box-spline signed-sum identity over S_k (M2 signed-sum identity for all k = unresolved core). Literature: NO located theorem states D_k=0 or the size-2 matching-sum; Soshnikov cumulant formula (Ann. Probab. 30 (2002) Lemma 1 eq.14; Soshnikov-Wu Entropy 25:725 (2023)) + quasi-free/CAR matching (Dappiaggi et al. arXiv:1006.3548) + Giambelli (Borodin-Olshanski-Strahov arXiv:math-ph/0505021) give the pairing-only shell; Johansson-Lambert (arXiv:1504.06455) + Brillinger-mixing show DPP cumulants do NOT generally vanish => D_k=0 is a genuine special cancellation. Nuance: individual I_pi rationals are uniquely determined by high-precision volumes but a fully symbolic proof of each reconstructed rational was not closed in budget.",
+      "audit_status": "self-audit included (audit/ subdir: audit_coarea.py, audit_e2e.py, audit_independent.py + audit_out.txt); two-method cross-validation certified",
+      "key_artifacts": [
+        "candidate_proof.md 0630f6dd1960de5bdebd9e8bd0b77bcd6f57c496ea13d13b5ee87b67fabdda69",
+        "status_and_literature.md 349b083a5305d5f848c465a5af9017c54c19c498894d0959619fe0a4cc367d5b",
+        "research_ledger.md bc014f2befd594a9c2639c7788cc643fa92d110bd6f9c9de6cf3d4e736f17f0a",
+        "audit_report.md 2f587245d2924e2fba83340d71c2cfb3e6ec60e23d2d4082c2e3975106e22e68",
+        "reproducibility/ (33 scripts incl. Dk_general_qhull.py ca786c3a..., Dk_boxespline_run.py dbf776b7..., certify_Dk.py 34bdaaac..., D3/D4/D5_exact.json; see SHA256SUMS)"
+      ],
+      "created_at": "2026-08-16T03:00:00Z",
+      "updated_at": "2026-08-16T03:20:00Z",
+      "open_obligations": [
+        "M2 signed-sum identity: prove sum_{pi in S_k} sign(pi) [box-spline value] = 0 for ALL k (D_3,4,5 certified computationally; general k open)",
+        "symbolic (exact-arithmetic vertex-enumeration) verification of the reconstructed I_pi rationals (isolated remaining step)",
+        "G2 (Lemma P) + G3 (Lemma H) unchanged; SL and unconditional liminf -> 1 remain OPEN"
+      ]
     }
   ]
 }
