@@ -125,3 +125,26 @@ Record9.XiPrimeMT` re-verified the dependency replay graph.
 
 **T3 pass verdict:** `MACHINE_ACCEPTED_PENDING_AUDIT` — M1+M2 fully machine-checked (AdmWindow +
 zero side); M3 statement + algebra compile; AtOne certificate + ξ′ chain open.
+
+## T1c item 3 formalizer pass (2026-08-16, Stage C) — kernel-limit lemma
+
+**What was formalized** (new extension module `Record9.KernelLimit`, full names
+`Zeta23.ThmD.*`; `lean-proof/Record9/Record9/KernelLimit.lean`; snapshot pristine). Source
+contract: `runs/rigorous-open-math-research/R-20260816T040000Z-kernellimit-b9e1/`
+(problem_contract.md §3, candidate_proof.md Eq. 1–4). Details in
+`lean-proof/Record9/FORMALIZATION_STATUS_KLL.md`.
+
+| Exact open-kernel obligation | T1c-3 declaration(s) (Record9.KernelLimit) | Fidelity | Status |
+|---|---|---|---|
+| **M1 — KL2**: K(x)/K(0) = kMT(x), K(x)=∫cos(√2t)cos(2πxt), K(0)=√2·sin(1/√2) | `Zeta23.ThmD.KL2 (x) : K_of x / K0 = kMT x` (via `K_of_closed`, `K0_eq_sqrt2_sin`, `K0_pos`, `integral_cos_mul_self`) | **FAITHFUL** (product-to-sum + exact antiderivative; sincMT/(√2)⁻¹ conventions match Chain9/kMT) | ✅ **machine-checked** (exit 0) |
+| **M2 — KL1**: \|F_L(x) − K(x)\| ≤ 2w/L for all x | `Zeta23.ThmD.KL1 (hϱ) (0<L) (0<w) (8w≤L) (x) : |F_L ϱ L w x - K_of x| ≤ 2*(w/L)` | **FAITHFUL** (full measure-2w/L three-band argument; ramp-is-one-on-core from TaperProfile) | ✅ **machine-checked** (exit 0) |
+| **M3 — KL3**: ratio ⟨v_γ,v_γ′⟩/⟨v_γ,v_γ⟩ = kMT(x)+O(w/L) | `Zeta23.ThmD.KL3_ratio_bound` (explicit O(w/L)) and `KL3_eps` (uniform ε-form for bounded separations) | **FAITHFUL** (ratio = F_L(x)/F_L(0); K0/2 lower bound; ε-lift) | ✅ **machine-checked** (exit 0) |
+
+**T1c-3 verdict:** `MACHINE_ACCEPTED_PENDING_AUDIT` — M1, M2, M3 fully machine-checked with
+`lake build Record9.KernelLimit` exit 0, no sorry/admit/axiom (`#print axioms` = base set), and
+`#check` statements match the contract. The kernel-limit lemma is now **closed in Lean** (it
+no longer needs to be carried as an open bridge in T1c); the remaining open analytic content in
+the T1 chain is `stability_eps`/`stability_averaged_eps` (paper steps 2,5,6). Open sub-obligation
+within M3: the compactness fact that `1 + |kMT|` is bounded on [−B,B] is carried as the explicit
+hypothesis `hKerBdd` of `KL3_eps` (continuous kMT on a compact interval — record in
+FORMALIZATION_STATUS_KLL.md).

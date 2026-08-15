@@ -232,6 +232,28 @@
         "T1c-1/T1c-2 (stability_eps, stability_averaged_eps for the true delta(M°)) unchanged",
         "T2 certificate reflection unchanged"
       ]
+    },
+    {
+      "run_id": "R-20260816T050000Z-m5exact-3f8a",
+      "task_packet_id": "Q-20260814-criticalline-p1-507bb5",
+      "run_root": "runs/rigorous-open-math-research/R-20260816T050000Z-m5exact-3f8a",
+      "started_at": "2026-08-16T05:00:00Z",
+      "upstream_status_verbatim": "FINITE_COMPUTATIONAL_RESULT / RIGOROUS_PARTIAL_RESULT",
+      "summary": "EXACT m_5 = 101/18 = 5.6111... (a rational!) COMPUTED 2026-08-16 via the DPP factorial-moment set-partition shape decomposition: corrected the G1-round scaffold m5_shapes.py (WRONG: omitted the rho_b determinant factor and miscounted; gave ~474); the corrected formula m_k = sum_{sigma in Part(k)} J_sigma (J_sigma = int product_cycle K * rho_b) reproduces m_2=4/3, m_3=2, m_4=13/4 EXACTLY. Over the 52 partitions of {0..4}: m_5 = 1 (all-equal) + (1,4):5/3 + (2,3):9/4 + (1,1,3):1/3 + (1,2,2):13/36 = 101/18. NEW exact B-spline constants: c_8 = 151/315, c_10 = 15619/36288 (with c_2=1, c_4=2/3, c_6=11/20). Cross-validated: every distinct shape value (1, 1/3, 7/60, 1/15, 1/180, 0) checked with a second exact-fraction-volume engine; b>=4 vanishing shapes confirmed. IMPORTANT CORRECTION to Lemma P's premise: surviving shapes are NOT 'blocks of size <= 2' — blocks of size 3 and 4 DO contribute; the actual vanishing is BY NUMBER OF BLOCKS b >= 4. Hankel test: Lambda_1(0)=1/4, Lambda_2(0)=5/36 exact; Lambda_3/Lambda_4 need exact m_6,m_7,m_8 (Bell(6)=203 partitions) — sampler evidence shows decay-vs-plateau UNRESOLVED (~0.149, ~0.148 vs the probe's earlier 0.092, 0.023): this is the honest fork for the SL-relevant asymptotics. L=50 simulation gives m_5 ~ 5.45-5.49 (+-0.08), consistent with 101/18 within ~1.5-2 sigma (finite-L + h-bias). SL NOT closed; next: exact m_6 to pin Lambda_3.",
+      "audit_status": "dual-engine cross-validation (boxspline_exact.py + boxspline_exact2.py + high-precision engines); anchored on the audited m_2..m_4; formal adversarial audit not dispatched in this pass",
+      "key_artifacts": [
+        "candidate_proof.md 6516dd74c56b4032691b6ce6af1e6ac1d756f2539ad2c907ccdaf723d4857bf7",
+        "research_ledger.md 7583a1a81fca7d72b27fbde64b851e92caa4ac25db53d746e9fd2ec76fbbf680",
+        "reproducibility/ (21 scripts: boxspline_exact.py, boxspline_exact2.py, exact_volume.py, hankel_exact.py, simulate_m5_bias.py, m5_final.py, direct_integral.py, etc.; see SHA256SUMS)",
+        "SHA256SUMS (24 entries)"
+      ],
+      "created_at": "2026-08-16T05:00:00Z",
+      "updated_at": "2026-08-16T05:15:00Z",
+      "open_obligations": [
+        "exact m_6 (Bell(6)=203 partitions) to pin Lambda_3(0) — resolves the decay-vs-plateau fork for SL's Hankel asymptotics",
+        "Lemma P corrected: prove the vanishing-by-block-count (b >= 4) structure for general k (was: size<=2 premise, now known wrong)",
+        "G3 (Lemma H) + SL itself and the unconditional liminf -> 1 remain OPEN"
+      ]
     }
   ]
 }

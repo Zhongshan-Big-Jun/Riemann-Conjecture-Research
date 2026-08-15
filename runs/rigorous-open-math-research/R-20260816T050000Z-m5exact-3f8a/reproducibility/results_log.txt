@@ -1,0 +1,53 @@
+# Simulation & validation results (evidence) — R-20260816T050000Z-m5exact-3f8a
+
+Exact result: m_5 = 101/18 = 5.6111111111...
+
+## DPP simulation (validated projection-DPP sampler; L=window, h=step, ns=n_samples)
+
+L=25 :
+  h=0.10 ns=60 : m1..m5 = 1.00000 1.30333 1.90860 3.03015 5.11565   std5=0.168
+  h=0.05 ns=60 : m1..m5 = 1.00000 1.30956 1.93054 3.08909 5.26053   std5=0.175
+  h=0.025 ns=80: m1..m5 = 1.00000 1.30174 1.90647 3.03127 5.13679   std5=0.171
+  (L=25 small window -> large finite-size downward bias; not reliable for m_5 limit)
+
+L=50 :
+  h=0.10  ns=40 : m1..m5 = 1.00000 1.31890 1.95867 3.15439 5.40277  std5=0.125
+  h=0.05  ns=40 : m1..m5 = 1.00000 1.33304 2.00528 3.27408 5.68495  std5=0.189
+  h=0.025 ns=50 : m1..m5 = 1.00000 1.32159 1.96675 3.17075 5.42512  std5=0.132
+  h=0.05  ns=150: m1..m5 = 1.00000 1.32419 1.97451 3.19304 5.49234  std5=0.079  (m5=5.4923+-0.0787)
+  h=0.02  ns=120: m1..m5 = 1.00000 1.32312 1.96937 3.17621 5.44646  std5=0.084  (m5=5.4465+-0.0839)
+
+Reference (prior moment run, measured_moments_L50.txt, L=50 h=0.05):
+  m0=1, m1=1, m2=1.323878, m3=1.971555, m4=3.181306, m5=5.455067, m6=9.809212, m7=18.319355, m8=35.282097
+
+Reading: L=50 h=0.02..0.05 gives m_5 ~ 5.45-5.49 (+-0.08); finite-L underestimates the L->inf
+limit; task's h-bias reference (bias -0.13+-0.08 at h=0.05 => exact ~5.59) brackets 101/18=5.6111.
+Simulation is consistent-with (not conclusively confirming) the exact 5.6111.
+
+## Independent high-precision (exact-fraction volume) cross-checks of shape values
+Partition           expected  hp-result
+[{0},{1,2,3,4}]       1/3       0.333333333        (1,4)
+[{0,1,3},{2,4}]       7/60      0.116666667        (2,3)
+[{0},{1,2,4},{3}]     1/15      0.066666667        (1,1,3)
+[{0,3},{1,2},{4}]     1/15      0.066666667        (1,2,2)  [float engine had 0.0601 error -> fixed]
+[{0,2},{1},{3,4}]     1/15      0.066666667        (1,2,2)
+[{0,1},{2,4},{3}]     1/15      0.066666667        (1,2,2)
+[{0},{1,4},{2,3}]     1/15      0.066666667        (1,2,2)
+[{0,2},{1,3},{4}]     1/180     0.005555556        (1,2,2)
+[{0,3},{1,4},{2}]     1/180     0.005555556        (1,2,2)
+[{0,3},{1},{2,4}]     1/180     0.005555556        (1,2,2)
+[{0,1,3},{2},{4}]     1/15      0.066666667        (1,1,3)
+[{0},{1,3,4},{2}]     1/15      0.066666667        (1,1,3)
+[{0},{1,2},{3},{4}]   0         ~6.1e-13           (1,1,1,2) vanishing
+[{0,1},{2},{3},{4}]   0         ~-4.5e-13          (1,1,1,2) vanishing
+[{0},{1},{2},{3},{4}] 0 (D_5)   certified = 0 (G1) all-distinct
+
+## Hankel Christoffel values
+  Lambda_1(0) = 1/4        = 0.25            EXACT (uses m_0..m_2)
+  Lambda_2(0) = 5/36       = 0.1388888889    EXACT (uses m_0..m_4)
+  Lambda_3(0) ~ 0.1490     EVIDENCE (needs exact m_6; sampler only)
+  Lambda_4(0) ~ 0.1479     EVIDENCE (needs exact m_8; sampler only)
+  (L=50 sampler m_6..m_8: 9.809, 18.319, 35.282)
+  Note: probe earlier reported Lambda_3~0.045/0.092, Lambda_4~0.023 from other runs; the exact
+  m_1..m_5 fix Lambda_1=1/4, Lambda_2=5/36 firmly. Whether Lambda_3<Lambda_2 (decay) or
+  plateau holds is UNRESOLVED (needs exact m_6..m_8).
