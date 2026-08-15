@@ -2,67 +2,58 @@
 
 **Date:** 2026-08-16 (session). **Agent:** T1 formalizer (Stage C).
 
-## Route decision: PATH-DEPENDENCY PROJECT (snapshot UNTOUCHED)
+## Final state (canonical): NO change to the snapshot; path-dependency project only
 
-The task route rule says to try a path-dependency project first and fall back to the
-in-snapshot extension if lake insists on network fetching. Both were attempted; the
-**path-dependency project is used and committed**, and accordingly the snapshot
-`literature/raw/zeta-23-lean/` is left **unchanged** (no `[[lean_lib]]` block was added; its
-`lakefile.toml` is byte-for-byte the original).
+The T1 Lean sources live **only** in the path-dependency project `lean-proof/Record9/`
+(modules `Record9.M1Baseline` and `Record9.Chain9`). The snapshot
+`literature/raw/zeta-23-lean/` is **pristine** (HEAD 706d71e, no Record9 files under it) and
+its `lakefile.toml` is **unchanged** (no `[[lean_lib]]` block was added).
 
-### In-snapshot attempt — abandoned
+- `lean-proof/Record9/lakefile.toml`:
+  - `packagesDir = ../../literature/raw/zeta-23-lean/.lake/packages` (reuse snapshot packages).
+  - `[[require]] name = "Zeta23" path = ../../literature/raw/zeta-23-lean`
+  - `[[require]] name = "mathlib" path = ../../literature/raw/zeta-23-lean/.lake/packages/mathlib`
+  - `[[lean_lib]] name = "Record9"`
+  - `lean-toolchain` pin: `leanprover/lean4:v4.33.0-rc2` (matches the snapshot).
+- Lean source:
+  - `lean-proof/Record9/Record9/M1Baseline.lean` → module `Record9.M1Baseline`
+  - `lean-proof/Record9/Record9/Chain9.lean` → module `Record9.Chain9`
+    (declarations opened in `Zeta23.ThmD`, so full names are `Zeta23.ThmD.chain9_eps`,
+    `Zeta23.ThmD.record_c9`, `Zeta23.ThmD.CERTIFIED_F8_GE`, etc.)
 
-I appended a `[[lean_lib]] name = "Record9"` block to the snapshot's `lakefile.toml` and
-added source under `Zeta23/Record9/`. Two problems forced abandoning this:
+## History / alternatives tried (none is in the final state)
 
-1. **External Git auto-sync reverts tracked-file edits** in this project: the edited
-   `lakefile.toml` was observed returning to its pristine (HEAD) state, and the untracked
-   additions under `Zeta23/Record9/` were removed. The snapshot subtree is effectively
-   read-only in this environment.
-2. Editing `lakefile.toml` invalidates the snapshot's lake build cache hash, forcing a full
-   ~8800-job recompile of the shared baseline — undesirable for a shared artifact.
+1. **In-snapshot `[[lean_lib]] name = "Record9"` block (rejected).** Appending it to the
+   snapshot's lakefile causes `lake build Record9` to fail with "some modules have bad imports"
+   (module-ownership conflict: the main `Zeta23` lib's root scan also claims `Record9/*.lean`),
+   even though `lake build Record9.M1Baseline` and `lake env lean` work (manager finding).
+   Editing the tracked file is also unstable here (an external Git auto-sync reverts it) and
+   invalidates the snapshot build cache.
+2. **In-snapshot modules under `Zeta23/Record9/` (tried, unstable, removed).** Copying the
+   modules into `Zeta23/Record9/` (folded into the existing `Zeta23` lean_lib) built via
+   `lake build Zeta23.Record9.{M1Baseline,Chain9}` exit 0, but the external Git auto-sync
+   intermittently deletes untracked files under `Zeta23/` during long builds. The manager
+   removed those copies and restored the snapshot to pristine (commit 706d71e). **Not part of
+   the final state.**
+3. **Path-dependency project `lean-proof/Record9/` (FINAL).** Canonical and stable, outside the
+   snapshot. `lake build Record9.M1Baseline` → exit 0; `Record9.Chain9` compiles via `lake env
+   lean` exit 0 (the path-dep `lake build Record9.Chain9` has graph-resolution latency on this
+   machine, exceeding the formalizer's 10-min budget; the independent verifier re-runs it with
+   a long timeout).
 
-I reverted my changes (confirmed `git status` clean for the snapshot source tree) and moved
-to the path-dependency project.
-
-### Path-dependency project — ADOPTED
-
-`lean-proof/Record9/lakefile.toml`:
-
-- `packagesDir = ../../literature/raw/zeta-23-lean/.lake/packages` (reuse snapshot packages,
-  no network fetch).
-- `[[require]] name = "mathlib" path = ../../literature/raw/zeta-23-lean/.lake/packages/mathlib`
-- `[[require]] name = "Zeta23" path = ../../literature/raw/zeta-23-lean`
-- `[[lean_lib]] name = "Record9"`
-- `lean-toolchain` pin: `leanprover/lean4:v4.33.0-rc2` (matches the snapshot toolchain).
-
-Because both path packages already have prebuilt oleans (Zeta23 → `zeta-23-lean/.lake/build`,
-Mathlib → `zeta-23-lean/.lake/packages/mathlib/.lake/build`), the build **replays** the
-snapshot modules (trace checks) instead of recompiling mathlib, and compiles only the new
-`Record9` modules. No network fetch occurred.
-
-### Snapshot: NO change
-
-The snapshot `lakefile.toml` and all tracked files are unchanged; my Lean source only lives
-in the separate project at `lean-proof/Record9/Record9/` (module prefix `Record9.*`).
-
-## Build commands (recorded)
+## Build commands (final state)
 
 Run in `lean-proof/Record9/` with `$env:PATH="$env:USERPROFILE\.elan\bin;$env:PATH";`:
 
-- `lake build Record9.M1Baseline` — exit 0 (8838 jobs, replays snapshot + builds M1Baseline).
-- `lake env lean Record9.M1Baseline.lean` — exit 0 (from the snapshot working dir, fast).
-- `lake env lean Record9.Chain9.lean` — exit 0 (from the snapshot working dir; see below).
-- `lake build Record9.Chain9` — see STATUS note; a cross-project graph-resolution latency
-  affects the library-level `lake build` in this environment.
+- `lake build Record9.M1Baseline` — **exit 0** ("Build completed successfully (8838 jobs)").
+- `lake build Record9.Chain9` — **re-run by the verifier (long timeout)**; formalizer observed
+  only `lake env lean Record9/Chain9.lean` exit 0 (identical source) this pass.
+- `lake env lean <file>` from the snapshot dir — quick typecheck (used to iterate on proofs).
+- `lake build Zeta23` (O1 baseline) — exit 0, manager-recorded (9010 jobs).
 
-### STATUS note on `lake build` vs `lake env lean`
+## Auto-sync / environment note
 
-The path-dependency project's `lake build` sometimes incurs multi-minute graph-resolution
-latency because lake rewalks the huge mathlib transitive closure through path deps on each
-invocation (observed 49s for the first M1Baseline build; longer for libraries). The primary
-machine evidence reported for the Chain9 formalization (M2/M3) is therefore the **`lake env
-lean` compile of `Record9.Chain9.lean` (exit 0, no sorry/admit/axiom)** plus the successful
-`lake build Record9.M1Baseline` for the plumbing. `lake env lean <file>` is the same Lean
-compiler/lake environment as `lake build`; the exit code 0 establishes that every
-declaration in the file typechecks against the pinned Zeta23/mathlib environment.
+This project has an external Git auto-sync that intermittently deletes untracked files under
+`literature/raw/zeta-23-lean/Zeta23/` during long builds, which is why the canonical sources
+are kept in `lean-proof/Record9/` (outside the snapshot) rather than in-snapshot. The snapshot
+is intentionally left pristine.

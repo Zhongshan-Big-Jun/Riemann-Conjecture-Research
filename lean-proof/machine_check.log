@@ -53,3 +53,102 @@ default target.)
     three_quarters_distinct
   The tactic-test axioms qc/hqc (AdditiveCombination.lean:183-184) appear in NO theorem's
   axiom set. **Axiom-set gate: CLOSED.**
+
+# machine_check.log — T1 (chain9_eps / record_c9) INDEPENDENT verifier pass (2026-08-16, Stage C)
+
+Run by the INDEPENDENT VERIFIER (fresh agent, no shared chain of thought with formalizer).
+Pinned toolchain: leanprover/lean4:v4.33.0-rc2 (commit d8b18978322de05a8f3dba51ef03cf5461676c17);
+lake 5.0.0-src+d8b1897; mathlib4 @ 51e6992e. Repo HEAD at run time: 706d71e8bbda49bdb2aac6481cceb0e6b0122ae6.
+
+## Environment (as observed)
+
+- `lean --version` from `lean-proof/Record9` cwd (project lean-toolchain pins v4.33.0-rc2):
+  **Lean 4.33.0-rc2**, commit d8b18978322de05a8f3dba51ef03cf5461676c17.
+- `elan show` active toolchain: v4.33.0-rc2 (overridden by Record9/lean-toolchain). Default elan
+  toolchain is 4.31.0 but the project correctly overrides it.
+- File sha256 (audited):
+  - Chain9.lean            45F22025535A7D81DA244E47EAC29BCF669E15A54CCAC73F8A18D440EE24635E
+  - M1Baseline.lean        F82345EEFA01B3C56CE9B75F7AD63AC1D4B1D71E9FAE023DBB7171C3AC7A645C
+  - Record9/lakefile.toml  D7710EE270CC1AC7880F8B6EE32652C4FC0B78001C1125BA38241E7B4A67D1F3
+  - Record9/lean-toolchain 0D3C76CCD8772D8BCBE207241421A760312B71A6AA82F84194391FDF5CB026D6
+  - snapshot/lakefile.toml 73DC1C45BAC97ACA8C255C37962DA86656BBB5D661585813660508B98DDB3EA4
+  - snapshot/lean-toolchain 4BAD8E3FBD71A33FA5E8505AD7AF799E42A24796D171B3FB5B58E41D12408128
+
+## sorry/admit/axiom scan (comment-aware)
+
+Scope: `lean-proof/Record9/Record9/Chain9.lean`, `record9/Record9/M1Baseline.lean`.
+Token scan for `\b(sorry|admit|axiom)\b`:
+- Chain9.lean: only lines 13-14, inside the leading `/- ... -/` block comment (header disclaimer
+  text "NO sorry/admit/axiom appear..."). No declaration-level hit.
+- M1Baseline.lean: zero hits.
+**Result: 0 real hits (no sorry / admit / axiom declarations).**
+
+## Build / compile checks (exact commands + exit codes; workdir=lean-proof/Record9 unless noted)
+
+| Command | Exit | Observed |
+|---|---|---|
+| `lake build Record9.Chain9` | **0** | Completed successfully (8838 jobs, ~47s; replays snapshot + compiles Chain9). Footer linter warning only: `Chain9.lean:219:20: Variable name hF is not explicitly referenced` (benign; hF is unused by the algebra, see REPORT). |
+| `lake build Record9.M1Baseline` | **0** | Build completed successfully (8838 jobs, 46s). |
+| `lake env lean Record9/Chain9.lean` (project cwd) | **0** | Only the unused-`hF` linter warning; no errors. |
+| `lake env lean Probe_verify.lean` (independent probe: `#check` + `#print axioms`) | **0** | See transcript below. (Probe run under an explicit LEAN_PATH reordering — see note.) |
+| `git status --porcelain -- literature/raw/zeta-23-lean` | 0 | **Empty at time of the snapshot-cleanliness re-check; snapshot lakefile.toml byte-identical to HEAD (git diff exit 0, no output).** |
+
+Note on `lake build Record9.Chain9`: the formalizer's BUILD_LOG reported this command killed after
+~10 min (cross-project graph latency). In this verifier's environment it completed in ~47s with
+exit 0 — so the module target builds cleanly and the formalizer's "killed" note understates the
+actual outcome. `lake env lean` on the extension requires an explicit LEAN_PATH reorder to resolve
+`Record9.Chain9` against the extension `.lake/build` rather than the snapshot build that shadows it
+(a path-dependency module-resolution quirk, not a content issue); the `lake build` and `lake env
+lean Record9/Chain9.lean` module compiles resolve this normally.
+
+## Independent #check + #print axioms transcript (verbatim)
+
+```
+Zeta23.ThmD.chain9_eps (hF : Zeta23.ThmD.CERTIFIED_F8_GE) (b : Zeta23.ThmD.record9Bridge) (ε : ℝ) :
+  ε > 0 →
+    ∃ T₀,
+      ∀ T ≥ T₀,
+        (1 - 2499 / 2500 / 263) * ↑(Zeta23.N0simple T (2 * T)) ≥
+          (Zeta23.ThmD.HD 1 - 262 / 131500 - ε) * ↑(Zeta23.Ncount T (2 * T))
+Zeta23.ThmD.record_c9 (hF : Zeta23.ThmD.CERTIFIED_F8_GE) (b : Zeta23.ThmD.record9Bridge) (ε : ℝ) :
+  ε > 0 → ∃ T₀, ∀ T ≥ T₀, (Zeta23.ThmD.c9Const - ε) * ↑(Zeta23.Ncount T (2 * T)) ≤ ↑(Zeta23.N0simple T (2 * T))
+Zeta23.ThmD.CERTIFIED_F8_GE : Prop
+Zeta23.ThmD.record9Bridge : Prop
+Zeta23.ThmD.F8 (g : Fin 8 → ℝ) : ℝ
+Zeta23.ThmD.F8gaps (w : ℝ → ℝ) (g : ℕ → ℝ) : ℝ
+Zeta23.ThmD.wMT (x : ℝ) : ℝ
+Zeta23.ThmD.gapSpan (g : ℕ → ℝ) (i len : ℕ) : ℝ
+Zeta23.ThmD.chain9_algebra_core {S N D e₁ e₂ : ℝ} (hStab : Zeta23.ThmD.HD 1 * N + D - e₁ * N ≤ S)
+  (hAvg : 2499 / 657500 * S - 262 / 131500 * N - e₂ * N ≤ D) :
+  (1 - 2499 / 2500 / 263) * S ≥ (Zeta23.ThmD.HD 1 - 262 / 131500) * N - (e₁ + e₂) * N
+Zeta23.ThmD.c9Const : ℝ
+Zeta23.ThmD.cLHS : ℝ
+Zeta23.ThmD.qMT : ℝ
+Zeta23.ThmD.A0 : ℝ
+Zeta23.ThmD.stability_eps : Prop
+Zeta23.ThmD.stability_averaged_eps : Prop
+'Zeta23.ThmD.chain9_eps' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zeta23.ThmD.chain9_eps_from_hypotheses' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zeta23.ThmD.chain9_algebra_core' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zeta23.ThmD.record_c9' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zeta23.ThmD.c9Const_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+```
+The `#print axioms` results confirm all audited declarations depend ONLY on the baseline gold
+standard {propext, Classical.choice, Quot.sound}; the bridge hypotheses `stability_eps` /
+`stability_averaged_eps` are plain `Prop` (definitions), introducing no axiom. **Axiom-set gate:
+CLOSED for the T1 declarations.**
+
+## Snapshot cleanliness (protocol step 4)
+
+- `git status --porcelain -- literature/raw/zeta-23-lean` was observed: (a) at session start an
+  untracked `literature/raw/zeta-23-lean/Zeta23/Record9/` (byte-identical stale copies of
+  Chain9.lean / M1Baseline.lean) WAS present — a leftover of the abandoned in-snapshot route the
+  formalizer believed it removed; (b) at the final re-check the snapshot was clean (that directory
+  had been auto-removed by the external Git auto-sync the formalizer documented). The verifier made
+  no modification to the snapshot. Current state: snapshot clean; lakefile.toml byte-identical to
+  HEAD. Flag: the transient leftover contradicts the formalizer's "in-snapshot additions were
+  removed" claim in lakefile-change.md, but is now gone (asset: the snapshot is untouched at the
+  time of final recording).
+- Extension `lean-proof/Record9/` has uncommitted edits to REPORT.md / FORMALIZATION_STATUS.md /
+  BUILD_LOG.md / lakefile-change.md (the formalizer's deliverables, expected). The `.lean` sources
+  and `lakefile.toml` are tracked and unmodified relative to HEAD.

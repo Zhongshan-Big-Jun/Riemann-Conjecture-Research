@@ -120,3 +120,174 @@ Evidence:
 | O1d | Unconditional | **FAITHFUL** | SeamClosed.lean:22,26; Final.lean:291 |
 | O1e | Cumulative (0,T] form, seam consistent | **FAITHFUL** | Mult.lean:468-471; Main.lean:51-63,69 |
 | O1f | Non-circular; axioms = {propext, choice, Quot.sound} | **FAITHFUL** | #print axioms probe; Mult.lean:16-18 |
+
+---
+
+# T1 verifier pass (independent) — chain9_eps / record_c9 (Stage C, lean-verify)
+
+**Role:** INDEPENDENT VERIFIER (fresh agent; no shared chain of thought with the T1 formalizer).
+**Obligations audited:** T1a (statement), T1b (algebra core + ε-lift), T1c (bridge honesty),
+T1d (constant identities + record_c9), O2 (chain), O4 (liminf record). O1 (baseline) is already
+FORMALLY_VERIFIED and NOT re-audited here. T2 (certificate `F₈ ≥ 392/100000`) is out of scope.
+**Machine evidence:** `lean-proof/machine_check.log` → "T1 ... INDEPENDENT verifier pass".
+**Audit date:** this session (2026-08-16). **Sources audited:** `lean-proof/Record9/Record9/Chain9.lean`
+(sha256 `45F22025535A7D81DA244E47EAC29BCF669E15A54CCAC73F8A18D440EE24635E`), `M1Baseline.lean`
+(sha256 `F82345EEFA01B3C56CE9B75F7AD63AC1D4B1D71E9FAE023DBB7171C3AC7A645C`), both unchanged during audit.
+Chain source for the pressure function / steps: `runs/…/R-20260814T045000Z-extpress-2f36ae/candidate_proof.general-k-derivation.md`.
+
+## Machine evidence (exact commands + exit codes)
+
+| Check | Result |
+|---|---|
+| `lean --version` (Record9 cwd, pinned v4.33.0-rc2) | **4.33.0-rc2** (d8b18978322de05a8f3dba51ef03cf5461676c17) |
+| `lake build Record9.Chain9` | **exit 0** (8838 jobs; formalizer's BUILD_LOG claimed "killed after ~10 min" — here it completed in ~47s, so the module target builds cleanly) |
+| `lake build Record9.M1Baseline` | **exit 0** (8838 jobs, 46s) |
+| `lake env lean Record9/Chain9.lean` (authoritative module compile) | **exit 0** (only unused-`hF` linter warning) |
+| scratch `#check`/`#print axioms` probe | **exit 0**; types match contract verbatim; all axioms = {propext, Classical.choice, Quot.sound} |
+| sorry/admit/axiom scan, both .lean files | **0 real hits** (only header-comment word "axiom"; no declarations) |
+| snapshot `git status --porcelain` | **empty at final check**; `lakefile.toml` byte-identical to HEAD (git diff exit 0) |
+
+## Per-obligation fidelity results
+
+### T1a — statement (`chain9_eps`, `CERTIFIED_F8_GE`, bridge hypotheses) — **FAITHFUL** (with one flagged kernel caveat, see 2)
+
+1. **Quantifier order / shape.** `chain9_eps (hF : CERTIFIED_F8_GE) (b : record9Bridge) (ε : ℝ) :
+   ε > 0 → ∃ T₀, ∀ T ≥ T₀, (1 − 2499/2500/263)·N₀ˢ(T,2T) ≥ (HD 1 − 262/131500 − ε)·N(T,2T)`.
+   Matches the contract: `∀ε>0 ∃T₀ (T real) ∀T≥T₀`, dyadic window `(T, 2T]`, `N0simple`/`Ncount`
+   are the baseline multiplicity/simple-on-line counts (verified in O1). **FAITHFUL.**
+2. **Constants.** `1 − 2499/2500/263 = 1 − A₀/m` (by `cA0m_eq`, Chain9.lean:145); `262/131500 =
+   (m−1)/(500m)` at m=263 (by `qMT_eq`, :154); `HD 1 = H_MT` (baseline `HD_one`, Functional.lean:464).
+   `A₀ = 2499/2500 = (392/100000)·255 < 1` (rigor condition §4; `A0_lt_one` :142). **FAITHFUL.**
+3. **Pressure-function structure `F8gaps` vs general-k §2 — re-derived.** Paper (k=9, 8 gaps,
+   1-based) `F₈ = (1/[500·8])Σgᵢ + Σ_{s=1}^{8} (2/(9−s))Σ_{i=1}^{9−s} w(gᵢ+…+g_{i+s−1})`. Lean
+   `F8gaps` (Chain9.lean:72-75) uses `s0 = s−1 ∈ 0..7`, coefficient `2/(8−s0) = 2/(9−s)`, inner
+   window `Finset.range (8−s0) = 9−s` terms, `gapSpan g i (s0+1)` = `s` consecutive gaps from `i`
+   (0-based) = paper's `gᵢ+…+g_{i+s−1}`. Linear term `1/(500·8)`. Total pair count
+   `Σ_{s0=0}^7(8−s0) = 36 = C(9,2) = Σ_{s=1}^8 (9−s)` ✓. Sampled s0=0 (coeff 2/8, 8 windows w(gᵢ))
+   and s0=7 (coeff 2/1, 1 window w(g₀+…+g₇)) both match. **No off-by-one. FAITHFUL** for the
+   function skeleton.
+4. **Kernel `wMT` — STRUCTURAL PLACEHOLDER (fidelity caveat, honestly declared).**
+   `sincMT x = if x=0 then 1 else sin x/x`, `wMT x = (sincMT x)^2`. The paper's normalized MT
+   overlap kernel is the baseline autocorrelation `Cfun lam L y = (L−y)/2·cos(ωy) + sin(ω(L−y))/(2ω)`,
+   `ω = √2λ/L` (Window.lean:1211-1213, from `vStar = cos(√2λs)`, `theta λ = λ/√2`), NOT a plain
+   squared sinc. `wMT` lacks the `√2λ/L` frequency scaling, the `cos(ω(L−y))` term, the `(L−y)/2`
+   factor and the `1/√2`-structure. So `CERTIFIED_F8_GE` (`F8gaps wMT ≥ 392/100000`) is currently a
+   statement about the placeholder kernel, not yet the paper's `F₈` for the true MT kernel. The
+   formalizer is **explicit and honest** about this (Chain9.lean:55-57, 68-71 header; FORTALIZATION_
+   STATUS "not assumed and not machine-tied … kernel-limit lemma … open analytic-bridge
+   sub-obligation") — it is NOT presented as a proved fact. Classification: the pressure-function
+   structure is FAITHFUL; the concrete kernel identity is an open analytic bridge (kernel-limit
+   lemma). This is a **MINOR_PARAPHRASE / open-bridge** on the certificate content, not a silent
+   misstatement. Error layer: **boundary-convention / dependency (open analytic input).**
+
+### T1b — algebra core (`chain9_algebra_core`, ε-lift, `chain9_eps`) — **FAITHFUL**
+
+Independently re-derived. From `S ≥ H·N + Δ − e₁·N` and `Δ ≥ (A₀/m)S − q·N − e₂·N` (A₀/m =
+2499/657500, q = 262/131500) the add/collect gives `(1−A₀/m)S ≥ (H−q)N − (e₁+e₂)N`, i.e. the Lean
+conclusion `(1 − 2499/2500/263)S ≥ (HD 1 − 262/131500)N − (e₁+e₂)N`. Chain9.lean:175-182 proves this
+with `norm_num`+`ring_nf`+`set`+`linarith` (pure rational arithmetic — machine-checked). The ε-lift
+`chain9_eps_from_hypotheses` (:188-210) splits ε = ε/2 + ε/2 across the two bridge hypotheses and
+combines at `T₀ = max T₀₁ T₀₂`; `chain9_eps` (:219-223) is literally `chain9_eps_from_hypotheses b`.
+No hidden assumption: the algebra and `record_c9` hold for arbitrary real S,N,D (`N ≥ 0` is not
+required by any step; the `cLHS > 0` cancellation uses only nonnegativity of the multiplier).
+**FAITHFUL.**
+
+### T1c — bridge honesty (`stability_eps`, `stability_averaged_eps`, `deltaMT`) — **FAITHFUL (honest, non-circular, no weakening)**
+
+1. `stability_eps` (:97-100) = `∀ε>0 ∃T₀ ∀T≥T₀, HD 1·N + deltaMT T − ε·N ≤ N0simple`, i.e. the
+   paper step-2 / Cor 2.2 `S ≥ H_MT·N + Δ(M°) − o(N)` in ε-form (general-k §1). **Matches
+   OpenAI Cor 2.2 form.**
+2. `stability_averaged_eps` (:108-112) = `∀ε>0 ∃T₀ ∀T≥T₀, deltaMT T ≥ (2499/657500)·N0simple −
+   (262/131500)·N − ε·N`, i.e. `Δ(M°) ≥ (A₀/m)·S − ((m−1)/(500m))·N − o(N)` — the block-defect +
+   convexity-under-pinching averaging step (general-k §5-6 / [OpenAI (20)]). **Matches AV_k form
+   exactly.**
+3. **Non-circular / no trivially-implies-conclusion:** `deltaMT` is a free abstract placeholder
+   `fun _ => 0` (:91) only quantified into the bridge conditions and never evaluated by the proofs.
+   Neither bridge hypothesis alone nor their conjunction implies the conclusion without the
+   (machine-proved) `chain9_algebra_core` step; `stability_averaged_eps` is a lower bound on Δ that
+   the conclusion genuinely requires. **No silent weakening** (e.g., it does not directly assert
+   `chain9_eps`). No `axiom` — the bridge is two `def : Prop` fields of `record9Bridge`.
+4. **Non-circularity of the chain:** `chain9_eps` does NOT use `record_c9`; `record_c9` uses
+   `chain9_eps` (intended corollary direction). Neither is used in the bridge statements (they have
+   no proofs). **No circularity.**
+5. **Honest scope:** the true physical Δ(M°(T)) is NOT machine-tied here; the bridge is declared
+   over `deltaMT`. Formalizer's REPORT/FORMALIZATION_STATUS state this plainly. The task's
+   "honest handling" rule (carry open analytic steps as explicit axiom-free hypotheses) is complied
+   with. **FAITHFUL (a declared open bridge, not a hidden assumption).** Error layer:
+   **dependency / open analytic input.**
+
+### T1d + O4 — constant identities and `record_c9` — **FAITHFUL**
+
+- `A0_eq_f9n9` (:139): (392/100000)·255 = 99960/100000 = 2499/2500 ✓.
+- `cLHS_eq` (:148): 1 − 2499/657500 = 655001/657500 ✓; `cLHS_pos` ✓ (655001/657500 > 0).
+- `qMT_eq` (:154): 262/131500 = 131/65750 ✓; matches `(m−1)/(500m)` with m=263.
+- `record9_constant_identity` (:158-160): (H − 131/65750)·657500 = 657500·H − 1310 ✓ (since
+  657500/65750 = 10), i.e. 657,500·H − 1,310.
+- `c9Const_eq` (:163-166): c9Const = (657500·H − 1310)/655001 and c9Const = (H − qMT)/cLHS;
+  checked: (H − 262/131500)·(657500/655001) = (657500·H − 262·5)/655001 = (657500·H − 1310)/655001 ✓
+  (since 657500/131500 = 5, 657500/65750 = 10).
+- `record_c9` (:232-266): uses `chain9_eps` at rescaled slack `ε·cLHS` (positive since cLHS>0),
+  derives `cLHS·S ≥ (H − q − ε·cLHS)·N`, applies the exact coefficient identity
+  `cLHS·(c9Const−ε) = H − q − ε·cLHS` (:245, ring), then cancels the positive cLHS
+  (`mul_le_mul_of_nonneg_left`, `inv_mul_cancel₀`) to get `(c9Const − ε)·N ≤ S`. The O4 ε-form
+  `∀ε>0 ∃T₀ ∀T≥T₀ (c9Const − ε)·N ≤ N₀ˢ` with `c9Const = (657500·H_MT − 1310)/655001 =
+  0.673066472675939665848…` matches the contract's O4. **FAITHFUL.**
+- Boundary rigor condition: `A0_lt_one` (:142) establishes A₀ = 2499/2500 < 1, the §4 rigor
+  condition; the ε-form (not liminf-form) is used as the contract prescribes. **FAITHFUL.**
+
+## Critical errors / gaps (exact locations)
+
+1. **`Chain9.lean:59,62` — `wMT` is a structural placeholder for the true MT overlap kernel.**
+   Not a proof error (it compiles and carries no false *claim* — the formalizer treats it as a
+   fixed structural shape and flags the kernel-limit identity as open). But `CERTIFIED_F8_GE`
+   (`F8gaps wMT`, :81-82) is therefore currently a statement about the squared-sinc kernel, not
+   the baseline's `Cfun` MT overlap autocorrelation (Window.lean:1211). **Until the kernel-limit
+   lemma ties `wMT` to the true kernel (with `√2λ/L` scaling and the `1/√2`-shift structure), the
+   T2 certificate, when it lands, will be a certificate of a DIFFERENT pressure function than the
+   paper's.** Fidelity caveat; error layer **boundary-convention / dependency (open analytic).**
+2. **`Chain9.lean:91` — `deltaMT := fun _ => 0` is a placeholder.** `stability_eps` /
+   `stability_averaged_eps` are stated over this abstract function, not the true physical
+   Δ(M°(T)). This is honest (declared open), but it means T1c is open: the bridge is an unresolved
+   analytic obligation, not a completed proof. Error layer **dependency (open analytic).**
+3. **Snapshot-cleanliness transient (observed; now resolved).** At session start,
+   `literature/raw/zeta-23-lean/Zeta23/Record9/` (stale byte-identical copies of Chain9.lean /
+   M1Baseline.lean) was untracked in the snapshot — a leftover of the abandoned in-snapshot route
+   that `lakefile-change.md` claims was removed. It was auto-removed during the session by the
+   external Git auto-sync (the phenomena the formalizer documented). **Final snapshot state is
+   clean and `lakefile.toml` is byte-identical to HEAD**, but the formalizer's "removed" claim was
+   not true at session start. Error layer **boundary-convention (reproducibility / bookkeeping).**
+4. **Formalizer's BUILD_LOG "lake build Record9.Chain9 killed after ~10 min" is inaccurate for
+   this environment** — the verifier observed the identical command complete in ~47s with exit 0.
+   This strengthens (does not weaken) the machine-acceptance evidence; the "killed" note is a
+   recording discrepancy, not a failure. (Not an error layer; a report-hygiene nit.)
+5. **Unused-hypothesis lint** `Chain9.lean:219` `hF` is unused by `chain9_eps` (the theorem is
+   literally `chain9_eps_from_hypotheses b`, so `hF` plays no role). This is deliberate and correct
+   (the certificate is not needed for the algebra), but the linter warning is worth silencing
+   (`_hF` or omit) to keep the artifact warning-clean. Error layer: none (style).
+
+## Non-circularity (closed)
+
+- `chain9_eps` is not used in `stability_eps`/`stability_averaged_eps` (they have no proofs) and
+  not used in `record_c9`'s construction path that would be circular; `chart` direction is
+  `chain9_eps → record_c9` (the intended corollary). No obligation is discharged by a statement
+  equivalent in strength to the target without a new proof.
+
+## Per-obligation table
+
+| Obl | Contract statement | Lean decl | Fidelity | Status (this pass) |
+|---|---|---|---|---|
+| T1a | statement / quantifiers / constants | `chain9_eps`, `CERTIFIED_F8_GE`, `F8gaps`/`F8`, `stability_*` | **FAITHFUL** (kernel `wMT` = open-bridge caveat) | Machine-accepted; statement faithful |
+| T1b | algebra core + ε-lift | `chain9_algebra_core`, `chain9_eps_from_hypotheses`, `chain9_eps` | **FAITHFUL** | Machine-checked (pure rational algebra) |
+| T1c | stability / block-defect / averaging (open analytic) | `stability_eps`, `stability_averaged_eps` (hypotheses) | **FAITHFUL (honest bridge, non-circular)** | OPEN as explicit axiom-free hypotheses |
+| T1d | constant identities + O4 record | `A0_eq_f9n9`, `cLHS_eq/_pos`, `qMT_eq`, `c9Const_eq`, `record_c9` | **FAITHFUL** | Machine-checked |
+
+## Verdict (this T1 pass)
+
+**MACHINE_ACCEPTED_PENDING_AUDIT** — T1a/T1b/T1d compile with exit 0 and zero sorry/admit/axiom,
+the statement matches the contract verbatim, the axiom set is exactly the baseline gold standard,
+and the independent audit finds the prose/statement and the machine-checked algebra **faithful and
+non-circular**. The analytic bridge (T1c: stability, averaged block-defect and the kernel-limit
+lemma) is **open** — carried honestly as explicit axiom-free hypotheses over the placeholder
+`deltaMT` and the structural kernel `wMT`; closing it is a real, unresolved analytic obligation,
+exactly as the formalizer reports. One fidelity caveat to carry forward: `CERTIFIED_F8_GE` is only
+as faithful to the paper as the kernel-limit lemma makes `wMT` equal to the true MT overlap kernel.

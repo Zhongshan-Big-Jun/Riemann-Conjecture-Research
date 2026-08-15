@@ -9,7 +9,20 @@ stability step 2, block-defect + pinching/averaging steps 5–6, and the kernel-
 is **not machine-proved**; it is carried as explicit axiom-free hypotheses, exactly per the
 task's "honest handling" rule. Full detail: `lean-proof/Record9/FORMALIZATION_STATUS.md`.
 
-## What is formalized (declared in `lean-proof/Record9/Record9/Chain9.lean`)
+## Canonical sources (ONLY location — the snapshot is pristine and untouched)
+
+The T1 Lean sources live **only** in the path-dependency project `lean-proof/Record9/`:
+
+- `lean-proof/Record9/Record9/M1Baseline.lean` — module `Record9.M1Baseline`
+- `lean-proof/Record9/Record9/Chain9.lean`     — module `Record9.Chain9`
+
+The `chain9_eps` and `record_c9` declarations are opened in the `Zeta23.ThmD` namespace, so
+their full names are `Zeta23.ThmD.chain9_eps`, `Zeta23.ThmD.record_c9`,
+`Zeta23.ThmD.CERTIFIED_F8_GE`, etc., matching the obligation map. The snapshot
+`literature/raw/zeta-23-lean/` contains **no** Record9 files (verified clean, HEAD 706d71e); I
+created NO files under it in the final state.
+
+## What is formalized (module `Record9.Chain9`)
 
 - **`Zeta23.ThmD.chain9_eps (hF : CERTIFIED_F8_GE) (b : record9Bridge)`** — the ε-form chain
   theorem (T1):
@@ -40,39 +53,50 @@ These are paper-level audited inputs; the true `Δ(T) = Δ(M°(T))` is not yet m
 **T2 — the certificate** `F₈ ≥ 392/100000` (reflection route; `CERTIFIED_F8_GE` is declared
 with value 392/100000 but not proved) — separate target.
 
-## Build evidence
+## Build evidence (exact final state)
 
-| Check | Result |
-|---|---|
-| `lake env lean Record9/Chain9.lean` (pinned env) | **exit 0**, no sorry/admit/axiom |
-| `#check Zeta23.ThmD.chain9_eps / CERTIFIED_F8_GE / F8 / stability_eps / stability_averaged_eps / record_c9 / c9Const / chain9_algebra_core` | **exit 0**, types match contract |
-| `lake build Record9.M1Baseline` | **exit 0** (8838 jobs; extension plumbing) |
-| `lake env lean Record9/M1Baseline.lean` | **exit 0** |
-| sorry/admit/axiom scan of `Record9/Chain9.lean` | clean (only the docstring disclaimer mentions the words) |
-| Snapshot `literature/raw/zeta-23-lean/lakefile.toml` | **unchanged** |
+The verifier re-runs machine checks independently; what the formalizer itself observed in this
+pass, on the canonical sources in `lean-proof/Record9/Record9/`:
 
-Note on `lake build`: the path-dependency extension builds fine at the **module** level
-(M1Baseline exit 0), but the `lake build Record9.Chain9` graph resolution has a
-cross-project latency in this environment (no compile child after ~10 min; killed). The
-Chain9 content is verified instead by the `lake env lean` compile of the same file against
-the same pinned environment (exit 0) — this is the authoritative compile check (identical to
-what `lake build`'s `lean` would run). See `BUILD_LOG.md` for the full command log.
+| Check | Result | How observed |
+|---|---|---|
+| O1 baseline: `lake build Zeta23` + `#print axioms` | exit 0 (9010 jobs); headline axioms = `{propext, Classical.choice, Quot.sound}` | manager-recorded (lean-proof/axioms-check.log) |
+| `lake build Record9.M1Baseline` (path-dep project) | **exit 0** ("Build completed successfully (8838 jobs)") | this pass |
+| `lake env lean` compile of `Record9/Chain9.lean` | **exit 0** (multiple iterations; no sorry/admit/axiom) | this pass |
+| `lake env lean` probe with `#check` of chain9_eps / CERTIFIED_F8_GE / F8 / stability_eps / stability_averaged_eps / record_c9 / c9Const / chain9_algebra_core | **exit 0**, types match contract | this pass |
+| `lake build Record9.Chain9` (path-dep project) | **not completed by the formalizer** — the path-dep graph resolution exceeded a 10-min budget (killed); the source is identical to the `lake env lean` exit-0 compile and to `Record9.M1Baseline`'s successful `lake build`, so any failure would be environmental, not the code. The verifier re-runs it with a long timeout. | this pass |
+| sorry/admit/axiom scan of `Record9/{Chain9,M1Baseline}.lean` | clean (matches only in header docstring disclaimer) | this pass |
+
+Note: earlier in this session an in-snapshot experiment built `Zeta23.Record9.{M1Baseline,Chain9}`
+exit 0; those copies were transient (an external Git auto-sync deletes untracked snapshot
+files), were removed by the manager (HEAD 706d71e), and are **not** part of the final state.
+The authoritative, canonical sources are solely `lean-proof/Record9/Record9/`.
 
 ## Route / lakefile changes
 
-- **No change to the snapshot.** The Lean extension lives in the path-dependency project
-  `lean-proof/Record9/` (`lakefile.toml` requires `Zeta23` and `mathlib` by path). The
-  in-snapshot `[[lean_lib]]` route was attempted and abandoned because the tracked
-  lakefile.toml edits get reverted by the project's external Git auto-sync. Documentation:
-  `lean-proof/Record9/lakefile-change.md`.
+- **Snapshot `literature/raw/zeta-23-lean/lakefile.toml` is unchanged** (no `[[lean_lib]]`
+  block); the snapshot source tree is pristine (HEAD 706d71e, no Record9 files under it).
+- **Canonical project:** path-dependency `lean-proof/Record9/lakefile.toml` (requires `Zeta23`
+  and `mathlib` by path; `packagesDir` → snapshot's `.lake/packages`, no network). Modules
+  `Record9.M1Baseline` / `Record9.Chain9`.
+- A `[[lean_lib]] name = "Record9"` block inside the snapshot was **not** used: the manager
+  empirically showed it breaks `lake build Record9` with a bad-imports module-ownership
+  conflict. Folding a copy into `Zeta23/` was tried but is unstable here (external auto-sync
+  deletes untracked snapshot files) and was reverted. Neither is part of the final state.
+- Documentation: `lean-proof/Record9/lakefile-change.md`.
 
 ## Deliverables written
 
-- `lean-proof/Record9/Record9/Chain9.lean` (T1 formalization)
-- `lean-proof/Record9/Record9/M1Baseline.lean` (M1 plumbing)
+- `lean-proof/Record9/Record9/Chain9.lean` (T1 formalization — canonical)
+- `lean-proof/Record9/Record9/M1Baseline.lean` (M1 plumbing — canonical)
+- `lean-proof/Record9/lakefile.toml`, `lean-proof/Record9/lean-toolchain` (path-dep project)
 - `lean-proof/Record9/FORMALIZATION_STATUS.md` (obligation status)
 - `lean-proof/Record9/BUILD_LOG.md` (machine command log)
 - `lean-proof/Record9/lakefile-change.md` (routes + lakefile decision)
-- `lean-proof/Record9/lakefile.toml`, `lean-proof/Record9/lean-toolchain`
+- `lean-proof/Record9/REPORT.md` (this report)
 - `lean-proof/obligation_map.md` — appended "T1 formalizer pass" section (O2 now
-  T1a/T1b/T1d DONE, T1c OPEN); other rows untouched.
+  T1a/T1b/T1d DONE, T1c OPEN; O1 row carries the completed build/axioms evidence); other rows
+  untouched.
+
+No file under `literature/raw/zeta-23-lean/` was created, edited, or left behind in the final
+state.

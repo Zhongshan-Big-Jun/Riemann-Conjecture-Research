@@ -1,6 +1,6 @@
 {
   "verdict": "MACHINE_ACCEPTED_PENDING_AUDIT",
-  "verdict_note": "O1 baseline FULLY VERIFIED 2026-08-15: machine evidence (lake build Zeta23 exit 0, 9010 jobs; #print axioms gold standard = {propext, Classical.choice, Quot.sound}) + independent adversarial audit (lean-proof/audit_report.md: O1a-O1f all FAITHFUL, verdict FORMALLY_VERIFIED for O1). O2-O5 (chain + certificate + records) remain OPEN formalization obligations (T1 formalizer pass in progress, lean-proof/Record9/).",
+  "verdict_note": "O1 baseline FULLY VERIFIED 2026-08-15: machine evidence (lake build Zeta23 exit 0, 9010 jobs; #print axioms gold standard = {propext, Classical.choice, Quot.sound}) + independent adversarial audit (lean-proof/audit_report.md: O1a-O1f all FAITHFUL, verdict FORMALLY_VERIFIED for O1). 2026-08-16 INDEPENDENT T1 pass (lean-proof/audit_report.md 'T1 verifier pass' + machine_check.log 'T1 ... INDEPENDENT verifier pass'): O2=chain9_eps and O4=record_c9 are machine-accepted (lake build Record9.Chain9 exit 0 in ~47s; #print axioms = {propext, Classical.choice, Quot.sound}; #check types match contract verbatim), and T1a/T1b/T1d are independently audited FAITHFUL + non-circular. T1c (analytic bridge: stability step 2, averaged block-defect steps 5-6, kernel-limit lemma tying wMT to the true MT overlap kernel) and T2 (certificate) remain OPEN. O5 (XiPrime) OPEN.",
   "machine": {
     "lean_version": "4.33.0-rc2 (d8b18978322de05a8f3dba51ef03cf5461676c17)",
     "lake_version": "5.0.0-src+d8b1897",
@@ -9,28 +9,139 @@
     "build_note": "lake build Zeta23: exit 0, 'Build completed successfully (9010 jobs)'; deprecation/linter warnings only (build-run.log, verify-run.log)",
     "sorry_axiom_hits": [],
     "axiom_set_gold_standard": [
-      {"decl": "Zeta23.ThmD.thmD₀_simple_mult", "axioms": ["propext", "Classical.choice", "Quot.sound"]},
-      {"decl": "Zeta23.ThmD.thmD₀_simple_mult'", "axioms": ["propext", "Classical.choice", "Quot.sound"]},
-      {"decl": "Zeta23.ThmD.thmD₀_simple_mult_cumulative", "axioms": ["propext", "Classical.choice", "Quot.sound"]},
-      {"decl": "Zeta23.ThmD.thmD₀_dist_mult", "axioms": ["propext", "Classical.choice", "Quot.sound"]},
-      {"decl": "Zeta23.ThmD.thmD₀_dist_mult_cumulative", "axioms": ["propext", "Classical.choice", "Quot.sound"]},
-      {"decl": "Zeta23.XiPrime.headlineQuartic_unconditional", "axioms": ["propext", "Classical.choice", "Quot.sound"]},
-      {"decl": "Zeta23.XiPrime.headlineCumulative_quartic_unconditional", "axioms": ["propext", "Classical.choice", "Quot.sound"]},
-      {"decl": "Zeta23.PairCeiling.ceiling_law256", "axioms": ["propext", "Classical.choice", "Quot.sound"]},
-      {"decl": "Zeta23.PairCeiling.ceiling_law256_decimal", "axioms": ["propext", "Classical.choice", "Quot.sound"]}
+      {
+        "decl": "Zeta23.ThmD.thmD₀_simple_mult",
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ]
+      },
+      {
+        "decl": "Zeta23.ThmD.thmD₀_simple_mult'",
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ]
+      },
+      {
+        "decl": "Zeta23.ThmD.thmD₀_simple_mult_cumulative",
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ]
+      },
+      {
+        "decl": "Zeta23.ThmD.thmD₀_dist_mult",
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ]
+      },
+      {
+        "decl": "Zeta23.ThmD.thmD₀_dist_mult_cumulative",
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ]
+      },
+      {
+        "decl": "Zeta23.XiPrime.headlineQuartic_unconditional",
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ]
+      },
+      {
+        "decl": "Zeta23.XiPrime.headlineCumulative_quartic_unconditional",
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ]
+      },
+      {
+        "decl": "Zeta23.PairCeiling.ceiling_law256",
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ]
+      },
+      {
+        "decl": "Zeta23.PairCeiling.ceiling_law256_decimal",
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ]
+      }
     ],
     "scan_note": "verify_lean_project.py naive scan flags 44 hits: 38 comparator Challenge sorries (separate layer, excluded from default target per lakefile.toml), 3 comment words (Mertens.lean:31-32 'sorry'd', StrongPNTPrefix.lean:4 'sorry-free', Hypotheses.lean:15 'axiom declarations'), 3 real-but-unused tactic-test axioms qc/hqc (AdditiveCombination.lean:183-184; NOT in any headline theorem's axiom set per gold standard above)."
   },
   "statement_fidelity": [
-    {"obligation": "O1", "result": "FAITHFUL", "notes": "Independent adversarial audit 2026-08-15 (lean-proof/audit_report.md): O1a definitions (N0simple = simple-on-line via Statement.lean:62, Ncount with multiplicity), O1b quantifier/shape, O1c constant (HD_one Functional.lean:464), O1d unconditionality, O1e cumulative form, O1f non-circularity/axioms — ALL FAITHFUL. Verdict: FORMALLY_VERIFIED for O1."}
+    {
+      "obligation": "O1",
+      "result": "FAITHFUL",
+      "notes": "Independent adversarial audit 2026-08-15 (lean-proof/audit_report.md): O1a definitions (N0simple = simple-on-line via Statement.lean:62, Ncount with multiplicity), O1b quantifier/shape, O1c constant (HD_one Functional.lean:464), O1d unconditionality, O1e cumulative form, O1f non-circularity/axioms — ALL FAITHFUL. Verdict: FORMALLY_VERIFIED for O1."
+    },
+    {
+      "obligation": "O2/T1a",
+      "result": "FAITHFUL",
+      "notes": "T1 independent pass 2026-08-16: chain9_eps quantifier order (∀ε>0 ∃T₀:ℝ ∀T≥T₀, T real), dyadic window (T,2T], N0simple/Ncount baseline conventions, constants 2499/2500/263 = A₀/m and 262/131500 = (m−1)/(500m), HD 1 = H_MT all match the contract; F8gaps re-derived vs general-k §2 (s0=s−1 indexing, coeffs 2/(8−s0), linear 1/(500·8)) — no off-by-one. Caveat: kernel wMT=(sinc)^2 is a structural placeholder until the kernel-limit lemma ties it to baseline Cfun."
+    },
+    {
+      "obligation": "O2/T1b",
+      "result": "FAITHFUL",
+      "notes": "T1 algebra core chain9_algebra_core re-derived independently (S≥H·N+Δ−e₁N and Δ≥(A₀/m)S−qN−e₂N ⇒ (1−A₀/m)S≥(H−q)N−(e₁+e₂)N); ε-lift splits ε/2+ε/2 and combines at max T₀; machine-checked pure rational arithmetic. No hidden assumption (N≥0 not needed)."
+    },
+    {
+      "obligation": "O2/T1c",
+      "result": "FAITHFUL (open bridge)",
+      "notes": "stability_eps and stability_averaged_eps are the paper steps 2 and 5-6 (Cor 2.2 and AV_k) in ε-form, declared as plain Prop fields (no axiom), non-circular, not implying the conclusion trivially. They are OPEN explicit hypotheses over the placeholder deltaMT; true Δ(M°) not machine-tied."
+    },
+    {
+      "obligation": "O4/T1d",
+      "result": "FAITHFUL",
+      "notes": "Exact rational identities verified (A0=f9·n9, cLHS=655001/657500>0, qMT=262/131500=131/65750, 657500/65750=10, c9Const=(657500·H−1310)/655001=(H−qMT)/cLHS); record_c9 ε-form via ε·cLHS rescaling and positive-cLHS cancellation; rigor condition A₀=2499/2500<1."
+    }
   ],
   "critical_errors": [],
   "gaps": [
-    {"location": "lean-proof/obligation_map.md O2", "issue": "chain9_eps theorem not formalized (T1: formalizer pass in progress, lean-proof/Record9/Chain9.lean drafted)"},
-    {"location": "lean-proof/obligation_map.md O3", "issue": "certificate F8 >= 392/100000 not formalized (T2 reflection route planned; requires box-data emission from verify_kpoint_parallel.py)"},
-    {"location": "lean-proof/obligation_map.md O4", "issue": "record_c9 conclusion not formalized (T1 draft contains record_c9 corollary pending machine check)"},
-    {"location": "lean-proof/obligation_map.md O5", "issue": "xi-prime record not formalized (depends on O2; AdmWindow cos blueprint ready)"}
+    {
+      "location": "Chain9.lean:59,62 (wMT)",
+      "issue": "T1c OPEN analytic bridge — kernel-limit lemma: wMT = (sinc x)^2 is a structural placeholder, not yet the baseline's MT overlap autocorrelation Cfun (Window.lean:1211). CERTIFIED_F8_GE is therefore only as faithful to the paper certificate as this kernel-limit identity. O2/O4 depend on T1c AND T2."
+    },
+    {
+      "location": "Chain9.lean:91 (deltaMT)",
+      "issue": "T1c OPEN — stability_eps / stability_averaged_eps are stated over the placeholder deltaMT := fun _ => 0, not the true physical Delta(M°) ; they are explicit axiom-free hypotheses, not machine-proved. Closing T1c = supply Lean proofs of these two + the kernel-limit lemma for the true Delta."
+    },
+    {
+      "location": "lean-proof/verification-contract.md O3 / T2",
+      "issue": "certificate F8 >= 392/100000 (CERTIFIED_F8_GE) still an unproved hypothesis (T2 reflection route; out of scope of this T1 pass)."
+    },
+    {
+      "location": "obligation_map O2 (chain)",
+      "issue": "chain9_eps machine-accepted and statement FAITHFUL, but full closure gated on T1c analytic bridge (steps 2/5-6) and T2 certificate."
+    },
+    {
+      "location": "obligation_map O4 (record_c9)",
+      "issue": "record_c9 machine-accepted (exact rational identity + positive-cLHS cancellation, #print axioms clean), but is conditional on chain9_eps below which is gated on T1c+T2."
+    },
+    {
+      "location": "snapshot zeta-23-lean (observed)",
+      "issue": "transient (now clean): an untracked literature/raw/zeta-23-lean/Zeta23/Record9/ leftover (byte-identical stale Chain9/M1Baseline) was present at session start; auto-removed by the external Git auto-sync; snapshot now clean and lakefile.toml byte-identical to HEAD."
+    },
+    {
+      "location": "obligation_map.md O5 / T3",
+      "issue": "xi-prime record not formalized (depends on O2; AdmWindow cos blueprint ready)"
+    }
   ],
-  "repair_hints": "T1 formalizer pass in progress (lean-proof/Record9/). After it lands: run the independent verifier pass (fresh agent, no shared chain of thought) per lean-verify protocol; then T2 certificate reflection; then T3 XiPrime.",
+  "repair_hints": "T1 pass verdict = MACHINE_ACCEPTED_PENDING_AUDIT. To close: (1) T1c analytic bridge — supply Lean proofs of stability_eps and stability_averaged_eps for the true physical Δ(M°) (tie deltaMT to M°; OpenAI Lemma 2.1/Cor 2.2; general-k §4-6 block-defect + pinching/averaging) AND prove the kernel-limit lemma making wMT equal to the baseline MT overlap autocorrelation Cfun (Window.lean:1211) with its √2λ/L and 1/√2 structure; (2) T2 certificate: prove CERTIFIED_F8_GE (F₈≥392/100000) for the true kernel via the reflection route; (3) T3 XiPrime record (O5). Optional hygiene: silence the unused-`hF` linter warning in Chain9.lean:219; double-check the snapshot stays clean (an untracked in-snapshot Zeta23/Record9/ leftover was observed at session start before auto-sync removed it); correct the BUILD_LOG 'killed' note for lake build Record9.Chain9 (it completes in ~47s).",
   "run_manifest_ref": "lean-proof/run-manifest.json"
 }

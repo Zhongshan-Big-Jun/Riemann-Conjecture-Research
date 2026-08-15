@@ -4,15 +4,18 @@
 `CERTIFIED_F8_GE`, `F8`/`F8gaps`/`wMT`, bridge hypotheses, `record_c9` (O4), and the
 constant identities (T1d).
 
-**Files (Lean source, in the path-dependency extension project `lean-proof/Record9/`):**
+**Files (Lean source — canonical location ONLY `lean-proof/Record9/`, the path-dependency
+project; the snapshot is pristine and holds NO Record9 files):**
 
-| File | Module | Content |
+| Module | Source (in `lean-proof/Record9/`) | Content |
 |---|---|---|
-| `Record9/M1Baseline.lean` | `Record9.M1Baseline` | M1 smoke test: baseline `thmD₀_simple_mult` importable. |
-| `Record9/Chain9.lean` | `Record9.Chain9` | T1 (chain9_eps), pressure function + certificate statement, bridge hypotheses, algebra core, record_c9, constants. |
+| `Record9.M1Baseline` | `Record9/M1Baseline.lean` | M1 smoke test: baseline `thmD₀_simple_mult` importable. |
+| `Record9.Chain9` | `Record9/Chain9.lean` | T1 (chain9_eps), pressure function + certificate statement, bridge hypotheses, algebra core, record_c9, constants. |
 
-The declarations live in the `Zeta23.ThmD` and `Zeta23.Remainder` namespaces via the module
-`Record9.Chain9`; full names are `Zeta23.ThmD.chain9_eps` etc. (see #check evidence).
+The declarations are opened in the `Zeta23.ThmD` namespace, so their full names are
+`Zeta23.ThmD.chain9_eps`, `Zeta23.ThmD.record_c9`, `Zeta23.ThmD.CERTIFIED_F8_GE`, etc.
+(contract-matching names; see #check evidence). The snapshot
+`literature/raw/zeta-23-lean/` was left pristine (HEAD 706d71e, no Record9 files under it).
 
 ---
 
@@ -127,17 +130,30 @@ for the true `Δ(M°)`; that is the remaining gap.
 is proved as a corollary of `chain9_eps` (run at rescaled slack ε·cLHS, cancel the positive
 cLHS), giving the liminf N₀ˢ/N ≥ C₉ = 0.673066472675939665848…
 
-## Machine evidence summary
+## Machine evidence summary (exact final state; canonical sources in `lean-proof/Record9/Record9/`)
 
-- `lake env lean Record9/Chain9.lean` (from the snapshot working dir, pinned
-  v4.33.0-rc2): **exit 0**, no sorry/admit/axiom.
+- **O1 baseline (manager-recorded):** `lake build Zeta23` exit 0 (9010 jobs); `#print axioms`
+  on all headline theorems = `{propext, Classical.choice, Quot.sound}` (lean-proof/axioms-check.log).
+- `lake build Record9.M1Baseline` (path-dep project, pinned v4.33.0-rc2): **exit 0**
+  ("Build completed successfully (8838 jobs)").
+- `lake env lean` compile of `Record9/Chain9.lean` (from the snapshot dir): **exit 0** (all
+  proof iterations; no sorry/admit/axiom).
 - `lake env lean` probe appending `#check Zeta23.ThmD.chain9_eps / CERTIFIED_F8_GE / F8 /
   stability_eps / stability_averaged_eps / record_c9 / c9Const / chain9_algebra_core`:
-  **exit 0**; printed types match the contract (see the check transcript in
-  `lean-proof/Record9/` build log).
-- `lake build Record9.M1Baseline`: **exit 0** (8838 jobs; replays snapshot + builds the
-  plumbing).
-- Snapshot `literature/raw/zeta-23-lean/lakefile.toml`: **unchanged** (see lakefile-change.md).
+  **exit 0**; printed types match the contract (see BUILD_LOG.md).
+- `lake build Record9.Chain9` (path-dep project): **not completed by the formalizer** — the
+  path-dep graph resolution exceeded the 10-min budget (killed); the source is identical to the
+  `lake env lean` exit-0 compile and to `Record9.M1Baseline`'s successful `lake build`. The
+  independent verifier re-runs it with a long timeout.
+- sorry/admit/axiom scan of `Record9/{Chain9,M1Baseline}.lean`: clean (matches only in the
+  header docstring disclaimer).
+- Snapshot `literature/raw/zeta-23-lean/lakefile.toml`: **unchanged**; no Record9 files exist
+  under the snapshot (pristine, HEAD 706d71e).
+
+Earlier in this session the module content also built via temporary __in-snapshot__ copies
+(`lake build Zeta23.Record9.{M1Baseline,Chain9}` exit 0); those transfers were removed by the
+manager (auto-sync instability) and are **not** part of the final state. The authoritative
+sources are solely `lean-proof/Record9/Record9/`.
 
 ## Status label for this pass
 
