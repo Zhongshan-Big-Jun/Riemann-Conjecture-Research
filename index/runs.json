@@ -120,17 +120,27 @@
       "task_packet_id": "Q-20260814-criticalline-p1-507bb5",
       "run_root": "runs/rigorous-open-math-research/R-20260815T120000Z-sllemma-7b21e4",
       "started_at": "2026-08-15T12:00:00Z",
-      "upstream_status_verbatim": "IN PROGRESS (bounded research pass; solver subagent dcf1d0f0)",
-      "summary": "SL lemma (sine-process Gram spectral measure: mu_lambda({0})=0 and 0 in supp, Christoffel form Lambda_m(0)->0) — the single open ingredient of the conditional 100% theorem (condp1 run). Contract rebuilt (problem_contract.md): random sine-process Gram object, DPP factorial moments, lambda-reduction/limit-mode/normalization ambiguities enumerated; exact moments (1,4/3,2,13/4) accepted as project facts.",
-      "audit_status": "pending (independent audit after the run settles)",
+      "upstream_status_verbatim": "RIGOROUS_PARTIAL_RESULT",
+      "summary": "SL lemma (sine-process Gram spectral measure) bounded pass COMPLETED 2026-08-15: rigorous reduction SL ⟺ mu_lambda({0})=0 (Christoffel atom theorem; load-bearing-clause analysis shows 0∈supp NOT needed by the condp1 theorem — genuine sharpening) ⟺ lim_m det(H_m)/det(H_m^{(00)}) = 0 (Hankel criterion, validated EXACTLY: Lambda_2(0)=5/36 and Lambda_1(0)=1/4 from (1,4/3,2,13/4)). External fresh-subagent adversarial audit: T1 HOLDS; T0a HOLDS-CONDITIONALLY (moment-determinacy, satisfied via compact support); m0-vs-m1 indexing dispute resolved by exact rational arithmetic (CS 4<=13/3, Hankel det>0, monotonicity holds). SL itself remains OPEN: crux = exact high moments k>=5 of the sine-DPP Gram; fermionic/Wick conjecture D_k=0 for all k>=3 is the concrete closure route.",
+      "audit_status": "PASS-CONDITIONAL (external fresh-subagent adversarial audit 2026-08-15, no shared chain of thought; report audit_report.md; solver rebuttal of the m0/m1 indexing objection verified by exact rational arithmetic)",
       "key_artifacts": [
-        "problem_contract.md FB4A13E9E49D0AC3F4E97C64AE4665E11047A77F8ACE1790F140211EA599F947"
+        "problem_contract.md FB4A13E9E49D0AC3F4E97C64AE4665E11047A77F8ACE1790F140211EA599F947",
+        "candidate_proof.md DFCADCD2DD6BE5279E68EB98818216C6B654D39D9FC9265A33B7D3CB3DEB89E5",
+        "status_and_literature.md 3B182DAFFBAAFD5D55635A9C67AA383479FF8E5DB2F02C5EC0588AA065C2AD91",
+        "audit_report.md D55A22A42A70D1B7FEDC50B286B545EFF706B9AE5158D904C67B255F686F9676",
+        "obligation_graph.md 2965880207DD187621EE1AD122CF09C8AE13D29D8433146BB7F84F950397D14B",
+        "research_ledger.md 3E5D16803727894F91D1B89F277C97743391E1456B60EAFEBCCEE23E9DC804C7",
+        "approach_registry.md 8BB89D0FD54AB4CD9447BCDAA3FC53F1E473CD3A0218E2B44DFCA3025DD1F0FA",
+        "counterexample_log.md ABC7B7D8200D1556B16FCD716EA2B7C63CBDB5B7B20B141888B3F26B1EDD835C",
+        "repro_manifest.md CA9A59E69A8D579D2E26BE853D870E2B6F84FD228B93837D43C2D05E5692CD5B",
+        "reproducibility/ scripts (6; see SHA256SUMS)"
       ],
       "created_at": "2026-08-15T12:00:00Z",
-      "updated_at": "2026-08-15T17:12:00Z",
+      "updated_at": "2026-08-15T22:30:00Z",
       "open_obligations": [
-        "SL proof or precise reduction (single open ingredient of HL*+SL => 100%)",
-        "unconditional liminf N0^s/N -> 1 remains OPEN"
+        "SL itself: prove det(H_m)/det(H_m^{(00)}) -> 0 for the sine-Gram moment sequence (exact high moments k>=5; D_k=0 for all k>=3 conjecture = closure route)",
+        "formalize the Christoffel atom theorem + compact-support determinacy in Lean",
+        "unconditional liminf N0^s/N -> 1 remains OPEN (conditional routes HL*+SL / PCC proved)"
       ]
     }
   ]

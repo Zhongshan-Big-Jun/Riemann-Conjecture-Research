@@ -73,6 +73,7 @@ N0* = distinct on-line; N0^s = simple on-line; Nd = distinct. Dyadic interval (T
 | **100% simple on line** | **Pair correlation conjecture, full support** | GLSS25 (arXiv:2503.15449) |
 | ≥ 13/18 ≈ 0.7222 (N0^s/N) | HL*(4) (4 trace moments = sine-kernel Gram moments) | Claude §7.2(f), informal |
 | **100% (N0^s/N → 1)** | **HL*(k0) for all k0** | Claude §7.2(f), informal — to be made rigorous (our task Q3) |
+| **SL update 2026-08-15 (run R-20260815T120000Z-sllemma-7b21e4, RIGOROUS_PARTIAL_RESULT, audit PASS-CONDITIONAL)**: SL's load-bearing form for the condp1 theorem is EXACTLY μ_λ({0}) = 0 (no atom at 0; "0 ∈ supp" not needed — sharpening). SL ⟺ lim_m det(H_m)/det(H_m⁽⁰⁰⁾) = 0 over the sine-Gram moment sequence (Hankel criterion; Λ₁(0)=1/4, Λ₂(0)=5/36 EXACT from (1,4/3,2,13/4)). SL itself OPEN; crux = exact moments m_k, k≥5 (D_k = 0 ∀k≥3 conjecture = closure route). | this project |
 
 ### Known barriers (exact)
 1. Bandwidth-one certificate ceiling ≈ 0.6818 (Lean-certified; the extremal 256-periodic law is

@@ -87,18 +87,35 @@ Let h_{ij} := m_{i+j} (moments m_0:=1, m_1,m_2,\dots), H_m := (m_{i+j})_{i,j=0..
 Hankel matrix, and D_m := det H_m. Then [H_m^{-1}]_{00} = det(H_m without row0,col0)/det H_m, and
 the same quantity is Λ_m(0)¹⁻¹... precisely:
 
-    Λ_m(0) = 1 / K_m(0,0) = ( [H_m^{-1}]_{00} )^{???}   [to fix: verified numerically]
+    Λ_m(0) = 1 / K_m(0,0) = det(H_m) / det(H_m with 0th row&col deleted)        (CRIT)
 
-[Correction recorded in ledger: K_m(0,0) = e_0^T H_m^{-1} e_0 is NOT correct because the Christoffel
-value is about the constant polynomial, see research_ledger; the correct identity is derived there.
-Λ_m(0) = D_m^{(1)}:=[det of H_m with 0th row&col deleted] / det H_m, i.e. the Schur complement —
-verified numerically in this run.]
+[CONVENTION — made explicit after audit:] the trace-normalized sine-Gram moment sequence is
+(m_0, m_1, m_2, m_3, m_4) = (1, 1, 4/3, 2, 13/4), where m_0 = 1 is the TOTAL MASS (μ a probability
+measure) and m_1 = 1 = (1/N)tr G_L is the first trace moment. The audited list "(1,4/3,2,13/4)"
+is (m_1,m_2,m_3,m_4). Under this convention (verify_lambda2_536_exact.py, exact rationals):
+  Λ_1(0) = det[[1,1],[1,4/3]]/(4/3) = 1/4,
+  Λ_2(0) = det[[m0..m4 Hankel]]/det[[m2..m4 Hankel]] = (5/108)/(1/3) = 5/36 exactly,
+and the consistency checks HOLD: monotonicity Λ_2≤Λ_1 (5/36<1/4), Cauchy–Schwarz m_3²≤m_2 m_4
+(4 ≤ 13/3), and the 3×3 Hankel determinant is positive (5/108>0 ⇒ valid probability-moment seq).
+[This explicitly rebuts a mis-indexed reading that treated the list as (m0,m1,m2,m3)=(1,4/3,2,13/4),
+which would give the inconsistent Λ_1=1/9, Λ_2=5/36>1/9.]
 
-So **SL ⟺ [H_m{del 00} det] / det H_m → 0 as m→∞**, an expression purely in the moments. Proving
-this needs only (i) moment determinacy / enough moments, and (ii) the Hankel determinant growth.
-For a measure supported on [0,∞) (our PSD Gram case) with a Q.C. at 0, classical strong/weak
-asymptotics of Hankel determinants (Szegő–Widom / Borodin–Deift) give Λ_m(0) ~ c/m-type decay when
-0 is inside the support-arc with positive density. For an atom of mass c at 0: Λ_m(0) → c.
+[Moment-determinacy condition for the criterion's use:] T0a (Λ_m→μ({0})) holds for a
+MOMENT-DETERMINATE measure (Λ_m depends only on the moment sequence, so indeterminate measures
+break the correspondence). Compact support ⟹ determinate (Carleman). The sine-Gram limit μ_λ is
+supported in a compact ⊆[0,c] (PSD Gram of a bounded kernel ⇒ eigenvalues bounded, in [0,c]),
+hence determinate — so SL ⟺ μ_λ({0})=0 is valid for μ_λ. [T3 in obligation_graph confirms this;
+the audit flagged determinacy as required and it is satisfied.]
+
+**SL ⟺ [H_m with 0th row&col deleted] det / det H_m → 0 as m→∞**, an expression purely in the
+moments of μ_λ. Proving this needs the full moment sequence and its Hankel asymptotics (route B/F);
+a finite prefix (e.g. m_1..m_4) does NOT decide the limit (only Λ_1, Λ_2 are then fixed).
+For a measure supported on [0,∞) with a Q.C. at 0, classical strong/weak asymptotics (Szegő–Widom /
+Borodin–Deift) give Λ_m(0) ~ c/m-type decay when 0 is inside the support with positive density;
+for an atom of mass c at 0: Λ_m(0)→c. Numerical evidence at low orders (up to m=3) is high-accuracy
+(50-digit mpmath, verify_empirical_hankel_highprec.py) so the observed decay is NOT a float/
+conditioning artifact; the conditioning caveat applies only to very large m, which is why this is
+evidence, not proof.
 
 ## 5. Route pointers (mapped to approach_registry.md)
 
