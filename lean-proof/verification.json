@@ -1,6 +1,6 @@
 {
   "verdict": "MACHINE_ACCEPTED_PENDING_AUDIT",
-  "verdict_note": "O1 baseline FULLY VERIFIED 2026-08-15: machine evidence (lake build Zeta23 exit 0, 9010 jobs; #print axioms gold standard = {propext, Classical.choice, Quot.sound}) + independent adversarial audit (lean-proof/audit_report.md: O1a-O1f all FAITHFUL, verdict FORMALLY_VERIFIED for O1). 2026-08-16 INDEPENDENT T1 pass (lean-proof/audit_report.md 'T1 verifier pass' + machine_check.log 'T1 ... INDEPENDENT verifier pass'): O2=chain9_eps and O4=record_c9 are machine-accepted (lake build Record9.Chain9 exit 0 in ~47s; #print axioms = {propext, Classical.choice, Quot.sound}; #check types match contract verbatim), and T1a/T1b/T1d are independently audited FAITHFUL + non-circular. T1c (analytic bridge: stability step 2, averaged block-defect steps 5-6, kernel-limit lemma tying wMT to the true MT overlap kernel) and T2 (certificate) remain OPEN. O5 (XiPrime) OPEN.",
+  "verdict_note": "O1 baseline FULLY VERIFIED 2026-08-15: machine evidence (lake build Zeta23 exit 0, 9010 jobs; #print axioms gold standard = {propext, Classical.choice, Quot.sound}) + independent adversarial audit (lean-proof/lean-audit-report.md: O1a-O1f all FAITHFUL, verdict FORMALLY_VERIFIED for O1). 2026-08-16 INDEPENDENT T1 pass (lean-proof/lean-audit-report.md 'T1 verifier pass' + machine_check.log 'T1 ... INDEPENDENT verifier pass'): O2=chain9_eps and O4=record_c9 are machine-accepted (lake build Record9.Chain9 exit 0 in ~47s; #print axioms = {propext, Classical.choice, Quot.sound}; #check types match contract verbatim), and T1a/T1b/T1d are independently audited FAITHFUL + non-circular. T1c (analytic bridge: stability step 2, averaged block-defect steps 5-6, kernel-limit lemma tying wMT to the true MT overlap kernel) and T2 (certificate) remain OPEN. O5 (XiPrime) OPEN.",
   "machine": {
     "lean_version": "4.33.0-rc2 (d8b18978322de05a8f3dba51ef03cf5461676c17)",
     "lake_version": "5.0.0-src+d8b1897",
@@ -88,7 +88,7 @@
     {
       "obligation": "O1",
       "result": "FAITHFUL",
-      "notes": "Independent adversarial audit 2026-08-15 (lean-proof/audit_report.md): O1a definitions (N0simple = simple-on-line via Statement.lean:62, Ncount with multiplicity), O1b quantifier/shape, O1c constant (HD_one Functional.lean:464), O1d unconditionality, O1e cumulative form, O1f non-circularity/axioms — ALL FAITHFUL. Verdict: FORMALLY_VERIFIED for O1."
+      "notes": "Independent adversarial audit 2026-08-15 (lean-proof/lean-audit-report.md): O1a definitions (N0simple = simple-on-line via Statement.lean:62, Ncount with multiplicity), O1b quantifier/shape, O1c constant (HD_one Functional.lean:464), O1d unconditionality, O1e cumulative form, O1f non-circularity/axioms — ALL FAITHFUL. Verdict: FORMALLY_VERIFIED for O1."
     },
     {
       "obligation": "O2/T1a",

@@ -20,7 +20,7 @@ leanprover/lean4:v4.33.0-rc2, mathlib4 @ 51e6992e). Verification workspace: lean
   the constant explicitly). Decimals are documentation.
 - N0simple/Ncount are the multiplicity-counted simple-on-line / total counts — matches the
   record theorem's N₀ˢ / N conventions (N0* = distinct; N0simple = simple). Independent
-  audit (lean-proof/audit_report.md, 2026-08-15): O1a–O1f all FAITHFUL, verdict FORMALLY_VERIFIED.
+  audit (lean-proof/lean-audit-report.md, 2026-08-15): O1a–O1f all FAITHFUL, verdict FORMALLY_VERIFIED.
 - Boundary: T real, dyadic window (T, 2T]; the cumulative form covers liminf on (0, T].
 
 ## T1 formalizer pass (2026-08-16, Stage C) — appended results for O2/O4
