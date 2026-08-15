@@ -69,8 +69,20 @@ state/        RESUME.md, current.json, activity log, stage summaries
 - 2026-08-14: stage B close; new record C₉ = 0.673053646 (k=9 certificate, 53,137,290 nodes);
   independent audits PASS (OpenAI draft ×2, condp1 PASS-CONDITIONAL + F-1 repair);
   manager-level audit PASS-with-limits for C₉; repo synced to GitHub.
-- 2026-08-15: ξ′ candidate 0.8691835 audited (A1–A6 PASS, manager-level); AdmWindow cos
-  blueprint complete; f₉ = 0.00395 certification running (grid-2000 + grid-4000, 8 workers
-  each) → records 0.6730856 (ζ) + 0.8692247 (ξ′) on landing.
-- Next: collect the f₉ certificates, run release-checklist.md; independent audit of the
-  record theorem (packet ready); SL lemma; Stage C Lean instances (AtOne pattern).
+- 2026-08-15: **world record C₉(ζ) = 0.673066472675939665848…, C₉(ξ′) = 0.86920009109661916184…
+  CERTIFIED (f₉ = 0.00392, grid-2000, 64,748,524 nodes; all expected values matched);** ξ′
+  candidate audited (A1–A6 PASS); 0.00395 target withdrawn as infeasible (true min
+  ≈ 0.00395005); AdmWindow cos blueprint complete; conditional 100% theorem moment side
+  exact (random-Gram model reproduces (1, 4/3, 2, 13/4)).
+- 2026-08-15 (evening): **Stage C progress — O1 baseline machine-verified** (`lake build
+  Zeta23` exit 0, 9010 jobs; `#print axioms` = {propext, Classical.choice, Quot.sound} on all
+  headline theorems; independent adversarial audit: O1a–O1f FAITHFUL, FORMALLY_VERIFIED);
+  **T1 formalizer pass in progress** (lean-proof/Record9/, separate lake project reusing the
+  snapshot packages; snapshot untouched); **k=10 scoping done** — inf F₉ ≤ 0.003958083, k-family
+  ladder exhausted at the certified C₉ (k=10 offers at most +2.7e-6 at 1–5 days; k=11
+  infeasible; only recovered-gain route = exact-arithmetic certifier, cap ≈ +1.5e-5);
+  **SL lemma research run dispatched** (R-20260815T120000Z-sllemma-7b21e4).
+- Next: collect the T1 formalizer + SL run results, then the independent verifier pass for
+  T1 (fresh agent) and T2 (certificate reflection) / T3 (ξ′ AdmWindow); optional premium
+  ladder step 0.00393 grid-4000 (borderline, +6.3e-6, 1–2 days — decision after k=10/Stage C
+  settle); independent third-party re-audit of the record theorem (packet ready).

@@ -28,6 +28,69 @@
       "sha256": "3414A1F2151392B13A06EA2AB49654C71B120E34E9649E3376485E43592CB4E5",
       "claims": ["OpenAI draft fully verified: Lemma 2.1 analytic, F6>=19/5000 finite Arb certificate, constants match Lean Thm D"],
       "created_at": "2026-08-14T04:45:00Z"
+    },
+    {
+      "artifact_id": "A-R-20260814T131528Z-f9push-d3b58c-f9ladder-9e063e",
+      "run_id": "R-20260814T131528Z-f9push-d3b58c",
+      "kind": "analysis",
+      "path": "reports/k-family-feasibility.md",
+      "sha256": "9E063EC82F28A11F830F97EC95B9F128934806ADA30558001EB3C3E609CF7EB6",
+      "claims": ["k-family pressure ladder exhausted at C9=0.6730665 (k=10 scoped inf F9 <= 0.003958083: f=0.00395 infeasible margin 8.1e-6, f=0.00394 poor value +2.7e-6 at 1-5 days; k=11 infeasible); exact-arithmetic certifier route = only recovered gain (+1.5e-5 cap); 0.00393 grid-4000 last borderline k=9 step"],
+      "created_at": "2026-08-15T22:30:00Z"
+    },
+    {
+      "artifact_id": "A-R-20260814T131528Z-f9push-d3b58c-scopingk10-4223cf",
+      "run_id": "R-20260814T131528Z-f9push-d3b58c",
+      "kind": "reproducibility",
+      "path": "runs/rigorous-open-math-research/R-20260814T131528Z-f9push-d3b58c/reproducibility/scoping_k10.py",
+      "sha256": "DDB0AE3119E15F02C27E6C39BD320150B01B2FB8DD9F550E8E49AD18AA660215",
+      "claims": ["k=10 scoping (evidence only): inf F9 <= 0.003958082831 (631,200 evals; log 4223CFC0...)", "log sha256 4223CFC097FEEBE903C6F11CBB647EAE1E1C09B65CA9A710F147955772394E97"],
+      "created_at": "2026-08-15T22:30:00Z"
+    },
+    {
+      "artifact_id": "A-R-20260815T120000Z-sllemma-7b21e4-contract-fb4a13",
+      "run_id": "R-20260815T120000Z-sllemma-7b21e4",
+      "kind": "problem_contract",
+      "path": "runs/rigorous-open-math-research/R-20260815T120000Z-sllemma-7b21e4/problem_contract.md",
+      "sha256": "FB4A13E9E49D0AC3F4E97C64AE4665E11047A77F8ACE1790F140211EA599F947",
+      "claims": ["SL contract rebuilt: random sine-process Gram, μ_λ({0})=0 ∧ 0∈supp; λ-reduction, convergence-mode, normalization ambiguities enumerated"],
+      "created_at": "2026-08-15T17:12:00Z"
+    },
+    {
+      "artifact_id": "A-lean-proof-o1-audit-7c4b99",
+      "run_id": null,
+      "kind": "lean_audit_report",
+      "path": "lean-proof/audit_report.md",
+      "sha256": "7C4B992D9DDDB7E68797CB6738B1C238DDD54D710AB9B8BD00D4AB8B0902F545",
+      "claims": ["O1 independent adversarial audit: O1a-O1f all FAITHFUL; verdict FORMALLY_VERIFIED (baseline thmD0_simple_mult)"],
+      "created_at": "2026-08-15T21:00:00Z"
+    },
+    {
+      "artifact_id": "A-lean-proof-verification-699a23",
+      "run_id": null,
+      "kind": "lean_verification",
+      "path": "lean-proof/verification.json",
+      "sha256": "699A23141F9729423A96F32816A126CE18AD30AF1C31D77CC076764DEF8C2CC1",
+      "claims": ["MACHINE_ACCEPTED_PENDING_AUDIT (O1 fully verified; O2-O5 open); machine evidence: build exit 0, axioms gold standard {propext, Classical.choice, Quot.sound}"],
+      "created_at": "2026-08-15T21:10:00Z"
+    },
+    {
+      "artifact_id": "A-lean-proof-manifest-6716bb",
+      "run_id": null,
+      "kind": "lean_run_manifest",
+      "path": "lean-proof/run-manifest.json",
+      "sha256": "6716BB491E2514367DED22B2AD47C73F4F5FA5A0FAE36C1D1817E455A674A90A",
+      "claims": ["verify_lean_project.py run: 329 files scanned, build_exit_code 0, input hashes recorded"],
+      "created_at": "2026-08-15T09:12:00Z"
+    },
+    {
+      "artifact_id": "A-lean-proof-verification-contract-6e8ce9",
+      "run_id": null,
+      "kind": "lean_contract",
+      "path": "lean-proof/verification-contract.md",
+      "sha256": "6E8CE981376609699EED74882F6B8BEB824D74668A218F2F5F4F1668F88E2E18",
+      "claims": ["T(ζ) / T(ξ') ε-form contract for the C9=0.6730665 record (renamed from problem_contract.md to avoid protected-name collision)"],
+      "created_at": "2026-08-15T08:30:00Z"
     }
   ]
 }
