@@ -15,8 +15,10 @@ leanprover/lean4:v4.33.0-rc2, mathlib4 @ 51e6992e). Verification workspace: lean
 ## Fidelity notes (O1, 2026-08-15)
 
 - `thmD₀_simple_mult` quantifier order: ∀ε>0, ∃T₀, ∀T≥T₀ — matches the informal ε-form.
-- `HD 1` is definitionally 2 − 1/c₁* = 3/2 − cot(1/√2)/√2 (checked in ThmD/ParamsD.lean
-  HD_one; `thmD₀_simple_mult'` displays the constant explicitly). Decimals are documentation.
+- `HD 1` is definitionally 2 − 1/c₁* = 3/2 − cot(1/√2)/√2 (HD_one at ThmD/Functional.lean:464
+  [corrected 2026-08-15 from the earlier ParamsD.lean note]; `thmD₀_simple_mult'` displays
+  the constant explicitly). Decimals are documentation.
 - N0simple/Ncount are the multiplicity-counted simple-on-line / total counts — matches the
-  record theorem's N₀ˢ / N conventions (N0* = distinct; N0simple = simple).
+  record theorem's N₀ˢ / N conventions (N0* = distinct; N0simple = simple). Independent
+  audit (lean-proof/audit_report.md, 2026-08-15): O1a–O1f all FAITHFUL, verdict FORMALLY_VERIFIED.
 - Boundary: T real, dyadic window (T, 2T]; the cumulative form covers liminf on (0, T].

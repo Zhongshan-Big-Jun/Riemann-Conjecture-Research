@@ -1,24 +1,11 @@
-seeds: 20
-Traceback (most recent call last):
-  File "C:\Users\HuangZY\AppData\Local\Programs\Python\Python310\lib\site-packages\scipy\optimize\_minimize.py", line 1046, in _validate_bounds
-    bounds.lb = np.broadcast_to(bounds.lb, x0.shape)
-  File "C:\Users\HuangZY\AppData\Local\Programs\Python\Python310\lib\site-packages\numpy\lib\_stride_tricks_impl.py", line 410, in broadcast_to
-    return _broadcast_to(array, shape, subok=subok, readonly=True)
-  File "C:\Users\HuangZY\AppData\Local\Programs\Python\Python310\lib\site-packages\numpy\lib\_stride_tricks_impl.py", line 349, in _broadcast_to
-    it = np.nditer(
-ValueError: operands could not be broadcast together with remapped shapes [original->remapped]: (9,)  and requested shape (8,)
-
-The above exception was the direct cause of the following exception:
-
-Traceback (most recent call last):
-  File "F:\LaTeX\Riemann Conjecture\runs\rigorous-open-math-research\R-20260814T131528Z-f9push-d3b58c\reproducibility\scoping_k10.py", line 100, in <module>
-    scope(10, 5000, "scoping", seeds)
-  File "F:\LaTeX\Riemann Conjecture\runs\rigorous-open-math-research\R-20260814T131528Z-f9push-d3b58c\reproducibility\scoping_k10.py", line 65, in scope
-    try_pt(pt)
-  File "F:\LaTeX\Riemann Conjecture\runs\rigorous-open-math-research\R-20260814T131528Z-f9push-d3b58c\reproducibility\scoping_k10.py", line 49, in try_pt
-    r = minimize(F, pt, method='L-BFGS-B', bounds=[(0, None)] * L,
-  File "C:\Users\HuangZY\AppData\Local\Programs\Python\Python310\lib\site-packages\scipy\optimize\_minimize.py", line 671, in minimize
-    bounds = _validate_bounds(bounds, x0, meth)
-  File "C:\Users\HuangZY\AppData\Local\Programs\Python\Python310\lib\site-packages\scipy\optimize\_minimize.py", line 1049, in _validate_bounds
-    raise ValueError(msg) from e
-ValueError: The number of bounds is not compatible with the length of `x0`.
+seeds: 27
+  [200/292 structured] best 0.003958082831
+  [rand 200/1500] best 0.003958082831
+  [rand 400/1500] best 0.003958082831
+  [rand 600/1500] best 0.003958082831
+  [rand 800/1500] best 0.003958082831
+  [rand 1000/1500] best 0.003958082831
+  [rand 1200/1500] best 0.003958082831
+  [rand 1400/1500] best 0.003958082831
+scoping k=10: scoped inf F <= 0.003958082831 (nfev total 631200)
+done

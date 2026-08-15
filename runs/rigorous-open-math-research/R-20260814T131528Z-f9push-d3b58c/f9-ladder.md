@@ -101,3 +101,19 @@ minimization over the g4000 leaf box from two starts converges to the lower corn
    C_9(ξ′, 0.00392) = (657500·H_ξ′ − 1310)/655001 = 0.86920009109661916183995…
    Fallback if the 0.00392 run cannot close: 0.00391 (C_9(ζ) = 0.67305992191189169,
    margin ≈ 4.0e-5 vs presumed true min).
+
+## 0.00393 / 0.00394 premium assessment (manager, 2026-08-15, after the 0.00392 release)
+
+Post-release re-assessment of the next ladder steps (0.00392 certified 2026-08-15):
+
+| f_9 | n | m | A_0 | exact rational C_9(ζ) | C_9(ζ) (mpmath 50d, re-verified) | gain vs 0.00392 | feasibility |
+|---|---|---|---|---|---|---|---|
+| 0.00393 | 254 | 262 | 0.99822 | (13,100,000·H_MT − 26,100)/13,050,089 | 0.673072744423451254556223736062 | +6.3e-6 | BORDERLINE: margin vs g4000 leaf bound = 1.017e-5, vs presumed true min ≈ 2.0e-5; verifier bound loss at the critical leaf ≈ 1e-5. Same order as the SUCCESSFUL 0.00392 grid-2000 run (margin 1.14e-5) but on grid-4000 (4× cells/dim; est. 1–2 days @ 8 workers; initial_boxes 4^8 = 65536) |
+| 0.00394 | 253 | 261 | 0.99682 | — | 0.673079012573332524 | +1.25e-5 | RISKY: margin ≈ 1.7e-6 vs leaf bound (g4000) — below bound loss; likely infeasible with this machinery |
+
+Recommendation: 0.00393 grid-4000 is the only remaining k=9 premium step worth attempting, and it is
+borderline (margin ≈ bound loss). Cost 1–2 days of compute for +6.3e-6. NOT launched 2026-08-15:
+(i) the k=10 scoping (reproducibility/scoping_k10.py, running) may indicate a better cost/benefit
+elsewhere; (ii) the Stage C formalization + SL threads are the priority. Revisit after those settle;
+if attempted, launch grid-4000 @ 8 workers with the validated verifier (--out atomic write) and
+precomputed expected values (cutoff = floor((393/100000)*4000*4000)+8 = 62888; kernel table grid 4000).

@@ -52,12 +52,20 @@ reports/xi-prime-audit-manager.md**; A1's formalization gap has a complete math 
    7F25401A14F897CD1EC26C4B0E0A25A5F87943CFB656329012CB17919280FAC3). Candidate proof
    finalized (candidate_proof.md); FRONTIER/index/RESUME updated; records:
    ζ 0.673066472675939665848, ξ′ 0.86920009109661916184.
-2. Dispatch the independent (third-party) re-audit from runs/…/f9push-d3b58c/
-   audit-dispatch-prompt.md (manager-level pattern; subagents crash-prone).
-3. Next ladder step (optional): 0.00393 grid-4000 is razor-thin (margin 1.02e-5 at the
-   critical leaf) — only if a premium record is wanted; else consider k=10/11 feasibility
-   or the SL theorem.
-4. Continue the open objective: SL as a theorem; unconditional liminf → 1 track.
+2. ✅ DONE 2026-08-15 (new session): O1 baseline machine evidence COMPLETE — lake build
+   Zeta23 exit 0 (9010 jobs); gold-standard #print axioms = {propext, Classical.choice,
+   Quot.sound} on all 13 headline theorems (lean-proof/axioms-check.log); verification.json
+   = MACHINE_ACCEPTED_PENDING_AUDIT; commit 49691a5 pushed.
+3. IN FLIGHT (2026-08-15 session): T1 formalizer (subagent 5e03176d, separate lake project
+   lean-proof/Record9 reusing the snapshot's packages); SL research run
+   (R-20260815T120000Z-sllemma-7b21e4, subagent dcf1d0f0); k=10 scoping
+   (reproducibility/scoping_k10.py, evidence only). On landing: independent verifier pass
+   for T1 (fresh subagent), ingest SL run per the pipeline, write the k=10 feasibility note.
+4. PENDING: independent (third-party) re-audit of the 0.00392 record theorem (audit-dispatch-prompt.md).
+5. PENDING: premium ladder 0.00393 grid-4000 — BORDERLINE (margin 1.017e-5 ≈ bound loss 1e-5;
+   exact form (13,100,000·H_MT − 26,100)/13,050,089 = 0.673072744423451254556223736062;
+   C₉(ξ′,0.00393) analog); cost 1–2 days; NOT launched — revisit after k=10 scoping + Stage C.
+6. Continue the open objective: SL as a theorem; unconditional liminf → 1 track.
 
 ## Blockers or missing inputs
 

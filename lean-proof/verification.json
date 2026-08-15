@@ -1,6 +1,6 @@
 {
   "verdict": "MACHINE_ACCEPTED_PENDING_AUDIT",
-  "verdict_note": "O1 baseline machine evidence COMPLETE 2026-08-15: lake build Zeta23 exit 0 (9010 jobs, log build-run.log); naive scan hits all resolved (comparator challenge layer not in default target; comment words; real-but-unused tactic-test axioms qc/hqc in AdditiveCombination.lean:183-184); gold-standard #print axioms on all headline theorems = {propext, Classical.choice, Quot.sound} (axioms-check.log) — no qc/hqc or other leak. O2-O5 (chain + certificate + records) remain OPEN formalization obligations (T1 formalizer dispatched 2026-08-15). Statement fidelity O1 = FAITHFUL (checked line-by-line 2026-08-15). Independent audit of O1 fidelity still to be performed by a separate verifier pass (pending per lean-verify protocol).",
+  "verdict_note": "O1 baseline FULLY VERIFIED 2026-08-15: machine evidence (lake build Zeta23 exit 0, 9010 jobs; #print axioms gold standard = {propext, Classical.choice, Quot.sound}) + independent adversarial audit (lean-proof/audit_report.md: O1a-O1f all FAITHFUL, verdict FORMALLY_VERIFIED for O1). O2-O5 (chain + certificate + records) remain OPEN formalization obligations (T1 formalizer pass in progress, lean-proof/Record9/).",
   "machine": {
     "lean_version": "4.33.0-rc2 (d8b18978322de05a8f3dba51ef03cf5461676c17)",
     "lake_version": "5.0.0-src+d8b1897",
@@ -22,15 +22,14 @@
     "scan_note": "verify_lean_project.py naive scan flags 44 hits: 38 comparator Challenge sorries (separate layer, excluded from default target per lakefile.toml), 3 comment words (Mertens.lean:31-32 'sorry'd', StrongPNTPrefix.lean:4 'sorry-free', Hypotheses.lean:15 'axiom declarations'), 3 real-but-unused tactic-test axioms qc/hqc (AdditiveCombination.lean:183-184; NOT in any headline theorem's axiom set per gold standard above)."
   },
   "statement_fidelity": [
-    {"obligation": "O1", "result": "FAITHFUL", "notes": "thmD₀_simple_mult / thmD₀_simple_mult' (eps-form, dyadic (T,2T], Ncount/N0simple conventions, constant 3/2 - (1/sqrt2)*cot(1/sqrt2) written out; unconditional via zetaZeroConfig). Verified line-by-line 2026-08-15; #print axioms gold standard confirms no axiom leak."}
+    {"obligation": "O1", "result": "FAITHFUL", "notes": "Independent adversarial audit 2026-08-15 (lean-proof/audit_report.md): O1a definitions (N0simple = simple-on-line via Statement.lean:62, Ncount with multiplicity), O1b quantifier/shape, O1c constant (HD_one Functional.lean:464), O1d unconditionality, O1e cumulative form, O1f non-circularity/axioms — ALL FAITHFUL. Verdict: FORMALLY_VERIFIED for O1."}
   ],
   "critical_errors": [],
   "gaps": [
-    {"location": "lean-proof/obligation_map.md O2", "issue": "chain9_eps theorem not formalized (T1: formalizer dispatched 2026-08-15, subagent 5e03176d)"},
+    {"location": "lean-proof/obligation_map.md O2", "issue": "chain9_eps theorem not formalized (T1: formalizer pass in progress, lean-proof/Record9/Chain9.lean drafted)"},
     {"location": "lean-proof/obligation_map.md O3", "issue": "certificate F8 >= 392/100000 not formalized (T2 reflection route planned; requires box-data emission from verify_kpoint_parallel.py)"},
-    {"location": "lean-proof/obligation_map.md O4", "issue": "record_c9 conclusion not formalized (depends on O2+O3)"},
-    {"location": "lean-proof/obligation_map.md O5", "issue": "xi-prime record not formalized (depends on O2; AdmWindow cos blueprint ready)"},
-    {"location": "audit", "issue": "independent (verifier-role) audit of O1 fidelity not yet performed (lean-verify Phase 4 pending)"}
+    {"location": "lean-proof/obligation_map.md O4", "issue": "record_c9 conclusion not formalized (T1 draft contains record_c9 corollary pending machine check)"},
+    {"location": "lean-proof/obligation_map.md O5", "issue": "xi-prime record not formalized (depends on O2; AdmWindow cos blueprint ready)"}
   ],
   "repair_hints": "T1 formalizer pass in progress (lean-proof/Record9/). After it lands: run the independent verifier pass (fresh agent, no shared chain of thought) per lean-verify protocol; then T2 certificate reflection; then T3 XiPrime.",
   "run_manifest_ref": "lean-proof/run-manifest.json"

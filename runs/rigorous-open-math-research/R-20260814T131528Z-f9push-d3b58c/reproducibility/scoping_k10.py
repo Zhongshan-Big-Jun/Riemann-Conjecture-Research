@@ -39,15 +39,17 @@ def make_F(k):
         return t
     return F
 
-def scope(k, n_rand, out, seeds):
+def scope(k, n_rand, out, seeds, progress_every=200):
     L = k - 1
     F = make_F(k)
     rng = np.random.default_rng(20260815)
     best = (1e18, None)
+    n_evals = 0
     def try_pt(pt):
-        nonlocal best
+        nonlocal best, n_evals
         r = minimize(F, pt, method='L-BFGS-B', bounds=[(0, None)] * L,
-                     options={'maxiter': 4000, 'ftol': 1e-16, 'gtol': 1e-10})
+                     options={'maxiter': 2000, 'ftol': 1e-14, 'gtol': 1e-9})
+        n_evals += r.nfev
         if r.fun < best[0]:
             best = (r.fun, r.x)
     starts = []
@@ -63,10 +65,16 @@ def scope(k, n_rand, out, seeds):
         starts.append(np.full(L, a))
     for idx, pt in enumerate(starts):
         try_pt(pt)
-    for _ in range(n_rand):
+        if (idx + 1) % progress_every == 0:
+            sys.stdout.write(f"  [{idx+1}/{len(starts)} structured] best {best[0]:.12f}\n")
+            sys.stdout.flush()
+    for i in range(n_rand):
         u = np.where(rng.uniform(0, 1, L) < 0.15, 0.003, rng.uniform(0.3, 4.0, L))
         try_pt(u)
-    sys.stdout.write(f"{out} k={k}: scoped inf F <= {best[0]:.12f}\n")
+        if (i + 1) % progress_every == 0:
+            sys.stdout.write(f"  [rand {i+1}/{n_rand}] best {best[0]:.12f}\n")
+            sys.stdout.flush()
+    sys.stdout.write(f"{out} k={k}: scoped inf F <= {best[0]:.12f} (nfev total {n_evals})\n")
     sys.stdout.flush()
     np.save(f'k{k}_opt.npy', best[1])
     return best
@@ -99,5 +107,5 @@ if __name__ == '__main__':
     except Exception:
         pass
     print("seeds:", len(seeds))
-    scope(10, 5000, "scoping", seeds)
+    scope(10, 1500, "scoping", seeds)
     print("done")
