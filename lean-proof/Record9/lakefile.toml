@@ -1,0 +1,21 @@
+name = "Record9"
+version = "0.1.0"
+defaultTargets = ["Record9"]
+
+# Reuse the snapshot's already-downloaded packages to avoid any network fetch.
+packagesDir = "../../literature/raw/zeta-23-lean/.lake/packages"
+
+[leanOptions]
+pp.unicode.fun = true
+relaxedAutoImplicit = false
+
+[[require]]
+name = "mathlib"
+path = "../../literature/raw/zeta-23-lean/.lake/packages/mathlib"
+
+[[require]]
+name = "Zeta23"
+path = "../../literature/raw/zeta-23-lean"
+
+[[lean_lib]]
+name = "Record9"

@@ -1,25 +1,37 @@
 {
-  "verdict": "VERIFICATION_INCOMPLETE",
-  "verdict_note": "Baseline (O1) machine build in progress (mathlib cache download); O2-O5 (chain + certificate + records) are OPEN formalization obligations; static scan of Zeta23 passed (0 sorry/admit/axiom); statement fidelity O1 = FAITHFUL (checked 2026-08-15).",
+  "verdict": "MACHINE_ACCEPTED_PENDING_AUDIT",
+  "verdict_note": "O1 baseline machine evidence COMPLETE 2026-08-15: lake build Zeta23 exit 0 (9010 jobs, log build-run.log); naive scan hits all resolved (comparator challenge layer not in default target; comment words; real-but-unused tactic-test axioms qc/hqc in AdditiveCombination.lean:183-184); gold-standard #print axioms on all headline theorems = {propext, Classical.choice, Quot.sound} (axioms-check.log) — no qc/hqc or other leak. O2-O5 (chain + certificate + records) remain OPEN formalization obligations (T1 formalizer dispatched 2026-08-15). Statement fidelity O1 = FAITHFUL (checked line-by-line 2026-08-15). Independent audit of O1 fidelity still to be performed by a separate verifier pass (pending per lean-verify protocol).",
   "machine": {
     "lean_version": "4.33.0-rc2 (d8b18978322de05a8f3dba51ef03cf5461676c17)",
     "lake_version": "5.0.0-src+d8b1897",
     "snapshot": "zeta-23-lean @ 3635e748, mathlib4 @ 51e6992e",
-    "build_passed": false,
-    "build_note": "lake build Zeta23 not yet run; mathlib olean cache download in progress (per-module .ltar from lakecache.blob.core.windows.net/mathlib4-master/f/)",
-    "sorry_axiom_hits": []
+    "build_passed": true,
+    "build_note": "lake build Zeta23: exit 0, 'Build completed successfully (9010 jobs)'; deprecation/linter warnings only (build-run.log, verify-run.log)",
+    "sorry_axiom_hits": [],
+    "axiom_set_gold_standard": [
+      {"decl": "Zeta23.ThmD.thmD₀_simple_mult", "axioms": ["propext", "Classical.choice", "Quot.sound"]},
+      {"decl": "Zeta23.ThmD.thmD₀_simple_mult'", "axioms": ["propext", "Classical.choice", "Quot.sound"]},
+      {"decl": "Zeta23.ThmD.thmD₀_simple_mult_cumulative", "axioms": ["propext", "Classical.choice", "Quot.sound"]},
+      {"decl": "Zeta23.ThmD.thmD₀_dist_mult", "axioms": ["propext", "Classical.choice", "Quot.sound"]},
+      {"decl": "Zeta23.ThmD.thmD₀_dist_mult_cumulative", "axioms": ["propext", "Classical.choice", "Quot.sound"]},
+      {"decl": "Zeta23.XiPrime.headlineQuartic_unconditional", "axioms": ["propext", "Classical.choice", "Quot.sound"]},
+      {"decl": "Zeta23.XiPrime.headlineCumulative_quartic_unconditional", "axioms": ["propext", "Classical.choice", "Quot.sound"]},
+      {"decl": "Zeta23.PairCeiling.ceiling_law256", "axioms": ["propext", "Classical.choice", "Quot.sound"]},
+      {"decl": "Zeta23.PairCeiling.ceiling_law256_decimal", "axioms": ["propext", "Classical.choice", "Quot.sound"]}
+    ],
+    "scan_note": "verify_lean_project.py naive scan flags 44 hits: 38 comparator Challenge sorries (separate layer, excluded from default target per lakefile.toml), 3 comment words (Mertens.lean:31-32 'sorry'd', StrongPNTPrefix.lean:4 'sorry-free', Hypotheses.lean:15 'axiom declarations'), 3 real-but-unused tactic-test axioms qc/hqc (AdditiveCombination.lean:183-184; NOT in any headline theorem's axiom set per gold standard above)."
   },
   "statement_fidelity": [
-    {"obligation": "O1", "result": "FAITHFUL", "notes": "thmD0_simple_mult / thmD0_simple_mult' (eps-form, dyadic (T,2T], Ncount/N0simple conventions, constant 3/2 - (1/sqrt2)*cot(1/sqrt2) written out; unconditional via zetaZeroConfig)"}
+    {"obligation": "O1", "result": "FAITHFUL", "notes": "thmD₀_simple_mult / thmD₀_simple_mult' (eps-form, dyadic (T,2T], Ncount/N0simple conventions, constant 3/2 - (1/sqrt2)*cot(1/sqrt2) written out; unconditional via zetaZeroConfig). Verified line-by-line 2026-08-15; #print axioms gold standard confirms no axiom leak."}
   ],
   "critical_errors": [],
   "gaps": [
-    {"location": "lean-proof/obligation_map.md O2", "issue": "chain9_eps theorem not formalized (general-k chain paper-level)"},
-    {"location": "lean-proof/obligation_map.md O3", "issue": "certificate F8 >= 392/100000 not formalized (T2 reflection route planned)"},
+    {"location": "lean-proof/obligation_map.md O2", "issue": "chain9_eps theorem not formalized (T1: formalizer dispatched 2026-08-15, subagent 5e03176d)"},
+    {"location": "lean-proof/obligation_map.md O3", "issue": "certificate F8 >= 392/100000 not formalized (T2 reflection route planned; requires box-data emission from verify_kpoint_parallel.py)"},
     {"location": "lean-proof/obligation_map.md O4", "issue": "record_c9 conclusion not formalized (depends on O2+O3)"},
-    {"location": "lean-proof/obligation_map.md O5", "issue": "xi-prime record not formalized (depends on O2)"},
-    {"location": "machine", "issue": "lake build result pending (cache download)"}
+    {"location": "lean-proof/obligation_map.md O5", "issue": "xi-prime record not formalized (depends on O2; AdmWindow cos blueprint ready)"},
+    {"location": "audit", "issue": "independent (verifier-role) audit of O1 fidelity not yet performed (lean-verify Phase 4 pending)"}
   ],
-  "repair_hints": "Wait for the mathlib cache download + lake build Zeta23; then update this file with the build exit code. For O2-O5: dispatch the lean-verify formalizer (T1 chain eps-form; T2 certificate via reflection with box-data emission from verify_kpoint_parallel.py; T3 XiPrime import; AdmWindow cos blueprint ready).",
-  "run_manifest_ref": "lean-proof/run-manifest.json (to be completed at build time)"
+  "repair_hints": "T1 formalizer pass in progress (lean-proof/Record9/). After it lands: run the independent verifier pass (fresh agent, no shared chain of thought) per lean-verify protocol; then T2 certificate reflection; then T3 XiPrime.",
+  "run_manifest_ref": "lean-proof/run-manifest.json"
 }

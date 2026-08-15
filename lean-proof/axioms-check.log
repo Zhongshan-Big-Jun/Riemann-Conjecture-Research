@@ -1,0 +1,10 @@
+'Zeta23.ThmD.thmD₀_simple_mult' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zeta23.ThmD.thmD₀_simple_mult'' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zeta23.ThmD.thmD₀_simple_mult_cumulative' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zeta23.ThmD.thmD₀_dist_mult' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zeta23.ThmD.thmD₀_dist_mult_cumulative' depends on axioms: [propext, Classical.choice, Quot.sound]
+Zeta23/ScratchAxioms.lean:12:14: error(lean.unknownIdentifier): Unknown constant `Zeta23.Unconditional.headlineUnconditional`
+'Zeta23.XiPrime.headlineQuartic_unconditional' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zeta23.XiPrime.headlineCumulative_quartic_unconditional' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zeta23.PairCeiling.ceiling_law256' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zeta23.PairCeiling.ceiling_law256_decimal' depends on axioms: [propext, Classical.choice, Quot.sound]

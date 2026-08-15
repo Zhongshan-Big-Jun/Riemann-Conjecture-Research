@@ -1,0 +1,217 @@
+{
+  "manifest": "F:\\LaTeX\\Riemann Conjecture\\lean-proof\\run-manifest.json",
+  "files_scanned": 329,
+  "hits": [
+    {
+      "file": "F:\\LaTeX\\Riemann Conjecture\\literature\\raw\\zeta-23-lean\\comparator\\Challenge\\Multiplicity.lean",
+      "line": 18,
+      "kind": "sorry"
+    },
+    {
+      "file": "F:\\LaTeX\\Riemann Conjecture\\literature\\raw\\zeta-23-lean\\comparator\\Challenge\\Multiplicity.lean",
+      "line": 28,
+      "kind": "sorry"
+    },
+    {
+      "file": "F:\\LaTeX\\Riemann Conjecture\\literature\\raw\\zeta-23-lean\\comparator\\Challenge\\Multiplicity.lean",
+      "line": 33,
+      "kind": "sorry"
+    },
+    {
+      "file": "F:\\LaTeX\\Riemann Conjecture\\literature\\raw\\zeta-23-lean\\comparator\\Challenge\\Multiplicity.lean",
+      "line": 38,
+      "kind": "sorry"
+    },
+    {
+      "file": "F:\\LaTeX\\Riemann Conjecture\\literature\\raw\\zeta-23-lean\\comparator\\Challenge\\Multiplicity.lean",
+      "line": 43,
+      "kind": "sorry"
+    },
+    {
+      "file": "F:\\LaTeX\\Riemann Conjecture\\literature\\raw\\zeta-23-lean\\comparator\\Challenge\\Multiplicity.lean",
+      "line": 50,
+      "kind": "sorry"
+    },
+    {
+      "file": "F:\\LaTeX\\Riemann Conjecture\\literature\\raw\\zeta-23-lean\\comparator\\Challenge\\Multiplicity.lean",
+      "line": 55,
+      "kind": "sorry"
+    },
+    {
+      "file": "F:\\LaTeX\\Riemann Conjecture\\literature\\raw\\zeta-23-lean\\comparator\\Challenge\\Multiplicity.lean",
+      "line": 61,
+      "kind": "sorry"
+    },
+    {
+      "file": "F:\\LaTeX\\Riemann Conjecture\\literature\\raw\\zeta-23-lean\\comparator\\Challenge\\Multiplicity.lean",
+      "line": 66,
+      "kind": "sorry"
+    },
+    {
+      "file": "F:\\LaTeX\\Riemann Conjecture\\literature\\raw\\zeta-23-lean\\comparator\\Challenge\\Multiplicity.lean",
+      "line": 73,
+      "kind": "sorry"
+    },
+    {
+      "file": "F:\\LaTeX\\Riemann Conjecture\\literature\\raw\\zeta-23-lean\\comparator\\Challenge\\Multiplicity.lean",
+      "line": 80,
+      "kind": "sorry"
+    },
+    {
+      "file": "F:\\LaTeX\\Riemann Conjecture\\literature\\raw\\zeta-23-lean\\comparator\\Challenge\\Multiplicity.lean",
+      "line": 87,
+      "kind": "sorry"
+    },
+    {
+      "file": "F:\\LaTeX\\Riemann Conjecture\\literature\\raw\\zeta-23-lean\\comparator\\Challenge\\Multiplicity.lean",
+      "line": 94,
+      "kind": "sorry"
+    },
+    {
+      "file": "F:\\LaTeX\\Riemann Conjecture\\literature\\raw\\zeta-23-lean\\comparator\\Challenge\\XiPrime.lean",
+      "line": 17,
+      "kind": "sorry"
+    },
+    {
+      "file": "F:\\LaTeX\\Riemann Conjecture\\literature\\raw\\zeta-23-lean\\comparator\\Challenge\\XiPrime.lean",
+      "line": 22,
+      "kind": "sorry"
+    },
+    {
+      "file": "F:\\LaTeX\\Riemann Conjecture\\literature\\raw\\zeta-23-lean\\comparator\\Challenge\\XiPrime.lean",
+      "line": 31,
+      "kind": "sorry"
+    },
+    {
+      "file": "F:\\LaTeX\\Riemann Conjecture\\literature\\raw\\zeta-23-lean\\comparator\\Challenge\\XiPrime.lean",
+      "line": 38,
+      "kind": "sorry"
+    },
+    {
+      "file": "F:\\LaTeX\\Riemann Conjecture\\literature\\raw\\zeta-23-lean\\comparator\\Challenge\\XiPrime.lean",
+      "line": 46,
+      "kind": "sorry"
+    },
+    {
+      "file": "F:\\LaTeX\\Riemann Conjecture\\literature\\raw\\zeta-23-lean\\comparator\\Challenge\\XiPrime.lean",
+      "line": 54,
+      "kind": "sorry"
+    },
+    {
+      "file": "F:\\LaTeX\\Riemann Conjecture\\literature\\raw\\zeta-23-lean\\comparator\\Challenge.lean",
+      "line": 10,
+      "kind": "sorry"
+    },
+    {
+      "file": "F:\\LaTeX\\Riemann Conjecture\\literature\\raw\\zeta-23-lean\\comparator\\Challenge.lean",
+      "line": 29,
+      "kind": "sorry"
+    },
+    {
+      "file": "F:\\LaTeX\\Riemann Conjecture\\literature\\raw\\zeta-23-lean\\comparator\\Challenge.lean",
+      "line": 42,
+      "kind": "sorry"
+    },
+    {
+      "file": "F:\\LaTeX\\Riemann Conjecture\\literature\\raw\\zeta-23-lean\\comparator\\Challenge.lean",
+      "line": 47,
+      "kind": "sorry"
+    },
+    {
+      "file": "F:\\LaTeX\\Riemann Conjecture\\literature\\raw\\zeta-23-lean\\comparator\\Challenge.lean",
+      "line": 53,
+      "kind": "sorry"
+    },
+    {
+      "file": "F:\\LaTeX\\Riemann Conjecture\\literature\\raw\\zeta-23-lean\\comparator\\Challenge.lean",
+      "line": 58,
+      "kind": "sorry"
+    },
+    {
+      "file": "F:\\LaTeX\\Riemann Conjecture\\literature\\raw\\zeta-23-lean\\comparator\\Challenge.lean",
+      "line": 63,
+      "kind": "sorry"
+    },
+    {
+      "file": "F:\\LaTeX\\Riemann Conjecture\\literature\\raw\\zeta-23-lean\\comparator\\Challenge.lean",
+      "line": 68,
+      "kind": "sorry"
+    },
+    {
+      "file": "F:\\LaTeX\\Riemann Conjecture\\literature\\raw\\zeta-23-lean\\comparator\\Challenge.lean",
+      "line": 74,
+      "kind": "sorry"
+    },
+    {
+      "file": "F:\\LaTeX\\Riemann Conjecture\\literature\\raw\\zeta-23-lean\\comparator\\Challenge.lean",
+      "line": 80,
+      "kind": "sorry"
+    },
+    {
+      "file": "F:\\LaTeX\\Riemann Conjecture\\literature\\raw\\zeta-23-lean\\comparator\\Challenge.lean",
+      "line": 85,
+      "kind": "sorry"
+    },
+    {
+      "file": "F:\\LaTeX\\Riemann Conjecture\\literature\\raw\\zeta-23-lean\\comparator\\Challenge.lean",
+      "line": 93,
+      "kind": "sorry"
+    },
+    {
+      "file": "F:\\LaTeX\\Riemann Conjecture\\literature\\raw\\zeta-23-lean\\comparator\\Challenge.lean",
+      "line": 100,
+      "kind": "sorry"
+    },
+    {
+      "file": "F:\\LaTeX\\Riemann Conjecture\\literature\\raw\\zeta-23-lean\\comparator\\Challenge.lean",
+      "line": 107,
+      "kind": "sorry"
+    },
+    {
+      "file": "F:\\LaTeX\\Riemann Conjecture\\literature\\raw\\zeta-23-lean\\comparator\\Challenge.lean",
+      "line": 114,
+      "kind": "sorry"
+    },
+    {
+      "file": "F:\\LaTeX\\Riemann Conjecture\\literature\\raw\\zeta-23-lean\\comparator\\Challenge.lean",
+      "line": 120,
+      "kind": "sorry"
+    },
+    {
+      "file": "F:\\LaTeX\\Riemann Conjecture\\literature\\raw\\zeta-23-lean\\comparator\\Challenge.lean",
+      "line": 126,
+      "kind": "sorry"
+    },
+    {
+      "file": "F:\\LaTeX\\Riemann Conjecture\\literature\\raw\\zeta-23-lean\\Zeta23\\FromPNTPlus\\Mertens.lean",
+      "line": 31,
+      "kind": "sorry"
+    },
+    {
+      "file": "F:\\LaTeX\\Riemann Conjecture\\literature\\raw\\zeta-23-lean\\Zeta23\\FromPNTPlus\\Mertens.lean",
+      "line": 32,
+      "kind": "sorry"
+    },
+    {
+      "file": "F:\\LaTeX\\Riemann Conjecture\\literature\\raw\\zeta-23-lean\\Zeta23\\FromPNTPlus\\StrongPNTPrefix.lean",
+      "line": 4,
+      "kind": "sorry"
+    },
+    {
+      "file": "F:\\LaTeX\\Riemann Conjecture\\literature\\raw\\zeta-23-lean\\Zeta23\\FromPNTPlus\\Tactic\\AdditiveCombination.lean",
+      "line": 183,
+      "kind": "axiom"
+    },
+    {
+      "file": "F:\\LaTeX\\Riemann Conjecture\\literature\\raw\\zeta-23-lean\\Zeta23\\FromPNTPlus\\Tactic\\AdditiveCombination.lean",
+      "line": 184,
+      "kind": "axiom"
+    },
+    {
+      "file": "F:\\LaTeX\\Riemann Conjecture\\literature\\raw\\zeta-23-lean\\Zeta23\\Hypotheses.lean",
+      "line": 15,
+      "kind": "axiom"
+    }
+  ],
+  "build_exit_code": 0
+}

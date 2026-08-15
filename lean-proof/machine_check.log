@@ -17,13 +17,37 @@
 ## sorry/admit/axiom scan (comment-aware, nested blocks handled)
 
 Scope: Zeta23/ (the build target). 316 .lean files. **0 real hits.**
-(False positives investigated: AdditiveCombination.lean «axiom qc/hqc» are doc-comment text
-inside a /-- ... -/ block containing a nested /- -/ example comment; comparator/Challenge*
-sorries belong to the separate challenge layer, not in the Zeta23 default target.)
+(False positives investigated: AdditiveCombination.lean «axiom qc/hqc» — CORRECTION 2026-08-15
+second pass: lines 183-184 contain REAL `axiom qc : ℚ` / `axiom hqc : qc = 2*qc` declarations,
+tactic test fixtures (not doc comments; the earlier "doc-comment text" note was wrong); they
+are imported via ResidueCalcOnRectangles.lean but are NOT used by any headline theorem —
+confirmed by the gold-standard `#print axioms` check below (they never appear in the axiom
+sets). comparator/Challenge* sorries belong to the separate challenge layer, not in the Zeta23
+default target.)
 
 ## Build status
 
-- `lake build Zeta23`: NOT YET RUN — mathlib olean cache download in progress
-  (lakecache.blob.core.windows.net/mathlib4-master/f/*.ltar, per-module; restart 2026-08-15).
-- First cache attempt was orphaned after ~114MB (job record lost); restarted as background job.
-- After the cache completes: run `lake build Zeta23`, record exit code + first error if any.
+- `lake build Zeta23`: **PASSED 2026-08-15 — exit code 0, "Build completed successfully
+  (9010 jobs)"** (log: lean-proof/build-run.log). Only deprecation/linter warnings
+  (Set.mem_setOf_eq deprecations, unused-variable lints); no errors. The earlier
+  "NOT YET RUN" note and the orphaned cache attempt are superseded by this PASS.
+- Full machine verification (lean-verify `verify_lean_project.py --project
+  literature/raw/zeta-23-lean --build --output lean-proof`): exit 0; 329 files scanned;
+  `lean-proof/run-manifest.json` written (build_exit_code 0). The naive line-based scan's 44
+  hits are all resolved: comparator Challenge sorries (38, separate layer, not in default
+  target), comment words "sorry'd"/"sorry-free" (Mertens.lean:31-32, StrongPNTPrefix.lean:4),
+  "axiom declarations" doc text (Hypotheses.lean:15), and the real but unused tactic-test
+  axioms qc/hqc (AdditiveCombination.lean:183-184) — see the `#print axioms` gold-standard
+  result below.
+- **Gold-standard axiom-set check** (lean-proof/scratch_axioms.lean → Zeta23/ScratchAxioms.lean +
+  Zeta23/ScratchA2.lean, `lake env lean`, completed 2026-08-15; scratch files deleted after use;
+  output preserved in lean-proof/axioms-check.log): `#print axioms` result for EVERY headline
+  theorem is exactly **[propext, Classical.choice, Quot.sound]**:
+  - Zeta23.ThmD.thmD₀_simple_mult, thmD₀_simple_mult', thmD₀_simple_mult_cumulative,
+    thmD₀_dist_mult, thmD₀_dist_mult_cumulative
+  - Zeta23.XiPrime.headlineQuartic_unconditional, headlineCumulative_quartic_unconditional
+  - Zeta23.PairCeiling.ceiling_law256, ceiling_law256_decimal
+  - Zeta23.two_thirds_on_critical_line(_cumulative), half_simple_on_critical_line,
+    three_quarters_distinct
+  The tactic-test axioms qc/hqc (AdditiveCombination.lean:183-184) appear in NO theorem's
+  axiom set. **Axiom-set gate: CLOSED.**
