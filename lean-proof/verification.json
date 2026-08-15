@@ -1,6 +1,6 @@
 {
   "verdict": "MACHINE_ACCEPTED_PENDING_AUDIT",
-  "verdict_note": "O1 baseline FULLY VERIFIED 2026-08-15: machine evidence (lake build Zeta23 exit 0, 9010 jobs; #print axioms gold standard = {propext, Classical.choice, Quot.sound}) + independent adversarial audit (lean-proof/lean-audit-report.md: O1a-O1f all FAITHFUL, verdict FORMALLY_VERIFIED for O1). 2026-08-16 INDEPENDENT T1 pass (lean-proof/lean-audit-report.md 'T1 verifier pass' + machine_check.log 'T1 ... INDEPENDENT verifier pass'): O2=chain9_eps and O4=record_c9 are machine-accepted (lake build Record9.Chain9 exit 0 in ~47s; #print axioms = {propext, Classical.choice, Quot.sound}; #check types match contract verbatim), and T1a/T1b/T1d are independently audited FAITHFUL + non-circular. T1c (analytic bridge: stability step 2, averaged block-defect steps 5-6, kernel-limit lemma tying wMT to the true MT overlap kernel) and T2 (certificate) remain OPEN. O5 (XiPrime) OPEN.",
+  "verdict_note": "O1 baseline FULLY VERIFIED 2026-08-15: machine evidence (lake build Zeta23 exit 0, 9010 jobs; #print axioms gold standard = {propext, Classical.choice, Quot.sound}) + independent adversarial audit (lean-proof/lean-audit-report.md: O1a-O1f all FAITHFUL, verdict FORMALLY_VERIFIED for O1). 2026-08-16 INDEPENDENT T1 pass: O2=chain9_eps and O4=record_c9 machine-accepted (lake build Record9.Chain9 exit 0; #print axioms = {propext, Classical.choice, Quot.sound}; #check types match contract), T1a/T1b/T1d FAITHFUL; finding #1 = wMT was a placeholder kernel. T1 REPAIR round committed e1604b5 replaced wMT with the true certificate kernel kMT. 2026-08-16 T1 repair re-audit (INDEPENDENT; lean-proof/lean-audit-report.md 'T1 repair re-audit' + machine_check.log 'T1 repair re-audit'): the repair is FAITHFUL and CLOSES finding #1 — kMT matches zeta_simple_zeros/kernel.py normalized_kernel algebraically and to >= 49.7 digits (integral K(x)/K(0); wMT(0)=1); kMT_den_pos sound; F8gaps unchanged; CERTIFIED_F8_GE body unchanged and now over the true kernel; statement freeze CONFIRMED (git diff HEAD~1..HEAD touches only kernel defs + docstrings; #check types verbatim); machine checks re-run: lake env lean exit 0, lake build Record9.Chain9 exit 0 (8838 jobs), 0 sorry/axiom, axiom set = gold standard, snapshot pristine. Remaining OPEN: T1c analytic bridge — the kernel-limit lemma (Cfun->kMT) and stability_eps/stability_averaged_eps over the true deltaMT — plus T2 (certificate unproved) and O5. Verdict unchanged: MACHINE_ACCEPTED_PENDING_AUDIT.",
   "machine": {
     "lean_version": "4.33.0-rc2 (d8b18978322de05a8f3dba51ef03cf5461676c17)",
     "lake_version": "5.0.0-src+d8b1897",
@@ -93,7 +93,7 @@
     {
       "obligation": "O2/T1a",
       "result": "FAITHFUL",
-      "notes": "T1 independent pass 2026-08-16: chain9_eps quantifier order (∀ε>0 ∃T₀:ℝ ∀T≥T₀, T real), dyadic window (T,2T], N0simple/Ncount baseline conventions, constants 2499/2500/263 = A₀/m and 262/131500 = (m−1)/(500m), HD 1 = H_MT all match the contract; F8gaps re-derived vs general-k §2 (s0=s−1 indexing, coeffs 2/(8−s0), linear 1/(500·8)) — no off-by-one. Caveat: kernel wMT=(sinc)^2 is a structural placeholder until the kernel-limit lemma ties it to baseline Cfun."
+      "notes": "T1 independent pass 2026-08-16: chain9_eps quantifier order (∀ε>0 ∃T₀:ℝ ∀T≥T₀, T real), dyadic window (T,2T], N0simple/Ncount baseline conventions, constants 2499/2500/263 = A₀/m and 262/131500 = (m−1)/(500m), HD 1 = H_MT all match the contract; F8gaps re-derived vs general-k §2 (s0=s−1 indexing, coeffs 2/(8−s0), linear 1/(500·8)) — no off-by-one. T1 repair re-audit 2026-08-16: wMT is no longer a placeholder — it is now kMT² with kMT the TRUE certificate kernel = [sinc((√2)⁻¹−πx)+sinc((√2)⁻¹+πx)]/2/(√2·sin((√2)⁻¹)), matching kernel.py normalized_kernel (algebraic identity + >=49.7-digit integral agreement + wMT(0)=1); CERTIFIED_F8_GE body unchanged and now states exactly what the Arb certificate certifies (F8>=392/100000). Finding #1 (placeholder kernel) CLOSED. Remaining fidelity link = kernel-limit lemma (Cfun->kMT), an open analytic bridge."
     },
     {
       "obligation": "O2/T1b",
@@ -114,11 +114,11 @@
   "critical_errors": [],
   "gaps": [
     {
-      "location": "Chain9.lean:59,62 (wMT)",
-      "issue": "T1c OPEN analytic bridge — kernel-limit lemma: wMT = (sinc x)^2 is a structural placeholder, not yet the baseline's MT overlap autocorrelation Cfun (Window.lean:1211). CERTIFIED_F8_GE is therefore only as faithful to the paper certificate as this kernel-limit identity. O2/O4 depend on T1c AND T2."
+      "location": "Chain9.lean:70-75 (kMT/wMT) CLOSED; open bridge = kernel-limit lemma",
+      "issue": "T1 repair CLOSED finding #1 (wMT no longer a placeholder — now kMT² with kMT the true certificate kernel, verified algebraically + numerically + kMT_den_pos sound). REMAINING OPEN analytic bridge: the kernel-limit lemma, i.e. the high-T limit of the finite-window MT overlap autocorrelation Cfun (Window.lean:1211-1213) to kMT. CERTIFIED_F8_GE for wMT is as faithful to the paper's F8 (on the true gap-overlap) as this bridge holds. Error layer: dependency (open analytic). O2/O4 depend on T1c AND T2."
     },
     {
-      "location": "Chain9.lean:91 (deltaMT)",
+      "location": "Chain9.lean:124 (deltaMT)",
       "issue": "T1c OPEN — stability_eps / stability_averaged_eps are stated over the placeholder deltaMT := fun _ => 0, not the true physical Delta(M°) ; they are explicit axiom-free hypotheses, not machine-proved. Closing T1c = supply Lean proofs of these two + the kernel-limit lemma for the true Delta."
     },
     {
@@ -142,6 +142,6 @@
       "issue": "xi-prime record not formalized (depends on O2; AdmWindow cos blueprint ready)"
     }
   ],
-  "repair_hints": "T1 pass verdict = MACHINE_ACCEPTED_PENDING_AUDIT. To close: (1) T1c analytic bridge — supply Lean proofs of stability_eps and stability_averaged_eps for the true physical Δ(M°) (tie deltaMT to M°; OpenAI Lemma 2.1/Cor 2.2; general-k §4-6 block-defect + pinching/averaging) AND prove the kernel-limit lemma making wMT equal to the baseline MT overlap autocorrelation Cfun (Window.lean:1211) with its √2λ/L and 1/√2 structure; (2) T2 certificate: prove CERTIFIED_F8_GE (F₈≥392/100000) for the true kernel via the reflection route; (3) T3 XiPrime record (O5). Optional hygiene: silence the unused-`hF` linter warning in Chain9.lean:219; double-check the snapshot stays clean (an untracked in-snapshot Zeta23/Record9/ leftover was observed at session start before auto-sync removed it); correct the BUILD_LOG 'killed' note for lake build Record9.Chain9 (it completes in ~47s).",
+  "repair_hints": "T1 repair re-audit verdict = MACHINE_ACCEPTED_PENDING_AUDIT. The kernel repair (finding #1) is CLOSED and FAITHFUL; no further kernel change required. To fully close T1/O2/O4: (1) T1c analytic bridge — prove the kernel-limit lemma (high-T limit of finite-window Cfun, Window.lean:1211-1213, to kMT/Chain9.lean:70-72) AND supply Lean proofs of stability_eps / stability_averaged_eps for the true physical Δ(M°) (tie deltaMT to M°; OpenAI Lemma 2.1/Cor 2.2; general-k §4-6 block-defect + pinching/averaging); (2) T2 certificate: prove CERTIFIED_F8_GE (F₈≥392/100000) for the now-true kernel via the reflection route over the Arb grid-2000/nine-point certificate; (3) T3 XiPrime record (O5). Optional hygiene: silence the unused-`hF` linter warning in Chain9.lean:252; note the stale snapshot token 3635e748 vs actual HEAD e1604b5 (content bound by hashes).",
   "run_manifest_ref": "lean-proof/run-manifest.json"
 }

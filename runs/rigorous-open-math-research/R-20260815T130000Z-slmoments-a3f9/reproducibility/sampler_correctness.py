@@ -23,23 +23,24 @@ def build_mixed_kernel(n, seed=0, lam=None):
     return K, lam
 
 def exact_joint(K):
+    """Exact DPP joint distribution. For a DPP with marginal kernel K (0<=eig<=1), the law is
+    the L-ensemble with L = K(I-K)^{-1}: P(Y) = det(L_Y) / det(I+L), det(empty)=1.
+    (Reference: Kulesza-Taskar, 'Determinantal Point Processes for Machine Learning',
+    arXiv:1207.6083, Theorem 2.3 / Corollary 2.5.) Returns {tuple(Y): P(Y)} which sums to 1."""
     n = K.shape[0]
+    I = np.eye(n)
+    L = K @ np.linalg.inv(I - K)      # L-ensemble matrix
+    det_IL = float(np.linalg.det(I + L))
     masses = {}
     for mask in range(1 << n):          # enumerate all 2^n subsets
         Y = [i for i in range(n) if (mask >> i) & 1]
-        det = 1.0
-        for sub in itertools.combinations(range(len(Y)), 1):  # placeholder, replaced below
-            pass
-        # direct determinant of principal submatrix
         if len(Y) == 0:
             det = 1.0
         else:
-            # robust: recompute via full K with kron
-            KY = K[np.ix_(Y, Y)]
-            det = float(np.linalg.det(KY))
-        masses[tuple(Y)] = det
-    tot = sum(masses.values())
-    return {Y: m/tot for Y, m in masses.items()}, tot
+            LY = L[np.ix_(Y, Y)]
+            det = float(np.linalg.det(LY))
+        masses[tuple(Y)] = det / det_IL
+    return masses
 
 def empirical_joint(K, rng, nsamples):
     cnt = Counter()
@@ -50,7 +51,7 @@ def empirical_joint(K, rng, nsamples):
 
 def run_test(n, nsamples=120000, seed=7, lam=None):
     K, lamG = build_mixed_kernel(n, lam=lam)
-    exact, tot = exact_joint(K)
+    exact = exact_joint(K)
     rng = np.random.default_rng(seed)
     emp = empirical_joint(K, rng, nsamples)
     # Compare on the union of supports (exact support = subsets with det>0 ~ all for full-rank).

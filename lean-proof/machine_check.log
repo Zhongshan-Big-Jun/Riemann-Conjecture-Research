@@ -152,3 +152,82 @@ CLOSED for the T1 declarations.**
 - Extension `lean-proof/Record9/` has uncommitted edits to REPORT.md / FORMALIZATION_STATUS.md /
   BUILD_LOG.md / lakefile-change.md (the formalizer's deliverables, expected). The `.lean` sources
   and `lakefile.toml` are tracked and unmodified relative to HEAD.
+
+# machine_check.log — T1 repair re-audit (independent) transcript (2026-08-16, Stage C)
+
+Run by the INDEPENDENT VERIFIER of the T1 REPAIR round (commit e1604b5). Fresh agent; no shared
+chain of thought with the repair/formalizer agents. Pinned toolchain: leanprover/lean4:v4.33.0-rc2
+(commit d8b18978322de05a8f3dba51ef03cf5461676c17), lake 5.0.0-src+d8b1897. Repo HEAD at run time:
+e1604b57e20dce5520dc62f00f322bdcfb738c5d. Workdir conventions per audit spec: `lake env lean` from
+`literature/raw/zeta-23-lean`; `lake build` from `lean-proof/Record9`; PATH +=
+`%USERPROFILE%\.elan\bin`.
+
+## Environment (as observed)
+
+- `lean --version` (snapshot cwd, PATH+=elan bin): **Lean 4.33.0-rc2** (x86_64-w64-windows-gnu,
+  commit d8b18978322de05a8f3dba51ef03cf5461676c17). Matches Record9/lean-toolchain and
+  snapshot/lean-toolchain pins.
+- `lake --version`: Lake 5.0.0-src+d8b1897 (Lean 4.33.0-rc2).
+- Object under audit: `lean-proof/Record9/Record9/Chain9.lean`, working copy == committed e1604b5
+  (`git diff HEAD -- Chain9.lean` empty).
+- Pre-repair baseline for statement-freeze diff: `HEAD~1` = 5c98bab.
+
+## Commands + exits (exact)
+
+| Command | Workdir | Exit | Observed |
+|---|---|---|---|
+| `lake env lean "F:\LaTeX\Riemann Conjecture\lean-proof\Record9\Record9\Chain9.lean"` | literature/raw/zeta-23-lean | **0** | Only warning `Chain9.lean:252:20: Variable name hF is not explicitly referenced` (unused `hF`); no errors |
+| `lake build Record9.Chain9` | lean-proof/Record9 | **0** | **"Build completed successfully (8838 jobs)."** Only linter/deprecation warnings (unused `hF` at Chain9.lean:252; deprecations across snapshot) |
+| `#check`/`#print axioms` scratch probe (module `Record9._T1_Reaudit_Probe`, direct `lean` with extension-first LEAN_PATH) | lean-proof/Record9 | **0** | types below; axioms = gold standard |
+| comment-aware `\b(sorry|admit|axiom)\b` scan of repaired Chain9.lean | — | — | **0 declaration hits** (only the leading header block-comment disclaimer text) |
+| `git status --porcelain -- literature/raw/zeta-23-lean` | repo root | 0 | **empty** (snapshot pristine) |
+
+## #check + #print axioms transcript (probe deleted after use)
+
+```
+Zeta23.ThmD.chain9_eps (hF : Zeta23.ThmD.CERTIFIED_F8_GE) (b : Zeta23.ThmD.record9Bridge) (ε : ℝ) :
+  ε > 0 → ∃ T₀, ∀ T ≥ T₀,
+    (1 - 2499 / 2500 / 263) * ↑(Zeta23.N0simple T (2 * T)) ≥
+      (Zeta23.ThmD.HD 1 - 262 / 131500 - ε) * ↑(Zeta23.Ncount T (2 * T))
+Zeta23.ThmD.CERTIFIED_F8_GE : Prop
+Zeta23.ThmD.record_c9 (hF : Zeta23.ThmD.CERTIFIED_F8_GE) (b : Zeta23.ThmD.record9Bridge) (ε : ℝ) :
+  ε > 0 → ∃ T₀, ∀ T ≥ T₀, (Zeta23.ThmD.c9Const - ε) * ↑(Zeta23.Ncount T (2 * T)) ≤ ↑(Zeta23.N0simple T (2 * T))
+Zeta23.ThmD.kMT (x : ℝ) : ℝ
+Zeta23.ThmD.wMT (x : ℝ) : ℝ
+Zeta23.ThmD.kMT_den_pos : 0 < √2 * Real.sin (√2)⁻¹
+Zeta23.ThmD.F8 (g : Fin 8 → ℝ) : ℝ
+Zeta23.ThmD.F8gaps (w : ℝ → ℝ) (g : ℕ → ℝ) : ℝ
+'Zeta23.ThmD.chain9_eps' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zeta23.ThmD.record_c9' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zeta23.ThmD.kMT_den_pos' depends on axioms: [propext, Classical.choice, Quot.sound]
+```
+
+The three headline statements (`chain9_eps`, `CERTIFIED_F8_GE`, `record_c9`) are byte-identical in
+type to the pre-repair `#check` (see prior T1 pass transcript above); the new `kMT`, `wMT`,
+`kMT_den_pos` are present with the expected types. All audited declarations depend only on the
+baseline gold standard {propext, Classical.choice, Quot.sound}. **Axiom-set gate: CLOSED.**
+
+## Probe resolution note
+
+`lake env lean` alone (from snapshot cwd or extension cwd) could not resolve the extension module
+`Record9.Chain9` (the documented path-dependency module-resolution quirk: the snapshot build dir
+shadows `Record9\.lake\build\lib\lean` in LEAN_PATH order). The probe was therefore run with an
+explicit LEAN_PATH reorder (extension `.lake/build/lib/lean` first) via a direct `lean` invocation,
+exactly the workaround the prior verifier documented. This is a module-resolution/workdir artifact,
+NOT a content issue: `lake build Record9.Chain9` (exit 0, 8838 jobs) and `lake env lean
+Record9/Chain9.lean` (exit 0) both resolve and compile normally.
+
+## Numerical kernel check (see lean-audit-report.md §1b for the table)
+
+mpmath 50-digit: `K(x)/K(0)` (integral) vs Lean `kMT` formula agree ≥ 49.67 digits at
+x ∈ {0, 0.3, 0.9, 1.0, 1.5, 2.0}; worst = 49.67 > 12 ✓; `K(0) = √2·sin(1/√2) = 0.91872536986556843778`
+to ~51 digits; `wMT(0) = kMT(0)² = 1` exactly.
+
+## Snapshot cleanliness
+
+`git status --porcelain -- literature/raw/zeta-23-lean`: **empty** at recording (snapshot
+pristine). Repo-wide untracked files are limited to (a) two verifier scratch helpers in
+`lean-proof/` (_t1_kernel_check.py — kept as the reproducibility record of the numerical check,
+documented; _t1_sorry_scan.py — kept, documented), plus (b) unrelated untracked scratch files under
+`runs/rigorous-open-math-research/R-20260815T130000Z-slmoments-a3f9/` (a different research run,
+not touched by this audit). No modification was made to any Lean source or to the snapshot.

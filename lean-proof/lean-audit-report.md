@@ -291,3 +291,214 @@ lemma) is **open** — carried honestly as explicit axiom-free hypotheses over t
 `deltaMT` and the structural kernel `wMT`; closing it is a real, unresolved analytic obligation,
 exactly as the formalizer reports. One fidelity caveat to carry forward: `CERTIFIED_F8_GE` is only
 as faithful to the paper as the kernel-limit lemma makes `wMT` equal to the true MT overlap kernel.
+
+---
+
+# T1 repair re-audit (independent)
+
+**Role:** INDEPENDENT VERIFIER (fresh agent; no shared chain of thought with the repair/formalizer
+agents). This is the Stage C re-audit of the T1 REPAIR round committed at `e1604b5` ("T1 repair
+round: wMT repaired to the certificate's true normalized MT kernel kMT …"). It audits ONLY the
+repaired item (finding #1 of the prior verifier pass) plus unchanged obligations, per the
+lean-verify protocol Stage C (statement freeze, kernel fidelity, machine verification, object
+re-read; no modification to Lean sources).
+
+**Verdict carried forward (unchanged):** `MACHINE_ACCEPTED_PENDING_AUDIT`. The **repair is
+FAITHFUL and closes the wMT placeholder finding**. The previously-flagged `wMT`-placeholder gap
+is **closed**; the remaining open analytic obligation is the **kernel-limit lemma** (finite-window
+`Cfun` → `kMT`), which is a real open bridge, not assumed here.
+
+**Object under audit:** `lean-proof/Record9/Record9/Chain9.lean` (working copy == committed
+`e1604b5` version; `git diff HEAD -- Chain9.lean` emitted nothing). Pre-repair baseline =
+`HEAD~1` (`5c98bab`). Snapshot `literature/raw/zeta-23-lean` pristine (`git status --porcelain`
+empty) throughout.
+
+## 1. Kernel fidelity — the repaired item (CORE of this audit)
+
+### 1a. Lean `kMT` vs the certificate `normalized_kernel` (algebraic re-derivation)
+
+Certificate `kernel.py`:
+- `K(x) = ∫_{-1/2}^{1/2} cos(√2 t) cos(2πxt) dt`; `k(x) = K(x)/K(0)` (`kernel.py:43-47`).
+- `k_zero = √2 · sin(1/√2)` where `1/√2 = inv_sqrt_two = 1/sqrt_two` (`kernel.py:32-40`).
+- `normalized_kernel(x) = (sinc((√2−2πx)/2) + sinc((√2+2πx)/2)) / 2 / k_zero`
+  (`kernel.py:52-54`, `.sinc()` = entire sinc, no pole special-casing).
+
+Repaired Lean (`Chain9.lean:57-75`):
+- `sincMT z = if z = 0 then 1 else Real.sin z / z` (guarded sinc, total on ℝ; `.sinc()` is the
+  entire analytic continuation, identical to the guarded form away from 0 and = 1 at 0).
+- `kMT x = (sincMT((√2)⁻¹−πx) + sincMT((√2)⁻¹+πx)) / 2 / (√2·sin((√2)⁻¹))`.
+- `wMT x = (kMT x)²`; `kMT_den_pos : 0 < √2·sin((√2)⁻¹)`.
+
+Identifier check (byte-algebraic, not just numeric):
+- `(√2 − 2πx)/2 = √2/2 − πx = (√2)⁻¹ − πx` since `(√2)⁻¹ = 1/√2 = √2/2`. ✓
+- `(√2 + 2πx)/2 = √2/2 + πx = (√2)⁻¹ + πx`. ✓
+- `1/√2` (kernel.py `inv_sqrt_two = 1 / sqrt_two`) = `(√2)⁻¹` in Lean (`(Real.sqrt 2)⁻¹`). ✓
+- `k_zero = √2·sin(1/√2) = √2·sin((√2)⁻¹)` = Lean denominator. ✓
+- The certificate `((left+right)/2)/k_zero` = `(sincL + sincR)/(2·k_zero)`; Lean
+  `(sincL + sincR)/2/(√2·sin((√2)⁻¹))` = `((sincL+sincR)/2)/(√2·sin((√2)⁻¹))` (left-assoc `/`). ✓
+- `w(x) = k(x)²` matches `kernel.py` `squared_kernel_derivatives`/`squared_kernel_cell_lower`
+  (`raw = k`, `value = raw²`). ✓
+
+**`wMT` is now the certificate's true normalized MT overlap kernel.** The prior finding #1
+(placeholder `(sinc x)²`) is REPAIRED. The certificate statement `CERTIFIED_F8_GE` now ranges
+over this true `wMT`, not a squared-sinc placeholder.
+
+### 1b. Numerical verification (independent, mpmath 50 digits)
+
+`K(x)/K(0)` via the integral form vs the Lean `kMT` formula recomputed in Python, ≥12-digit
+requirement:
+```
+x    integral K(x)/K(0)     lean kMT(x)           agreement (digits)
+0.0  1.0                     1.0                   +inf
+0.3  0.868118475471583622   0.868118475471583622   ~50.8
+0.9  0.159924519901136264   0.159924519901136264   ~50.1
+1.0  0.0533640459720868702  0.0533640459720868702  +inf
+1.5 -0.179645673957447585  -0.179645673957447585   ~50.4
+2.0 -0.0128276115535307037 -0.0128276115535307037  ~49.7
+WORST agreement ≥ 49.67 digits (> 12) ✓
+```
+- `K(0) = √2·sin(1/√2) = 0.91872536986556843778` — integral == analytic k_zero to ~51 digits ✓.
+- `wMT(0) = kMT(0)² = 1` exactly ✓ (kMT(0) = 1 since sinc((√2)⁻¹) = √2·sin((√2)⁻¹)/√2 … = 1).
+- Reproducibility record: `lean-proof/_t1_kernel_check.py` (the mpmath numeric check, kept) and
+  `lean-proof/_t1_sorry_scan.py` (the comment-aware scan, kept) are the verifier's run record;
+  the Lean `#check` probe was deleted after use (§3). No Lean source was modified.
+
+### 1c. `kMT_den_pos` proof (`Chain9.lean:79-92`) — CORRECT
+
+- `hsqrt_pos : 0 < √2` by `positivity` ✓.
+- `hinv_pos : 0 < (√2)⁻¹` by `positivity` ✓.
+- `hinv_le_one : (√2)⁻¹ ≤ 1` via `inv_le_one₀ hsqrt_pos` + `1 ≤ √2` (`Real.sqrt_le_sqrt`, `1 ≤ 2`).
+  Sound: since √2 ≥ 1, its inverse ≤ 1. ✓
+- `h1_lt_pi : 1 < π` via `linarith [Real.pi_gt_three]` ✓.
+- `Real.sin_pos_of_pos_of_lt_pi hinv_pos (lt_of_le_of_lt hinv_le_one h1_lt_pi)` — applies
+  `sin` positive on `(0, π)` given `(√2)⁻¹ ∈ (0,π)`. Sinc args: `(√2)⁻¹−πx` and `(√2)⁻¹+πx` can be
+  0 at isolated `x` (the guarded `sincMT` handles those exactly, no division by zero). Denominator
+  `√2·sin((√2)⁻¹)` is positive and nonzero, so `kMT` is a total invertible fraction. **Sound.**
+  Verified by build exit 0 + `kMT_den_pos : 0 < √2*Real.sin (√2)⁻¹` in the #check probe.
+
+### 1d. `F8gaps` unchanged & general-k §2 — CONFIRMED UNCHANGED, structure faithful
+
+- `F8gaps` (`Chain9.lean:102-105`) has NO `-`/`+` changes in `git diff HEAD~1..HEAD` —
+  byte-identical to pre-repair. **UNCHANGED** (statement freeze holds).
+- Independent re-derivation vs general-k §2 (`candidate_proof.general-k-derivation.md:27-44`,
+  k=9 → 8 gaps): paper `F₈ = (1/[500·8])Σgᵢ + Σ_{s=1}^{8}(2/(9−s))Σ_{i=1}^{9−s} w(gᵢ+⋯+g_{i+s−1})`.
+  Lean uses `s0 = s−1 ∈ 0..7`, coeff `2/(8−s0) = 2/(9−s)`, inner `Finset.range (8−s0)` = `9−s`
+  terms, `gapSpan g i (s0+1)` = `s` consecutive gaps from index `i` (0-based). Totals
+  `Σ_{s0=0}^7(8−s0) = 36 = C(9,2)`. Linear term `1/(500·8)`.
+  **structure FAITHFUL, no off-by-one** (matches prior verifier pass).
+
+### 1e. `CERTIFIED_F8_GE` statement — body UNCHANGED, now over the true kernel
+
+- Body (`Chain9.lean:114-115`): `∀ g : Fin 8 → ℝ, (∀ i : Fin 8, 0 ≤ g i) → (392:ℝ)/100000 ≤ F8 g`
+  is byte-identical pre/post repair. `F8 g = F8gaps wMT (η g)` — since `wMT` is now `kMT²`, the
+  statement is exactly "F₈ ≥ 392/100000 for all g ≥ 0" built from the certificate kernel.
+- Matches the Arb certificate header (`nine-point-f8-gt-392over100000-grid2000.txt`:
+  `target=F8 >= 392/100000`, `grid=2000`, `precision_bits=128`, `k=9`). ✓
+- **`CERTIFIED_F8_GE` now states exactly what the certificate certifies.** FAITHFUL.
+
+## 2. Statement freeze — CONFIRMED
+
+`git diff HEAD~1 HEAD -- Chain9.lean` (pre-repair `5c98bab` vs repaired `e1604b5`) shows the ONLY
+changes are:
+1. Header docstring lines 33-40 (fidelity-notes prose): `wMT` placeholder description →
+   true-kernel description.
+2. The kernel block (lines 54-96): `sincMT` docstring; added `kMT` + `kMT_den_pos`; `wMT` body
+   changed `(sincMT x)^2` → `(kMT x)^2`.
+3. Two docstrings (lines 107-113): `F8`/`CERTIFIED_F8_GE` prose now state the kernel identity.
+
+**Byte-identical (unchanged):** `chain9_eps`, `record_c9`, `stability_eps`,
+`stability_averaged_eps`, `record9Bridge`, `chain9_eps_from_hypotheses`, `chain9_algebra_core`,
+`deltaMT`, `gapSpan`, `F8gaps`, `F8`, all constants (`f9 n9 A0 m9 cA0m qMT cLHS c9Const`), all
+lemma/theorem bodies. Independent `#check` probe confirms the statement types are identical to the
+pre-repair contract (see §3). **Statement freeze HONORED.**
+
+## 3. Machine verification (this pass, recorded)
+
+| Check | Command / scope | Exit | Observed |
+|---|---|---|---|
+| module compile | `lake env lean "lean-proof/Record9/Record9/Chain9.lean"` (workdir `literature/raw/zeta-23-lean`, PATH+=`%USERPROFILE%\.elan\bin`) | **0** | Only `Chain9.lean:252:20` unused-`hF` linter warning; no errors |
+| build | `lake build Record9.Chain9` (workdir `lean-proof/Record9`) | **0** | **"Build completed successfully (8838 jobs)"** — matches formalizer claim exactly |
+| sorry/axiom scan | comment-aware `\b(sorry|admit|axiom)\b` token scan of repaired Chain9.lean | — | **0 declaration hits** (only header-comment disclaimer text, stripped) |
+| #check probe | scratch `_T1_Reaudit_Probe.lean`, `import Record9.Chain9` (deleted after) | **0** | types unchanged; axioms below |
+| snapshot pristine | `git status --porcelain -- literature/raw/zeta-23-lean` | 0 | **empty** (pristine) |
+| Chain9 vs HEAD | `git diff HEAD -- Chain9.lean` | — | empty (working copy == committed repair) |
+
+`#check` transcript (verbatim):
+```
+Zeta23.ThmD.chain9_eps (hF : Zeta23.ThmD.CERTIFIED_F8_GE) (b : Zeta23.ThmD.record9Bridge) (ε : ℝ) :
+  ε > 0 → ∃ T₀, ∀ T ≥ T₀,
+    (1 - 2499 / 2500 / 263) * ↑(Zeta23.N0simple T (2 * T)) ≥
+      (Zeta23.ThmD.HD 1 - 262 / 131500 - ε) * ↑(Zeta23.Ncount T (2 * T))
+Zeta23.ThmD.CERTIFIED_F8_GE : Prop
+Zeta23.ThmD.record_c9 (hF : ...) (b : ...) (ε : ℝ) : ε > 0 → ∃ T₀, ∀ T ≥ T₀,
+  (Zeta23.ThmD.c9Const - ε) * ↑(Zeta23.Ncount T (2 * T)) ≤ ↑(Zeta23.N0simple T (2 * T))
+Zeta23.ThmD.kMT (x : ℝ) : ℝ
+Zeta23.ThmD.wMT (x : ℝ) : ℝ
+Zeta23.ThmD.kMT_den_pos : 0 < √2 * Real.sin (√2)⁻¹
+Zeta23.ThmD.F8 (g : Fin 8 → ℝ) : ℝ
+Zeta23.ThmD.F8gaps (w : ℝ → ℝ) (g : ℕ → ℝ) : ℝ
+'Zeta23.ThmD.chain9_eps' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zeta23.ThmD.record_c9' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Zeta23.ThmD.kMT_den_pos' depends on axioms: [propext, Classical.choice, Quot.sound]
+```
+- The three headline statements are byte-identical in type to the pre-repair #check (`machine_check.log`
+  prior pass). `chain9_eps` / `record_c9` / `stability_*` / `record9Bridge` all unchanged.
+- `chain9_eps`, `record_c9`, and the new `kMT_den_pos` depend only on the baseline gold standard
+  `{propext, Classical.choice, Quot.sound}`. **Axiom-set gate CLOSED.**
+
+**Resolution note (module-resolution only, not a content issue):** `lake env lean` on the probe,
+from either the snapshot cwd or the extension cwd, could not resolve the extension module
+`Record9.Chain9` (its README-documented path-dependency module-resolution quirk — the snapshot
+build dir shadows the extension `.lake/build/lib/lean`). The probe was therefore run with an
+explicit LEAN_PATH reorder (extension `.lake/build/lib/lean` first), exactly the workaround the
+prior verifier documented. This does not affect the build: `lake build Record9.Chain9` (exit 0,
+8838 jobs) and `lake env lean Record9/Chain9.lean` (exit 0) resolve normally.
+
+## 4. Per-obligation fidelity verdicts (T1 repair)
+
+| Obl | Contract | Lean decl | Verdict | Evidence |
+|---|---|---|---|---|
+| T1a (statement + kernel) | `chain9_eps`, `CERTIFIED_F8_GE` with the TRUE MT kernel | `sincMT`, `kMT`, `wMT`, `kMT_den_pos`, `F8gaps`, `F8`, `CERTIFIED_F8_GE` | **FAITHFUL** (repair closes the wMT placeholder finding) | §1 algebra + §1b numeric (≥49.7 digits, wMT(0)=1) + §1c proof + §1d structure + §1e cert match |
+| T1b (algebra, unchanged) | `chain9_algebra_core`, ε-lift, `chain9_eps` | `chain9_eps_from_hypotheses`, `chain9_eps` | **FAITHFUL** (spot-check; unchanged) | `git diff` shows no body change; build exit 0; #check type verbatim |
+| T1d/O4 (constants, unchanged) | exact rational identities; `record_c9` | `A0_eq_f9n9`, `cLHS_eq/_pos`, `qMT_eq`, `c9Const_eq`, `record_c9` | **FAITHFUL** (spot-check; unchanged) | `git diff` no body change; build exit 0; #check `record_c9` type verbatim |
+| T1c (bridge honesty, unchanged) | stability / block-defect / averaging open analytic | `stability_eps`, `stability_averaged_eps`, `record9Bridge`, `deltaMT` | **FAITHFUL (honest, non-circular)** — remains OPEN | `git diff` no change; #check types unchanged; bridge is plain Prop fields |
+
+## 5. Critical errors / gaps
+
+1. **REPAIRED — CLOSED:** `Chain9.lean:70-75` — `kMT`/`wMT` are now the certificate's true
+   normalized MT kernel (prior finding #1). No longer a placeholder.
+2. **OPEN analytic bridge (unchanged, carries forward):** the **kernel-limit lemma** —
+   `Cfun` (finite-window overlap, `Window.lean:1211-1213`) → `kMT` in the high-T limit. This is
+   NOT proved in Chain9.lean and is genuinely open (Cfun and kMT are different functions that agree
+   only through the analytic high-T limit). `CERTIFIED_F8_GE` is as faithful to the paper's
+   `F₈` on the true gap-overlap as this bridge holds. Error layer: **dependency (open analytic)**.
+3. **OPEN analytic bridge (unchanged):** `deltaMT := fun _ => 0` (`Chain9.lean:124`) — the bridge
+   hypotheses `stability_eps`/`stability_averaged_eps` are stated over this placeholder, not the
+   true physical Δ(M°). Honest, declared open. Error layer: **dependency (open analytic)**.
+4. **Reproducibility nit (unchanged):** the stub/prior `machine_check.log` and `verification.json`
+   record snapshot token `3635e748` which is not a local git object (content is bound by hashes);
+   actual HEAD is `e1604b5`. Recorded, non-fatal.
+5. **Report-hygiene nit (unchanged):** unused-`hF` linter warning at `Chain9.lean:252` (deliberate;
+   `chain9_eps` is literally `chain9_eps_from_hypotheses b`). Not an error.
+
+## 6. Repair hints (closing T1 fully)
+
+- Prove the **kernel-limit lemma**: show the finite-window MT overlap autocorrelation
+  `Cfun (λ,L) y` (Window.lean:1211) converges in the high-T / window limit to the normalized
+  ideal kernel `kMT` (i.e. `wMT`), so `CERTIFIED_F8_GE` for `wMT` transfers to the paper's
+  `F₈`. This is T1c item 3 and the true remaining fidelity link.
+- Tie `deltaMT` to the physical Gram defect Δ(M°) and prove `stability_eps` /
+  `stability_averaged_eps` (OpenAI Lemma 2.1/Cor 2.2; general-k §4-6) for it.
+- Prove `CERTIFIED_F8_GE` itself (T2, reflection route over the Arb certificate grid-2000).
+- Optional hygiene: silence the unused-`hF` linter (`_hF` or omit) at Chain9.lean:252.
+
+## 7. T1 repair re-audit verdict
+
+**MACHINE_ACCEPTED_PENDING_AUDIT** — the repaired kernel is **FAITHFUL** to the certificate
+(algebraic identity proven; ≥49.7-digit integral agreement; wMT(0)=1; `kMT_den_pos` sound), the
+statement freeze is **confirmed** (only kernel defs + docstrings changed; all statements/constants/
+bridge hypotheses byte-identical and #check-verified), and the machine checks close as claimed
+(`lake env lean` exit 0; `lake build Record9.Chain9` exit 0, 8838 jobs; 0 sorry/axiom; axiom set =
+gold standard; snapshot pristine). The wMT-placeholder gap is **closed**. The remaining gaps are
+the unchanged OPEN analytic bridges (kernel-limit lemma; stability/block-defect via `deltaMT`) and
+T2 (certificate unproved) — these are dependencies, not statement defects.
