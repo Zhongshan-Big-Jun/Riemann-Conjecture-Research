@@ -1,0 +1,8 @@
+=== SUMMARY (sublemmas) ===
+  [PASS] T1c2a.sumF8_ge_f9n: sumF8=92.810834 vs f9*(m-8)=0.999600
+  [PASS] T1c2a.sumF8_le_Em_span: sumF8=92.810834 vs Em+(1/500)span=98.257322
+  [PASS] T1c2a.BE: Em+(1/500)span=98.257322 >= A0=0.999600
+  [PASS] T1c2c.avg_span: (1/m)sum span charge=10480 vs (m-1)*B=10480 (unit gaps, B blocks/offset)
+  [PASS] T1c2c.coef: empiric coeff=0.001992 vs (m-1)/(500m)=0.001992
+  [PASS] T1c2c.A0m: A0/m=0.003800760456 vs 2499/657500=0.003800760456
+TOTAL 6 checks, 0 FAIL

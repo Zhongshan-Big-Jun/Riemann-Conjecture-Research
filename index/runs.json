@@ -254,6 +254,49 @@
         "Lemma P corrected: prove the vanishing-by-block-count (b >= 4) structure for general k (was: size<=2 premise, now known wrong)",
         "G3 (Lemma H) + SL itself and the unconditional liminf -> 1 remain OPEN"
       ]
+    },
+    {
+      "run_id": "R-20260816T060000Z-m6exact-4f9a",
+      "task_packet_id": "Q-20260814-criticalline-p1-507bb5",
+      "run_root": "runs/rigorous-open-math-research/R-20260816T060000Z-m6exact-4f9a",
+      "started_at": "2026-08-16T06:00:00Z",
+      "upstream_status_verbatim": "FINITE_COMPUTATIONAL_RESULT (exact m_6) / RIGOROUS_PARTIAL_RESULT (Hankel fork)",
+      "summary": "EXACT m_6 = 640/63 = 10.15873... COMPUTED 2026-08-16 via the full 203-partition (Bell(6)) shape decomposition: b=1: 1; b=2: 4297/630 (analytic J = c_m - c_{m+2}, verified on all 31); b=3: 479/210 (exact sympy engine, 90 partitions); b=4: 2/35 (fast engine, 65); b=5: 0; D_6: 0. New exact constant c_12 = 655177/1663200 (int sinc^12; mpmath cross-checked). HANKEL FORK: DECAY (decisive) — Lambda_1(0)=1/4, Lambda_2(0)=5/36 (reproduce audited), Lambda_3(0) = 247/2519 ≈ 0.09805 EXACT < Lambda_2; structural proof: Lambda_3(m_6) < 5/36 for EVERY valid m_6 (increasing in m_6, vanishes at positivity boundary m_6=7279/720, asymptote 5/36 from below) — the 'plateau' estimate 0.149 (>5/36) is mathematically impossible (would need a non-positive moment sequence); exact 0.098 matches the decay sampler estimate 0.092. Moment sequence m_0..m_6 = (1,1,4/3,2,13/4,101/18,640/63) positive definite (det H_0..H_3 > 0). METHODOLOGICAL: the k=5 rule 'b >= 4 => J_sigma = 0' FAILS at k=6 (b=4 contributes +2/35, required for positivity; b=5 and D_6 vanish) — the vanishing rule is partition-structure-dependent, not block-count; fast-exact box-spline engine built (~10^3x faster, validated per-term). Lambda_4 needs exact m_7,m_8 (not computed; sampler estimates finite-L biased, flagged). Residual audit item: full sympy re-verification of the 65 b=4 shapes (budget-limited).",
+      "audit_status": "self-audit: dual engines (sympy exact + fast exact) cross-checked; positivity anchor; 42/42 SHA256SUMS; formal adversarial audit not dispatched",
+      "key_artifacts": [
+        "candidate_proof.md (7256 B: full decomposition table + Lambda_3 structural proof)",
+        "lemmaP_k6.md (Lemma P k=6 coefficient structure)",
+        "reproducibility/ (master_summary6.py, boxspline engines, exact_volume.py, etc.; SHA256SUMS 42 entries)",
+        "SHA256SUMS (4034 B)"
+      ],
+      "created_at": "2026-08-16T06:00:00Z",
+      "updated_at": "2026-08-16T07:10:00Z",
+      "open_obligations": [
+        "exact m_7, m_8 to pin Lambda_4(0) (Bell(7)=877, Bell(8)=4140 partitions — heavy)",
+        "general-k vanishing rule for Lemma P/G2 (partition-structure-dependent; k=5 rule fails at k=6)",
+        "G3 (Lemma H: Lambda_m(0)->0) + SL itself and the unconditional liminf -> 1 remain OPEN"
+      ]
+    },
+    {
+      "run_id": "R-20260816T060000Z-stabridge-a3f1",
+      "task_packet_id": "Q-20260814-criticalline-p1-507bb5",
+      "run_root": "runs/rigorous-open-math-research/R-20260816T060000Z-stabridge-a3f1",
+      "started_at": "2026-08-16T06:00:00Z",
+      "upstream_status_verbatim": "RIGOROUS_PARTIAL_RESULT",
+      "summary": "T1c-1/T1c-2 stability-bridge statements PINNED (analysis-level statement pass, kernel-limit precedent). Exact Lean-ready statements == the Chain9 bridge hypotheses for the true Delta(M°): T1c-1 stability_eps (S >= H_MT N + Delta(M°) - o(N)); T1c-2 stability_averaged_eps (Delta(M°) >= (A0/m)S - ((m-1)/(500m))N - o(N), A0=2499/2500, m=263). Object pinned: Delta(M°)(T) = tr Psi(M°(T)), Psi(t)=(t-1)^2 on [0,2], 2t-3 on [2,inf), on the UNIT-NORMALIZED (correlation) Gram of the retained central simple zeros; all atoms share ||v_gamma||^2 = L F_L(0), off-diagonal -> kMT(x) (kernel-limit, machine-proved). IMPORTANT honest finding: the snapshot's hat-unit Gram A-hat = Az/(aL^2) (consumed by mult_two/N0star_lower_c) gives 2 sum|G_ij|^2 -> 0 relative to E_m and tr Psi(A-hat) ~ S, which would make Cor 2.2 impossible — only the correlation Gram is consistent; documented as the precise ambiguity (counterexample_log), not silently chosen. Sub-lemma decomposition T1c-2a (block energy from certified F8), T1c-2b (Psi-defect lemma + A0<1 -> 2-sum branch; clean proof: case mu_max<=2: ||G-I||^2_F; case >2: Psi(mu)>1), T1c-2c (pinch/averaging), T1c-2d (analytic uniformity sum|G_ij|^2 = (1/2)E_m + o(1), kernel-limit reuse). Snapshot mapping: exists RankTrace.lean rank_trace_ineq + sum_sq_*, VonNeumann, HermitianPosPart, PosIndex, Sylvester, machine-proved mult_two/thmD_mult2_abstract/N0star_lower_c; NEW Lean obligations: Lemma 2.1 (Psi-form), T1c-1 additive +Delta survival, T1c-2a/b/c/d. Numerics: 21/21 checks pass (min_n identity, Lemma 2.1 random (d,r,b) zero violation, defect lemma zero violation, correlation-Gram 2sum|G|^2/E_m -> 1, offset coefficients).",
+      "audit_status": "self-checked (21/21 numeric checks, evidence); formal audit recommended at the Lean formalization step",
+      "key_artifacts": [
+        "candidate_proof.md (15590 B: statements + proofs + snapshot mapping)",
+        "problem_contract.md (4037 B: Lean-ready statements)",
+        "numerical_evidence.md + reproducibility/ (stabridge_sublemma.py, check_run.log, sublemma_run.log; SHA256SUMS 1187 B)"
+      ],
+      "created_at": "2026-08-16T06:00:00Z",
+      "updated_at": "2026-08-16T06:15:00Z",
+      "open_obligations": [
+        "Lean formalization of Lemma 2.1 (Psi-form) + T1c-1 additive +Delta survival + T1c-2a/b/c/d",
+        "T1c-2c pinching/averaging and T1c-2d uniformity: the two non-trivial analytic sub-steps (analysis sketches provided)",
+        "T2 certificate reflection unchanged"
+      ]
     }
   ]
 }

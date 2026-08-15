@@ -1,0 +1,19 @@
+
+=== SUMMARY ===
+  [PASS] C1.cont_t2: Psi(2)=1.0
+  [PASS] C1.cont_t0: Psi(0)=1.0
+  [PASS] C1.nonneg: Psi>=0 on [-0.5,5] grid
+  [PASS] C2.min_identity: worst |min_n - RHS| = 1.099e-16
+  [PASS] C3.lemma2_1: worst violation magnitude 0.000e+00 (0 if none)
+  [PASS] C4.block_defect: worst violation 0.000e+00
+  [PASS] C5.constants: A0=0.999600000000 (<1:True), A0/m=0.003800760456 (2499/657500=0.003800760456), q=0.001992395437 (262/131500=0.001992395437), cLHS=0.996199239544
+  [PASS] C6.window_count_pairs: max windows per s-gap pair <= k-s: {1: (8, 8), 2: (7, 7), 3: (6, 6), 4: (5, 5), 5: (4, 4), 6: (3, 3), 7: (2, 2), 8: (1, 1)}
+  [PASS] C6.window_count_gaps: max windows per gap = 8 <= k-1=8
+  [PASS] C6.BE_rhs: A0_target = f9*(m-8) = 0.9996000000 vs A0=0.9996000000
+  [PASS] C7.Eratio.L100: 2*sum|G_ij|^2/E_m = 1.045730 at L=100.0
+  [PASS] C7.Eratio.L400: 2*sum|G_ij|^2/E_m = 1.010857 at L=400.0
+  [PASS] C7.Eratio.L1000: 2*sum|G_ij|^2/E_m = 1.003990 at L=1000.0
+  [PASS] C7.converge: corr-Gram energy ~ E_m within 5% at tested L
+  [PASS] C8.branch: A0=0.9995999999999999 <1, 2sum target for E_m~A0 is 0.9995999999999999<=1
+
+TOTAL 15 checks, 0 FAIL
