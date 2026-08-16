@@ -37,7 +37,7 @@
     "Independent third-party audit of 0.00392 record DONE (PASS-WITH-LIMITS).",
     "T1c-2b psi_defect PROVED; T1c-2a block-energy REPAIRABLE_GAP (linear part proved, f8WindowSum decomposition PROVED, only f8PairPart_le_blockEnergy remains open); remaining T1c sub-steps: T1c-2c pinching, T1c-2d uniformity, full-O(S) Delta survival; T2 certificate reflection.",
     "Exact m7/m8 partial FINALIZED: m7^(b<=3)=1345/72 exact, b=4 open; m8^(b<=2)=3724369/181440 exact; Lambda_4 remains open.",
-    "T2 counting pass retry RUNNING (background pwsh-1, 8 workers tangent, --out t2count_retry_report.txt); terminal pruned-box count still unknown.",
+    "T2 counting pass retry KILLED at ~40k CPU-s with no output (8 workers tangent); full-count route abandoned for now; next action is Step 1b coarser certified partition and/or profiling the t2count script.",
     "AtOne T3-open-A: ALL 5/5 M3-open-A analytic facts machine-proved (XiPrimeAtOneFacts/Facts2/Facts3; unconditional kappaXi_one_vMT_mem_fact and H_xip_vMT_mem_fact, #print axioms gold standard). T3 AtOne content closed.",
     "Remaining Stage C: T1c-2a pair bound, T1c-2c/2d, T2 certificate reflection, ξ′ record theorem assembly.",
     "Ladder 0.00393 grid-4000 remains queued (borderline, not launched)."

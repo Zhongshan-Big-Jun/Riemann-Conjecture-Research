@@ -32,10 +32,14 @@ original ~8.8k CPU-s) without completing; the terminal-box count is still unknow
 profile/instrument the counting pass (e.g., run with `--no-tangent`, fewer workers, or a
 sampled subset) to determine whether the slowdown is a script bug or environmental.**
 **Retry status 2026-08-16 21:40Z:** `--no-tangent --workers 4` retry (background pwsh-14)
-is still running at ~24.7k CPU-s with no count output; the no-tangent pass is substantially
-more expensive than the original tangent-pruned certificate run. If it does not complete
-near ~36k CPU-s, the coarser certified-partition route (Step 1b) should be used instead of
-waiting for the full terminal-box count.
+was still running at ~24.7k CPU-s with no count output; the no-tangent pass is substantially
+more expensive than the original tangent-pruned certificate run.
+**Final status 2026-08-16 23:55Z:** the `--workers 8` tangent retry (background pwsh-1) was
+killed after ~40k CPU-s with no count output, again far above the original ~8.8k CPU-s
+certificate run. This confirms the counting script/environment is not completing the full
+B&B in reasonable time. **Decision: do not wait for the full terminal-box count; proceed to
+Step 1b (coarser certified partition) and/or profile the t2count script for a performance
+bug before further full-count attempts.**
 
 Add an optional `--emit-boxes out.json` mode to `verify_kpoint_parallel.py`:
 
