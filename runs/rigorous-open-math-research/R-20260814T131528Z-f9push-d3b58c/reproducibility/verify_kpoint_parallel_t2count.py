@@ -25,7 +25,25 @@ from zeta_simple_zeros.rounding import down_add, down_mul, down_ratio, up_ratio
 # ---------------------------------------------------------------------------
 _worker = {}
 
-
+def _init(k, grid, precision, target_n, target_d, second_start, emit_boxes=False):
+    from flint import fmpq
+    d = k-1
+    P_DEN = 500*d
+    cutoff = int(math.floor((target_n/target_d)*P_DEN*grid))+8
+    table = build_kernel_table(grid, cutoff, precision)
+    ranges = RangeMinimum(table)
+    second = build_second_derivative_lower_table(grid, cutoff, start_index=second_start, precision=precision)
+    second_ranges = RangeMinimum(second)
+    constants = kernel_constants()
+    COEFF = {r: math.nextafter(2.0/(k-r), -math.inf) for r in range(1, d+1)}
+    COEFF_UP = {r: math.nextafter(2.0/(k-r), math.inf) for r in range(1, d+1)}
+    COEFF_RAT = {r: fmpq(2, k-r) for r in range(1, d+1)}
+    _worker.update(dict(k=k, d=d, P_DEN=P_DEN, grid=grid, precision=precision,
+        target_n=target_n, target_d=target_d, cutoff=cutoff, table=table,
+        ranges=ranges, second_ranges=second_ranges, constants=constants,
+        second_table=second, COEFF=COEFF, COEFF_UP=COEFF_UP,
+        COEFF_RAT=COEFF_RAT, target_upper=up_ratio(target_n,target_d),
+        emit_boxes=emit_boxes))
 
 # A box search running on a worker process (globals set by _init).
 def _process_slice(args):
@@ -124,8 +142,39 @@ def _process_slice(args):
         for drv,rad in zip(grad,radii): lower-=drv.abs_upper()*arb(rad)
         return lower
 
-
-
+    stack=[(box,0) for box in boxes]
+    nodes=pruned=splits=maxd=0; pp=ip=tp=0; accepted=[]; accepted_count=0
+    emit = w.get('emit_boxes', False)
+    while stack:
+        box,depth=stack.pop()
+        nodes+=1
+        if depth>maxd: maxd=depth
+        if sum(p[0] for p in box)>=w['cutoff']:
+            pruned+=1; pp+=1; accepted_count+=1
+            if emit: accepted.append(box)
+            continue
+        lower=box_lower(box)
+        if lower>=target_upper:
+            pruned+=1; ip+=1; accepted_count+=1
+            if emit: accepted.append(box)
+            continue
+        tg=tangent(box)
+        if tg is not None and tg>=arb(fmpq(target_n,target_d)):
+            pruned+=1; tp+=1; accepted_count+=1
+            if emit: accepted.append(box)
+            continue
+        widths=[r-l for l,r in box]
+        if max(widths)==0:
+            return dict(fail=True, box=box, lower=lower.hex())
+        splits+=1
+        ci=max(range(d), key=widths.__getitem__)
+        L,R=box[ci]; mid=(L+R)//2
+        lo=list(box); hi=list(box)
+        lo[ci]=(L,mid); hi[ci]=(mid+1,R)
+        stack.append((tuple(lo),depth+1)); stack.append((tuple(hi),depth+1))
+    return dict(fail=False, nodes=nodes, pruned=pruned, splits=splits,
+                max_depth=maxd, pp=pp, ip=ip, tp=tp,
+                accepted_count=accepted_count, accepted_boxes=accepted if emit else None)
 
 def main():
     ap=argparse.ArgumentParser()
