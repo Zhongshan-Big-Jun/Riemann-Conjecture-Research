@@ -72,8 +72,10 @@ reports/xi-prime-audit-manager.md**; A1's formalization gap has a complete math 
    statement freeze confirmed; machine checks exit 0; commits e1604b5 + 2adea2c). T1 stands
    MACHINE_ACCEPTED_PENDING_AUDIT; kernel-limit lemma and stability-bridge modules machine-accepted
    (`Record9.KernelLimit`, `Record9.StabilityBridge`; `psi_defect` T1c-2b core PROVED in Lean).
-   Remaining T1c analytic sub-steps: T1c-2a block energy (T2 input), T1c-2c pinching, T1c-2d
-   uniformity, full-O(S) Δ survival; plus T2 certificate and T3 ξ′.
+   ✅ T1c-2a block energy CLOSED 2026-08-17: `blockEnergyFromF8_fact` machine-proved
+   (`Record9.BlockEnergyPairBound`, exit 0/8843, `#print axioms` gold standard).
+   Remaining T1c analytic sub-steps: T1c-2c pinching, T1c-2d uniformity, full-O(S) Δ survival;
+   plus T2 certificate and T3 ξ′.
 6. ✅ DONE 2026-08-16: independent (third-party) re-audit of the 0.00392 record theorem —
    **PASS-WITH-LIMITS** (`reports/independent-audit-00392.md`; kernel hash, constants, chain,
    ξ′ transfer, soundness stack all independently re-derived; only known limits are the paper-level
@@ -89,10 +91,10 @@ reports/xi-prime-audit-manager.md**; A1's formalization gap has a complete math 
 9. ✅ DONE 2026-08-16 (partial): exact m₇/m₈ computation run R-20260816T110000Z-m7exact-ea0a —
    RIGOROUS_PARTIAL_RESULT. k=7 pruning 877→540→18 isoclasses; all 10 b≤3 isoclasses exact,
    m₇^(b≤3)=1345/72; b=4 open (heavy). k=8 full infeasible; m₈^(b≤2)=3724369/181440 exact.
-10. 🔄 IN PROGRESS 2026-08-16: T2 terminal-box counting pass retried with
-    `--no-tangent --workers 4` (background pwsh-14). The earlier 8-worker pass was killed
-    after ~36k CPU-s with no count; this retry is still running and the terminal pruned-box
-    count remains unknown.
+10. ⚠️ BLOCKED 2026-08-16/17: T2 terminal-box counting pass attempts killed after
+    ~36k–40k CPU-s with no count (both `--no-tangent --workers 4` and `--workers 8` tangent).
+    Full-count route abandoned for now; next action is Step 1b coarser certified partition
+    and/or profiling `verify_kpoint_parallel_t2count.py`.
 11. ✅ DONE 2026-08-16: T3-open-A AtOne fact promotion COMPLETE — all 5/5 M3-open-A
     hypotheses machine-proved (`XiPrimeAtOneFacts`, `XiPrimeAtOneFacts2`,
     `XiPrimeAtOneFacts3`). Unconditional `kappaXi_one_vMT_mem_fact` /

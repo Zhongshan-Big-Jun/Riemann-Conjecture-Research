@@ -2,16 +2,17 @@
 
 Modules: `lean-proof/Record9/Record9/BlockEnergy.lean` (`Record9.BlockEnergy`),
 `lean-proof/Record9/Record9/BlockEnergyLinearReindex.lean`
-(`Record9.BlockEnergyLinearReindex`), and
-`lean-proof/Record9/Record9/BlockEnergyDecomp.lean` (`Record9.BlockEnergyDecomp`),
+(`Record9.BlockEnergyLinearReindex`),
+`lean-proof/Record9/Record9/BlockEnergyDecomp.lean` (`Record9.BlockEnergyDecomp`), and
+`lean-proof/Record9/Record9/BlockEnergyPairBound.lean` (`Record9.BlockEnergyPairBound`),
 namespace `Zeta23.ThmD`. Pinned mathlib `51e6992e`, Lean `v4.33.0-rc2`.
 
-Status line: **REPAIRABLE_GAP (one of two finite-counting obligations now closed)** —
-`lake build Record9.BlockEnergy`, `Record9.BlockEnergyLinearReindex`, and
-`Record9.BlockEnergyDecomp` exit 0, no `sorry`/`admit`/`axiom` outside comments. The summed-F₈
-decomposition `f8WindowSum = f8LinearPart + f8PairPart` is machine-proved; the full
-inequality `blockEnergyFromF8` is now reduced to exactly one finite-counting obligation
-(`f8PairPart_le_blockEnergy`), still open in this bounded pass.
+Status line: **CLOSED (T1c-2a block energy machine-proved)** —
+`lake build Record9.BlockEnergy`, `Record9.BlockEnergyLinearReindex`,
+`Record9.BlockEnergyDecomp`, and `Record9.BlockEnergyPairBound` exit 0, no
+`sorry`/`admit`/`axiom` outside comments. The full inequality `blockEnergyFromF8` is now a
+machine-proved `theorem` (`blockEnergyFromF8_fact`), with `#print axioms` =
+`{propext, Classical.choice, Quot.sound}`.
 
 ## 1. What is machine-formalized
 
@@ -56,19 +57,21 @@ inequality `blockEnergyFromF8` is now reduced to exactly one finite-counting obl
   Uses `f8LinearReindex` for the linear side and a pointwise `gapSpan`/`gapAt` mod-identity
   for the pair side. `lake build Record9.BlockEnergyDecomp` exit 0; `#print axioms` =
   `{propext, Classical.choice, Quot.sound}`.
+- **`f8PairPart_le_blockEnergy_fact`** (in `Record9.BlockEnergyPairBound`) — the pair part is
+  bounded by the block energy:
+  `(∀ i, 0 ≤ g i) → f8PairPart g ≤ blockEnergy g`.
+  Proved by flattening `f8PairPart` into pair-occurrences, bounding each pair's fiber
+  multiplicity by `9−s`, and comparing to `blockEnergy`'s `2·wMT` terms.
+  `lake build Record9.BlockEnergyPairBound` exit 0; `#print axioms` =
+  `{propext, Classical.choice, Quot.sound}`.
+- **`blockEnergyFromF8_fact`** (in `Record9.BlockEnergyPairBound`) — **the full T1c-2a
+  statement is closed**: `blockEnergyFromF8` is a theorem, obtained by applying
+  `blockEnergyFromF8_of_parts` to the two proved finite-counting facts above.
 
-## 3. Remaining open obligation (precisely pinned, no sorry)
+## 3. Remaining open obligations
 
-The full theorem is reduced by `blockEnergyFromF8_of_parts` to one remaining finite-counting
-identity, stated as a `def` Prop (compile-only):
-
-1. **`f8PairPart_le_blockEnergy g`** — the pair part is bounded by the block energy:
-   each `s`-separated point pair (`1 ≤ s ≤ 8`) is counted `≤ 9−s` times with coefficient
-   `2/(9−s)`, contributing `≤ 2·wMT(distance)` (one `blockEnergy` summand); separation-`≥9`
-   pairs never appear (their `wMT ≥ 0` contribution is dropped). This is the finite
-   `Finset.sum_bij` reindexing / counting identity.
-
-This is finite algebra, Lean-friendly per the contract, but not closed in this bounded pass.
+None. Both finite-counting obligations are machine-proved and the full `blockEnergyFromF8`
+is closed as `blockEnergyFromF8_fact`.
 
 ## 4. Machine evidence
 
@@ -77,13 +80,16 @@ This is finite algebra, Lean-friendly per the contract, but not closed in this b
 | `lake build Record9.BlockEnergy` | **0** | "Build completed successfully (8839 jobs)"; compiler errors only (no sorry/admit/axiom) |
 | `lake build Record9.BlockEnergyLinearReindex` | **0** | "Build completed successfully (8840 jobs)"; compiler errors only (no sorry/admit/axiom) |
 | `lake build Record9.BlockEnergyDecomp` | **0** | "Build completed successfully (8841 jobs)"; compiler errors only (no sorry/admit/axiom) |
+| `lake build Record9.BlockEnergyPairBound` | **0** | "Build completed successfully (8842/8843 jobs)"; compiler errors only (no sorry/admit/axiom) |
 | `#print axioms f8WindowSum_eq_linear_add_pair_fact` | clean | `[propext, Classical.choice, Quot.sound]` |
+| `#print axioms f8PairPart_le_blockEnergy_fact` | clean | `[propext, Classical.choice, Quot.sound]` |
+| `#print axioms blockEnergyFromF8_fact` | clean | `[propext, Classical.choice, Quot.sound]` |
 | comment-aware sorry/admit/axiom scan | clean | no `sorry`/`admit`/`axiom` outside the header disclaimer |
 
 ## 5. Honest note
 
-The full `blockEnergyFromF8` is not yet a `theorem`. The linear-part route (multiplicity ≤ 8,
-span bound), route step 1 (certified sum = A₀), the summed-F₈ decomposition, and the closing
-assembly are machine-proved; the remaining obligation is the pair-part bound
-`f8PairPart_le_blockEnergy`. A future pass should close that final counting identity and
-then apply `blockEnergyFromF8_of_parts`.
+The full `blockEnergyFromF8` is now a machine-proved theorem. All T1c-2a components —
+linear-part route, certified sum, summed-F₈ decomposition, pair-part bound, and closing
+assembly — are verified. This removes the T1c-2a sub-step from the open list; remaining
+Stage C analytic sub-steps are T1c-2c pinching, T1c-2d uniformity, full-O(S) Δ survival,
+and T2 certificate reflection.
