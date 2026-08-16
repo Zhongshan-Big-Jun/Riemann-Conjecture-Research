@@ -14,10 +14,22 @@ Machine-checked content here (honest bounded milestone):
   • the exact constant identity A₀ = (392/100000)·255 = 2499/2500, and
   • the finite bookkeeping sub-lemmas (window membership/counting and the coefficient
     identities) that DO compile.
-The full inequality (`blockEnergyFromF8` as a `theorem`) is the recorded OPEN obligation:
-closing it requires the sum-over-windows decomposition of `f8WindowSum` into a linear part
-(each gap in ≤ 8 windows, coefficient 1/(500·8)) and a pair part (each s-separated pair in
-≤ 9−s windows, coefficient 2/(9−s)) together with the certified `CERTIFIED_F8_GE` F₈-bound.
+PROVEN in this pass (no sorry/admit/axiom):
+  • `linearMultiplicity_le_8`  — each gap lies in ≤ 8 of the 255 windows (injective witness
+    into `Fin 8`);
+  • `f8LinearPart_le_blockSpan` — the linear part of the summed F₈ is ≤ (1/500)·span(g);
+  • `f8WindowSum_ge_certified`  — route step 1: summing the certified bound over all 255
+    windows yields 2499/2500 ≤ f8WindowSum g;
+  • `wMT_nonneg` and the closing lemma `blockEnergyFromF8_of_parts`, which reduces the full
+    theorem to exactly two precisely-stated finite-counting obligations (both given as
+    `def` Props, so compile-only and sorry-free):
+        `f8WindowSum_eq_linear_add_pair g`  (summed F₈ = linear part + pair part)
+        `f8PairPart_le_blockEnergy g`        (pair part ≤ blockEnergy).
+The full inequality (`blockEnergyFromF8` as a `theorem`) therefore remains OPEN but reduced
+to those two finite-counting identities; closing requires the sum-over-windows decomposition
+of `f8WindowSum` into a linear part (each gap in ≤ 8 windows, coefficient 1/(500·8)) and a
+pair part (each s-separated pair in ≤ 9−s windows, coefficient 2/(9−s)) together with the
+certified `CERTIFIED_F8_GE` F₈-bound.
 NO sorry/admit/axiom appear anywhere in this module or any Record9 module.
 
 Fidelity notes:
@@ -85,6 +97,23 @@ lemma A0_eq_f8_255 : (392 : ℝ) / 100000 * (255 : ℝ) = (2499 : ℝ) / 2500 :=
 /-- exact: A₀ = f₉·(m−8) with m = 263 (m−8 = 255). Same identity stated via the
     contract's literal `m−8 = 263−8`. -/
 lemma A0_eq_f8_m_sub_8 : (392 : ℝ) / 100000 * ((263 : ℝ) - 8) = (2499 : ℝ) / 2500 := by norm_num
+
+/-- (route step 1) if every 9-window satisfies the certified bound `F₈ ≥ 392/100000`, then
+    the sum over all 255 windows satisfies `2499/2500 ≤ f8WindowSum g`. This is
+    `Σ_j (392/100000) = 255·(392/100000) = A₀` via `A0_eq_f8_255`. -/
+lemma f8WindowSum_ge_certified {g : Fin 262 → ℝ}
+    (hF : ∀ j : Fin 255, (392 : ℝ) / 100000 ≤ f8Window g j) :
+    (2499 : ℝ) / 2500 ≤ f8WindowSum g := by
+  have hsum : (∑ j : Fin 255, (392 : ℝ) / 100000) ≤ f8WindowSum g := by
+    rw [f8WindowSum]
+    exact Finset.sum_le_sum (fun j _ => hF j)
+  have hcard : (∑ j : Fin 255, (392 : ℝ) / 100000) = (392 : ℝ) / 100000 * (255 : ℝ) := by
+    rw [Finset.sum_const, Finset.card_univ]
+    norm_num [nsmul_eq_mul]
+  calc
+    (2499 : ℝ) / 2500 = (392 : ℝ) / 100000 * (255 : ℝ) := by rw [← A0_eq_f8_255]
+    _ = (∑ j : Fin 255, (392 : ℝ) / 100000) := by rw [← hcard]
+    _ ≤ f8WindowSum g := hsum
 
 /-! ## T1c-2a finite bookkeeping — window membership
 
@@ -163,6 +192,67 @@ def f8LinearPart (g : Fin 262 → ℝ) : ℝ :=
     bounding the linear part by the ≤ 8-windows multiplicity). -/
 lemma linear_rate_identity : (1 : ℝ) / (500 * 8) * (8 : ℝ) = (1 : ℝ) / 500 := by norm_num
 
+/-- each gap `r` is contained in at most 8 of the 255 windows: `linearMultiplicity r ≤ 8`.
+    The injective witness sends a containing window `j` to the offset `r − j ∈ Fin 8`. -/
+lemma linearMultiplicity_le_8 (r : Fin 262) : linearMultiplicity r ≤ 8 := by
+  classical
+  -- linearMultiplicity r = # { j : Fin 255 | windowContainsGap r j }
+  unfold linearMultiplicity
+  -- define the injection into Fin 8:  j ↦ r.1 − j.1
+  let f : {j : Fin 255 // windowContainsGap r j} → Fin 8 := fun j =>
+    ⟨r.1 - j.1.1, by
+      have hle : j.1.1 ≤ r.1 := j.2.1
+      have hb : r.1 ≤ j.1.1 + 7 := j.2.2
+      omega⟩
+  have hf : Function.Injective f := by
+    intro j₁ j₂ h
+    apply Subtype.ext
+    apply Fin.ext
+    have hh := congrArg (fun x : Fin 8 => (x : ℕ)) h
+    simp [f] at hh
+    have h₁ : j₁.1.1 ≤ r.1 := j₁.2.1
+    have h₂ : j₂.1.1 ≤ r.1 := j₂.2.1
+    omega
+  -- card of the subtype ≤ card (Fin 8) = 8
+  have hcard : (Finset.univ.filter (fun j : Fin 255 => windowContainsGap r j)).card
+      ≤ Fintype.card {j : Fin 255 // windowContainsGap r j} := by
+    exact (Fintype.card_subtype (fun j : Fin 255 => windowContainsGap r j)).ge
+  have hcard8 : Fintype.card {j : Fin 255 // windowContainsGap r j} ≤ 8 := by
+    rw [← Fintype.card_fin 8]
+    exact Fintype.card_le_of_injective f hf
+  exact le_trans hcard hcard8
+
+/-- the linear part of the summed F₈ is bounded by (1/500)·span: for nonnegative gaps,
+    `f8LinearPart g ≤ (1/500) * blockSpan g`. Uses `linearMultiplicity ≤ 8` and
+    `linear_rate_identity`. -/
+lemma f8LinearPart_le_blockSpan {g : Fin 262 → ℝ} (hg : ∀ i : Fin 262, 0 ≤ g i) :
+    f8LinearPart g ≤ (1 / 500) * blockSpan g := by
+  -- for each r: (linearMultiplicity r : ℝ) * g r ≤ 8 * g r
+  have hterm : ∀ r : Fin 262, (linearMultiplicity r : ℝ) * g r ≤ (8 : ℝ) * g r := by
+    intro r
+    have hm : (linearMultiplicity r : ℝ) ≤ (8 : ℝ) := by exact_mod_cast linearMultiplicity_le_8 r
+    exact mul_le_mul_of_nonneg_right hm (hg r)
+  -- sum it
+  have hsum : (∑ r : Fin 262, (linearMultiplicity r : ℝ) * g r) ≤
+      (∑ r : Fin 262, (8 : ℝ) * g r) := by
+    exact Finset.sum_le_sum (fun r _ => hterm r)
+  -- rewrite RHS: ∑ 8 * g r = 8 * ∑ g r = 8 * blockSpan g
+  have hsum8 : (∑ r : Fin 262, (8 : ℝ) * g r) = (8 : ℝ) * blockSpan g := by
+    rw [← Finset.mul_sum]
+    rfl
+  -- multiply the ≤ by the nonnegative 1/(500*8)
+  have hcoef_nonneg : 0 ≤ (1 : ℝ) / (500 * 8) := by norm_num
+  have hmul := mul_le_mul_of_nonneg_left (le_trans hsum (le_of_eq hsum8)) hcoef_nonneg
+  calc
+    f8LinearPart g = (1 / (500 * 8 : ℝ)) * (∑ r : Fin 262, (linearMultiplicity r : ℝ) * g r) := by
+      rfl
+    _ ≤ (1 / (500 * 8 : ℝ)) * ((8 : ℝ) * blockSpan g) := by
+      simpa [hsum8] using hmul
+    _ ≤ (1 / 500) * blockSpan g := by
+      rw [show (1 / (500 * 8 : ℝ)) * ((8 : ℝ) * blockSpan g) =
+            (1 / (500 * 8 : ℝ)) * (8 : ℝ) * blockSpan g by ring]
+      rw [linear_rate_identity]
+
 /-! ## T1c-2a finite bookkeeping — pair coefficient identity
 
 The pair part of the summed F₈ over window j is, for s0 = 0..7 (s = s0+1), the sum over
@@ -174,6 +264,77 @@ identity and the `(9−s)·(2/(9−s)) = 2` identity are the standalone algebra 
 
 /-- the pair coefficient for separation s = s0+1 (1≤s≤8): 2/(9−s) = 2/(8−s0). -/
 def pairCoeff (s : ℕ) : ℝ := 2 / (9 - s : ℝ)
+
+/-- the MT overlap kernel is pointwise nonnegative (it is a square), so `wMT ≥ 0`. -/
+lemma wMT_nonneg (x : ℝ) : 0 ≤ wMT x := by
+  dsimp [wMT]
+  exact sq_nonneg (kMT x)
+
+/-! ## T1c-2a pair part of the summed F₈
+
+The pair part of `f8WindowSum` is, over every window `j`, every `s0 = 0..7` (separation
+`s = s0+1`), and every admissible starting index `i < 8−s0`, the term
+`(2/(8−s0))·wMT(pointDist(y_{j+i}, y_{j+i+s0+1}))`. Each unordered point pair separated by
+`s ≤ 8` gaps is counted exactly `9−s` times with coefficient `2/(9−s)`, for a total
+`2·wMT(distance)`, matching one `blockEnergy` summand; pairs separated by `≥ 9` gaps never
+appear (their `wMT` contribution to `blockEnergy` is dropped from the pair part, which is the
+source of the `≤`). -/
+
+/-- the exact aggregate pair part of `f8WindowSum` (the `wMT`/quadratic terms in `F8gaps`,
+    summed over all 255 windows). For `s0 = 0..7`, `s = s0+1`, `i < 8−s0` is the starting
+    index inside window `j`, and `y_{j+i}, y_{j+i+s0+1}` are the pair's two endpoints. -/
+def f8PairPart (g : Fin 262 → ℝ) : ℝ :=
+  (Finset.univ : Finset (Fin 255)).sum fun j =>
+    (Finset.range (8)).sum fun s0 =>
+      ((2 : ℝ) / ((8 - s0 : ℕ) : ℝ)) * ((Finset.range (8 - s0)).sum fun i =>
+        wMT (gapSpan (gapAt g) (j.1 + i) (s0 + 1)))
+
+/-- **remaining obligation (pair decomposition)** — the summed F₈ splits into its linear part
+    (proved bounded in `f8LinearPart_le_blockSpan`) plus the pair part. Unproven in this
+    bounded pass; pinning it requires unfolding `F8gaps`/`f8Window` and reindexing. Stated as
+    a `def` (no `sorry`), hence compile-only. -/
+def f8WindowSum_eq_linear_add_pair (g : Fin 262 → ℝ) : Prop :=
+  f8WindowSum g = f8LinearPart g + f8PairPart g
+
+/-- **remaining obligation (pair bound)** — the aggregate pair part is bounded by the block
+    energy: each `s`-separated pair is counted `≤ 9−s` times with coefficient `2/(9−s)`, so it
+    contributes `≤ 2·wMT(distance)`; pairs with separation `≥ 9` never appear. Uses
+    `wMT_nonneg` for the dropped pairs. Unproven in this bounded pass (finite counting
+    identity); stated as a `def` (compile-only). -/
+def f8PairPart_le_blockEnergy (g : Fin 262 → ℝ) : Prop :=
+  (∀ i : Fin 262, 0 ≤ g i) → f8PairPart g ≤ blockEnergy g
+
+/-! ## T1c-2a assembly — closing the theorem from the two finite-counting obligations
+
+`blockEnergyFromF8` reduces to two finite-counting obligations (both unproven in this bounded
+pass, each precisely stated as a `def` above): the decomposition
+`f8WindowSum = f8LinearPart + f8PairPart` and the pair bound `f8PairPart ≤ blockEnergy`.
+Together with the proved `f8WindowSum_ge_certified` (route step 1) and
+`f8LinearPart_le_blockSpan` (linear part), they close the theorem. -/
+
+/-- **closing lemma** — if the summed F₈ decomposes into the linear and pair parts, and the
+    pair part is bounded by the block energy, then the full T1c-2a statement holds. This
+    reduces the remaining work to exactly the two finite-counting identities `hdecomp` and
+    `hpair`. -/
+lemma blockEnergyFromF8_of_parts
+    (hdecomp : ∀ g : Fin 262 → ℝ, f8WindowSum g = f8LinearPart g + f8PairPart g)
+    (hpair : ∀ g : Fin 262 → ℝ, (∀ i : Fin 262, 0 ≤ g i) → f8PairPart g ≤ blockEnergy g) :
+    blockEnergyFromF8 := by
+  intro g hg hF
+  -- route step 1: A0 ≤ f8WindowSum g
+  have hsum : (2499 : ℝ) / 2500 ≤ f8WindowSum g := f8WindowSum_ge_certified hF
+  -- decomposition
+  have hdec : f8WindowSum g = f8LinearPart g + f8PairPart g := hdecomp g
+  -- pair bound
+  have hp : f8PairPart g ≤ blockEnergy g := hpair g hg
+  -- linear bound
+  have hl : f8LinearPart g ≤ (1 / 500) * blockSpan g := f8LinearPart_le_blockSpan hg
+  -- assemble: A0 ≤ linear + pair ≤ (1/500)span + blockEnergy
+  have hsum' : (2499 : ℝ) / 2500 ≤ f8LinearPart g + f8PairPart g := by
+    simpa [hdec] using hsum
+  have hlin : f8LinearPart g + f8PairPart g ≤ blockEnergy g + (1 / 500) * blockSpan g := by
+    simpa [add_comm, add_left_comm, add_assoc] using add_le_add hl hp
+  exact le_trans hsum' hlin
 
 /-- exact: pairCoeff (s0+1) = 2/(8−s0), matching the `(2/((8−s0):ℕ):ℝ)` term in `F8gaps`. -/
 lemma pairCoeff_of_s0 (s0 : ℕ) (hs0 : s0 ≤ 8) :
