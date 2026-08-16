@@ -12,6 +12,18 @@
   grid-2000). Jobs kept alive; they accelerate automatically when the host idles.
 - **Task state:** IN_PROGRESS
 
+## Completed work progress
+
+- Launched and monitored the f₉ = 0.00395 certification runs (8 workers, grid-2000 and
+  grid-4000) after the 22-worker spawn proved unstable in this environment.
+- Confirmed the true minimum F₈(k9_opt) = 0.0039818 and quantified the 0.00393/0.00394
+  fallback steps.
+- Synced all preparatory math: ladder tables (ζ + ξ′), ξ′ candidate C₉^{ξ′} = 0.8691835,
+  corrected+cross-checked derivation, audit packet A1–A6, k=11 feasibility, kernel analysis.
+- Validated k=7 via the generalized verifier (byte-identical certificate, 38 s).
+- Tracked progress/cost model: calibrated exponent p ≈ 1.23; revised core-second estimates
+  for grid-2000/grid-4000; recorded the host-load throttling constraint.
+
 ## Completed obligations
 
 - C1 partial: f₉ = 0.00395 certification runs launched and healthy (8 workers; 22-worker
@@ -40,6 +52,15 @@
   Priority raised to AboveNormal (3× improvement, still insufficient).
 - [SUCCEEDED] k=7 validation via the generalized verifier (byte-identical certificate,
   38 s) — verifier machinery sound.
+
+## Tools and methods tried
+
+- `verify_kpoint_parallel.py` with multiprocessing: 22-worker spawn FAILED (CPU frozen);
+  8-worker runs PARTIAL/SUCCEEDED under load.
+- Arb 128-bit interval tables and branch-and-bound pruning for the k=9 F₈ certificate.
+- Atomic `--out` file writes after job-system stdout loss.
+- Cost-model calibration from the 0.0038-grid2000 and 0.0039-grid4000 data points.
+- Certificate hash/byte-identity comparison for k=7 validation.
 
 ## Open obligations
 

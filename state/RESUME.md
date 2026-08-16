@@ -2,7 +2,7 @@
 
 - **Project:** Riemann Conjecture: Critical-Line Zero Proportion
 - **Project ID:** `MRP-20260814-riemann-critical-line-c13b8d`
-- **Updated:** 2026-08-15T05:05:00Z
+- **Updated:** 2026-08-16T20:30:00Z
 
 ## Current objective
 
@@ -89,10 +89,15 @@ reports/xi-prime-audit-manager.md**; A1's formalization gap has a complete math 
 9. ✅ DONE 2026-08-16 (partial): exact m₇/m₈ computation run R-20260816T110000Z-m7exact-ea0a —
    RIGOROUS_PARTIAL_RESULT. k=7 pruning 877→540→18 isoclasses; all 10 b≤3 isoclasses exact,
    m₇^(b≤3)=1345/72; b=4 open (heavy). k=8 full infeasible; m₈^(b≤2)=3724369/181440 exact.
-10. ⚠️ BLOCKED 2026-08-16: T2 terminal-box counting pass killed after excessive CPU
-    consumption (~36k CPU-s vs original ~8.8k CPU-s) with no count; needs profiling /
-    `--no-tangent` / fewer workers before retry.
-11. Continue the open objective: SL (moment route) as a theorem; unconditional liminf → 1 track.
+10. 🔄 IN PROGRESS 2026-08-16: T2 terminal-box counting pass retried with
+    `--no-tangent --workers 4` (background pwsh-14). The earlier 8-worker pass was killed
+    after ~36k CPU-s with no count; this retry is still running and the terminal pruned-box
+    count remains unknown.
+11. 🔄 IN PROGRESS 2026-08-16: T3-open-A AtOne fact promotion — 3/5 M3-open-A hypotheses are
+    now machine-proved (`XiPrimeAtOneFacts`); a subagent is attempting
+    `two_integral_vConv_vMT` (Fubini/autocorrelation identity). After it,
+    `jWin_D1_one_vMT_sandwich` (D₁-certificate sandwich) is the last open AtOne hypothesis.
+12. Continue the open objective: SL (moment route) as a theorem; unconditional liminf → 1 track.
 
 ## Blockers or missing inputs
 
