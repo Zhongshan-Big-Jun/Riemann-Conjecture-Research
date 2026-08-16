@@ -26,8 +26,11 @@ from `nine-point-f8-gt-392over100000-grid2000.txt`.
 (original audited verifier untouched). It adds `--emit-boxes` and `--boxes-out`; the counting
 pass is simply running it without `--emit-boxes` and reading `T2 accepted terminal boxes:`.
 The original audited verifier remains byte-identical. **The real counting pass
-(`9 392/100000 --grid 2000 --precision 128 --workers 8`) was started 2026-08-16 and is
-running in the background.**
+(`9 392/100000 --grid 2000 --precision 128 --workers 8`) was started 2026-08-16 but was
+killed after consuming far more CPU than the original certificate run (~36k CPU-s vs the
+original ~8.8k CPU-s) without completing; the terminal-box count is still unknown. Next step:
+profile/instrument the counting pass (e.g., run with `--no-tangent`, fewer workers, or a
+sampled subset) to determine whether the slowdown is a script bug or environmental.**
 
 Add an optional `--emit-boxes out.json` mode to `verify_kpoint_parallel.py`:
 

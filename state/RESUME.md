@@ -89,8 +89,9 @@ reports/xi-prime-audit-manager.md**; A1's formalization gap has a complete math 
 9. ✅ DONE 2026-08-16 (partial): exact m₇/m₈ computation run R-20260816T110000Z-m7exact-ea0a —
    RIGOROUS_PARTIAL_RESULT. k=7 pruning 877→540→18 isoclasses; all 10 b≤3 isoclasses exact,
    m₇^(b≤3)=1345/72; b=4 open (heavy). k=8 full infeasible; m₈^(b≤2)=3724369/181440 exact.
-10. 🔄 IN PROGRESS 2026-08-16: T2 terminal-box counting pass running
-    (`verify_kpoint_parallel_t2count.py`; original audited verifier untouched).
+10. ⚠️ BLOCKED 2026-08-16: T2 terminal-box counting pass killed after excessive CPU
+    consumption (~36k CPU-s vs original ~8.8k CPU-s) with no count; needs profiling /
+    `--no-tangent` / fewer workers before retry.
 11. Continue the open objective: SL (moment route) as a theorem; unconditional liminf → 1 track.
 
 ## Blockers or missing inputs

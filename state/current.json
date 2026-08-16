@@ -37,7 +37,7 @@
     "Independent third-party audit of 0.00392 record DONE (PASS-WITH-LIMITS).",
     "T1c-2b psi_defect PROVED; T1c-2a block-energy REPAIRABLE_GAP (linear part proved, two finite-counting obligations open); remaining T1c sub-steps: T1c-2c pinching, T1c-2d uniformity, full-O(S) Delta survival; T2 certificate reflection.",
     "Exact m7/m8 partial FINALIZED: m7^(b<=3)=1345/72 exact, b=4 open; m8^(b<=2)=3724369/181440 exact; Lambda_4 remains open.",
-    "T2 terminal-box counting pass running in background.",
+    "T2 counting pass KILLED after excessive runtime; needs profiling/--no-tangent/fewer workers before next attempt.",
     "Ladder 0.00393 grid-4000 remains queued (borderline, not launched)."
   ],
   "blockers": [],
@@ -47,5 +47,5 @@
     "remaining_hours": null
   },
   "last_literature_cutoff": "2026-08-14",
-  "updated_at": "2026-08-16T14:00:00Z"
+  "updated_at": "2026-08-16T15:00:00Z"
 }
