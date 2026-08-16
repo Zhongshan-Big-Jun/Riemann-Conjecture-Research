@@ -54,7 +54,10 @@ needs the mathlib fetch/build, doable in a later session).
   (ii) a Lean checker recomputes box_lower exactly (rational kernel-table values +
   interval arithmetic with fmpq) and verifies the partition covers [0,∞)^8. The
   kernel-table data (31368 entries × 128-bit ≈ 500 KB) is embeddable. This is the
-  few-weeks-scale task; not started.
+  few-weeks-scale task; not started. **2026-08-16: concrete implementation plan written
+  (`reports/t2-reflection-plan.md`)** — Step 1 is a counting pass to learn the terminal
+  pruned-box count, then emit a compressed pruning certificate JSON for a Lean exact-rational
+  checker.
 - **T3 (ξ′ side)**: DONE 2026-08-16 at the machine-accepted level (`Record9.XiPrimeMT`:
   AdmWindow cos instance with cMT = cRho+4, windowZeroSide_atV_MT, record_c9xip with the
   ξ′ chain as explicit bridge). Remaining: AtOne κ₁(1,vMT) certificate (run
