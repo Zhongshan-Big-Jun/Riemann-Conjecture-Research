@@ -134,7 +134,7 @@ roots; the manager records paths and hashes only.
   unconditional c > 0.673008528 (or a verified proof of that constant) is novel.
 - **Novelty audit path:** `literature/maps/FRONTIER.md` §1–§2 (divergent search log with
   query → result → locator; exact known theorems; barrier list; excluded crank noise).
-- **Snapshot hash:** `sha256:C3FB3FD7FEFBB3CFE7DCC46EA2A725C48130DB394F88134F7B7B7E63D5C5B6F7`
+- **Snapshot hash:** `sha256:A57D576FA694E501AA47774C783A609DFAD717F6D874A622F88379D7016321D4`
   (content hash of the B0 artifact literature/maps/FRONTIER.md, refreshed 2026-08-16 after
   the independent third-party audit of the 0.00392 record (PASS-WITH-LIMITS,
   reports/independent-audit-00392.md); previous hash 94F920E5… recorded after the SL run
