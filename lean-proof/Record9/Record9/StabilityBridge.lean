@@ -52,6 +52,7 @@ Fidelity notes:
 import Record9.Chain9
 import Zeta23.ThmD.Mult
 import Zeta23.LinAlg.PosIndex
+import Zeta23.Assembly
 
 noncomputable section
 
@@ -107,6 +108,126 @@ lemma trPsi_nonneg {n : ℕ} (G : Matrix (Fin n) (Fin n) ℝ) (hG : G.IsHermitia
   unfold trPsi
   exact Finset.sum_nonneg (fun i _ => Psi_nonneg _)
 
+/-- Sum identity: `Σᵢ (fᵢ−1)² = Σᵢ fᵢ² − 2Σᵢ fᵢ + n`. -/
+lemma sum_sq_sub_one {n : ℕ} (f : Fin n → ℝ) :
+    (∑ i, (f i - 1)^2) = (∑ i, (f i)^2) - 2 * (∑ i, f i) + (Fintype.card (Fin n) : ℝ) := by
+  calc
+    (∑ i, (f i - 1)^2) = ∑ i, ((f i)^2 - 2 * f i + 1) := by
+      apply Finset.sum_congr rfl
+      intro i hi
+      ring
+    _ = (∑ i, (f i)^2) - 2 * (∑ i, f i) + (Fintype.card (Fin n) : ℝ) := by
+      rw [Finset.sum_add_distrib, Finset.sum_sub_distrib]
+      simp only [Finset.sum_const, nsmul_eq_mul]
+      rw [← Finset.mul_sum]
+      rw [Finset.card_univ]
+      ring
+
+/-- For a real Hermitian matrix, `G j i = G i j` (symmetry). -/
+lemma hermitian_symm {n : ℕ} {G : Matrix (Fin n) (Fin n) ℝ} (hG : G.IsHermitian)
+    (i j : Fin n) : G j i = G i j := by
+  have h := congr_fun (congr_fun hG i) j
+  simpa [Matrix.conjTranspose_apply] using h
+
+/-- `tr Ψ(G) = ‖G‖_F² − 2tr G + n` when all eigenvalues are ≤ 2. -/
+lemma trPsi_eq_frob_sub_two_rtrace_add_card {n : ℕ} (G : Matrix (Fin n) (Fin n) ℝ)
+    (hG : G.IsHermitian) (hle : ∀ i, hG.eigenvalues i ≤ 2) :
+    trPsi G hG = RHLinalg.frobSq G - 2 * RHLinalg.rtrace G + (Fintype.card (Fin n) : ℝ) := by
+  unfold trPsi
+  have hPsi : ∀ i, Psi (hG.eigenvalues i) = (hG.eigenvalues i - 1)^2 := fun i => Psi_eq_sq_of_le_two (hle i)
+  simp_rw [hPsi]
+  rw [RHLinalg.frobSq_hermitian_eq_sum_sq_eigenvalues hG, RHLinalg.rtrace_eq_sum_eigenvalues hG]
+  exact sum_sq_sub_one (fun i => hG.eigenvalues i)
+
+/-- `‖G‖_F² = Σᵢⱼ Gᵢⱼ²` for real matrices. -/
+lemma frobSq_real_eq_sum_sq {n : ℕ} (G : Matrix (Fin n) (Fin n) ℝ) :
+    RHLinalg.frobSq G = ∑ i, ∑ j, (G i j)^2 := by
+  rw [Zeta23.Assembly.frobSq_eq_sum_norm_sq]
+  simp
+
+/-- `tr G = Σᵢ Gᵢᵢ` for real matrices. -/
+lemma rtrace_real_eq_sum_diag {n : ℕ} (G : Matrix (Fin n) (Fin n) ℝ) :
+    RHLinalg.rtrace G = ∑ i, G i i := by
+  simp [RHLinalg.rtrace, Matrix.trace]
+
+/-- For a symmetric function, the sum over ordered unequal pairs is twice the sum over `i<j`. -/
+lemma sum_pair_ne_eq_two_sum_pair_lt {n : ℕ} (f : Fin n → Fin n → ℝ)
+    (hsymm : ∀ i j, f j i = f i j) :
+    (∑ i, ∑ j, if i ≠ j then f i j else 0)
+      = 2 * (∑ i, ∑ j, if i < j then f i j else 0) := by
+  have hsplit :
+      (∑ i, ∑ j, if i ≠ j then f i j else 0)
+        = (∑ i, ∑ j, if i < j then f i j else 0)
+          + (∑ i, ∑ j, if j < i then f i j else 0) := by
+    rw [← Finset.sum_add_distrib]
+    apply Finset.sum_congr rfl
+    intro i hi
+    rw [← Finset.sum_add_distrib]
+    apply Finset.sum_congr rfl
+    intro j hj
+    by_cases hij : i < j
+    · have hij_ne : i ≠ j := ne_of_lt hij
+      have hj_not_lt : ¬ j < i := not_lt_of_gt hij
+      simp [hij, hij_ne, hj_not_lt]
+    · by_cases hji : j < i
+      · have hij_ne : i ≠ j := ne_of_gt hji
+        have hi_not_lt : ¬ i < j := not_lt_of_gt hji
+        simp [hij, hji, hij_ne, hi_not_lt]
+      · have hle1 : i ≤ j := le_of_not_gt hji
+        have hle2 : j ≤ i := le_of_not_gt hij
+        have hij_eq : i = j := le_antisymm hle1 hle2
+        simp [hij, hji, hij_eq]
+  have hgt :
+      (∑ i, ∑ j, if j < i then f i j else 0)
+        = (∑ i, ∑ j, if i < j then f i j else 0) := by
+    rw [Finset.sum_comm]
+    simpa [hsymm] using (Finset.sum_comm (s := (Finset.univ : Finset (Fin n))) (t := (Finset.univ : Finset (Fin n)))
+      (f := fun j i => if j < i then f i j else 0)).symm
+  rw [hsplit, hgt]
+  ring
+
+/-- `Σ_{i≠j} Gᵢⱼ² = 2 Σ_{i<j} Gᵢⱼ²` for a real Hermitian `G`. -/
+lemma sum_sq_eq_diag_sq_add_two_sumSqOffDiag {n : ℕ} (G : Matrix (Fin n) (Fin n) ℝ)
+    (hG : G.IsHermitian) :
+    (∑ i, ∑ j, (G i j)^2) = (∑ i, (G i i)^2) + 2 * sumSqOffDiag G := by
+  have hsymm : ∀ i j, (G j i)^2 = (G i j)^2 := by
+    intro i j
+    rw [hermitian_symm hG i j]
+  have hpair := sum_pair_ne_eq_two_sum_pair_lt (fun i j => (G i j)^2) hsymm
+  have hdiag_split :
+      (∑ i, ∑ j, (G i j)^2) = (∑ i, (G i i)^2) + (∑ i, ∑ j, if i ≠ j then (G i j)^2 else 0) := by
+    rw [← Finset.sum_add_distrib]
+    apply Finset.sum_congr rfl
+    intro i hi
+    -- inner split: `Σⱼ Gᵢⱼ² = Gᵢᵢ² + Σ_{j≠i} Gᵢⱼ²`
+    have hinner : (∑ j, (G i j)^2) = (G i i)^2 + (∑ j, if i ≠ j then (G i j)^2 else 0) := by
+      rw [← Finset.sum_erase_add (s := Finset.univ) (f := fun j => (G i j)^2) (a := i) (Finset.mem_univ i)]
+      rw [add_comm]
+      -- `Σ_{j∈univ.erase i} Gᵢⱼ² = Σⱼ (if i ≠ j then Gᵢⱼ² else 0)`
+      rw [← Finset.sum_filter]
+      congr 1
+      apply Finset.sum_congr
+      · ext j
+        simp [eq_comm]
+      · intro j hj
+        rfl
+    exact hinner
+  rw [hdiag_split, hpair]
+  simp [sumSqOffDiag]
+
+/-- `2 Σ_{i<j} Gᵢⱼ² ≤ ‖G‖_F² − 2tr G + n` for a real Hermitian `G`. -/
+lemma offdiag_le_frob_sub_two_rtrace_add_card {n : ℕ} (G : Matrix (Fin n) (Fin n) ℝ)
+    (hG : G.IsHermitian) :
+    2 * sumSqOffDiag G ≤ RHLinalg.frobSq G - 2 * RHLinalg.rtrace G + (Fintype.card (Fin n) : ℝ) := by
+  rw [frobSq_real_eq_sum_sq G, rtrace_real_eq_sum_diag G]
+  rw [sum_sq_eq_diag_sq_add_two_sumSqOffDiag G hG]
+  have hdiag_eq : (∑ i, (G i i)^2) - 2 * (∑ i, G i i) + (Fintype.card (Fin n) : ℝ)
+      = ∑ i, (G i i - 1)^2 := by
+    rw [← sum_sq_sub_one (fun i => G i i)]
+  have hdiag_nonneg : 0 ≤ ∑ i, (G i i - 1)^2 := by
+    exact Finset.sum_nonneg (fun i _ => sq_nonneg _)
+  nlinarith
+
 /-- the `1`-cap branch: if 1 ≤ tr Ψ(G) then ψ_defect holds (the μ_max > 2 case). -/
 lemma psi_defect_of_unit {n : ℕ} (G : Matrix (Fin n) (Fin n) ℝ) (hG : G.IsHermitian)
     (h : 1 ≤ trPsi G hG) :
@@ -124,11 +245,27 @@ lemma psi_defect_of_lower {n : ℕ} (G : Matrix (Fin n) (Fin n) ℝ) (hG : G.IsH
 
 /-- **psi_defect (T1c-2b)** — the exact defect-lemma statement:
     tr Ψ(G) ≥ min(1, 2·Σ_{i<j} |G_ij|²) for Hermitian G.
-    The two machine-checked combinators `psi_defect_of_unit` / `psi_defect_of_lower` close
-    the two eigenvalue-branch cases; the spectral sub-steps that supply their premises are the
-    recorded open analytic obligations (the Ψ-form application of the rank-trace machinery). -/
-def psi_defect {n : ℕ} (G : Matrix (Fin n) (Fin n) ℝ) (hG : G.IsHermitian) : Prop :=
-  min 1 (2 * sumSqOffDiag G) ≤ trPsi G hG
+    Now PROVED: the two spectral sub-steps (all eigenvalues ≤ 2 ⇒ Frobenius lower bound;
+    some eigenvalue > 2 ⇒ tr Ψ ≥ 1) close the case split. -/
+theorem psi_defect {n : ℕ} (G : Matrix (Fin n) (Fin n) ℝ) (hG : G.IsHermitian) :
+    min 1 (2 * sumSqOffDiag G) ≤ trPsi G hG := by
+  by_cases hmax : ∃ i, 2 < hG.eigenvalues i
+  · rcases hmax with ⟨i, hi⟩
+    have htr : 1 ≤ trPsi G hG := by
+      unfold trPsi
+      have hsum : Psi (hG.eigenvalues i) ≤ ∑ j, Psi (hG.eigenvalues j) := by
+        exact Finset.single_le_sum (fun j _ => Psi_nonneg _) (Finset.mem_univ i)
+      have hpsi : (1 : ℝ) ≤ Psi (hG.eigenvalues i) := le_of_lt (Psi_gt_one_of_gt_two hi)
+      exact le_trans hpsi hsum
+    exact psi_defect_of_unit G hG htr
+  · have hall : ∀ i, hG.eigenvalues i ≤ 2 := by
+      intro i
+      by_contra h
+      exact hmax ⟨i, lt_of_not_ge h⟩
+    have htr : 2 * sumSqOffDiag G ≤ trPsi G hG := by
+      rw [trPsi_eq_frob_sub_two_rtrace_add_card G hG hall]
+      exact offdiag_le_frob_sub_two_rtrace_add_card G hG
+    exact psi_defect_of_lower G hG htr
 
 /-- the defect is nonnegative: Δ(M°) = tr Ψ(M°) ≥ 0 (used by the additive +Δ survival). -/
 lemma deltaMT_nonneg_via_trPsi {n : ℕ} (G : Matrix (Fin n) (Fin n) ℝ) (hG : G.IsHermitian) :

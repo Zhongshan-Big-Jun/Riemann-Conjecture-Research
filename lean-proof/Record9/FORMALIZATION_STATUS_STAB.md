@@ -7,9 +7,10 @@ namespace `Zeta23.ThmD`. Pinned mathlib `51e6992e`, Lean `v4.33.0-rc2`.
 Status line: **MACHINE_ACCEPTED_PENDING_AUDIT** — `lake build Record9.StabilityBridge` exits 0,
 no `sorry`/`admit`/`axiom` outside comments, `#print axioms` on the headline theorems is
 `{propext, Classical.choice, Quot.sound}` (base-only). The machine-checked content is the
-Ψ scalar facts, the two-case ψ-defect combinators, the M2 additive `+Δ` survival algebra, and
-the M3 constant-identity algebra; the genuinely analytic sub-steps are carried as explicit
-hypotheses (honest bridge), exactly as the task permits and the obligation table records.
+Ψ scalar facts, the **full `psi_defect` theorem (T1c-2b core now PROVED)**, the M2 additive
+`+Δ` survival algebra, and the M3 constant-identity algebra; the remaining genuinely analytic
+sub-steps are carried as explicit hypotheses (honest bridge), exactly as the task permits and
+the obligation table records.
 
 ---
 
@@ -19,13 +20,19 @@ hypotheses (honest bridge), exactly as the task permits and the obligation table
 - `Psi (t : ℝ)` — `if t ≤ 2 then (t−1)² else 2t−3` (exact, candidate_proof §0).
 - `trPsi G hG` — tr Ψ(G) = Σᵢ Ψ(μᵢ) for Hermitian G (spectral definition via `hG.eigenvalues`).
 - `sumSqOffDiag G` — Σ_{i<j} |G_ij|².
-- `psi_defect G hG : Prop` — the exact T1c-2b statement `min 1 (2·Σ_{i<j}|G_ij|²) ≤ trΨ(G)`.
+- `psi_defect G hG` — the **proved** T1c-2b theorem
+  `min 1 (2·Σ_{i<j}|G_ij|²) ≤ trΨ(G)`.
 - Machine-checked lemmas:
   - `Psi_eq_sq_of_le_two`, `Psi_eq_linear_of_gt_two` (case logic),
   - `Psi_nonneg` (Ψ ≥ 0), `Psi_gt_one_of_gt_two` (the `>1` branch),
   - `trPsi_nonneg` / `deltaMT_nonneg_via_trPsi` (Δ ≥ 0),
   - `psi_defect_of_unit` (if `1 ≤ trΨ(G)` then ψ_defect — the `1`-cap branch),
-  - `psi_defect_of_lower` (if `2·Σ_{i<j}|G_ij|² ≤ trΨ(G)` then ψ_defect — the `2Σ` branch).
+  - `psi_defect_of_lower` (if `2·Σ_{i<j}|G_ij|² ≤ trΨ(G)` then ψ_defect — the `2Σ` branch),
+  - spectral/Frobenius helpers: `sum_sq_sub_one`, `hermitian_symm`,
+    `trPsi_eq_frob_sub_two_rtrace_add_card`, `frobSq_real_eq_sum_sq`,
+    `rtrace_real_eq_sum_diag`, `sum_pair_ne_eq_two_sum_pair_lt`,
+    `sum_sq_eq_diag_sq_add_two_sumSqOffDiag`,
+    `offdiag_le_frob_sub_two_rtrace_add_card`.
 
 ### M2 — T1c-1 (`stability_eps` for the true Δ)
 - `deltaMT_true : ℝ → ℝ` — the true Δ(M°)(T) = tr Ψ(M°(T)) of the unit-normalized
@@ -64,7 +71,7 @@ Toolchain: leanprover/lean4:v4.33.0-rc2, Lake 5.0.0, mathlib @ 51e6992e.
 
 | Obligation | Machine status | Exact gap |
 |---|---|---|
-| **M1 ψ-defect lemma `psi_defect`** | statement frozen + two-case combinators machine-checked | **Open:** the two spectral sub-steps that close the branch premises — (S1) all eigenvalues ≤ 2 ⇒ `tr Ψ(G) = frobSq(G−I)` and `frobSq(G−I) ≥ 2·Σ_{i<j}\|G_ij\|²` (off-diagonal Frobenius of G−I via `sum_sq_*` mirror); (S2) some eigenvalue > 2 ⇒ `1 ≤ tr Ψ(G)`. These are the recorded "Lemma 2.1 Ψ-form application" analytic obligation. |
+| **M1 ψ-defect lemma `psi_defect`** | ✅ **PROVED** (`theorem psi_defect`, machine-checked) | none — both spectral sub-steps (S1 all eigenvalues ≤ 2 ⇒ Frobenius lower bound; S2 some eigenvalue > 2 ⇒ `1 ≤ trΨ(G)`) are now formalized. |
 | **M2 T1c-1 ± ε-form** | `stability_eps_true`, `base_eps`, `from_base_and_defect` machine-checked | **Open (analytic):** the Lemma 2.1 assembly keeping a full order-O(S) Δ additively in `thmD_mult2_abstract`/`N0star_lower_c` without bounding Δ small; this module machine-checks only the additive sub-case where `0 ≤ Δ ∧ Δ ≤ o(N)` (`defect_eps`). The full-O(S) Δ survival is the OpenAI Cor 2.2 audited step. |
 | **M3 T1c-2 ε-form** | `stability_averaged_eps_true` + constant algebra machine-checked | **Open (analytic):** T1c-2c pinching `trΨ(M°) ≥ block-average` and T1c-2d uniformity `Σ\|G_ij\|² = (1/2)E_m + o(1)` (kernel-limit reuse). Routed via `pinching_averaged_eps` / `averaged_from_pinching` as explicit hypotheses. |
 | **T1c-2a block energy** `E_m+(1/500)span ≥ A₀` (T2 `CERTIFIED_F8_GE` input) | not in this module | finite window-sum algebra + the certified `F₈ ≥ 392/100000`; deferred (T2-scope input, Chain9's `CERTIFIED_F8_GE`). |

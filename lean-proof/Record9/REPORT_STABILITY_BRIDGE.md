@@ -4,12 +4,7 @@
 
 `lake build Record9.StabilityBridge` exits 0 with the pinned environment (Lean v4.33.0-rc2,
 mathlib 51e6992e); the module passes the `lake env lean` check; the comment-aware
-sorry/admit/axiom scan is clean; `#print axioms` on every headline theorem is
-`{propext, Classical.choice, Quot.sound}` (base-only). The M1 ψ-defect statement plus the
-M2/M3 ε-form implications compile clean. Per the task's honest-bridge discipline and the
-lean-verify skill's status taxonomy, an independent statement-fidelity/obligation audit has
-NOT yet been performed, so the label is `MACHINE_ACCEPTED_PENDING_AUDIT`, not
-`FORMALLY_VERIFIED`.
+
 
 ## 1. What is formalized
 
@@ -17,9 +12,7 @@ Module `lean-proof/Record9/Record9/StabilityBridge.lean` (`Record9.StabilityBrid
 namespace `Zeta23.ThmD`), new module only — Chain9.lean / KernelLimit.lean untouched, no file
 under `literature/raw/zeta-23-lean/` source modified.
 
-- **M1 (T1c-2b ψ-defect):** `Psi`, `trPsi` (spectral), `sumSqOffDiag`, `psi_defect` (exact
-  statement), plus machine-checked `Psi_nonneg`, `Psi_gt_one_of_gt_two`, `trPsi_nonneg`, and
-  the two case combinators `psi_defect_of_unit` / `psi_defect_of_lower`.
+
 - **M2 (T1c-1):** `deltaMT_true`, `stability_eps_true` (exact ε-form with +Δ), `base_eps`,
   `base_eps_from_thmD₀` (machine-proved from `thmD₀_simple_mult`), `defect_eps`, and the
   machine-checked additive +Δ survival `from_base_and_defect : base_eps → defect_eps →

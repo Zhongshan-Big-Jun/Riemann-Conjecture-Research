@@ -134,12 +134,12 @@ roots; the manager records paths and hashes only.
   unconditional c > 0.673008528 (or a verified proof of that constant) is novel.
 - **Novelty audit path:** `literature/maps/FRONTIER.md` §1–§2 (divergent search log with
   query → result → locator; exact known theorems; barrier list; excluded crank noise).
-- **Snapshot hash:** `sha256:94F920E5A572976BBE0F4A8443C63F24E2F4BB68B84DD8CA4CACB37FDB752129`
-  (content hash of the B0 artifact literature/maps/FRONTIER.md, refreshed 2026-08-15 after
-  the SL run ingestion (SL row: load-bearing form = μ_λ({0})=0, Hankel criterion) and the
-  k-family feasibility update; previous hash 88D0AC0B… recorded at the f₉ = 0.00392
-  certification release (world records ζ 0.6730664726759…, ξ′ 0.8692000910966…; 0.00395 row
-  withdrawn as infeasible); knowledge base empty at dispatch, no accepted-knowledge
+- **Snapshot hash:** `sha256:31A82F8DB77004DE7E92A7C19B6E30897C8387A6A6BD7B4E53A2D93E3F7F7C42`
+  (content hash of the B0 artifact literature/maps/FRONTIER.md, refreshed 2026-08-16 after
+  the independent third-party audit of the 0.00392 record (PASS-WITH-LIMITS,
+  reports/independent-audit-00392.md); previous hash 94F920E5… recorded after the SL run
+  ingestion and k-family feasibility update; knowledge base empty at dispatch, no
+  accepted-knowledge
   dependencies; dispatch commit recorded per run's repro_manifest).
 - **Backfill:** literature/maps/FRONTIER.md refreshed 2026-08-14; index/papers.json has 7
   registered papers; novel-risk line in FRONTIER.md §3.
@@ -160,7 +160,7 @@ roots; the manager records paths and hashes only.
 | BGSTB 2023 | pair correlation no RH | https://arxiv.org/abs/2306.04799 | external |
 | BGSTB 2025 | proportions I | https://arxiv.org/abs/2501.14545 | external |
 | GLSS 2025 | PCC simple/critical | https://arxiv.org/abs/2503.15449 | external |
-| B0 map | frontier + audit trail | literature/maps/FRONTIER.md | 94F920E5A572976BBE0F4A8443C63F24E2F4BB68B84DD8CA4CACB37FDB752129 |
+
 
 ## Required run location
 

@@ -95,7 +95,7 @@
       "started_at": "2026-08-14T13:15:28Z",
       "upstream_status_verbatim": "RIGOROUS_PARTIAL_RESULT — CERTIFIED RECORD",
       "summary": "NEW UNCONDITIONAL WORLD RECORD 2026-08-15: liminf N0^s(T,2T)/N(T,2T) >= C_9(zeta) = (657,500*H_MT - 1,310)/655,001 = 0.673066472675939665848... (improves extpress 0.67305364595258992520 by 1.28e-5) and linked C_9(xi') = 0.86920009109661916184... (improves the audited 0.86918353505282747704 by 1.66e-5; exceeds quartic 0.86864 by 5.6e-4). Certificate nine-point-f8-gt-392over100000-grid2000.txt: verified=true, F8 >= 392/100000, grid 2000, 128-bit, nodes 64,748,524, maximum_depth 80, initial_boxes 256, kernel sha 39a209d3..., second-deriv sha 29ca4522..., components [[1868,2458];[3511,30823]], elapsed 8,765.75 s; certificate file sha256 7F25401A14F897CD1EC26C4B0E0A25A5F87943CFB656329012CB17919280FAC3. All precomputed expected values matched exactly. Original 0.00395 target withdrawn as infeasible (true min 0.003950049001339790). Chain: n=255, m=263, A_0 = 2499/2500 < 1.",
-      "audit_status": "CERTIFIED (manager-level audit 2026-08-15: B1-B6 verified — every precomputed expected value matched; see runs/.../f9push-d3b58c/audit_report.md); independent re-audit dispatchable via audit-dispatch-prompt.md",
+      "audit_status": "CERTIFIED (manager-level audit 2026-08-15: B1-B6 verified - every precomputed expected value matched; see runs/.../f9push-d3b58c/audit_report.md) + INDEPENDENT THIRD-PARTY RE-AUDIT 2026-08-16: PASS-WITH-LIMITS (reports/independent-audit-00392.md)",
       "key_artifacts": [
         "candidate_proof.md",
         "release-checklist.md (0.00392, executed)",
@@ -108,9 +108,8 @@
         "reproducibility/certificates/nine-point-f8-gt-392over100000-grid2000.txt (sha256 7F25401A14F897CD1EC26C4B0E0A25A5F87943CFB656329012CB17919280FAC3)"
       ],
       "created_at": "2026-08-14T13:15:28Z",
-      "updated_at": "2026-08-15T05:05:00Z",
+      "updated_at": "2026-08-16T09:00:00Z",
       "open_obligations": [
-        "independent (third-party) re-audit of the 0.00392 certificate + record theorem (audit-dispatch-prompt.md)",
         "Lean AdmWindow instance for cos(sqrt2 s) (Stage C, blueprint ready)",
         "unconditional liminf N0^s/N -> 1 remains OPEN (conditional routes HL*+SL / PCC proved)"
       ]
@@ -291,9 +290,9 @@
         "numerical_evidence.md + reproducibility/ (stabridge_sublemma.py, check_run.log, sublemma_run.log; SHA256SUMS 1187 B)"
       ],
       "created_at": "2026-08-16T06:00:00Z",
-      "updated_at": "2026-08-16T06:15:00Z",
+      "updated_at": "2026-08-16T09:00:00Z",
       "open_obligations": [
-        "Lean formalization of Lemma 2.1 (Psi-form) + T1c-1 additive +Delta survival + T1c-2a/b/c/d",
+        "T1c-2b psi_defect PROVED; remaining T1c: T1c-1 full-O(S) Delta survival, T1c-2a block energy (T2 input), T1c-2c pinching, T1c-2d uniformity",
         "T1c-2c pinching/averaging and T1c-2d uniformity: the two non-trivial analytic sub-steps (analysis sketches provided)",
         "T2 certificate reflection unchanged"
       ]
@@ -317,6 +316,27 @@
         "general-k proof of the residual identity (sub-identities M1/M2) — the combinatorial core of Lemma P/G2",
         "closed c-combination formulas for b >= 3 J_sigma values (currently table-driven)",
         "G3 (Lemma H: Lambda_m(0)->0) + SL itself and the unconditional liminf -> 1 remain OPEN"
+      ]
+    },
+    {
+      "run_id": "R-20260816T080000Z-g2proof-a24d",
+      "task_packet_id": "Q-20260814-criticalline-p1-507bb5",
+      "run_root": "runs/rigorous-open-math-research/R-20260816T080000Z-g2proof-a24d",
+      "started_at": "2026-08-16T08:00:00Z",
+      "upstream_status_verbatim": "RIGOROUS_PARTIAL_RESULT (finalizing)",
+      "summary": "SL gap G2 general-k proof attempt (bounded pass): M1 closed (H_sigma always connected for b>=2, disconnected branch vacuous); per-pi box-spline exact contributions certified for b=3,4 low cases; b=2 family closed (J=c_m-c_{m+2}>0); killed routes: multiplicative/class-function EGF, naive degree-2 contraction; k=7 new-isoclass verification in progress; M2 (low-surplus signed box-spline sum telescopes to 0; surplus survives) remains the open core.",
+      "audit_status": "self-audit in progress; final artifacts being written",
+      "key_artifacts": [
+        "problem_contract.md",
+        "research_ledger.md",
+        "whiteboard.md",
+        "reproducibility/ (exact box-spline engines, per-J datasets)"
+      ],
+      "created_at": "2026-08-16T08:00:00Z",
+      "updated_at": "2026-08-16T09:30:00Z",
+      "open_obligations": [
+        "M2 general-k proof: sum sign(pi) B_{H U pi}(0) = 0 <=> m <= 2b-3",
+        "G3 (Lemma H) + SL itself remain open"
       ]
     }
   ]

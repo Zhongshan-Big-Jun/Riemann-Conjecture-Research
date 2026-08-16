@@ -2,9 +2,12 @@
   "schema_version": 1,
   "project_id": "MRP-20260814-riemann-critical-line-c13b8d",
   "lifecycle_state": "ACTIVE",
-  "current_stage": "stage-B-research",
-  "current_objective": "Push the proportion of zeros of zeta on the critical line toward 1: verify OpenAI draft (0.6730085), attempt improvements, prove conditional probability-1 theorems, report exact obstructions.",
-  "active_direction_ids": ["D1", "D2"],
+  "current_stage": "stage-C-lean",
+  "current_objective": "Complete Stage C Lean formalization of the 0.6730665 record (O1 baseline, T1 chain, T2 certificate, T3 xi-prime); continue SL lemma and unconditional liminf->1; maintain ledger/index/frontier and git sync.",
+  "active_direction_ids": [
+    "D1",
+    "D2"
+  ],
   "active_paper_ids": [
     "P-2026-claude-zeroprop-1bd319",
     "P-2026-gpt5sol-simplezeros-e29822",
@@ -14,21 +17,26 @@
     "P-2025-bgstb-proportions-cfa991",
     "P-2025-glss-pcc-d8a559"
   ],
-  "active_problem_ids": ["O-2026-criticalline-proportion"],
-  "active_task_ids": ["Q-20260814-criticalline-p1-507bb5"],
+  "active_problem_ids": [
+    "O-2026-criticalline-proportion"
+  ],
+  "active_task_ids": [
+    "Q-20260814-criticalline-p1-507bb5"
+  ],
   "active_run_ids": [
     "R-20260814T041219Z-mainpush-3cdc81",
     "R-20260814T041219Z-oaidraft-7c3e73",
     "R-20260814T041219Z-condp1-698ec7",
     "R-20260814T041219Z-extpress-2f36ae",
-    "R-20260814T131528Z-f9push-d3b58c"
+    "R-20260814T131528Z-f9push-d3b58c",
+    "R-20260816T080000Z-g2proof-a24d"
   ],
   "latest_checkpoint_path": null,
   "next_actions": [
-    "Collect f9=0.00395 certificates (pwsh-1 grid-4000 / pwsh-2 grid-2000, 8 workers each, running since 2026-08-14T23:13Z); on landing, execute release-checklist.md in R-20260814T131528Z-f9push-d3b58c.",
-    "Arithmetic of final constants verified at mpmath 70 digits with exact rational forms (2026-08-15): C9(zeta,0.00395) = (26100000*H_MT - 52000)/26000065 = 0.6730855621335040490732; C9(xip,0.00395) = 0.8692247262341557806822.",
-    "Audits A1-A6 for the xi-prime candidate CLOSED at manager level (PASS) - reports/xi-prime-audit-manager.md (2026-08-15); open: Lean AdmWindow instance for cos (AtOne/Stage C), f9=0.00395 certificate itself.",
-    "Write stage summary + interruption handoff; git sync."
+    "Independent third-party audit of 0.00392 record DONE (PASS-WITH-LIMITS, reports/independent-audit-00392.md).",
+    "T1c-2b psi_defect PROVED in Lean; remaining T1c sub-steps: T1c-2a (T2 input), T1c-2c pinching, T1c-2d uniformity, full-O(S) Delta survival; T2 certificate reflection.",
+    "G2 general-k proof attempt (run R-20260816T080000Z-g2proof-a24d) finalizing; SL m7/m8 or G3 route next.",
+    "Ladder 0.00393 grid-4000 remains queued (borderline, not launched)."
   ],
   "blockers": [],
   "budget": {
@@ -37,5 +45,5 @@
     "remaining_hours": null
   },
   "last_literature_cutoff": "2026-08-14",
-  "updated_at": "2026-08-15T00:25:00Z"
+  "updated_at": "2026-08-16T09:00:00Z"
 }
