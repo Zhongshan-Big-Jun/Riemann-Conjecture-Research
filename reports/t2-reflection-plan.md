@@ -27,19 +27,18 @@ from `nine-point-f8-gt-392over100000-grid2000.txt`.
 pass is simply running it without `--emit-boxes` and reading `T2 accepted terminal boxes:`.
 The original audited verifier remains byte-identical. **The real counting pass
 (`9 392/100000 --grid 2000 --precision 128 --workers 8`) was started 2026-08-16 but was
-killed after consuming far more CPU than the original certificate run (~36k CPU-s vs the
-original ~8.8k CPU-s) without completing; the terminal-box count is still unknown. Next step:
-profile/instrument the counting pass (e.g., run with `--no-tangent`, fewer workers, or a
-sampled subset) to determine whether the slowdown is a script bug or environmental.**
+killed after consuming ~36k CPU-s without completing; the terminal-box count is still unknown.
+Correction 2026-08-17: the original certificate's own report records `elapsed_seconds=8765.75`
+@ 8 workers, i.e. ~70k core-s (audit report says ≈34.8k core-s at partial utilization), so the
+earlier kills at ~36–40k CPU-s were **premature**, not evidence of a script bug.**
 **Retry status 2026-08-16 21:40Z:** `--no-tangent --workers 4` retry (background pwsh-14)
 was still running at ~24.7k CPU-s with no count output; the no-tangent pass is substantially
 more expensive than the original tangent-pruned certificate run.
-**Final status 2026-08-16 23:55Z:** the `--workers 8` tangent retry (background pwsh-1) was
-killed after ~40k CPU-s with no count output, again far above the original ~8.8k CPU-s
-certificate run. This confirms the counting script/environment is not completing the full
-B&B in reasonable time. **Decision: do not wait for the full terminal-box count; proceed to
-Step 1b (coarser certified partition) and/or profile the t2count script for a performance
-bug before further full-count attempts.**
+**Final status 2026-08-17 00:15Z:** a fresh `--workers 8` tangent counting run (background
+pwsh-5) has been restarted and should be allowed to run to completion (~70k core-s, ~2.4h
+wall). The earlier `--workers 8` tangent retry (pwsh-1) was killed at ~40k CPU-s prematurely;
+the decision to switch to Step 1b is postponed until this full run either completes or exceeds
+~75k CPU-s without output.**
 
 Add an optional `--emit-boxes out.json` mode to `verify_kpoint_parallel.py`:
 
