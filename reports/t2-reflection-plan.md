@@ -25,7 +25,9 @@ from `nine-point-f8-gt-392over100000-grid2000.txt`.
 `runs/rigorous-open-math-research/R-20260814T131528Z-f9push-d3b58c/reproducibility/verify_kpoint_parallel_t2count.py`
 (original audited verifier untouched). It adds `--emit-boxes` and `--boxes-out`; the counting
 pass is simply running it without `--emit-boxes` and reading `T2 accepted terminal boxes:`.
-The original audited verifier remains byte-identical.
+The original audited verifier remains byte-identical. **The real counting pass
+(`9 392/100000 --grid 2000 --precision 128 --workers 8`) was started 2026-08-16 and is
+running in the background.**
 
 Add an optional `--emit-boxes out.json` mode to `verify_kpoint_parallel.py`:
 
