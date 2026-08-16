@@ -2,7 +2,7 @@
 
 - **Project:** Riemann Conjecture: Critical-Line Zero Proportion
 - **Project ID:** `MRP-20260814-riemann-critical-line-c13b8d`
-- **Updated:** 2026-08-16T20:30:00Z
+- **Updated:** 2026-08-16T21:30:00Z
 
 ## Current objective
 
@@ -93,10 +93,10 @@ reports/xi-prime-audit-manager.md**; A1's formalization gap has a complete math 
     `--no-tangent --workers 4` (background pwsh-14). The earlier 8-worker pass was killed
     after ~36k CPU-s with no count; this retry is still running and the terminal pruned-box
     count remains unknown.
-11. 🔄 IN PROGRESS 2026-08-16: T3-open-A AtOne fact promotion — 3/5 M3-open-A hypotheses are
-    now machine-proved (`XiPrimeAtOneFacts`); a subagent is attempting
-    `two_integral_vConv_vMT` (Fubini/autocorrelation identity). After it,
-    `jWin_D1_one_vMT_sandwich` (D₁-certificate sandwich) is the last open AtOne hypothesis.
+11. ✅ DONE 2026-08-16: T3-open-A AtOne fact promotion COMPLETE — all 5/5 M3-open-A
+    hypotheses machine-proved (`XiPrimeAtOneFacts`, `XiPrimeAtOneFacts2`,
+    `XiPrimeAtOneFacts3`). Unconditional `kappaXi_one_vMT_mem_fact` /
+    `H_xip_vMT_mem_fact` build exit 0; `#print axioms` gold standard.
 12. Continue the open objective: SL (moment route) as a theorem; unconditional liminf → 1 track.
 
 ## Blockers or missing inputs

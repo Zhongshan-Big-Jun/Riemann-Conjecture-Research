@@ -36,6 +36,11 @@ device, division inequalities, cancellation) is done here.  The math-level ARB e
 κ₉ and the cross-check H = 2 − κ₁ = 0.8678888651990519355503… live in
 `runs/rigorous-open-math-research/R-20260816T040000Z-xipAtOne-3078/`.
 
+**Promotion status (2026-08-16):** all five M3-open-A obligations are now machine-proved in
+`Record9.XiPrimeAtOneFacts`, `Record9.XiPrimeAtOneFacts2`, and
+`Record9.XiPrimeAtOneFacts3`; the unconditional AtOne sandwich and sharp H_{ξ′} range are
+`kappaXi_one_vMT_mem_fact` / `H_xip_vMT_mem_fact` in `XiPrimeAtOneFacts3`.
+
 Fidelity: κ₁(1,vMT) is `kappaXi 1 vMT` (Defs.kappaXi); H_xip = 2 − κ₁(1,vMT)
 (XiPrimeMT.H_xip); c9ConstXip is already fixed in XiPrimeMT.  No statement is weakened: the
 hypotheses are genuine open analytic obligations and the conclusions are the exact AtOne
