@@ -323,17 +323,21 @@
       "task_packet_id": "Q-20260814-criticalline-p1-507bb5",
       "run_root": "runs/rigorous-open-math-research/R-20260816T080000Z-g2proof-a24d",
       "started_at": "2026-08-16T08:00:00Z",
-      "upstream_status_verbatim": "RIGOROUS_PARTIAL_RESULT (finalizing)",
-      "summary": "SL gap G2 general-k proof attempt (bounded pass): M1 closed (H_sigma always connected for b>=2, disconnected branch vacuous); per-pi box-spline exact contributions certified for b=3,4 low cases; b=2 family closed (J=c_m-c_{m+2}>0); killed routes: multiplicative/class-function EGF, naive degree-2 contraction; k=7 new-isoclass verification in progress; M2 (low-surplus signed box-spline sum telescopes to 0; surplus survives) remains the open core.",
-      "audit_status": "self-audit in progress; final artifacts being written",
+      "upstream_status_verbatim": "RIGOROUS_PARTIAL_RESULT",
+      "summary": "SL gap G2 general-k proof attempt (bounded pass) FINALIZED: M1 CLOSED (H_sigma always connected for b>=2, disconnected branch vacuous); b=2 family CLOSED (J=c_m-c_{m+2}>0); exact per-pi contributions certified for b=3,4 low cases; killed routes documented (multiplicative/class-function EGF, naive degree-2 contraction); k=7 new-isoclass verification STARTED but not completed in budget. M2 (low-surplus signed box-spline sum telescopes to 0; surplus survives) remains the exact open core.",
+      "audit_status": "self-audit: exact small-case checks + killed-route counterexamples recorded; final artifacts (candidate_proof, counterexample_log, repro_manifest, SHA256SUMS) written",
       "key_artifacts": [
         "problem_contract.md",
+        "candidate_proof.md",
         "research_ledger.md",
         "whiteboard.md",
-        "reproducibility/ (exact box-spline engines, per-J datasets)"
+        "counterexample_log.md",
+        "repro_manifest.md",
+        "SHA256SUMS",
+        "reproducibility/ (exact engines, allJ.json, verify_k7 scripts)"
       ],
       "created_at": "2026-08-16T08:00:00Z",
-      "updated_at": "2026-08-16T09:30:00Z",
+      "updated_at": "2026-08-16T10:00:00Z",
       "open_obligations": [
         "M2 general-k proof: sum sign(pi) B_{H U pi}(0) = 0 <=> m <= 2b-3",
         "G3 (Lemma H) + SL itself remain open"

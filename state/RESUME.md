@@ -67,7 +67,26 @@ reports/xi-prime-audit-manager.md**; A1's formalization gap has a complete math 
    discretization); first trustworthy D₃–D₆≈0 evidence (fermionic/Wick through k=6, MC +
    exact-structure integrals); Hankel decay evidence; closing-lemma framework M→P→H→SL with
    gaps G1/G2/G3 itemized. SL NOT closed.
-
+5. ✅ DONE 2026-08-16: T1 REPAIR + RE-AUDIT — wMT placeholder finding CLOSED (repaired to the
+   certificate's true normalized MT kernel kMT; algebraic identity + ≥49.7-digit agreement;
+   statement freeze confirmed; machine checks exit 0; commits e1604b5 + 2adea2c). T1 stands
+   MACHINE_ACCEPTED_PENDING_AUDIT; kernel-limit lemma and stability-bridge modules machine-accepted
+   (`Record9.KernelLimit`, `Record9.StabilityBridge`; `psi_defect` T1c-2b core PROVED in Lean).
+   Remaining T1c analytic sub-steps: T1c-2a block energy (T2 input), T1c-2c pinching, T1c-2d
+   uniformity, full-O(S) Δ survival; plus T2 certificate and T3 ξ′.
+6. ✅ DONE 2026-08-16: independent (third-party) re-audit of the 0.00392 record theorem —
+   **PASS-WITH-LIMITS** (`reports/independent-audit-00392.md`; kernel hash, constants, chain,
+   ξ′ transfer, soundness stack all independently re-derived; only known limits are the paper-level
+   T1c sub-steps and T2).
+7. PENDING: premium ladder 0.00393 grid-4000 — BORDERLINE (margin 1.017e-5 ≈ bound loss 1e-5;
+   exact form (13,100,000·H_MT − 26,100)/13,050,089 = 0.673072744423451254556223736062);
+   k=10/k=11 assessed POOR VALUE / INFEASIBLE (reports/k-family-feasibility.md); only
+   recovered-gain route = exact-arithmetic certifier (cap ≈ +1.5e-5). NOT launched.
+8. ✅ DONE 2026-08-16: SL G2 general-k proof attempt FINALIZED (run R-20260816T080000Z-g2proof-a24d,
+   RIGOROUS_PARTIAL_RESULT): M1 CLOSED (H_σ always connected; disconnected branch vacuous); b=2
+   family CLOSED; killed routes documented; M2 (low-surplus signed box-spline sum telescopes to 0)
+   remains the exact open core. k=7 verification started but not completed in budget.
+9. Continue the open objective: SL (moment route) as a theorem; unconditional liminf → 1 track.
 
 ## Blockers or missing inputs
 

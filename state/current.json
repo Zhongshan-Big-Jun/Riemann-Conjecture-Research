@@ -35,7 +35,7 @@
   "next_actions": [
     "Independent third-party audit of 0.00392 record DONE (PASS-WITH-LIMITS, reports/independent-audit-00392.md).",
     "T1c-2b psi_defect PROVED in Lean; remaining T1c sub-steps: T1c-2a (T2 input), T1c-2c pinching, T1c-2d uniformity, full-O(S) Delta survival; T2 certificate reflection.",
-    "G2 general-k proof attempt (run R-20260816T080000Z-g2proof-a24d) finalizing; SL m7/m8 or G3 route next.",
+    "G2 general-k proof attempt FINALIZED (RIGOROUS_PARTIAL_RESULT): M1 closed, b=2 closed, M2 open; next SL route = exact m7/m8 or G3 (Lambda_m->0).",
     "Ladder 0.00393 grid-4000 remains queued (borderline, not launched)."
   ],
   "blockers": [],
@@ -45,5 +45,5 @@
     "remaining_hours": null
   },
   "last_literature_cutoff": "2026-08-14",
-  "updated_at": "2026-08-16T09:00:00Z"
+  "updated_at": "2026-08-16T10:00:00Z"
 }
