@@ -86,7 +86,13 @@ reports/xi-prime-audit-manager.md**; A1's formalization gap has a complete math 
    RIGOROUS_PARTIAL_RESULT): M1 CLOSED (H_σ always connected; disconnected branch vacuous); b=2
    family CLOSED; killed routes documented; M2 (low-surplus signed box-spline sum telescopes to 0)
    remains the exact open core. k=7 verification started but not completed in budget.
-9. Continue the open objective: SL (moment route) as a theorem; unconditional liminf → 1 track.
+9. 🔄 IN PROGRESS 2026-08-16: exact m₇/m₈ computation (run R-20260816T110000Z-m7exact-ea0a) —
+   Bell(7)=877 / Bell(8)=4140 partitions pruned by G2 rule; target exact m₇ (and m₈ if budget)
+   and Λ₄(0); background subagent running.
+10. ✅ DONE 2026-08-16: T2 terminal-box counting/emitting tool implemented
+    (`verify_kpoint_parallel_t2count.py`; original audited verifier untouched); next action is
+    the counting pass run.
+11. Continue the open objective: SL (moment route) as a theorem; unconditional liminf → 1 track.
 
 ## Blockers or missing inputs
 
