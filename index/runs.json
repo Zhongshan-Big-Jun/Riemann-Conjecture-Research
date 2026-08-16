@@ -342,6 +342,30 @@
         "M2 general-k proof: sum sign(pi) B_{H U pi}(0) = 0 <=> m <= 2b-3",
         "G3 (Lemma H) + SL itself remain open"
       ]
+    },
+    {
+      "run_id": "R-20260816T110000Z-m7exact-ea0a",
+      "task_packet_id": "Q-20260814-criticalline-p1-507bb5",
+      "run_root": "runs/rigorous-open-math-research/R-20260816T110000Z-m7exact-ea0a",
+      "started_at": "2026-08-16T11:00:00Z",
+      "upstream_status_verbatim": "RIGOROUS_PARTIAL_RESULT (in progress)",
+      "summary": "SL exact m7/m8 computation: k=7 pruning Bell(7)=877 -> 540 G2 survivors -> 18 H-isoclasses; exact m7 in progress (7/18 isoclasses done: b=1, b=2 all, b=3 m=4/5/6). k=8 preflight Bell(8)=4140 -> 2683 survivors -> 46 isoclasses; full m8 infeasible in bounded pass; partial m8^(b<=2)=3724369/181440. Target exact m7 and Lambda_4(0).",
+      "audit_status": "self-audit in progress; dual-engine cross-validation for computed isoclasses",
+      "key_artifacts": [
+        "problem_contract.md",
+        "research_ledger.md",
+        "whiteboard.md",
+        "counterexample_log.md",
+        "repro_manifest.md",
+        "reproducibility/ (prune_k7/k8, compute_k7_exact, k7_iso_results.json, k8_partial.json)"
+      ],
+      "created_at": "2026-08-16T11:00:00Z",
+      "updated_at": "2026-08-16T12:30:00Z",
+      "open_obligations": [
+        "complete exact m7 (b=3 m=7 and b=4 isoclasses)",
+        "compute Lambda_4(0) and decay comparison",
+        "full m8 remains open (b>=3 classes heavy)"
+      ]
     }
   ]
 }
