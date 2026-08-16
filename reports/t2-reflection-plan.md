@@ -21,6 +21,12 @@ from `nine-point-f8-gt-392over100000-grid2000.txt`.
 
 ### Step 1 — instrument the verifier to count/dump terminal pruned boxes
 
+**Status 2026-08-16: instrumented copy created** at
+`runs/rigorous-open-math-research/R-20260814T131528Z-f9push-d3b58c/reproducibility/verify_kpoint_parallel_t2count.py`
+(original audited verifier untouched). It adds `--emit-boxes` and `--boxes-out`; the counting
+pass is simply running it without `--emit-boxes` and reading `T2 accepted terminal boxes:`.
+The original audited verifier remains byte-identical.
+
 Add an optional `--emit-boxes out.json` mode to `verify_kpoint_parallel.py`:
 
 - In `_process_slice`, whenever a box is **pruned** (accepted because `box_lower ≥ target`),
