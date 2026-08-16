@@ -31,6 +31,11 @@ killed after consuming far more CPU than the original certificate run (~36k CPU-
 original ~8.8k CPU-s) without completing; the terminal-box count is still unknown. Next step:
 profile/instrument the counting pass (e.g., run with `--no-tangent`, fewer workers, or a
 sampled subset) to determine whether the slowdown is a script bug or environmental.**
+**Retry status 2026-08-16 21:40Z:** `--no-tangent --workers 4` retry (background pwsh-14)
+is still running at ~24.7k CPU-s with no count output; the no-tangent pass is substantially
+more expensive than the original tangent-pruned certificate run. If it does not complete
+near ~36k CPU-s, the coarser certified-partition route (Step 1b) should be used instead of
+waiting for the full terminal-box count.
 
 Add an optional `--emit-boxes out.json` mode to `verify_kpoint_parallel.py`:
 
