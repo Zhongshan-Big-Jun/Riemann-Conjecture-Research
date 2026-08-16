@@ -1,0 +1,163 @@
+[
+ {
+  "k": 3,
+  "blocks": [
+   [
+    0,
+    1,
+    2
+   ]
+  ],
+  "profile": [
+   3
+  ],
+  "b": 1,
+  "m_crossing": 0,
+  "H_edges": [],
+  "J_num": 1,
+  "J_den": 1,
+  "J_str": "1",
+  "nonzero": true
+ },
+ {
+  "k": 3,
+  "blocks": [
+   [
+    0,
+    1
+   ],
+   [
+    2
+   ]
+  ],
+  "profile": [
+   2,
+   1
+  ],
+  "b": 2,
+  "m_crossing": 2,
+  "H_edges": [
+   [
+    [
+     0,
+     1
+    ],
+    2
+   ]
+  ],
+  "J_num": 1,
+  "J_den": 3,
+  "J_str": "1/3",
+  "nonzero": true
+ },
+ {
+  "k": 3,
+  "blocks": [
+   [
+    0,
+    2
+   ],
+   [
+    1
+   ]
+  ],
+  "profile": [
+   2,
+   1
+  ],
+  "b": 2,
+  "m_crossing": 2,
+  "H_edges": [
+   [
+    [
+     0,
+     1
+    ],
+    2
+   ]
+  ],
+  "J_num": 1,
+  "J_den": 3,
+  "J_str": "1/3",
+  "nonzero": true
+ },
+ {
+  "k": 3,
+  "blocks": [
+   [
+    0
+   ],
+   [
+    1,
+    2
+   ]
+  ],
+  "profile": [
+   2,
+   1
+  ],
+  "b": 2,
+  "m_crossing": 2,
+  "H_edges": [
+   [
+    [
+     0,
+     1
+    ],
+    2
+   ]
+  ],
+  "J_num": 1,
+  "J_den": 3,
+  "J_str": "1/3",
+  "nonzero": true
+ },
+ {
+  "k": 3,
+  "blocks": [
+   [
+    0
+   ],
+   [
+    1
+   ],
+   [
+    2
+   ]
+  ],
+  "profile": [
+   1,
+   1,
+   1
+  ],
+  "b": 3,
+  "m_crossing": 3,
+  "H_edges": [
+   [
+    [
+     0,
+     1
+    ],
+    1
+   ],
+   [
+    [
+     0,
+     2
+    ],
+    1
+   ],
+   [
+    [
+     1,
+     2
+    ],
+    1
+   ]
+  ],
+  "J_num": 0,
+  "J_den": 1,
+  "J_str": "0",
+  "nonzero": false
+ }
+]

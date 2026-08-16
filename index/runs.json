@@ -297,6 +297,27 @@
         "T1c-2c pinching/averaging and T1c-2d uniformity: the two non-trivial analytic sub-steps (analysis sketches provided)",
         "T2 certificate reflection unchanged"
       ]
+    },
+    {
+      "run_id": "R-20260816T070000Z-g2rule-a1b2",
+      "task_packet_id": "Q-20260814-criticalline-p1-507bb5",
+      "run_root": "runs/rigorous-open-math-research/R-20260816T070000Z-g2rule-a1b2",
+      "started_at": "2026-08-16T07:00:00Z",
+      "upstream_status_verbatim": "RIGOROUS_PARTIAL_RESULT",
+      "summary": "SL gap G2 COMPLETED 2026-08-16: the general vanishing rule for J_sigma FOUND and VERIFIED 100% on all 275 exact per-partition values (k=3..6). Rule: for a partition sigma of {0..k-1} with b blocks, form the cycle-crossing multigraph H_sigma on the blocks (one edge per cycle edge whose endpoints are in different blocks; self-loops dropped), m = #cycle block-crossings: J_sigma = 0 <=> H_sigma disconnected OR m <= 2b-3; J_sigma != 0 <=> H_sigma connected AND m >= 2b-2 (equivalently connected with cyclomatic number c >= b-1). Accuracy 275/275 = 100% (TP=167, TN=108, FP=0, FN=0). This RESOLVES the k=5 vs k=6 tension (the crude 'b>=4 => 0' fails because it ignores H_sigma; at k=6, b=4 with m=6 are connected-with-surplus and nonvanishing; m=4,5 and all b=5,6 fall below threshold). Supporting: isoclass-determinism (J_sigma depends only on H_sigma up to relabeling; 38 k=6 classes, one J each); b=2 closed form J = c_m - c_{m+2} (never zero); all moments reproduced exactly (m_2..m_6). Falsified candidate rules documented (block-count, isolated-vertex, forest-support, m-parity, pure (b,m) threshold). General-k proof OPEN: residual identity stated (candidate_proof.md §7): prove sum_{pi in S_b} sign(pi) B_{Gamma_{sigma,pi}}(0) = 0 <=> H_sigma disconnected or m <= 2b-3, via two sub-identities M1 (disconnected => factorization + lower-order D-type cancellation) and M2 (low-surplus signed box-spline sum telescopes to 0; surplus survives => != 0), grounded in the fermionic/quasi-free (Wick/Grassmann) determinant structure. b>=3 value formulas are exact but table-driven (allJ.json); a closed c-combination for b>=3 is open (b=2 closed). Provenance note: exact k=4 values are {1,1/3,7/60,1/15,0} (1/180 first appears at k=5).",
+      "audit_status": "self-audited: 100% accuracy on all 275 exact data points (final_rule.py checker); all moments reproduced; SHA256SUMS verified",
+      "key_artifacts": [
+        "candidate_proof.md (11296 B: rule + proof structure + residual identity M1/M2)",
+        "reproducibility/final_rule.py (checker), allJ.json (exact dataset), upstream m6 CSVs/engines",
+        "SHA256SUMS (3565 B)"
+      ],
+      "created_at": "2026-08-16T07:00:00Z",
+      "updated_at": "2026-08-16T14:50:00Z",
+      "open_obligations": [
+        "general-k proof of the residual identity (sub-identities M1/M2) — the combinatorial core of Lemma P/G2",
+        "closed c-combination formulas for b >= 3 J_sigma values (currently table-driven)",
+        "G3 (Lemma H: Lambda_m(0)->0) + SL itself and the unconditional liminf -> 1 remain OPEN"
+      ]
     }
   ]
 }
