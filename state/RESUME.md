@@ -2,7 +2,12 @@
 
 - **Project:** Riemann Conjecture: Critical-Line Zero Proportion
 - **Project ID:** `MRP-20260814-riemann-critical-line-c13b8d`
-- **Updated:** 2026-08-16T21:30:00Z
+- **Updated:** 2026-08-17T01:00:00Z
+- **STATUS: HANDOFF — research stopped by user on 2026-08-17T01:00Z.** All current results
+  are committed and pushed. Resume from the two run-level handoffs:
+  `runs/rigorous-open-math-research/R-20260814T131528Z-f9push-d3b58c/handoff-interrupted-20260817T010000Z.md`
+  and
+  `runs/rigorous-open-math-research/R-20260816T080000Z-g2proof-a24d/handoff-interrupted-20260817T010000Z.md`.
 
 ## Current objective
 

@@ -1,8 +1,8 @@
 {
   "schema_version": 1,
   "project_id": "MRP-20260814-riemann-critical-line-c13b8d",
-  "lifecycle_state": "ACTIVE",
-  "current_stage": "stage-C-lean",
+  "lifecycle_state": "HANDOFF",
+  "current_stage": "handoff",
   "current_objective": "Complete Stage C Lean formalization of the 0.6730665 record (O1 baseline, T1 chain, T2 certificate, T3 xi-prime); continue SL lemma and unconditional liminf->1; maintain ledger/index/frontier and git sync.",
   "active_direction_ids": [
     "D1",
@@ -34,13 +34,11 @@
   ],
   "latest_checkpoint_path": null,
   "next_actions": [
-    "Independent third-party audit of 0.00392 record DONE (PASS-WITH-LIMITS).",
-    "T1c-2b psi_defect PROVED; T1c-2a block-energy CLOSED (blockEnergyFromF8_fact machine-proved; BlockEnergyPairBound exit 0/8843, #print axioms gold standard); remaining T1c sub-steps: T1c-2c pinching, T1c-2d uniformity, full-O(S) Delta survival; T2 certificate reflection.",
-    "Exact m7/m8 partial FINALIZED: m7^(b<=3)=1345/72 exact, b=4 open; m8^(b<=2)=3724369/181440 exact; Lambda_4 remains open.",
-    "T2 counting pass RUNNING (background pwsh-5, 8 workers tangent, --out t2count_final_report.txt). Correction: original certificate took elapsed 8765s @8 workers (~70k core-s), so earlier kills at 36-40k CPU-s were premature; this run should be allowed to complete (~2.4h wall).",
-    "AtOne T3-open-A: ALL 5/5 M3-open-A analytic facts machine-proved (XiPrimeAtOneFacts/Facts2/Facts3; unconditional kappaXi_one_vMT_mem_fact and H_xip_vMT_mem_fact, #print axioms gold standard). T3 AtOne content closed.",
-    "Remaining Stage C: T1c-2c/2d, T2 certificate reflection, ξ′ record theorem assembly.",
-    "Ladder 0.00393 grid-4000 remains queued (borderline, not launched)."
+    "HANDOFF COMPLETE 2026-08-17T01:00Z — research stopped by user; all current results committed and pushed.",
+    "T1c-2a block-energy CLOSED (blockEnergyFromF8_fact machine-proved); T3 AtOne facts 5/5 machine-proved; T1c-2c/2d paper-level analysis written.",
+    "T2 full counting pass interrupted; next action is to run verify_kpoint_parallel_t2count.py to completion (~70k core-s) and record accepted terminal-box count (see handoff-interrupted-20260817T010000Z.md in f9push run).",
+    "SL G2: M1 done, b=2 proven, b=3 reduced; k=7 b4/b5 exact verification interrupted (see handoff-interrupted-20260817T010000Z.md in g2proof run).",
+    "Resume points: run handoffs + state/RESUME.md."
   ],
   "blockers": [],
   "budget": {
@@ -49,5 +47,5 @@
     "remaining_hours": null
   },
   "last_literature_cutoff": "2026-08-14",
-  "updated_at": "2026-08-17T00:10:00Z"
+  "updated_at": "2026-08-17T01:00:00Z"
 }
