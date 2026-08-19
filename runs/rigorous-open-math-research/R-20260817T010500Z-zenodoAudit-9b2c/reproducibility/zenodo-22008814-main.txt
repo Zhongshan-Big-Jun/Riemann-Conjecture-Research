@@ -1,0 +1,4824 @@
+A Hardy-Gauge Contour Method for Density One of Zeta Zeros on
+the Critical Line
+Chaoyu Hu*
+Jizheng Chen
+19 August 2026
+Abstract
+We construct a finite-dimensional Hermitian contour form from an analytic Hardy gauge
+and a near-lattice packet family. Its zero-side residue representation converts off-critical-line
+stationary geometry into negative inertia. On the arithmetic side, the same form admits an
+exact right-edge decomposition whose principal term is the pullback of a completed lag operator
+through the common packet/carrier analysis map. A direct Schur estimate gives a uniform spec-
+tral lower bound for this lag operator on the mean-zero fibres. The stationary edge contribution
+has rank o(NT ), while the regular remainder is o(NT ) in the relative Hilbert–Schmidt metric.
+A finite-dimensional inertia argument then implies that all but o(NT ) zeros in a dyadic interval
+lie on the critical line, and hence that N0(T)/N(T) →1.
+1
+Main theorem and notation
+Let
+NT := N(T, 2T)
+denote the number, with multiplicity, of nontrivial zeros of ζ with imaginary part in [T, 2T], and
+let N0,T denote the number of those zeros on the critical line. Thus NT ≍T log T. Put
+L := log T
+2π.
+Theorem 1.1 (Density one on the critical line). As T →∞,
+N0,T
+NT
+= 1 −o(1) .
+Consequently, by dyadic summation,
+N0(T)
+N(T) −→1 .
+*School of Automation, Hangzhou Dianzi University, Hangzhou, Zhejiang, People’s Republic of China. Corre-
+sponding author. Email: evaristebernhardwiener@gmail.com.
+Department of Mathematics, Chang’an University, Xi’an, Shaanxi 710064, People’s Republic of China. Email:
+1253183582@qq.com.
+1
+
+
+Hardy’s theorem established infinitely many zeros on the critical line, and Selberg proved that
+a positive proportion lie there [5, 58, 9]. The modern quantitative line begins with Levinson’s
+mollifier method and its later refinements [8, 60, 3, 2, 4, 55, 56]. Closely related work on simple and
+distinct zeros, pair correlation, and finite-dimensional positivity includes [42, 10, 51, 31, 18, 22, 11,
+13, 40, 41, 1]. In particular, Alp¨oge and Furman obtained an unconditional proportion exceeding
+two thirds for zeros that are both simple and on the critical line by combining a finite compression
+of a Hermitian zero form with inertia.
+A second strand concerns the size and statistics of ζ, its derivatives, and the Hardy Z-function.
+Mean-value and discrete-moment methods were developed through the work of Gonek, Conrey–
+Ghosh, Conrey–Ghosh–Gonek, Ng, Garunkˇstis–Steuding, Hughes, Milinovich, and later authors
+[39, 28, 29, 24, 30, 38, 52, 43, 49, 50, 44, 45, 54, 7]. These results are especially close to the present
+zero-side use of stationary points of the Hardy gauge and to the right-edge expansion through
+Z′
+1/Z1.
+The arithmetic side also intersects the extensive literature on twisted moments, Dirichlet-
+polynomial mean values, mollifiers, and ratios of L-functions [12, 36, 35, 14, 15, 16, 25, 26, 27,
+34, 32, 33, 59, 6]. Adjacent work on zero gaps, derivative zeros, and critical-line geometry includes
+[23, 17, 20, 19, 37, 21, 46, 47, 48, 53, 57]. The argument below uses a different assembly: the same
+Hardy-gauge contour matrix is represented on the zero side and on the packetized right edge, its
+principal lag operator is given a uniform spectral floor, and the remaining terms are separated into
+low-rank and relative Hilbert–Schmidt classes.
+The proof is organized around the normalized contour matrix introduced in Section 2, whose
+zero-side and arithmetic-side representations are developed in the subsequent sections.
+2
+The invariant Hardy-gauge contour matrix
+2.1
+The analytic Hardy gauge
+Fix once and for all
+c := 2.
+For horizontal heights T1 < T2 avoiding the zeros relevant to the contour, let
+Rsym
+T
+:= {σ + it : −1 ≤σ ≤2, T1 ≤t ≤T2}.
+(1)
+The existence of admissible T1 ∈[T, T + 1] and T2 ∈[2T, 2T + 1] is proved in Proposition 3.10. On
+a simply connected neighbourhood of this symmetric high rectangle choose a holomorphic branch
+q(s) := χ(1 −s)1/2.
+Fix its sign at one point of the critical line so that the resulting Hardy gauge is real there, and put
+Z (s) := q(s)ζ(s).
+This normalization determines the branch on the rectangle. Indeed the holomorphic function
+q†(s) := q(1 −¯s)
+satisfies (q†)2 = χ(s) = q(s)−2; the chosen sign gives q† = q−1 at the base point and hence
+everywhere. Using the zeta functional equation therefore yields the exact reflection law
+Z (1 −¯s) = Z (s).
+(2)
+2
+
+
+In particular F(z) = Z (1/2 + iz) satisfies F(¯z) = F(z) and is real on the real axis. The factor q is
+analytic and nonvanishing, so Z and ζ have exactly the same zeros with the same multiplicities.
+Define
+f(s) := −1
+2
+χ′
+χ (s),
+Z1(s) := ζ′(s) + f(s)ζ(s).
+Since q′/q = f, differentiation gives the exact identity
+Z ′(s) = q(s)Z1(s).
+(3)
+Thus the stationary zeros of the Hardy-gauge detector are precisely the zeros of the same Z1 which
+appears on the arithmetic side.
+2.2
+Curvature representation of the contour form
+Let a be the physical shift and put
+p := La.
+The curvature source is generated before any right-edge expansion from one shifted Hardy product.
+Algebraically,
+Z (s)Z ′′(s) −Z ′(s)2 = 1
+2 ∂2
+a
+Z (s + a)Z (s −a)
+
+a=0 .
+(4)
+Passing from a to p introduces the positive scalar factor L2. We divide the raw matrix by this
+factor once and for all. Since the rescaling is positive, it does not change inertia.
+Proposition 2.1 (Exact normalized same-form identity). Let
+CZ (s) := Z (s)Z ′′(s) −Z ′(s)2,
+C(p)
+Z (s) := L−2CZ (s).
+Equivalently,
+C(p)
+Z (s) = 1
+2 ∂2
+p
+Z (s + p/L)Z (s −p/L)
+
+p=0 .
+Let {ψν}ν∈IT be the smooth entire packet family specified below and write
+Bv(z) :=
+X
+ν∈IT
+vνψν(z),
+B#
+v (z) := Bv(¯z).
+With z(s) := −i(s −1
+2) define the holomorphic polarization
+Bv,w(s) := Bw(z(s))B#
+v (z(s)).
+(5)
+Then the normalized invariant contour form is exactly
+AT (v, w) =
+1
+2πi
+I
+∂Rsym
+T
+Z ′′
+Z ′ (s)C(p)
+Z (s)Bv,w(s) ds =
+1
+2πi
+I
+∂Rsym
+T
+Z′
+1
+Z1
+(s)C(p)
+Z (s)Bv,w(s) ds.
+(6)
+After straightening the critical line by s = 1/2 + iz, the same form is exactly (9). Thus the zero-
+side stationary residue detector and the arithmetic Z′
+1/Z1 source are literally the same Hermitian
+contour matrix.
+3
+
+
+Proof. Since (3) gives
+Z ′′
+Z ′ = f + Z′
+1
+Z1
+,
+and f, C(p)
+Z
+and Bv,w are holomorphic on the high rectangle, the integral of fC(p)
+Z Bv,w around the
+closed contour is zero. This proves the second equality in (6).
+For the first equality, expand
+Z ′′
+Z ′ C(p)
+Z = L−2
+Z Z ′′2
+Z ′
+−Z ′Z ′′
+
+.
+The second term, after multiplication by the holomorphic packet polarization, is holomorphic and
+hence has zero closed-contour integral. Put F(z) = Z (1/2 + iz). Then
+Z ′ = −iF ′,
+Z ′′ = −F ′′,
+ds = i dz,
+and therefore the remaining term transforms to
+1
+2πi
+I
+L−2
+
+−F(z)F ′′(z)2
+F ′(z)
+
+Bw(z)B#
+v (z) dz,
+which is exactly (9). Finally, (4) shows that this same form is generated from one shifted Hardy
+product before any contour movement or stationary reduction.
+With the packet notation above, the normalized Hermitian contour form is
+AT (v, w) :=
+1
+2πi
+Z
+∂Rsym
+T
+K(s; Bv, Bw) ds,
+(7)
+where K is the exact Hardy-gauge curvature integrand obtained from (4), before Dirichlet expansion,
+stationary phase, Perron inversion, shell analysis, or arithmetic contraction. Define the finite matrix
+AT by
+⟨AT v, w⟩= AT (v, w).
+The reflection law (2) together with (5) gives
+AT (w, v) = AT (v, w),
+so AT is Hermitian. It is the invariant Hermitian object throughout the argument. The positive
+form GT introduced later is not a second invariant object; it is the fixed reference metric used for
+relative operator estimates.
+Lemma 2.2 (Invariance under standard reductions). Every later change of representation used
+below belongs to one of the following four classes.
+(i) An exact congruence A 7→U∗AU with U invertible; inertia is preserved exactly.
+(ii) Restriction to a subspace of codimension d; at most d negative directions are lost.
+(iii) Addition of a matrix of rank r; negative inertia changes by at most r.
+(iv) Addition of a Hermitian remainder R relative to a positive reference Gram G, measured by
+∥G−1/2RG−1/2∥2
+S2.
+Proof. The first assertion is Sylvester’s law of inertia. The second is the elementary dimension
+inequality for the intersection of a negative subspace with a codimension-d subspace. The third
+follows by applying the same argument to ker E, whose codimension is at most r. The fourth is
+quantified in Lemma 14.1 below.
+4
+
+
+3
+Zero side: stationary residues force negative inertia
+Straighten the critical line by
+F(z) := Z
+1
+2 + iz
+
+.
+The symmetric rectangle (1) becomes
+ΩT := {z : T1 ≤ℜz ≤T2, |ℑz| ≤c −1
+2}.
+(8)
+Thus ΩT is invariant under z 7→¯z and contains both members of every reflected off-critical pair in
+the height range. Moreover F(¯z) = F(z) and F is real on R. For a test function h put h#(z) = h(¯z).
+In zero coordinates the same normalized contour matrix has kernel
+AF (h1, h2) =
+1
+2πi
+Z
+∂ΩT
+L−2
+
+−F(z)F ′′(z)2
+F ′(z)
+
+h2(z)h#
+1 (z) dz.
+(9)
+We write AF (T) := AT for this original matrix. If H is a sufficiently small real-symmetric pertur-
+bation of F, AH(T) denotes the same contour construction with F replaced by H. The residue
+lemmas below are stated for such a generic H and are then applied to the perturbation constructed
+in Section 15.
+Lemma 3.1 (Stationary residue blocks). If H′(c) = 0 and H′′(c)̸ = 0, then
+Resz=c L−2
+
+−H(z)H′′(z)2
+H′(z)
+
+= −L−2H(c)H′′(c) =: wc.
+For c ∈R, the contribution is a negative scalar exactly when H(c)H′′(c) > 0.
+For a nonreal
+conjugate pair ρ, ¯ρ, the residue block is
+ 0
+wρ
+wρ
+0
+
+,
+which has exactly one negative eigenvalue whenever wρ̸ = 0.
+Proof. Since
+H′(z) = H′′(c)(z −c) + O((z −c)2),
+the residue is −L−2H(c)H′′(c). The positive scalar L−2 does not change its sign. The conjugate-
+pair block has characteristic polynomial λ2 −|wρ|2.
+Let B(H) denote the number of real stationary points with H(c)H′′(c) > 0, and let P(H′)
+denote the number of nonreal conjugate pairs of stationary zeros.
+3.1
+Exact packet evaluation rank
+Let Cpkt > 0 be a fixed constant, chosen first in the global parameter hierarchy of Section 13, before
+the remaining buffer and symbol exponents. Put
+Lpkt := L + Cpkt log L.
+(10)
+The central width-L band is the physical zeta band; the additional Cpkt log L is a two-sided reserve
+used for packet-dimension slack and the smooth transition caps. Choose a real C∞function ϕL
+5
+
+
+which equals L−1/2
+pkt
+on [−Lpkt/2, Lpkt/2], satisfies |ϕL| ≤L−1/2
+pkt , and is supported in [−Lpkt/2 −
+∆, Lpkt/2 + ∆] for one fixed ∆> 0. Put
+ψL(z) :=
+Z
+R
+ϕL(u)eiuz du,
+ψL,τ(z) := ψL(z −τ).
+The reserve supplies more than the O(T) dimensional slack required by the Riemann–von Mangoldt
+secondary term and leaves fixed-width room for the smooth transition caps. By Proposition 6.1,
+no arithmetic outer translation has to be accommodated. Since Lpkt = L + O(log L), all normal-
+ized analytic scales below change only by O(log L/L), and on a fixed horizontal strip the larger
+exponential type costs only a fixed power of L. Repeated integration by parts gives, on every fixed
+horizontal strip and for every fixed M,
+|ψL(z)| ≪M L1/2
+pkt(1 + |ℜz|)−Me(Lpkt/2+∆)|ℑz|.
+(11)
+Lemma 3.2 (Local packet centres give surjective evaluation). Let z1, . . . , zm be distinct complex
+stationary nodes and let I1, . . . , Im be arbitrary nonempty open intervals of admissible packet cen-
+tres. There exist τj ∈Ij such that
+det
+ψL(zi −τj)
+
+1≤i,j≤m̸ = 0.
+Hence the packet evaluation map onto the stationary nodes is surjective.
+Proof. First fix distinct zi. If
+X
+i
+ciψL(zi −τ) = 0
+on a nonempty real interval in τ, analyticity makes the identity global. Fourier uniqueness then
+gives
+ϕL(u)
+X
+i
+cieiuzi = 0
+for almost every u. Since ϕL is nonzero on an open interval, the exponential polynomial P
+i cieiuzi
+vanishes identically. Its first m derivatives at one point form a Vandermonde system, so all ci = 0.
+Thus the functions τ 7→ψL(zi −τ) are linearly independent on every interval. The determinant
+above is real analytic in (τ1, . . . , τm) and is not identically zero; a nonzero real-analytic function
+cannot vanish on the open box I1 × · · · × Im.
+Lemma 3.3 (Near-lattice packet Riesz bounds). For lattice centres
+τ 0
+j = τ∗+ 2πnj
+Lpkt
+one has, for all large L,
+2π
+X
+j
+|cj|2 ≤
+
+X
+j
+cjψL,τ 0
+j
+
+2
+2
+≤6π
+X
+j
+|cj|2.
+(12)
+The same inequalities, with slightly weaker fixed constants, hold when every centre is moved by at
+most T −100.
+6
+
+
+Proof. Plancherel gives
+
+X
+j
+cjψL,τ 0
+j
+
+2
+2
+= 2π
+Z
+|ϕL(u)|2
+
+X
+j
+cje−iuτ 0
+j
+
+2
+du.
+On the flat interval [−Lpkt/2, Lpkt/2], the exponentials e−2πinju/Lpkt are orthogonal; since |ϕL|2 =
+L−1
+pkt there, this contributes exactly 2π P
+j |cj|2 and proves the lower bound. The full support has
+length Lpkt + 2∆< 2Lpkt for large T. By splitting it into at most three intervals of length at most
+Lpkt and using the same period orthogonality, together with |ϕL|2 ≤L−1
+pkt, its total contribution is
+at most 6π P
+j |cj|2.
+For perturbed centres, the corresponding Gram entries depend continuously on the centres. On
+the support |u| ≪Lpkt ≍L a displacement T −100 changes one phase by O(LT −100). Since the
+packet dimension is O(TL), the crude matrix norm perturbation is O(T −99L2) = o(1), and the
+fixed Riesz bounds persist.
+Lemma 3.4 (Packet dimension has logarithmic reserve). For the choice (10), the admissible near-
+lattice packet family has
+dT = T
+2πL + CpktT
+2π
+log L + O(L).
+(13)
+and therefore contains, for all large T, at least as many columns as there are zeros of F ′ in the
+retained dyadic rectangle even after the O(T) terminal packet collars are removed. The reserve
+itself is only O(T log L) = o(NT ).
+Proof. The Riemann–von Mangoldt formula gives
+N(T, 2T) = T
+2πL + (2 log 2 −1)T
+2π
++ O(log T).
+By Proposition 3.10 and F ′ = iqZ1 up to a nonzero constant factor,
+N(F ′; T1, T2) = T
+2πL + (2 log 2 −1)T
+2π
++ O((log T)C).
+A lattice of spacing 2π/Lpkt on a physical interval of length T + O(1) has
+dT = T
+2π
+L + Cpkt log L
+
++ O(L)
+columns, proving (13). The terminal packet collars remove only CdelT + o(T) columns for a fixed
+Cdel. Since Cpkt log L →∞, the reserve term eventually dominates both the linear Riemann–von
+Mangoldt secondary term and the collar loss for every fixed Cpkt > 0. No further lower bound on
+Cpkt is required. All later frame, mean, shell, and edge restrictions are applied after the zero-side
+evaluation map has been constructed and do not enter this surjectivity count.
+By Lemmas 3.2, 3.3, and 3.4, the packet centres may therefore be chosen inside T −100 neigh-
+bourhoods of the lattice so that the evaluation map is surjective while the packet synthesis retains
+a uniform Riesz bound.
+Lemma 3.5 (Coordinate restriction preserves the common proof estimates). Let J ⊂IT be any
+subset of the admissible packet coordinates and let PJ be the corresponding coordinate projection.
+Replacing the packet space by PJCIT replaces every contour/source matrix by the compression
+7
+
+
+PJAP ∗
+J and every positive reference Gram by PJGP ∗
+J. The packet Riesz lower bound is unchanged,
+the exact contour identities remain valid, all edge ranks do not increase, and absolute Hilbert–
+Schmidt norms of compressed remainder matrices do not increase. Moreover the shell/frame trace-
+defect arguments remain valid with the retained coordinate count in place of the full count.
+Proof. Every contour, stationary, shell, and source construction is linear in the packet synthesis
+coefficients, so coordinate deletion is literal matrix compression. A subsequence of a Riesz sequence
+inherits the same lower and upper Riesz constants. Rank is monotone under compression, and
+∥PJRP ∗
+J∥S2 ≤∥R∥S2. More importantly, if the common reference analysis map is W, then on the
+restricted packet space it is exactly WJ := WP ∗
+J and
+GJ = W ∗
+JWJ = PJW ∗WP ∗
+J.
+Since the restriction is on the input space, the least singular value of WJ is no smaller than the
+least singular value of W on the original retained space. The primitive mixed-derivative bounds
+used to prove the relative S2 estimates are uniform on the output fibres and are unchanged by
+deleting packet inputs. Hence the relative remainder criterion may be rerun with WJ and gives
+the same o(NT ) asymptotic (with the smaller packet dimension). The trace-defect proofs are sums
+of nonnegative diagonal contributions over packet coordinate vectors, so deleting coordinates only
+removes summands and gives the same normalized estimate for the smaller dimension.
+Exact
+algebraic contour/source identities commute with this restriction because they hold entrywise.
+Lemma 3.6 (Horizontal connector decay). Delete packet centres within physical distance T/L of
+the two horizontal heights T1, T2. This costs O(T) = o(NT ) packet directions. On the remaining
+packet space, every fixed curvature derivative of a horizontal connector is OA(T −A) after arbitrary
+prescribed fixed A, up to fixed polylogarithmic local-source factors.
+Proof. The critical packet spacing is ≍L−1, so a total physical collar of length O(T/L) contains
+O(T) centres. On either horizontal connector the straightened packet variable has real separation
+at least T/L from every retained centre, while its imaginary part remains in a fixed strip. Hence
+(11), after any fixed number of curvature derivatives, gives
+|ψL,τ| ≪M T CM (T/L)−M.
+All zeta, gamma, and fixed local-source factors on the horizontal strip have at most polynomial
+or polylogarithmic size.
+Choosing M after the fixed loss exponent gives OA(T −A).
+The same
+estimate holds for the adjoint orientation and for the two mixed derivatives used in the relative
+Hilbert–Schmidt criterion.
+For a generic H with simple stationary nodes and no common zero of H, H′, the residue theorem
+gives an exact pullback
+AH = E∗
+HWHEH,
+where WH is the direct sum of the real scalar residues and the 2 × 2 conjugate-pair blocks of
+Lemma 3.1. By Lemma 3.2, EH is surjective. Restricting to a complement of ker EH and applying
+Sylvester’s law therefore gives
+n−(AH) = B(H) + P(H′).
+(14)
+Lemma 3.7 (Real zero/stationary bookkeeping). For a real analytic function with simple real zeros
+and stationary points,
+R(H′) = R(H) + 2B(H) + O(1),
+where R denotes the number of real zeros in the interval under consideration.
+8
+
+
+Proof. Between consecutive real zeros, Rolle’s theorem forces at least one stationary point. On
+every zero-free component the stationary extrema alternate.
+Any additional stationary points
+therefore occur in pairs consisting of one good and one bad extremum. Only the two terminal
+components contribute the O(1) error.
+For the original gauge Z and its stationary source Z1, put
+P(s) := −ζ′
+ζ (s),
+R(s) := Z1(s)
+ζ(s) = f(s) −P(s).
+The functional equation gives R(s) = −R(1 −s). At an m-fold zeta zero,
+ζ(s) = (s −ρ)mu(s),
+u(ρ)̸ = 0,
+so
+Z1(s) = m(s −ρ)m−1u(ρ) + O((s −ρ)m),
+and R = Z1/ζ has a simple pole at every zeta zero, independently of its multiplicity. Moreover, for
+|t| large there are no zeros of Z1 in ℜs ≥2: there Z1 = ζ(f −P), with P = O(1) and |f| ≍log |t|.
+The functional equation (20) then excludes zeros in ℜs ≤−1. Thus every high zero of Z1 relevant
+to the fixed disks below lies in −1 < ℜs < 2; the corresponding assertion for the nontrivial zeta
+zeros is standard from its Euler product and functional equation.
+Lemma 3.8 (Local Jensen count). Uniformly for U ≍T,
+NZ1([U, U + 1]) + Nζ([U, U + 1]) ≪log U.
+(15)
+Proof. Center a fixed disk at sU = 2 + iU. Absolute convergence and Stirling give
+ζ(sU) ≍1,
+Z1(sU) = ζ(sU){f(sU) −P(sU)},
+|Z1(sU)| ≫log U.
+On a fixed larger disk, the classical convexity bound for ζ and the Cauchy estimate for ζ′ give
+polynomial growth UO(1) for both (s −1)ζ(s) and Z1(s). Jensen’s formula therefore bounds the
+number of zeros in the concentric smaller disk by O(log U). A fixed number of such disks covers
+the strip segment of height one, proving (15).
+Lemma 3.9 (Local logarithmic-derivative factorization). Let F0 ∈{ζ, Z1} and U ≍T. Uniformly
+for −1 ≤σ ≤2 and |t −U| ≤1/10, one has
+F ′
+0
+F0
+(s) =
+X
+F0(ρ)=0
+|ρ−(2+iU)|<7/2
+1
+s −ρ + O((log T)C0),
+(16)
+whenever s is not a zero of F0. The sum contains O(log T) terms, with multiplicity.
+Proof. Put zU = 2 + iU. On the fixed disk |s −zU| ≤5, both ζ and Z1 are holomorphic for large
+U and have size T O(1). At the centre, absolute convergence and Stirling give
+|ζ(zU)| ≍1,
+|Z1(zU)| ≍log T.
+Jensen’s formula therefore gives O(log T) zeros, with multiplicity, in |s−zU| ≤4 for either function.
+9
+
+
+Choose a radius rU ∈[7/2, 4] whose distance from every modulus |ρ −zU| of these zeros is at
+least c/ log T. Such a radius exists because there are only O(log T) forbidden intervals and the
+ambient radial interval has fixed length. Factor all zeros in |s −zU| < rU:
+F0(s) = egU(s)
+Y
+|ρ−zU|<rU
+(s −ρ)
+on the simply connected disk |s −zU| < rU, after removing the zeros from the quotient.
+On
+|s −zU| = rU the polynomial-growth upper bound for F0, the separation of the boundary from the
+zeros, and the O(log T) zero count give
+ℜgU(s) = log |egU(s)| ≪log T log log T.
+At zU, the lower bounds above and |zU −ρ| ≤4 give ℜgU(zU) ≫−log T.
+Applying Borel–
+Carath´eodory to gU −gU(zU) and then Cauchy’s estimate on the fixed inner disk |s −zU| ≤31/10
+yields
+|g′
+U(s)| ≪(log T)C0.
+The entire horizontal segment −1 ≤σ ≤2, |t −U| ≤1/10, lies in that inner disk. Logarithmic
+differentiation gives the zero sum over |ρ−zU| < rU. The additional zeros with 7/2 ≤|ρ−zU| < rU
+are a fixed positive distance from the inner disk and there are only O(log T) of them, so their
+contribution is absorbed into the error in (16).
+Proposition 3.10 (Good-height stationary-count decrement). There are heights
+T1 ∈[T, T + 1],
+T2 ∈[2T, 2T + 1]
+such that the boundary rectangle −1 ≤σ ≤2, T1 ≤t ≤T2 avoids all zeros and poles of R, and
+already on this good rectangle
+N(Z1; T1, T2) −N(ζ; T1, T2) = O((log T)C) = o(NT ).
+(17)
+Returning the two horizontal heights to T and 2T gives
+N(Z1; T, 2T) −N(ζ; T, 2T) = O((log T)C) = o(NT ).
+(18)
+Equivalently, because q is nonvanishing, the same two estimates hold with (Z1, ζ) replaced by (F ′, F).
+Proof. Fix A > 4 and set δT = (log T)−A. By Lemma 3.8, each unit interval contains only O(log T)
+ordinates of zeros of ζZ1. The union of intervals of radius δT around them has total length
+O(δT log T) = O((log T)1−A) < 1
+2.
+Hence T1, T2 can be chosen as stated, with the two horizontal sides at distance at least δT from
+every zero or pole of R in the fixed strip.
+On ℜs = 2, absolute convergence and Stirling give
+R(2 + it) = 1
+2 log t
+2π + O(1),
+T ≤t ≤2T + 1.
+For large T this lies in a fixed acute sector around the positive real axis, so the change of argument
+on the right vertical side is O(1). The symmetry R(s) = −R(1 −s) gives the same bound on the
+left side.
+10
+
+
+Consider one good horizontal side, at height U ∈{T1, T2}. Since
+R′
+R = Z′
+1
+Z1
+−ζ′
+ζ ,
+Lemma 3.9 applies separately to Z1 and ζ. The selected horizontal line stays at distance at least
+δT from every zero of either function in the fixed strip, and each local zero sum has only O(log T)
+terms. Therefore, uniformly for −1 ≤σ ≤2,
+
+R′
+R (σ + iU)
+ ≪(log T)C0 + δ−1
+T log T ≪(log T)A+C1.
+(19)
+Integrating over the bounded horizontal length gives a polylogarithmic argument variation. Thus
+the total boundary variation of arg R is O((log T)C).
+The argument principle identifies this variation divided by 2π with the number of zeros of R
+minus its poles. Since the divisor of R = Z1/ζ is exactly the divisor difference of Z1 and ζ, this
+proves (17). Returning to T, 2T changes either zero count by only O(log T) by Lemma 3.8, proving
+(18).
+Section 15 transfers the generic zero-side inertia identity (14) back to the original Hardy-gauge
+form. All right-edge and remainder estimates are proved for the unperturbed form AF ; the generic
+perturbation is used only in the final finite-dimensional inertia comparison.
+4
+Right-edge arithmetic source and exact HLP algebra
+4.1
+Reflected archimedean contribution
+Differentiate the functional equation ζ(s) = χ(s)ζ(1 −s). Since f(s) = −1
+2χ′/χ(s) and f(s) =
+f(1 −s), one obtains
+Z1(s) = −χ(s)Z1(1 −s).
+(20)
+Taking logarithmic derivatives gives
+L1(s) + L1(1 −s) = χ′
+χ (s),
+L1 := Z′
+1
+Z1
+.
+(21)
+The two vertical sides are related by the Hermitian reflection ι(s) := 1 −¯s, which preserves the
+positive height and maps the left vertical side onto the right one. The holomorphic map s 7→1 −s
+alone would reverse the sign of the height and is not used as a geometric contour substitution.
+By (2), the curvature and packet polarizations on the left are the adjoints of their values at ι(s).
+Because the left boundary has the opposite orientation, its pullback to the upward right side carries
+the scalar factor
+−L1(1 −¯s) = −L1(1 −s) = L1(s) −χ′
+χ (s),
+where the last equality is (21). Hence the vertical contribution is exactly
+Iright + I∗
+right + Jarch,
+Jarch has scalar source −χ′
+χ = 2f.
+(22)
+Here Iright contains the right-edge logarithmic derivative L1 and all stationary arithmetic informa-
+tion. No L1 contour is pushed through an interior stationary zero. The separate archimedean self
+11
+
+
+source is holomorphic in the high rectangle and may be moved by Cauchy’s theorem. For the com-
+pleted Hermitian representation we distribute Jarch equally between the two adjoint orientations;
+hence each completed right-edge orientation carries the scalar source f + L1.
+For bounded normalized curvature p, put a = p/L and let Bv,w(s) denote the holomorphic
+packet-polarization multiplier. Set
+Sa(s) := Z (s + a)Z (s −a)Bv,w(s),
+ΦJ(s; a) := f(s)Sa(s) = −1
+2
+χ′
+χ (s)Sa(s).
+Thus ΦJ is exactly one half of the full self source Jarch in (22). The shifts a = O(L−1) leave the
+zeta poles at bounded imaginary height, so ΦJ is holomorphic on and inside the right half-rectangle
+R+
+T := {σ + it : 1/2 ≤σ ≤c, T1 ≤t ≤T2},
+which is the right half of (1), uniformly for |p| ≤P. With the vertical sides oriented upward and
+the usual top/bottom orientations, Cauchy’s theorem gives the exact identity
+Z
+Γ+
+1/2
+ΦJ(s; a) ds =
+Z
+Γ+
+c
+ΦJ(s; a) ds + Rhor,T (a),
+(23)
+where
+Rhor,T (a) = −
+Z
+H+
+T
+ΦJ(s; a) ds −
+Z
+H−
+T
+ΦJ(s; a) ds.
+The reflected Hermitian orientation gives the adjoint identity.
+Summing the two orientations
+doubles ΦJ = fSa and therefore reconstructs the full self source −χ′/χ = 2f in (22), with the
+corresponding doubled right-edge and horizontal terms.
+Because all fixed p-derivatives remain
+holomorphic in the same rectangle,
+∂j
+pJcrit,T (p) = ∂j
+pJright,T (p) + ∂j
+pRhor,T (p),
+0 ≤j ≤2.
+(24)
+Thus the critical-J contribution is fixed unambiguously before the common curvature is taken.
+We insert the packet multiplier and the common curvature (4) before deforming the contour to
+the right edge. On that edge,
+Z (s + a)Z (s −a) = Γa(s)ζ(s + a)ζ(s −a),
+where
+Γ0(s) = χ(1 −s),
+∂aΓa|a=0 = 0,
+∂2
+aΓa|a=0 = 2f′(s)χ(1 −s).
+Since f′(σ + it) = O(T −1) on fixed strips with t ≍T, the last term is assigned from the start to
+the regular remainder.
+Fix the sign convention
+P(s) := −ζ′
+ζ (s),
+Q(s) := −P ′(s) =
+X
+n≥1
+Λ(n) log n
+ns
+(ℜs > 1).
+(25)
+Then the right-edge logarithmic-derivative orientation itself has scalar source
+L1(s) = Z′
+1
+Z1
+(s) = −P(s) + f′(s) + Q(s)
+f(s) −P(s) .
+12
+
+
+The full archimedean self term in (22) is 2f; after the symmetric half-allocation described above,
+each completed right-edge orientation therefore carries f + L1. After separating the f′ term, the
+pointwise completed source is
+bHex(s) = f(s) −P(s) +
+Q(s)
+f(s) −P(s).
+(26)
+On a smooth height block with reference height τb, put
+Fb := f(1/2 + iτb) ∈R
+(27)
+(the reality follows from |χ(1/2 + it)| = 1 and ∂t log χ = iχ′/χ on the critical line), and define the
+frozen source
+Hex(s; Fb) = Fb −P(s) +
+Q(s)
+Fb −P(s).
+(28)
+Thus the term Fb is the frozen half of the archimedean self contribution and is not part of the
+Dirichlet series for Z′
+1/Z1. The completed two-master model is
+Hmod(s; Fb) = Fb −2P(s) + P(s −2/L).
+(29)
+Therefore
+∆H(s; Fb) = P(s) +
+Q(s)
+Fb −P(s) −P(s −2/L).
+(30)
+This is an exact algebraic identity between the two frozen sources on the absolute-convergence right
+edge. The error introduced by replacing the pointwise source (26) with (28) is estimated below
+uniformly over the HLP hierarchy.
+Lemma 4.1 (Exact curvature Dirichlet source). Put
+C(s) := ζ(s)2Q(s).
+Then the Hardy-gauge curvature satisfies the exact identity
+CZ (s) = q(s)2C(s) + f′(s)ζ(s)2
+,
+q(s)2 = χ(1 −s).
+(31)
+Moreover
+C(s) =
+X
+n≥1
+c(n)
+ns ,
+c(n) = 1
+2
+X
+ab=n
+log2(a/b) ≥0.
+(32)
+Consequently, after the global normalization L−2 already fixed in Section 2, the principal completed
+right-edge integrand has exactly one functional-equation factor χ(1 −s) and scalar Dirichlet source
+C(s)Hex(s; Fb). Before freezing the slow factor, the exact completed product separates as
+q(s)2 h
+C(s) bHex(s) + Rsrc
+f′ (s)
+i
+,
+(33)
+where
+Rsrc
+f′ = f′ζ2 bHex +
+f′
+f −P C + (f′)2
+f −P ζ2.
+(34)
+Thus every term containing at least one factor f′ belongs exactly once to the regular f′ class, while
+the principal source contains none.
+13
+
+
+Proof. Since Z = qζ and q′/q = f,
+Z ′′ = q
+ζ′′ + 2fζ′ + (f′ + f2)ζ
+
+.
+Therefore
+CZ = Z Z ′′ −(Z ′)2
+= q2ζζ′′ −(ζ′)2 + f′ζ2
+.
+Because (ζ′/ζ)′ = Q, the first two terms equal ζ2Q = C, proving (31). Moreover (26) gives the
+exact completed scalar factor
+f + L1 = bHex +
+f′
+f −P .
+Multiplying this by CZ /q2 = C + f′ζ2 gives (33)–(34). Finally the coefficient of n−s in ζζ′′ −(ζ′)2
+is
+X
+ab=n
+(log b)2 −log a log b
+
+= 1
+2
+X
+ab=n
+(log a −log b)2,
+which proves (32).
+From this point the spectral contour variable and the Perron variable are kept separate. The
+letter s = σ + it is reserved for the high spectral contour. After stationary phase, the resulting
+coefficient sequences are represented by an independent Perron/Mellin variable z. We denote their
+generating functions by P(z), Q(z), Hex(z; Fb) and Hmod(z; Fb) using the same coefficient formulas
+as above. All Laurent expansions near 1 below are in z; no deformation of the original high spectral
+contour to s = 1 is ever performed.
+Lemma 4.2 (Algebraic locator for the translated model scale). Write z = 1 + u and assume
+Fb = L/2 + O(1). As a meromorphic resummation of the right-edge geometric series, the frozen
+ratio Hex = Fb −P + Q/(Fb −P) has, in a fixed normalized neighbourhood |u| ≤C/L, poles at
+u = 0 and at one point u = u∗(Fb), where
+u∗(Fb) = F −1
+b
++ O(F −2
+b
+) = 2
+L + O(L−2).
+(35)
+Their scalar residues are −2 and +1. The model source Hmod has principal parts −2/u+1/(u−2/L).
+This lemma is only an algebraic locator for the translated scale. In the actual Perron argument
+the quotient Q/(Fb−P) is not transported as one meromorphic object through the Perron plane. The
+exact principal source is defined by the absolutely convergent geometric expansion on the safe right
+edge and by complete levelwise Laurent extraction at u = 0; only the resulting leading residue family
+is resummed. Thus u∗does not appear as a separate residue term in the contour decomposition; its
+role is only to identify the translated scale represented by the resummed model.
+Proof. The Laurent expansion of the logarithmic derivative at the zeta pole is
+P(1 + u) = 1
+u + p0 + O(u),
+Q(1 + u) = 1
+u2 + O(1).
+Put D(u) = Fb −P(1 + u). Then
+uD(u) = Fbu −1 −p0u + O(u2).
+14
+
+
+On a circle |u −F −1
+b
+| = C1F −2
+b
+with C1 fixed sufficiently large, Rouch´e’s theorem gives exactly one
+zero u∗of D and u∗= F −1
+b
++ O(F −2
+b
+). Since
+D′(u) = −P ′(1 + u) = Q(1 + u),
+the quotient Q/D has residue exactly 1 at u∗. At u = 0 the Laurent expansions above give
+−P(1 + u) = −1
+u + O(1),
+Q(1 + u)
+Fb −P(1 + u) = −1
+u + O(1),
+while Fb is analytic. Hence the frozen Perron source Hex has residue −2 at u = 0. This proves
+the exact-source statement without identifying the independent Perron variable with the original
+spectral Z1-function. For Hmod(z; Fb) = Fb−2P(z)+P(z−2/L) the principal parts are immediately
+−2
+u +
+1
+u −2/L.
+5
+The physical one-χ carrier and exact dilation covariance
+A right-edge monomial with total Dirichlet ratio
+ξ = m
+k
+occurs inside a one-χ integral. After a logarithmic packet displacement w, put η = ewξ. The
+principal oscillatory kernel is
+Kw(ξ) = 1
+2π
+Z
+A(t)χ(1 −c −it)η−c−it dt.
+Stirling gives
+χ(1 −c −it)η−c−it =
+ t
+2π
+c−1/2
+η−ceiΦη(t)(1 + O(t−1)),
+with
+Φη(t) = t log
+t
+2πη −t −π
+4 .
+Hence
+Φ′
+η(t) = log
+t
+2πη,
+t∗= 2πη,
+Φ′′
+η(t∗) = 1
+t∗
+.
+At the saddle,
+ t∗
+2π
+c−1/2
+η−c = η−1/2,
+whereas the Gaussian Hessian factor is
+s
+2π
+Φ′′η(t∗) =
+√
+2πt∗= 2πη1/2.
+Thus the powers of η cancel exactly. The stationary phase +π/4 cancels the −π/4 in Φ, and
+eiΦη(t∗)eiπ/4 = e−2πiη = e(−η).
+15
+
+
+Consequently
+Kw(ξ) = A(2πewξ)e(−ewξ) + Ew(ξ).
+(36)
+There is no order-one pair-dependent Hessian weight.
+If DwF(ξ) := F(ewξ), the principal stationary map satisfies
+Spr
+w = DwSpr
+0 .
+(37)
+A smooth height cutoff transforms by the same dilation:
+ω
+2πξ
+T
+
+7→ω
+2πewξ
+T
+
+.
+Thus the phase, the saddle cutoff, and the principal amplitude are all carried by the same exact
+dilation. The higher stationary coefficients, Stirling corrections, and nonstationary leakage belong
+to the regular classes estimated in Proposition 12.4. The packet centres in the two horizontal collars
+are treated separately by the coordinate restriction Vend of Lemma 3.6; they do not contribute an
+edge or regular source term.
+On a smooth height block of scale H = T/LD, write t = t∗v on the stationary sector. There t∗≍
+T uniformly in the shell and fixed local-source labels, and the rescaled saddle v = 1 remains in a fixed
+compact subset of the block after the smooth stationary/nonstationary partition. Consequently
+every fixed-order stationary expansion is uniform in the retained indices. Differentiating the slow
+block amplitude contributes only fixed combinations of
+T −1,
+H−1 = LD/T,
+T/H2 = L2D/T,
+and further fixed derivatives give the same type of T −1-times-polylog bounds. These terms therefore
+remain in the regular symbol class after the fixed derivative orders used below.
+Lemma 5.1 (Uniform smooth stationary symbol). Fix integers r, s ≥0 and a bounded curvature
+range |p| ≤P. After the universal carrier e(−my) is extracted, every direct stationary one-χ source
+occurring in the ordinary Hardy term, the summed exact HLP hierarchy, the translated/coalescing
+faces, and the fixed Stirling/Hardy corrections has on a retained unit shell Ij = [Jj, Jj +1] the form
+cmam,T (y; p)e(−my),
+with
+sup
+y∈Ij, |p|≤P
+|∂r
+y∂s
+pam,T (y; p)| ≪r,s,P LCr,sJ−r
+j
+.
+(38)
+The constants are uniform over the fixed local-source labels and over the summed geometric levels.
+Proof. Call a height factor g a symbol of order R if
+sup
+0≤q≤R
+tq|g(q)(t)| ≪R LC
+on t ≍T. This class is closed under finite products and, when a factor is bounded below by a
+negative power of L, under reciprocal. Stirling’s formula shows that
+λ(t),
+f(t)/L,
+epλ(t),
+e±2λ(t),
+t±2/L
+and every fixed retained gamma correction are symbols, uniformly for bounded p. The f′ term
+gains an additional factor T −1.
+16
+
+
+For the exact HLP hierarchy, level k carries the coefficient αk(m)f(t)−k and is supported only
+when 2k ≤m by Lemma 7.1. Choose a fixed constant CH > 2 so large that, on the stationary strip
+and for all sufficiently large T,
+qH := sup
+t
+
+L
+CHf(t)
+ < 1.
+Set
+bk,m := αk(m)
+CH
+L
+k
+,
+cm :=
+X
+k≥1
+bk,m.
+The coefficients bk,m are nonnegative. If cm̸ = 0, the summed hierarchy can therefore be written as
+cmam,T (t) with
+am,T (t) =
+X
+k≥1
+bk,m
+cm
+
+L
+CHf(t)
+k
+.
+The weights bk,m/cm form a probability vector. Every fixed height derivative of the last factor is
+bounded by a fixed polynomial in k times qk
+H, because trf(r)(t)/f(t) = O(L−1) for r ≥1. Hence
+am,T is a height symbol uniformly in m, without using an ℓ2 estimate pointwise. Separately, the
+factorial majorant gives
+
+X
+m≤x
+c2
+m
+
+
+1/2
+≤
+X
+k≥1
+CH
+L
+k
+
+X
+m≤x
+αk(m)2
+
+
+1/2
+≪(xL)1/2 X
+k≥1
+Ck
+1
+√
+k!
+,
+so the coefficient sequence has the required quadratic bound. Fixed p-derivatives and translated
+factors contribute only the already controlled polylogarithmic symbols and factors (log m)/L =
+O(1). Thus the complete exact HLP amplitude remains in a fixed polylogarithmic height-symbol
+class.
+For one stationary monomial scale t = t∗v. After the exact Hessian cancellation already proved
+above, the phase is t∗Ψ(v) with Ψ′(1) = 0, Ψ′′(1)̸ = 0, and uniformly bounded higher derivatives
+near v = 1. Fixed-order stationary phase therefore produces a finite expansion whose coefficients
+are height symbols, with a remainder O(T −MLCM ) after any prescribed fixed order M. Finally,
+∂r
+yg(2πmy) = (2πm)rg(r)(2πmy).
+On the shell my ≍T and y ≍Jj, so
+m
+T ≍1
+Jj
+.
+The height-symbol bound therefore gives
+|∂r
+yg(2πmy)| ≪LCJ−r
+j
+.
+The same argument is uniform after the fixed number of p-derivatives. This proves (38).
+6
+The completed three-Z master and common-prefix geometry
+The three principal Z-faces are not three independent sources. We use the completed three-face
+Cauchy master and diagonal Mellin representation of Heap–Li–Zhao [6]. At fixed height the three
+faces arise from one completed shifted product and one joint three-variable residue. Only after
+this completion is the diagonal Mellin variable introduced. In the general HLZ twisted formula the
+17
+
+
+auxiliary outer Dirichlet polynomial produces indices h, k and the diagonal relation hm = kn. For
+(h, k) = 1 this is
+m = kℓ,
+n = hℓ.
+(39)
+The invariant contour form of this paper, however, contains no such auxiliary outer Dirichlet
+polynomial: its additional test factor is the packet polarization Bv,w, which is retained as a smooth
+holomorphic height/Mellin weight. Thus the actual source specialization used below is h = k = 1,
+and (39) reduces to m = n = ℓ.
+Proposition 6.1 (Trivial outer twist of the invariant packet source). In the application of the HLZ
+diagonal calculation to the contour matrix AT , the auxiliary outer Dirichlet polynomial is identically
+one. Hence its outer indices satisfy
+g = h = k = 1.
+If this source is embedded in any finite auxiliary divisor range d ≤Y , its Hilbert-valued coefficient
+family has only the coordinate d = 1 nonzero. Consequently the outer packet translations are the
+identity, the common divisor map of Proposition 6.8 restricts to the identity, and the factor de/g
+equals 1. In particular the outer excess annulus (59) is empty for the invariant contour source.
+Proof. The exact same-form identity (6) contains the shifted Hardy product and the packet po-
+larization, but no factor of the form Qout(s)Qout(1 −s). The HLP series in (26) belongs to the
+logarithmic-derivative source and is not an auxiliary outer test polynomial. In the HLZ twisted
+formula the indices g, h, k arise only after expanding such an outer Dirichlet polynomial and its
+adjoint. Therefore the present contour form is the specialization Qout ≡1, giving g = h = k = 1.
+The packet polarization remains in the analytic weight before the finite shift residues, so no discrete
+outer index is created by it. This specialization removes only the auxiliary outer indices g, h, k; it
+does not by itself contract the internal HLP radial carrier M. That carrier is contracted only in the
+low-level common principal functional of Lemma 6.11, while the direct translated and high-level
+terms retain it. The remaining assertions follow immediately from the definitions of the translation
+and common-divisor maps.
+Remark 6.2 (Scope of the HLZ input). We use only the completed three-face residue formula
+and diagonal calculation of Heap–Li–Zhao [6], specialized as in Proposition 6.1; the packet po-
+larization is not identified with their auxiliary Dirichlet polynomial. Because the packet factor
+is holomorphic in the shift variables, it commutes exactly with the finite Cauchy residues.
+At
+h = k = 1 the finite Euler factor below is identically one. The packet-stable contour error retains
+the superlogarithmic/arbitrary-log saving after the fixed packet derivatives. All packet-uniform
+stationary and sideband estimates used below are proved directly rather than imported from the
+scalar moment theorem.
+Lemma 6.3 (Packet-stable HLZ diagonalization). Let H0(u, z) be the auxiliary entire factor in
+the diagonal lemma of Heap–Li–Zhao, normalized by H0(0, z) = 1 and vanishing at the two moving
+divisors
+2u = z2 −z1,
+2u = z2 −z3.
+Let W(u, z) be a packet Mellin weight of Lemma 7.6. Put log3 T := log log log T. Uniformly for
+the retained shifts, the invariant-source specialization h = k = 1 of the HLZ diagonal contour with
+auxiliary factor H0W satisfies
+W(0, z)Zz,1,1 = eZz,1,1[H0W] + Ediag(z; 1, 1),
+(40)
+18
+
+
+where, after any fixed number of normalized shift derivatives and any fixed number of the packet
+derivatives ∂ρ, ∂p used below,
+Ediag ≪LCW
+h
+T −2/ log3 T (log T)C log3 T + (log T)−Ai
+(41)
+for every prescribed fixed A > 0. The constant CW depends only on the fixed shift and packet deriva-
+tive orders. Thus insertion of the physical packet weight before the three finite shift residues changes
+the main diagonal by its exact value W(0, z) and costs only the same superlogarithmic/arbitrary-log
+error class as the unweighted diagonal lemma.
+Proof. The packet weight has the form
+W(u, z) =
+Z C∗
+0
+aρ,p,z,T (t)eLut dt
+(or a finite product of such factors). Lemma 7.6 shows that every fixed ∂ρ, ∂p derivative has the
+same polylogarithmic L1 bounds. On the strip used in the HLZ contour argument,
+−
+1
+log3 T ≤ℜu ≤1
+L,
+its absolute value and every fixed normalized shift/packet derivative are O(LCW ): on the right
+edge this follows from eLℜ(u)t ≤eC∗and the L1 bounds of Lemma 7.6, while on the left part of the
+strip the exponential factor only decreases. The auxiliary factor H0 in the HLZ lemma supplies the
+required Gaussian decay in |ℑu|. Multiplication by W therefore preserves that Gaussian decay, with
+only the fixed polylogarithmic factor LCW in front. Thus every vertical and horizontal estimate
+used in the original contour deformation remains in the same error class after insertion of the packet
+weight.
+The zeros of H0 at the two moving divisors are unchanged after multiplication by W. Although
+the HLZ diagonal lemma is stated with the normalization H(0) = 1, its contour identity is linear
+in the auxiliary entire factor. Applying the same proof to H0W therefore gives the residue
+(H0W)(0, z)Zz,1,1 = W(0, z)Zz,1,1,
+without dividing by W(0, z).
+The same contour deformation crosses only u = 0, and the left
+vertical and truncated horizontal integrals acquire at most the factor LCW above. This proves the
+undifferentiated form of (40)–(41).
+For the fixed normalized shift derivatives used in the paper, apply Cauchy’s formula on circles of
+radius comparable to 1/L. A fixed number of such derivatives costs only a fixed power LCsh. Since
+the logarithmic remainder in the HLZ lemma is available with an arbitrary prescribed exponent,
+we first invoke that lemma with exponent A + Csh + CW + 2 and only then differentiate. After
+absorbing the resulting fixed powers into CW , the final differentiated estimate has the displayed
+exponent A. The same argument applies to the fixed ∂ρ, ∂p derivatives because Lemma 7.6 gives
+the required uniform L1 bounds for the differentiated packet amplitudes. In particular the packet
+weight is bounded uniformly in ℑu on each vertical line used in the deformation, so it introduces
+no additional vertical exponential growth.
+Lemma 6.4 (Normalization of the finite HLZ Euler factor). In the notation of the completed HLZ
+diagonal, the finite local factor attached to k is
+Eα,β,γ(k) :=
+Y
+pκp∥k
+X
+m≥0
+fα,γ(pm+κp)p−m(1+β)
+X
+m≥0
+fα,γ(pm)p−m(1+β)
+,
+(42)
+19
+
+
+where
+fα,γ = µ ∗n−α ∗n−γ
+in Dirichlet-convolution notation. Then
+E0,0,0(k) = 1.
+(43)
+Moreover, uniformly for k ≤Y = Lκ and |α| + |β| + |γ| ≤C/L,
+Eα,β,γ(k) = 1 + OC
+log Y
+L
+
+,
+(44)
+and every fixed derivative with respect to the normalized variables Lα, Lβ, Lγ is bounded by a fixed
+power of log Y/L (with the zeroth derivative bounded uniformly).
+Proof. For one prime put z = p−(1+β). The local generating series is
+X
+m≥0
+fα,γ(pm)zm =
+1 −z
+(1 −p−αz)(1 −p−γz).
+At α = β = γ = 0 this is (1−z)−1, so every local coefficient is 1 and the numerator and denominator
+in (42) coincide. This proves (43).
+On the stated shift polydisc one has |z| ≤p−1+o(1), uniformly for p ≤Y . Hence the local
+series and its reciprocal are analytic and uniformly bounded on a fixed slightly larger polydisc.
+Differentiating a local factor j times in the unnormalized shifts costs at most Oj((κp + 1)j(log p)j).
+Summing logarithmic derivatives over pκp ∥k and using
+X
+pκp∥k
+κp log p = log k ≤log Y
+shows that the first logarithmic derivative is O(log Y ) and every fixed higher derivative is bounded
+by a fixed power of log Y . Passing to the normalized variables divides each derivative by L. The
+mean-value theorem, together with (43), gives (44) and the asserted derivative bounds.
+Proposition 6.5 (Height versus fibre endpoint). In the completed three-Z source, every explicit
+power of the interpolation height X belongs to the functional-equation/archimedean factor, whereas
+the packet-dependent finite endpoint is produced by the diagonal Mellin factor. More precisely,
+Xarch = t
+2π,
+λ(t) := log Xarch
+L
+= 1 + O(L−1)
+on a retained dyadic height block, while the diagonal factor
+T 2u(mn)−u =
+ T 2
+hkℓ2
+u
+produces the moving fibre endpoint. After the two Hermitian stationary cutoffs are intersected, the
+full-fibre scale is the same local height,
+Yfib := Xarch = t
+2π,
+log Yfib
+L
+= λ(t) = 1 + O(L−1).
+Then
+ℓ≤Yfibe−|v|,
+v = w + log(h/k),
+20
+
+
+so
+ρ(v) = log Yfib −|v|
+L
+= 1 −|v|
+L + O(L−1).
+(45)
+The symbol Yfib ≍T is unrelated to the arithmetic truncation Y = Lκ introduced later. This is the
+raw stationary coordinate: the term log(h/k) = log h −log k is removed later by an exact pair of
+packet translations in the common positive analysis map, not by a small endpoint approximation.
+Consequently packet lag changes the finite endpoint ρ but does not replace the explicit archimedean
+powers by powers of ρ.
+Proof. Before the arithmetic master is contracted, the three-face interpolation contains the common
+monomial
+X−(α+β+γ)/2X(z1−z2+z3)/2.
+Taking the finite Cauchy residues gives the explicit factors
+1,
+X−α−β,
+X−β−γ.
+These factors are present even after the smooth Mellin cutoff has been suppressed from the displayed
+fixed-fibre coefficient, so their X is the physical height Xarch = t/(2π). By contrast, after (39) the
+Mellin variable occurs through
+T 2u(mn)−u =
+T 2/(hkℓ2)
+u ,
+which is the source of the diagonal cutoff. The packet dilation of Section 5 changes the two oriented
+cutoffs to Yfibe−v and Yfibev; their common part is Yfibe−|v|, proving (45).
+The distinction survives differentiation. For instance,
+∂γ
+
+X−q−γAγ
+γ=0 = X−q log(A/X),
+so the X−q and the −log X term have the same archimedean provenance, whereas the A = hℓ
+contribution is a fibre variable. Likewise, for δ = 2/L,
+ kX
+hn2n3
+δ
+=
+k
+h
+δ
+Xδ(n2n3)−δ,
+with
+Xδ = e2λ = e2(1 + O(L−1)),
+while only the last factor is integrated over the common fibre. Hence the archimedean and endpoint
+roles are distinct already at the source level.
+Lemma 6.6 (Exact outer-ratio translation intertwiner). On the raw stationary coordinate the
+common-prefix lag is
+v = w + log h −log k.
+On the ambient packet Fourier space L2(R, du) let
+(UhF)(u) := F(u −log h),
+(UkF)(u) := F(u −log k).
+Then Uh, Uk are unitary, and the raw pair kernel depending on w + log(h/k) is exactly the pullback
+by U∗
+hUk of the universal kernel in w. This identity holds for the full smooth packet profile, including
+its transition caps; no flat-amplitude approximation is involved. The reserve condition (10) is used
+only later when the physical stationary band is represented inside the flat plateau for shell analysis.
+21
+
+
+Proof. Multiplication of a Dirichlet monomial by h−it translates the packet Fourier coordinate by
+log h; the adjoint k-orientation gives the analogous translation by log k.
+Translation on L2(R)
+preserves Lebesgue measure and the full translated packet profile, so the relative displacement is
+exactly log h −log k and conjugation by Uh, Uk replaces w + log(h/k) by w without a cutoff error.
+These ambient unitaries are part of the common packet analysis map in both AG
+T and GT . When
+the later shell representation is restricted to the physical stationary band, | log h|, | log k| ≤κ log L
+and the chosen reserve keep the translated physical copies strictly inside the constant plateau.
+Proposition 6.7 (The critical-J self diagonal has the same full fibre). At the pointwise principal
+diagonal, the primal and dual approximate-functional- equation halves of the critical-J self source
+glue to the same full finite interval as the completed three-Z diagonal. In particular, if
+U := log X
+L
+,
+X = t
+2π,
+and A := Lα, B := Lβ, then for h = k = 1 the two diagonal halves are
+EU/2(A + B)
+and
+e−U(A+B)EU/2(−(A + B)),
+whose sum is exactly
+EU/2(A + B) + e−U(A+B)EU/2(−(A + B)) = EU(A + B).
+(46)
+The three-Z diagonal with the same local height X has the radial factor
+ X2
+hkℓ2
+u
+,
+so it uses the same full logarithmic endpoint. The factors h, k do not create a separate principal
+endpoint after the common analysis map is fixed: by Lemma 6.6 their logarithms are absorbed by
+exact packet translations, leaving the universal packet lag. Thus no O(log L/L) scalar endpoint
+approximation is used here.
+Proof. For the shifted product
+ζ(1/2 + it + α)ζ(1/2 −it + β),
+a smoothed pointwise approximate functional equation has radial conductor mn/X, not mn/X2.
+On the diagonal (39), mn = hkℓ2. With h = k = 1, one AFE half therefore has ℓ2 ≲X, i.e.
+0 ≤log ℓ
+L
+≤U
+2 .
+Its local continuum factor is EU/2(a + b). The dual half has the opposite shift and the functional-
+equation factor e−U(a+b); changing variables v = U −r converts its interval to [U/2, U], proving
+(46).
+The completed three-Z master is represented before scalar contraction by a single diagonal
+Perron integral. After m = kℓ, n = hℓ, its Mellin factor is (X2/(hkℓ2))u. Taking the same local
+height X = t/(2π) therefore produces the full interval 0 ≤log ℓ/L ≤U, exactly the glued interval
+of (46). The smooth Mellin window can be chosen consistently in both representations, so the
+equality is at the principal feature level, not only after scalar summation.
+22
+
+
+For the remainder of the proof fix the stable logarithmic core
+WT := L −A0 log L,
+XT := eWT =
+T
+2πLA0 ,
+(47)
+where the fixed lower bounds on A0 are imposed in Section 13. This definition belongs to the
+invariant-source geometry and is independent of the auxiliary divisor comparison below.
+Proposition 6.8 (Auxiliary unsummed common-divisor feature). For comparison with the general
+twisted formula, let d, e ≤Y be auxiliary outer Dirichlet-polynomial indices, with coefficients cd, ce,
+and let m, n be the two zeta indices. For the invariant contour source Proposition 6.1 specializes
+this family to d = e = 1; the general finite-range identity below is auxiliary. On the stationary
+diagonal
+dm = en =: N,
+(48)
+the base principal shifted product has the exact positive factorization
+X
+N
+N−1−2a
+
+X
+d|N
+d≤Y
+cdda
+
+2
+,
+a = p
+L.
+(49)
+The translated principal master with δ = 2/L, inner shifts a + δ, a −δ, and reciprocal outer de-
+formation cd 7→cdd−δ, ce 7→ceeδ has exactly the same factor (49). The critical-J self slot acts
+through the same outer-divisor feature. The factorization is Hilbert-valued as well: if bd ∈H and
+Ud are unitaries on H, then the corresponding outer feature is
+X
+N
+N−1−2a
+
+X
+d|N
+d≤Y
+daUdbd
+
+2
+H
+≥0.
+(50)
+Thus the exact packet translations, including the full smooth packet profile, may be retained inside
+the common positive analysis map. Hence, before scalar contraction, the completed signed principal
+dependence is radial and the outer arithmetic factor is one common positive congruence.
+If d = gh, e = gk, (h, k) = 1, and m = kℓ, n = hℓ, then
+ℓ= Ng
+de .
+(51)
+Consequently, if this auxiliary finite family is parametrized by Y = Lκ for a fixed κ > 0, then
+0 ≤log N −log ℓ
+L
+= log(de/g)
+L
+≪κ
+log L
+L
+.
+(52)
+The same O(log L/L) scale controls the p-dependence of the positive outer divisor map. Moreover
+Wa itself has an explicit finite M¨obius inverse on the outer range: restricting its output to N ≤Y ,
+cdda =
+X
+e|d
+µ(d/e)(Wac)(e),
+d ≤Y.
+(53)
+23
+
+
+Consequently the weighted map c 7→(N−1/2−a(Wac)(N))N≤Y is injective and has inverse norm
+Y 1+o(1). The same inverse bound holds for the Hilbert-valued map in (50): if SN = P
+d|N daUdbd,
+then
+daUdbd =
+X
+e|d
+µ(d/e)Se,
+so bd is recovered by applying the unitary U∗
+d and the scalar weight d−a. The deformation of this
+positive divisor map has entrywise normalized size O(log L/L).
+To avoid relying on one-sided
+factorization in any later comparison, we measure it with the uniform two-sided arithmetic transfer
+bound of Lemma 9.3; hence
+O
+
+L−1+10κ+o(1) log L
+
+= o(1),
+κ < 1
+10.
+(54)
+For the invariant contour source, d = e = 1 and hence the divisor-map p-deformation, the endpoint
+displacement (52), and the outer annulus all vanish identically. For the auxiliary general finite
+family, the endpoint displacement is pair dependent and extends the stationary endpoint in the
+common N-coordinate; Proposition 6.9 records its separate sideband decomposition. None of these
+auxiliary losses is needed for the exact source specialization.
+Proof. A base diagonal monomial is
+cdce d−se−(1−s)m−(s+a)n−(1−s+a).
+Using dm = en = N, equivalently m = N/d and n = N/e, this is exactly
+N−1−2acdda ceea.
+Summing first over divisors of N proves (49).
+More generally, replacing the scalar factors by
+xd = daUdbd ∈H gives
+X
+d,e|N
+⟨xd, xe⟩=
+
+X
+d|N
+xd
+
+2
+,
+which proves (50). For the translated master the extra scalar factor is
+d−δeδm−a−δn−a+δ = N−2adaea,
+so the same divisor Gram is obtained identically. The critical-J source multiplies the same shifted
+product, and Proposition 6.7 shows that its primal and dual halves glue before scalar contraction;
+therefore its outer analysis map is the same one.
+For the inverse statement, write SN = (Wac)(N). Then SN = P
+d|N cdda for N ≤Y , and
+ordinary M¨obius inversion gives (53). Cauchy–Schwarz and the divisor bound τ(n) = no(1) give
+X
+d≤Y
+|cd|2 ≪Y 1+o(1) X
+N≤Y
+|SN|2 ≪Y 2+o(1) X
+N≤Y
+N−1−2a|SN|2,
+which is the asserted Y 1+o(1) inverse norm.
+Finally N = ghkℓand de = g2hk, proving (51). Since d, e ≤Y , one has de/g ≤Y 2, giving (52).
+In particular, the physical cutoff
+ℓ≤Yfibe−|v|
+24
+
+
+is equivalent in the common-divisor coordinate to
+N ≤de
+g Yfibe−|v|.
+(55)
+Thus the pair-independent range
+N ≤Yfibe−|v|
+(56)
+is a genuine common sub-prefix for every arithmetic pair; the difference between (55) and (56) is
+an outer annulus, not a shortening of the common core. After applying Lemma 6.6, the raw lag
+v is straightened to the universal packet lag w. Imposing the common core then simply truncates
+the outer sum in (49):
+X
+N≤Yfibe−|w|
+N−1−2a
+
+X
+d|N
+d≤Y
+cdda
+
+2
+≥0.
+(57)
+Thus the passage to the pair-independent core preserves the exact positive arithmetic congruence;
+only the discarded annulus is treated separately. The same truncation also preserves the coordinates
+needed for the finite M¨obius inverse. Indeed, on this stable core,
+|w| ≤WT ,
+while log Yfib = L + O(1). Hence uniformly on the retained core
+Yfibe−|w| ≥LA0+o(1).
+(58)
+For this auxiliary comparison one may, after A0 is fixed, choose any 0 < κ < min{1/10, A0 −1}
+and set Y = Lκ. Then the right side exceeds Y for all sufficiently large T. Consequently every
+coordinate 1 ≤N ≤Y used in (53) remains present after the common-core restriction, and the
+inverse bounds for Wa and f
+Wa remain valid.
+Moreover da = exp(p log d/L), so each fixed p-
+derivative of the positive divisor map costs at most a fixed power of log Y/L. Applying the uniform
+two-sided transfer estimate (132) gives (54).
+This optional auxiliary choice is not part of the
+invariant-source parameter hierarchy.
+Proposition 6.9 (Auxiliary outer common-prefix excess). For the invariant contour source this
+contribution is identically zero by Proposition 6.1. For a general auxiliary retained outer pair (d, e),
+first restrict to the stable logarithmic band 0 ≤u ≤WT . On this band decompose the actual N-range
+(55) into the common core (56) and the excess annulus
+Yfibe−|v| < N ≤de
+g Yfibe−|v|.
+(59)
+Let Aout
+T
+denote this stable-band annulus and its adjoint; the part on WT < u ≤L belongs only to
+(149). After returning to the physical stationary carrier ℓ= Ng/(de), expand the smooth unit-shell
+stationary symbol in Fourier sidebands and write
+Aout
+T
+= Eout
+T
++ Rout,hi
+T
+,
+(60)
+where Eout
+T
+contains the sidebands |r| ≤Rsb
+j
+and Rout,hi
+T
+the complementary sidebands. Then
+rank Eout
+T
+≪TY 3+o(1) = o(NT ).
+(61)
+25
+
+
+The term Rout,hi
+T
+belongs to the direct high-sideband regular class (vii) of Proposition 12.4. No
+estimate of the annulus width is needed for the low-sideband rank bound.
+Proof. Equation (51) maps the annulus back to positive integer carriers ℓsatisfying the original
+stationary saddle relation t∗= 2πℓy. If y ∈[Jj, Jj + 1] and t∗∈[T, 2T], then
+T
+2π(Jj + 1) ≤ℓ≤
+2T
+2πJj
+,
+which is precisely the stationary carrier interval used in Section 11, up to the fixed shell buffer
+already present there. Lemma 5.1 gives a smooth symbol uniformly on the annulus. Its low Fourier
+sidebands replace ℓby effective shifts within Rsb
+j
+of this stationary interval.
+Proposition 11.1
+therefore places all low-sideband terms in the same shell-edge spaces and gives total geometric rank
+O(T) per fixed arithmetic multiplicity. Multiplying by the conservative Y 3+o(1) outer label count
+proves (61). The high sidebands are not included in this rank assertion; their coefficient square sum
+is no larger than that of the full direct family and their Fourier decay is estimated in class (vii).
+For a packet pair r, s, let Ir and Is be the two physical logarithmic prefix intervals determined
+by the packet displacement and put
+Jrs := Ir ∩Is,
+ρ(T)
+rs := |Jrs|.
+In the invariant-source specialization there is no outer translation and N = ℓ. Propositions 6.7 and
+6.5 show that the principal full-fibre scale is the local archimedean height Yfib = Xarch = τ/(2π).
+Hence
+νT := log Yfib
+L
+= λ(τ) = 1 + O(L−1),
+νT ≥1
+on the dyadic interval. The actual normalized common-prefix endpoint is
+ρ(T)
+rs = νT −|wr −ws|
+L
+.
+(62)
+The frozen global model replaces only the scalar full-fibre length νT by 1; this O(L−1) endpoint
+deformation is estimated in Lemma 8.4. In the finite-T local formulas below we write ρrs for ρ(T)
+rs .
+Since d = e = g = 1 in the invariant source, there is no additional arithmetic endpoint displacement.
+The intersection Ir ∩Is is formed at the packet level before the local Perron residue is evaluated.
+Thus ρrs is determined by the global packet geometry rather than introduced as an independent
+positivity parameter.
+Before the u-residue and the three shift residues are taken, the packet pair contributes one joint
+analytic weight on the pair-independent common N-core. Here t denotes the normalized logarithmic
+N-coordinate after translating that core interval to its local origin; it is not the physical height
+variable. Thus
+Wrs,L(u, z) =
+Z
+Jrs
+a(t, z)eLut dt,
+(63)
+where a contains the smooth packet, slow archimedean, and fixed shift factors. For every fixed
+multi-index ν,
+|∂ν
+z[un]Wrs,L(u, z)| ≪ν
+(CL)n(1 + n)C
+n!
+.
+(64)
+If
+F(u, z) =
+∞
+X
+j=−J
+Fj(z)uj,
+26
+
+
+then
+Resu=0(WF) =
+J−1
+X
+n=0
+[un]W F−n−1.
+This is a finite sum, hence the u-residue and the finite three-Z shift residues commute exactly:
+Resz Resu=0(WF) = Resu=0 Resz(WF).
+(65)
+The standard auxiliary factor in the completed three-Z master cancels the moving divisors 2u =
+z2 −z1 and 2u = z2 −z3; multiplication by the holomorphic packet factor (63) does not recreate
+them.
+For the basic local pole feature,
+Z
+Jrs
+e−pt dt
+becomes, after translation of Jrs to [0, ρrs],
+Eρrs(p) :=
+Z ρrs
+0
+e−pt dt.
+This explains the appearance of Eρ in the local model without asserting that a pointwise fixed-ρ
+positive form globalizes to a positive packet matrix.
+Proposition 6.10 (Completed principal local profile). Let τ ≍T be the physical height and let τb
+be the reference height of its smooth block, of length H = T/LD. Write
+λ(τ) := log(τ/2π)
+L
+,
+µb := 2Fb
+L ,
+where Fb is the frozen value of the half-self factor f on that block.
+Stirling’s formula and the
+mean-value theorem give, uniformly for |τ −τb| ≪H,
+µb = λ(τ) + O(L−D−1) + O((TL)−1).
+(66)
+Let ρ be the pair-independent common N-prefix endpoint. Before taking the normalized curvature
+coefficient, the completed model principal source has local profile
+Gλ(τ),µb,ρ(p) = eλ(τ)p h
+µbEρ(2p) −2Eρ(p)2 + e2λ(τ)Eρ(p + 2)Eρ(p −2)
+i
+.
+(67)
+Consequently the frozen profile λ = µb = 1 is
+G(ρ) = [p2] ep 
+Eρ(2p) −2Eρ(p)2 + e2Eρ(p + 2)Eρ(p −2)
+
+.
+(68)
+Proof. Use the completed per-orientation source Hmod = Fb −2P + P(s −2/L) from (29). By
+Proposition 6.1, all auxiliary outer indices are trivial, so the common-product coordinate reduces
+to N = ℓand there is no outward arithmetic annulus. The common-prefix projection is taken
+before the local residue, so after translating the normalized logarithmic carrier coordinate every
+principal fibre integral is over the same interval 0 ≤t ≤ρ.
+The self term is read after the two Hermitian orientations are reassembled. Before freezing, the
+full J source is 2f = −χ′/χ; on the block under consideration its principal frozen value is 2Fb. The
+27
+
+
+local pole extraction has the same common positive L2 Perron amplitude as the other principal
+faces, so after this common amplitude is factored out the self coefficient is exactly
+2Fb
+L
+= µb.
+Proposition 6.7 gives the full glued fibre and Proposition 6.5 keeps the explicit Hardy shift factor
+at the physical height. Hence the normalized full-J contribution is
+µbeλ(τ)pEρ(2p).
+The approximation (66) is used only in the later comparison with the frozen model; no factor 2
+is absorbed into the definition of (67). The two unshifted logarithmic-derivative faces lie on the
+common diagonal (39). Their two one-sided fibre integrals are both Eρ(p); the coefficient −2P
+therefore gives
+−2eλ(τ)pEρ(p)2.
+Finally the translated source P(s −2/L) contributes the internal shifts +2 and −2 in the two
+diagonal fibre variables. The explicit functional-equation factor is archimedean, hence X2/L = e2λ(τ)
+by Proposition 6.5. Its contribution is therefore
+eλ(τ)pe2λ(τ)Eρ(p + 2)Eρ(p −2).
+Adding the three contributions proves (67). Setting λ = µb = 1 and extracting the coefficient of p2
+gives (68). By Proposition 6.1, no auxiliary outer arithmetic label is present in this invariant-source
+calculation.
+Lemma 6.11 (The local projector contracts the internal Dirichlet fibre). Fix a packet pair. In the
+invariant-source specialization the common shifted-zeta and packet analysis maps are fixed before
+the internal HLP index is exposed; there is no separate outer arithmetic map. After the common
+diagonal is imposed, every exact HLP level has a radial Dirichlet series
+Dk(z) =
+X
+M≥1
+ak,MM−z.
+The index M is a summation index of the contour coefficient, not a coordinate of the packet Her-
+mitian space. For k ≤K0, the actual packet Mellin weight W enters the scalar residue functional
+Lex
+pr,≤K0[W] =
+X
+0≤k≤K0
+ωk,L Resu=0
+Fk,L(1 + u; p)W(u)
+
+.
+(69)
+Thus no vector indexed by M remains in the exact low-level common principal fibre. The addi-
+tional translated residues in (89) are not part of (69); they remain direct one-χ terms and retain
+their M-carriers. The levels k > K0 are likewise not acted on by this projector and retain their
+direct M-carriers as in Lemma 7.5. Replacing the level factors by their leading Laurent jets and
+extending the resulting model sum over all k gives the model projector (85) and the radial profile
+of Proposition 6.10. The extension beyond K0 is Kpkt
+lead,∞−Kpkt
+lead,≤K0; the signed correction required
+in the exact-minus-model decomposition is its negative, namely (99).
+Proof. On the safe spectral right edge the internal Dirichlet sums and the geometric HLP hierarchy
+are absolutely convergent. After stationary phase the packet cutoff is represented by W. For the
+exact source, perform the local contour move only for k ≤K0. Lemma 7.8 permits the internal
+28
+
+
+Dirichlet sum and contour integral to be interchanged levelwise. Taking the u = 0 component of
+(89) and summing over k ≤K0 gives exactly (69); the translated-residue component remains in
+the direct one-χ decomposition. The levels k > K0 remain on the direct right-edge representation
+and therefore retain their M-carriers.
+For the model comparison, replace the level factors by their leading Laurent jets. The resulting
+infinite model series is absolutely convergent and Lemma 7.9 gives the self, base, and translated
+coefficients of Proposition 6.10, hence Gλ,µb,ρ. Its portion beyond K0 is the radial model truncation
+error (99); the exact high-level carriers remain in the direct decomposition of Lemma 7.5.
+7
+Exact HLP levels and the smooth packet local replacement
+Fix once and for all a spectral right edge
+ℜs = 1 + δ,
+δ > 0.
+All Dirichlet expansions in this section are first made on this line. Absolute convergence gives
+P(s) = Oδ(1) and Q(s) = Oδ(1), while f(s) = 1
+2L + Oδ(1) on t ≍T. Hence
+
+P(s)
+f(s)
+ ≪δ L−1,
+The coefficient organization is the one appearing in the local-extrema analysis of Hughes–Lugmayer–
+Pearce-Crump [7], but no RH-dependent estimate from that paper is used here. Indeed, on the
+present fixed safe line the exact identity
+Q(s)
+f(s) −P(s) =
+X
+k≥1
+f(s)−kP(s)k−1Q(s)
+(70)
+follows directly from the geometric series, and converges absolutely and uniformly because |P/f| ≪δ
+L−1. Thus the levelwise expansion used below is unconditional before any contour movement. Since
+f′(s) = O(T −1), its separated f′ contribution is also Oδ((TL)−1) on this line. The exact multiplier
+at level k changes only the Dirichlet coefficient sequence. If the total convolution index is M, the
+stationary phase remains
+t∗= 2πMy,
+carrier = e(−My).
+(71)
+Thus exact levels do not introduce a new moving support variable. Their packet weights remain in
+the finite-interval Laplace/Mellin class (63).
+7.1
+Uniform factorial control of the HLP hierarchy
+For k ≥0 define the nonnegative Dirichlet-convolution coefficients Λk by
+P(s)k =
+X
+n≥1
+Λk(n)
+ns
+,
+Λ0(1) = 1,
+and for k ≥1 let αk be the coefficient sequence of P k−1Q.
+Lemma 7.1 (Derivative identity and support). For every k ≥1,
+αk(n) = log n
+k
+Λk(n),
+Λk(n)̸ = 0 =⇒n ≥2k.
+(72)
+29
+
+
+Proof. Differentiate the identity for P k. Since P ′ = −Q,
+−
+X
+n
+(log n)Λk(n)n−s = kP k−1P ′ = −kP k−1Q = −k
+X
+n
+αk(n)n−s.
+Coefficient comparison gives the first identity. Every nonzero term of the k-fold convolution defining
+Λk is a product of integers at least 2, giving the support statement.
+Proposition 7.2 (Uniform factorial square-sum majorant). There are absolute constants A, C > 0
+such that, for every x ≥2 and k ≥1,
+X
+n≤x
+αk(n)2 ≤C Ak
+k! x
+log(ex)
+2k+1.
+(73)
+Proof. Put
+Sk(x) :=
+X
+n≤x
+Λk(n)2.
+The convolution identity
+Λk(n) =
+X
+d|n
+Λ(d)Λk−1(n/d)
+and P
+d|n Λ(d) = log n give by weighted Cauchy–Schwarz
+Λk(n)2 ≤(log n)
+X
+d|n
+Λ(d)Λk−1(n/d)2.
+Hence
+Sk(x) ≤(log x)
+X
+d≤x
+Λ(d)Sk−1(x/d).
+(74)
+Chebyshev’s estimate ψ(y) = P
+n≤y Λ(n) ≪y and Stieltjes integration by parts imply, uniformly
+for 0 ≤v ≪log(ex),
+X
+d≤x
+Λ(d)
+d
+
+log ex
+d
+v
+≪(log(ex))v+1
+v + 1
+.
+(75)
+Indeed, apply partial summation to d−1(log(ex/d))v and use ψ(t) ≪t.
+Inducting in (74), starting from S1(x) ≪x log(ex), and applying (75) with v = 2k −3 gives
+Sk(x) ≤C Ak−1
+(k −1)!x(log(ex))2k−1.
+If Sk(x)̸ = 0, Lemma 7.1 gives 2k ≤x, so the required condition v ≪log(ex) is automatic. Finally
+X
+n≤x
+αk(n)2 ≤(log x)2
+k2
+Sk(x),
+and enlarging A, C proves (73).
+30
+
+
+Lemma 7.3 (Quadratic bound for completed direct carriers). After the common shifted-zeta factor
+has been placed in the completed analysis map and the deterministic stationary/shell normalization
+defining Kj,T has been applied, let cdir
+m (p) denote the remaining normalized coefficient of a direct
+one-χ carrier. For the ordinary logarithmic-derivative term, the exact HLP hierarchy, and their
+translated variants, uniformly for x ≤T and 0 ≤q ≤2,
+X
+m≤x
+∂q
+pcdir
+m (p)
+
+2
+≪xLCdir.
+(76)
+The same bound holds for any subset of the HLP levels, in particular k > K0, for any support
+restriction of these direct carriers, and uniformly for the translated principal-part subfamilies arising
+from the locally projected levels k ≤K0 in (82).
+Proof. By Proposition 6.1, no nontrivial outer arithmetic map remains. The direct terms considered
+here are precisely the terms for which Lemma 6.11 leaves the radial carrier M uncontracted: the
+additional translated residues and the exact levels above K0 retain their direct carrier. Thus for
+k ≥1 the changing internal multiplier is exactly f−kP k−1Q, with coefficient f−kαk(m). Since
+|f| ≍L and log(ex) ≪L for x ≤T, (73) gives
+
+X
+m≤x
+|f−kαk(m)|2
+
+
+1/2
+≪(xL)1/2 Ck
+√
+k!
+.
+A fixed p-derivative introduces only a polynomial in k and factors (log m)/L = O(1). Minkowski’s
+inequality and P
+k Ck(1+k)C/
+√
+k! < ∞therefore give the same bound after summing any subset of
+levels. The ordinary k = 0 coefficient is controlled by P
+m≤x Λ(m)2 ≤(log x)ψ(x) ≪xL; translated
+factors mO(1/L) are uniformly bounded. A support restriction only sets some of the Hilbert-valued
+coefficient coordinates to zero and therefore cannot increase the square sum. For a fixed level k, each
+additional translated principal part is obtained by a finite residue functional on a normalized local
+contour and does not introduce a new carrier index. Cauchy’s estimate and the fixed-factor bounds
+used in (94) give at most LCCk
+1 (1 + k)C beyond the level coefficient bound. Hence Minkowski’s
+inequality reduces the complete translated family to the convergent series
+X
+k≥1
+Ck
+2 (1 + k)C
+√
+k!
+< ∞.
+Thus the translated principal-part contribution is uniform in K0 and obeys (76) after enlarging
+Cdir.
+Lemma 7.4 (Uniform freezing of the slow half-self factor). Let a smooth height block be supported
+on |t −τb| ≪H = T/LD on the fixed right edge ℜs = c > 1, and let Fb = f(1/2 + iτb) be as in
+(27). Then
+|f(c + it) −Fb| ≪L−D,
+|f(c + it)−k −F −k
+b
+| ≪kL−k−D−1
+(k ≥1).
+(77)
+After restricting the HLP hierarchy to k ≤K0 and applying the local principal projector, there
+is a fixed Cfr such that the normalized local kernels obtained from (26) and (28) satisfy, for the
+derivative orders used below,
+∂r
+ρ∂q
+p
+Kvar,b −Kfr,b
+
+= O
+L−D−1+Cfr
+,
+0 ≤r, q ≤2.
+(78)
+The same estimate holds for the corresponding diagonal derivative jump.
+31
+
+
+Proof. Stirling’s formula on a fixed vertical line gives f(c + it) = 1
+2 log(t/2π) + O(T −1) and ∂tf(c +
+it) = O(T −1). Moreover f′(s) = O(T −1) uniformly on the bounded horizontal segment joining
+1/2 + iτb to c + iτb. Therefore
+|f(c + it) −Fb| ≪|t −τb|
+T
++ T −1 ≪L−D.
+Since both f(c + it) and Fb have modulus ≍L, the mean-value theorem applied to z 7→z−k gives
+the second estimate in (77).
+The normalized self term contains the factor 2f/L, so its freezing error is O(L−D−1). At HLP
+level k, every occurrence of the slow factor is multiplied by f−k; after a fixed number of stationary
+and packet derivatives the loss is bounded by LCfr(1 + k)Cfr. Proposition 7.2 therefore bounds the
+required sum uniformly in K0, since
+X
+1≤k≤K0
+Rk(1 + k)Cfr+1
+√
+k!
+≤
+X
+k≥1
+Rk(1 + k)Cfr+1
+√
+k!
+< ∞.
+The finite Cauchy and curvature factors have uniform derivatives on the fixed normalized shift
+polydisc. This proves (78), including the one-sided diagonal derivatives.
+Lemma 7.5 (High exact HLP levels remain direct sideband terms). Let K0 = L1/8. Keep the
+stationary levels k > K0 in their original pointwise-f(t), absolutely convergent safe-line Dirichlet
+representation; no block freezing or local Perron projector is applied to them. On a retained unit
+shell put dj ≍T/Jj and
+Rsb
+j := ϵLdj,
+with ϵL = L−σ fixed in Section 13. Expand the smooth stationary amplitude in shell Fourier modes
+r. The part |r| ≤Rsb
+j
+and its adjoint define EHLP,hi
+T
+with
+rank EHLP,hi
+T
+≪T = o(NT ).
+(79)
+Write RHLP,hi
+T
+for the complementary part |r| > Rsb
+j ; it is disjoint from EHLP,hi
+T
+and is estimated
+later as regular class (vii).
+Proof. The safe-line geometric expansion converges absolutely. Each level changes only the coeffi-
+cient of the total index M, and Lemma 7.7 gives carrier e(−My) with t∗= 2πMy. Lemma 5.1 is
+uniform over the summed exact HLP hierarchy, so its shell amplitude has the same Fourier-sideband
+decay used in class (vii). The low sidebands replace M by the effective carrier M −r and hence
+lie in the fixed edge spaces of Proposition 11.1. By Proposition 6.1 there is no additional arith-
+metic multiplicity, which gives (79). The complementary sidebands are exactly the high-sideband
+class (vii).
+7.2
+Canonical local pole projection and the smooth packet Mellin class
+The principal local projection is defined levelwise. Expand the exact resolvent geometrically on
+the absolute-convergence right edge and let Fk,L(1+u; p) denote one completed retained level after
+the finite three-Z/Cauchy completion has been formed. Its common principal local singularity is
+the complete Laurent part at u = 0, including the actual multiplicity created by coalescing faces.
+Define
+Π(k)
+0 Fk,L := PPu=0 Fk,L.
+(80)
+32
+
+
+If that completed level has additional translated one-χ poles separated from the common local
+cluster, let Σtr,k be their finite set. Its cardinality is bounded independently of k: these poles arise
+only from the fixed three-Z/Cauchy completion, while the HLP level changes the pole multiplicity
+at the common point u = 0. Put
+ΠΣtr,kF :=
+X
+u0∈Σtr,k
+PPu=u0 F.
+(81)
+Then the exact level has the mutually exclusive decomposition
+Fk,L = Π(k)
+0 Fk,L + ΠΣtr,kFk,L + Fhol
+k,L,
+(82)
+where Fhol
+k,L is holomorphic throughout the local neighbourhood. Identity (82) is algebraic for every
+k, but the exact source decomposition applies its local projectors only for k ≤K0. Thus the exact
+locally projected functional is the finite sum
+Lex
+pr,≤K0[W] :=
+X
+0≤k≤K0
+ωk,L Resu=0
+Fk,L(1 + u; p)W(u)
+
+.
+(83)
+The levels k > K0 are not projected and remain in the direct sideband decomposition of Lemma 7.5.
+For comparison with the positive model, replace the leading Laurent factor at each level and
+resum the resulting model hierarchy over all k. This is not a second extraction of the exact high-level
+source. Lemma 7.9 then produces the model cluster
+Σmod
+0
+= {0, 2/L},
+(84)
+with residues −2, +1. For the resummed model define
+ΠΣmod
+0
+F :=
+X
+u0∈{0,2/L}
+PPu=u0 F.
+(85)
+Thus the translated model pole belongs to the model principal projector, while the algebraic point
+u∗(Fb) of Lemma 4.2 serves only to identify the same translated scale. The levelwise decompo-
+sition therefore separates the common principal cluster, the additional translated poles, and the
+holomorphic remainder into mutually exclusive contributions.
+Lemma 7.6 (Smooth bounded-support Mellin weights). Let 0 ≤t ≤C∗with C∗fixed. Assume
+that for some fixed derivative order R∗, large enough for the applications below,
+∥∂m
+t ∂r
+ρ∂j
+paρ,p,T ∥L1(0,C∗) ≤LA∗+o(1)
+(m + r + j ≤R∗).
+Define
+WL,ρ,p(u) :=
+Z C∗
+0
+aρ,p,T (t)eLut dt =
+X
+n≥0
+wn(ρ, p)un.
+(86)
+Then
+|∂r
+ρ∂j
+pwn(ρ, p)| ≤LA∗+o(1) (C∗L)n
+n!
+.
+(87)
+The same conclusion holds for a moving endpoint
+R ρ
+0 aρ,p,T (t)eLut dt, and the class is stable under
+every fixed finite product of such weights.
+33
+
+
+Proof. Expanding the exponential and using Fubini gives
+wn(ρ, p) = Ln
+n!
+Z C∗
+0
+aρ,p,T (t)tn dt,
+which proves (87). The one-dimensional W 1,1 inequality on the fixed interval controls every end-
+point value by the corresponding L1 norm together with one t-derivative. Repeated ρ-differentiation
+of a moving endpoint therefore produces only finitely many controlled endpoint jets, beginning with
+aρ,p,T (ρ)(Lρ)n
+n!
+,
+and integrals of the same form.
+Finally, products correspond to convolution of the compactly
+supported t-amplitudes, so the support remains bounded and the same factorial estimate holds
+with a larger fixed C∗.
+Lemma 7.7 (Exact HLP levels preserve the packet radial variable). On the absolute-convergence
+right edge, multiplication of finitely many Dirichlet series changes only the coefficient of the total
+Dirichlet index M. After insertion of the physical packet lag and the outer-denominator dilation,
+the corresponding one-χ term has saddle and phase
+t∗= 2πMy,
+e(−My).
+Thus exact HLP levels do not create an additional packet-support coordinate; their packet/common-
+prefix weights belong to the class of Lemma 7.6.
+Proof. If A1(s) · · · Ar(s) = P
+M cMM−s, then after the exact logarithmic translation the s-
+dependence is (Me−u)−s up to a scalar amplitude.
+The one-χ stationary calculation therefore
+depends on the single total index M, giving the displayed saddle and phase. A translated factor
+such as P(s −2/L) merely multiplies its coefficient at M by M2/L and does not change the
+stationary variable.
+Lemma 7.8 (Cluster contour and levelwise residues). Fix a sufficiently large constant C∗> 4.
+Since the completed three-Z/Cauchy construction has only finitely many normalized translated
+shifts, C∗may be chosen once so that every local translated pole in Σtr,k, uniformly in k, lies
+inside
+ΓL := {u : |u| = C∗/L}.
+For all large T, ΓL also encloses u = 0, the algebraic locator u∗(Fb) of Lemma 4.2, and the model
+point 2/L, while
+sup
+u∈ΓL
+
+P(1 + u)
+Fb
+ ≤q < 1
+(88)
+with a fixed q. Hence, for every packet Mellin weight W analytic inside ΓL, the boundary integral
+of the bare resummed quotient equals the absolutely convergent sum of the geometric-level contour
+integrals, each of which has only the pole at u = 0. After the fixed completed Cauchy/shift factors
+are adjoined, termwise contour integration remains valid, but any additional enclosed translated
+poles are retained explicitly. For k ≤K0 one has
+1
+2πi
+Z
+ΓL
+W(u)Fk,L(1 + u; p) du = Resu=0
+WFk,L
+
++
+X
+u0∈Σtr,k
+Resu=u0
+WFk,L
+
+.
+(89)
+The holomorphic complement contributes zero. Exact local projectors are used only for k ≤K0,
+while the full infinite leading sum is used only on the model side. No resummed exact quotient is
+transported from the original Perron line through u∗.
+34
+
+
+Proof. Uniformly for |u| ≤r0, P(1 + u) = u−1 + O(1), while Fb = L/2 + O(1). Thus on ΓL,
+|P(1 + u)/Fb| ≤2/C∗+ o(1),
+which proves (88) after increasing C∗. The algebraic locator u∗= 2/L + O(L−2) lies inside this
+circle. On ΓL the identity
+Q
+Fb −P =
+X
+j≥0
+QP j
+F j+1
+b
+therefore converges uniformly. Multiplication by the analytic W preserves uniform convergence,
+so contour integration may be interchanged with the sum.
+Every bare geometric term on the
+right is meromorphic inside ΓL only at u = 0. Cauchy’s theorem therefore identifies the boundary
+integral of the bare resummed quotient with the sum of these complete levelwise residues. After the
+fixed completed factors are restored, uniform convergence on ΓL still permits termwise integration.
+Cauchy’s theorem then adds exactly the residues of the finitely many enclosed translated poles,
+giving (89); the remaining part is holomorphic and integrates to zero. This equality is used only
+after the safe levelwise deformation and is not used to transport the resummed quotient from the
+original Perron line. The model cluster (0, 2/L) is enclosed by the same circle, so the resummed
+leading family is represented on the same local contour.
+Lemma 7.9 (Leading HLP jet resums to the translated model cluster). At the principal Laurent
+level
+P(1 + u) ⇝u−1,
+Q(1 + u) ⇝u−2,
+the complete geometric hierarchy in Q/(Fb −P) resums exactly as
+X
+k≥1
+F −k
+b
+u−k−1 = −1
+u +
+1
+u −F −1
+b
+.
+(90)
+Consequently the resummed leading Laurent family of the completed source has generating principal
+part
+−2
+u +
+1
+u −F −1
+b
+.
+(91)
+Since Fb = L/2 + O(1),
+F −1
+b
+= 2
+L + O(L−2),
+so (91) is precisely the finite-T precursor of the model principal parts −2/u + 1/(u −2/L) in
+(29). The O(L−2) displacement of the translated pole is one-log lower after the common L2 Perron
+normalization and is included in the exact–model local comparison below.
+Proof. The geometric expansion on ΓL is
+Q
+Fb −P =
+X
+k≥1
+F −k
+b
+QP k−1.
+Replacing only the common principal Laurent factors gives the series on the left of (90). Summing
+it as a geometric series gives
+1
+Fbu2
+1
+1 −(Fbu)−1 =
+1
+u(Fbu −1) = −1
+u +
+1
+u −F −1
+b
+.
+35
+
+
+Adding the principal part −u−1 of the separate −P source proves (91).
+Multiplication by the
+common shifted-zeta, Cauchy, curvature, and packet factors does not alter this source-level pole
+identity.
+Now write the independent Perron variable as z = 1 + u. Put
+A(u) := uP(1 + u),
+B(u) := u2Q(1 + u),
+C(u) := u2ζ(1 + u)2.
+On a fixed disk |u| ≤r0, the Laurent expansions at the zeta pole show that A, B, C are analytic,
+A(0) = B(0) = C(0) = 1, and all fixed derivatives are bounded.
+For k ≥1 and 0 ≤q ≤2,
+differentiate the completed level q times with respect to the normalized curvature shift p and then
+set p = 0. A derivative falling on a factor shifted by a = p/L contributes one factor L−1 and
+can raise the local pole order by one; derivatives falling on the normalized archimedean or packet
+factors do not raise the pole order and need not carry this factor. In particular the twice pole-raising
+contribution is fixed by the exact curvature identity (31):
+L−2Q(1 + u)2P(1 + u)k−1ζ(1 + u)2 = L−2u−k−5A(u)k−1B(u)2C(u).
+(92)
+The fixed shift residues commute with these derivatives by (65). After the moving shift divisors
+have been canceled, Leibniz’ rule and Cauchy’s estimate therefore give, for k ≤K0,
+∂q
+pFex
+k,L(1 + u; p)
+
+p=0 =
+q
+X
+ℓ=0
+L−ℓu−k−3−ℓHk,q,ℓ,0 + uΘk,q,ℓ,L(u)
+
+,
+0 ≤q ≤2.
+(93)
+Here ℓrecords the number of derivatives that actually raise the local pole order. For every fixed a
+used below,
+|Hk,q,ℓ,0| + |∂a
+uΘk,q,ℓ,L(u)| ≪Lo(1)Ck
+H(1 + k)C,
+0 ≤ℓ≤q ≤2.
+(94)
+The separate ordinary face k = 0 has fixed pole order and is covered by the same finite estimate
+after enlarging the constant. The levels k > K0 are not locally projected, by Lemma 7.5. Hence
+the constants in the local Laurent error are uniform through k ≤L1/8; no fixed-k asymptotic is
+being summed. Package the three required curvature coefficients into the order-two intermediate
+leading Taylor jet
+Flead,(2)
+k,L
+(1 + u; p) :=
+2
+X
+q=0
+pq
+q!
+q
+X
+ℓ=0
+L−ℓu−k−3−ℓHk,q,ℓ,0.
+(95)
+Its derivatives through order two at p = 0 are exactly the leading terms in (93).
+This jet is
+not resummed from arbitrary k-dependent coefficients: it is obtained by taking the same finite
+p-derivatives of the absolutely convergent leading geometric family in Lemma 7.9. Hence differen-
+tiation and geometric resummation commute, and the translated-pole parameter remains the one
+given there. No higher p-jet is used in the proof. The level weight obeys
+ωk,L ≪Ck
+0 L−k.
+For k ≤L1/8, write
+WL,ρ,p(u) =
+X
+n≥0
+wn(ρ, p)un.
+36
+
+
+The finite-interval Laplace representation gives, for r, j ≤2,
+|∂r
+ρ∂j
+pwn(ρ, p)| ≤CLnBn (1 + n)C
+n!
+.
+(96)
+Define the packet-local residue before curvature extraction by
+Lpkt
+k,L(ρ, p) := ωk,L Resu=0
+
+Fk,L(1 + u; p)WL,ρ,p(u)
+
+.
+All p-derivatives in the estimates below are evaluated at p = 0. For a term in ∂q
+pLpkt
+k,L with q1
+derivatives falling on Fk,L and q −q1 on W, decompose the first factor according to (93). Its error
+part is a finite sum over 0 ≤ℓ≤q1 of
+ωk,LL−ℓResu=0
+h
+u−k−2−ℓΘk,q1,ℓ,L(u) ∂q−q1
+p
+WL,ρ,p(u)
+
+p=0
+i
+.
+Expanding Θk,q1,ℓ,L = P
+j θk,q1,ℓ,juj and using (94) and (96) gives, for each ℓ,
+≪L−k−ℓ+o(1)Ck(1 + k)C
+k+1+ℓ
+X
+j=0
+r−j
+0
+(BL)k+1+ℓ−j(1 + k)C
+(k + 1 + ℓ−j)!
+.
+Because ℓ≤q1 ≤2 is fixed and k/L = o(1), the same factorial comparison as above makes the sum
+uniformly bounded after factoring its j = 0 term. Hence, uniformly for r, q ≤2,
+|∂r
+ρ∂q
+p∆Lpkt
+k,L(ρ, 0)| ≪L1+o(1) Ck
+1 (1 + k)C1
+(k + 1)!
+.
+(97)
+Only the levels k ≤K0 enter this local comparison. By Lemma 7.5, the higher exact levels retain
+their direct one-χ representation: their low sidebands belong to EHLP,hi
+T
+and their high sidebands
+belong to regular class (vii).
+The normalization is now explicit. For the component indexed by ℓ, the leading jet has pole
+order k + 3 + ℓ, so residue extraction uses wk+2+ℓ. Its natural size is
+L−k−ℓ
+Lk+2+ℓ
+(k + 2 + ℓ)! = L2
+1
+(k + 2 + ℓ)!.
+Thus every increase of the local pole order is paired with exactly the same power of L−1 from
+the normalized shift. In particular, the twice pole-raising curvature contribution in (92) uses wk+4
+together with L−2 and still has the common L2 Perron scale. Let Kpkt
+lead,≤K0 be the sum of these
+leading jets for k ≤K0. After the common positive Perron amplitude L2 is divided out, (97) gives
+∂r
+ρ∂q
+p
+Kpkt
+ex,≤K0 −Kpkt
+lead,≤K0
+
+= O(L−1+o(1)),
+r, q ≤2,
+(98)
+Here and in all derivative estimates through (101), the p-derivatives are evaluated at p = 0. Let
+Kpkt
+lead,∞denote the full leading Laurent family before freezing the translated pole.
+The same
+calculation, together with (96) and (94), gives
+∂r
+ρ∂q
+pKpkt
+lead,k
+ ≪Ck(1 + k)C
+(k + 2)!
+,
+r, q ≤2,
+37
+
+
+after the common L2 normalization. Therefore, for every fixed A > 0,
+∂r
+ρ∂q
+p
+Kpkt
+lead,≤K0 −Kpkt
+lead,∞
+
+= OA(L−A),
+r, q ≤2.
+(99)
+This is a model-side radial error; no fast one-χ carrier remains in it. It remains to compare the full
+leading family with the fixed translated model. Put
+cb := L
+Fb
+= 2
+µb
+= 2 + O(L−1).
+Lemma 7.9 shows that the translated pole of the intermediate leading family is at u = cb/L.
+After the common N-prefix has been fixed, the resummed leading residue functional is a finite
+combination of bounded-support Mellin weights and fixed Cauchy factors whose dependence on
+cb is analytic for cb in a fixed neighbourhood of 2; the pole remains a fixed positive normalized
+distance from the outer local contour. Lemma 7.6 and Cauchy’s estimate therefore give a uniform
+bound for the cb-derivative after up to two (ρ, p) derivatives. The mean-value theorem gives
+∂r
+ρ∂q
+p
+Kpkt
+lead,∞−Kpkt
+mod,loc
+
+= O(L−1),
+r, q ≤2,
+(100)
+where Kpkt
+mod,loc uses the fixed model parameter c = 2, i.e. the pole u = 2/L. The three differences
+telescope exactly:
+Kpkt
+ex,≤K0 −Kpkt
+mod,loc = (Kpkt
+ex,≤K0 −Kpkt
+lead,≤K0)
++ (Kpkt
+lead,≤K0 −Kpkt
+lead,∞)
++ (Kpkt
+lead,∞−Kpkt
+mod,loc).
+Hence (98), (99), and (100) give
+∂r
+ρ∂q
+p
+Kpkt
+ex,≤K0 −Kpkt
+mod,loc
+
+= O(L−1+o(1)),
+r, q ≤2.
+(101)
+By Proposition 6.1, the invariant source has no nontrivial arithmetic whitening. Consequently
+the exact/model local discrepancy has normalized diagonal jump O(L−1+o(1)) = o(1), and its
+fixed mixed lag derivatives are bounded by a fixed power of L on every retained shell. The shell-
+local primitive criterion of Lemma 12.3, together with the metric comparison (159) and the choice
+A0 > Creg + 3 in (178), therefore gives
+∥G−1/2
+T
+Rloc
+T G−1/2
+T
+∥2
+S2 = o(NT ).
+(102)
+Definition 7.10 (Finite-T principal operator). Let WT be the stable logarithmic core length
+fixed in (47), and let CT denote restriction of the straightened physical logarithmic coordinate to
+0 ≤u ≤WT . After this restriction use the normalized lag coordinate r = u/L and the unitary
+output rescaling g(u) 7→L1/2g(Lr). Define PT to be the pullback, through the exact packet and
+diagonal maps, this core restriction, and this rescaling, of the model principal-part projector ΠΣmod
+0
+on the pair-independent common carrier core. By Proposition 6.1, the auxiliary arithmetic map
+specializes to its d = 1 coordinate and every outer-ratio translation is the identity for the invariant
+contour source. Thus PT retains the finite-T parameters λ(τ) and µb, the common-core endpoint,
+and the actual packet/common-prefix weight of (63) on 0 ≤u ≤WT .
+No stationary Fourier-
+mode restriction is imposed inside this core. The exact levels k > K0 are not part of PT and
+38
+
+
+retain the direct sideband decomposition of Lemma 7.5; only their model leading tail is present
+through the full resummed projector. The complementary logarithmic tail WT < u ≤L is assigned
+by Proposition 10.3. The auxiliary outward arithmetic annulus of Proposition 6.9 is empty in the
+invariant-source specialization. Slow-parameter freezing and the low-level exact/model discrepancy
+are excluded from PT .
+Proposition 7.11 (Uniform-twisted packet source decomposition). After the f′ source, horizontal
+connectors, and nonstationary sector have been separated, restrict the stationary exact HLP/Hardy
+source to the stable logarithmic band 0 ≤u ≤WT . Here “stable” refers only to the logarithmic
+packet coordinate. By Proposition 6.1 the invariant source has no outward arithmetic annulus. On
+this stable band the same packet contour matrix has the disjoint decomposition
+Astat,ex,stable
+T
+= PT + Eone-χ
+T
++ Rsrc
+T .
+(103)
+Here Eone-χ
+T
+is the direct physical one-χ family formed by the low-sideband parts of the high exact
+HLP levels, the additional translated principal parts, and the remaining direct stationary sources.
+The auxiliary outer-excess family is zero for the invariant contour source. Its rank is bounded by
+Proposition 11.1. Every complementary high-sideband part belongs instead to Rsrc
+T , together with
+the other mutually exclusive regular source classes identified in the proof below.
+Their relative
+Hilbert–Schmidt bounds are established in Proposition 12.4.
+Proof. Work first on the absolute-convergence right edge and separate the horizontal connectors
+and the nonstationary sector. The packet/common-prefix weight is kept exactly at this stage; no
+replacement by the flat plateau is made in the present source decomposition.
+Expand the pointwise resolvent (26) geometrically on the safe right edge before any freezing. At
+level k, multiplication of Dirichlet series only changes the total coefficient index M, and Section 5
+gives
+dk,M(p) ak,M,T (y; p)e(−My),
+t∗= 2πMy.
+Split the hierarchy at K0 = L1/8. The levels k > K0 remain in this original pointwise-f(t) repre-
+sentation. Lemma 7.5 assigns their low sidebands to Eone-χ
+T
+and their high sidebands to the direct
+regular source later estimated in class (vii).
+For the finite hierarchy k ≤K0, insert the smooth height partition. On each block Lemma 7.4
+replaces the pointwise source by the frozen source (28). The partition has bounded overlap, so the
+freezing contribution is
+O
+L−D−1+Cfr
+= o(1)
+by (176); it belongs only to Rsrc
+T . It remains to analyze the frozen low-level source on one block.
+For each k ≤K0, apply the canonical decomposition (82) on the closed contour ΓL of Lemma 7.8.
+The exact residue identity (89) pairs the complete Laurent operator Π(k)
+0
+with the actual joint packet
+weight of (63) and retains every enclosed translated projector ΠΣtr,k separately. Each translated
+term remains a direct stationary one-χ source and is expanded in unit-shell Fourier sidebands: its
+low sidebands belong to the edge term and its high sidebands to regular class (vii). After these
+principal parts have been subtracted, the remaining function Fhol
+k,L is holomorphic throughout the
+interior of ΓL. Hence, for every analytic packet weight W,
+1
+2πi
+Z
+ΓL
+W(u)Fhol
+k,L(1 + u; p) du = 0.
+(104)
+39
+
+
+Thus no independent “near-pole analytic remainder” survives the local closed contour. By (65), the
+same levelwise extraction applies to all three completed Z-faces, and Lemma 7.6 gives the required
+factorial Mellin bounds. For k ≤K0, the exact stationary level has the mutually exclusive form
+T stat
+k
+= Lex
+k + Etr
+k + Ddir
+k .
+Here Lex
+k is the complete common local Laurent contribution, Etr
+k the additional translated principal
+parts, and Ddir
+k
+the complementary pole-free right-edge one-χ contribution. The levels k > K0 are
+not subjected to this local projector and remain in the direct edge representation of Lemma 7.5. Any
+smooth transition used to join the local contour to the complementary Mellin contour is supported
+away from the pole cluster and is included in Ddir
+k .
+After removing the unprojected levels k > K0 by Lemma 7.5, apply the trivial HLZ outer-
+twist specialization of Proposition 6.1. Its outer indices are all equal to 1 and the auxiliary divisor
+coordinate is the identity; this notation is independent of the HLP level index k used throughout
+the present section. Accordingly the outward annulus of Proposition 6.9 is empty. On the resulting
+common carrier core, replace (93) first by its intermediate leading jet and then replace the resummed
+pole parameter cb = L/Fb by the fixed model value 2. The resulting principal family, with the actual
+finite-T packet weight, defines PT . Proposition 6.5 identifies the explicit X-powers with λ(τ), while
+the reassembled self term retains µb = 2Fb/L. No nontrivial outer translation or outer-arithmetic
+factor occurs in the invariant contour source.
+The local regular term Rloc
+T
+is the sum of the low-level exact/leading discrepancy (98), the model
+truncation tail (99), and the translated-pole displacement (100); their combined estimate is (102).
+Only in Section 8, for the purpose of proving a Loewner floor, are the remaining slow parameters
+of PT compared with the frozen reference model AG
+T .
+The local holomorphic remainder contributes zero by (104).
+On the complementary Mellin
+region, the original absolutely convergent Dirichlet expansion is retained term by term, so Ddir
+k
+keeps
+the physical carrier e(−My). Its pole-free transition factors remain in the smooth stationary-symbol
+class of Lemma 5.1. Expanding that unit-shell symbol in Fourier sidebands, the low sidebands lie
+in the common macroscopic shell-edge range and hence have rank o(NT ), while the high sidebands
+satisfy part (vii) of Proposition 12.4. No diagonal-jump estimate for the order-one complementary
+source is used.
+Finally Lemma 7.5 sends the low sidebands of k > K0 to the edge matrix and their high
+sidebands to regular class (vii). The local estimates are summed only over k ≤K0, with the model
+truncation tail (99). This gives (103). The direct carrier structure of the complementary source is
+inherited from the original levelwise right-edge Dirichlet expansion; its quantitative high-sideband
+estimate is deferred to Proposition 12.4.
+8
+The completed global model and its spectral lower bound
+By Proposition 6.10, the frozen completed local profile is the source-derived function G of (68).
+Let C(x) := G(1 −x) on the retained interior lag interval. If q is mean zero and
+Q(x) :=
+Z x
+0
+q(t) dt,
+then two integrations by parts give the exact primitive identity
+⟨KCq, q⟩= −2C′(0+)∥Q∥2
+2 −
+ZZ
+C′′(|x −y|)Q(x)Q(y) dx dy.
+(105)
+40
+
+
+Define the triangular primitive form
+Q△(q) := 2∥Q∥2
+2.
+After the internal principal contraction of Lemma 6.11 and the trivial outer-twist specialization of
+Proposition 6.1, the principal analysis has a single packet fibre and no nontrivial packet-coordinate
+multiplier. On the central flat plateau of ϕL, translate the physical Fourier coordinate by its fixed
+left endpoint u0. The common flat analysis is exactly
+(Uflat
+T
+v)(u) = L−1/2
+pkt
+X
+ν
+eiτνu0vνeiτνu.
+(106)
+The phase vν 7→eiτνu0vν is unitary and commutes with the diagonal multiplier vν 7→τ −1
+ν vν. Let
+CT be the stable-core restriction from Definition 7.10, put
+Rcore
+T
+:= WT
+L
+= 1 −A0 log L
+L
+,
+Ucore
+T
+:= CT Uflat
+T
+,
+and normalize the core coordinate by r = u/L, so 0 ≤r ≤Rcore
+T
+. Introduce the unitary rescaling
+of the core output
+( bUcore
+T
+v)(r) := L1/2(Ucore
+T
+v)(Lr).
+(107)
+Define AG
+T as the pullback through bUcore
+T
+of the frozen kernel
+KG(r, s) := G(1 −|r −s|),
+and define GT through the same normalized core map by the triangular primitive form Q△. Thus
+GT = (Wglob
+T
+)∗Wglob
+T
+,
+(108)
+where Wglob
+T
+is obtained from Ucore
+T
+by adjoining the primitive on 0 ≤u ≤WT and multiplying the
+primitive output by
+√
+2/L. Indeed, after r = u/L this gives exactly
+Q△= 2
+L2
+Z WT
+0
+|R(u)|2 du.
+The endpoint mean constraint is imposed only on Vmean. Lemma 10.2 compares the shell-local
+primitive metric with this same global reference metric. Hence AG
+T and GT are pullbacks from one
+fixed core analysis map and differ only in the final lag form.
+The coefficient extraction in (68) gives the closed form
+G(ρ) = 1
+12
+
+−14ρ4 + 32ρ3 −24ρ2 + 6ρ + e2 (6ρ2 −12ρ + 9) sinh2 ρ −3ρ2
+.
+(109)
+Proposition 8.1 (Explicit spectral floor on the stable core). On each mean-zero core fibre 0 ≤
+r ≤Rcore
+T
+, the frozen completed lag form satisfies
+KG ⪰0.06 Q△.
+Consequently
+AG
+T ⪰0.06 GT .
+(110)
+on the full packet space subject only to the core mean-zero constraint. No additional model spectral
+deletion is required.
+41
+
+
+Proof. Extend a core input q by zero from [0, Rcore
+T
+] to [0, 1]. Its mean remains zero, and both KG
+and Q△restrict to the original core forms. It therefore suffices to prove the inequality on [0, 1].
+Apply (105) to C(|x −y|) = G(1 −|x −y|) and put g(r) := G′′(r). Direct differentiation of (109)
+gives
+g(r) = −14r2 + 16r −4
++ e2
+2
+
+4(r −1) sinh(2r) + (2r2 −4r + 4) cosh(2r) −2
+
+.
+(111)
+The cusp coefficient is
+aG := −2C′(0+) = 2G′(1) = −2 + 3e2(sinh 2 −2)
+6
+> 5.677.
+(112)
+For 0 ≤x ≤4 and m + 2 > x, the positive Taylor series gives the rational bounds
+m
+X
+j=0
+xj
+j! ≤ex ≤
+m
+X
+j=0
+xj
+j! +
+xm+1
+(m + 1)!
+1
+1 −x/(m + 2).
+(113)
+Using m = 64 and exact rational arithmetic in the formulas for G′, g, g′ gives
+g(0.16) > 0.025,
+g(0.1625) < −0.010,
+g(0.6145) < −0.0004,
+g(0.6146) > 0.0012,
+g′(0.39) < −0.41,
+g′(0.40) > 0.19,
+g(0) < 3.39,
+g(0.8375) > 6.9,
+g′(0.3854) > −0.70,
+g′(0.5) > 6.8,
+g(0.3144) + g(0.6856) > 0.0019,
+g(0.3145) + g(0.6855) < −0.0010,
+(114)
+and
+2.8385 < G′(1) < 2.8386,
+G′(0) = 1
+2,
+0.7440 < G′(a) < 0.7442,
+0.2361 < G′(b) < 0.2364,
+G′(0.3144) < 0.6142,
+G′(0.6855) > 0.2846,
+(115)
+where a ∈(0.16, 0.1625) and b ∈(0.6145, 0.6146) are the two zeros of g. To see that these are the
+only zeros, differentiate twice more:
+G′′′′(r) = 2
+
+e2(2r2 −4r + 9) cosh(2r) + (8r −8) sinh(2r)
+
+−14
+
+.
+Writing x = 1 −r and using tanh y ≤y gives
+7 + 2x2 −8x tanh(2r) ≥18x2 −16x + 7 ≥31
+9 ,
+so G′′′′(r) > 20 on [0, 1]. Thus g is strictly convex and (114) gives exactly the two roots a, b and a
+unique minimum between 0.39 and 0.40.
+The regular primitive kernel has Schur row sum
+M(x) :=
+Z 1
+0
+|g(1 −|x −y|)| dy.
+42
+
+
+It is symmetric about 1/2. For 0 ≤x ≤1/2 write
+M(x) = A + D(x),
+A :=
+Z 1
+0
+|g(r)| dr,
+D(x) :=
+Z 1
+1−x
+|g(r)| dr −
+Z x
+0
+|g(r)| dr.
+We determine the maximum of D directly from the sign pattern of g and the strict convexity
+established above. For 0 ≤x ≤a, both g(x) and g(1 −x) are positive. Since the unique minimum
+of g lies in (0.39, 0.40), g decreases on [0, a] and increases on [0.8375, 1]. Hence (114) gives
+D′(x) = g(1 −x) −g(x) ≥g(0.8375) −g(0) > 0.
+For a < x < 1 −b, one has g(x) < 0 < g(1 −x) and therefore
+D′(x) = g(x) + g(1 −x) =: h(x).
+Strict convexity makes g′ strictly increasing, so, because x < 1 −x,
+h′(x) = g′(x) −g′(1 −x) < 0.
+The last two sign tests in (114) give h(0.3144) > 0 > h(0.3145), hence a unique zero x0 ∈
+(0.3144, 0.3145). Finally, for 1 −b ≤x < 1/2, both values of g are negative. Put t = 1/2 −x ∈
+(0, b −1/2]. The function
+H(t) := g(1/2 + t) −g(1/2 −t)
+satisfies H(0) = 0 and, throughout this range,
+H′(t) = g′(1/2 + t) + g′(1/2 −t) ≥g′(0.5) + g′(0.3854) > 0.
+Thus g(1 −x) > g(x) and D′(x) = g(x) −g(1 −x) < 0. Consequently x0 is the unique maximizer
+of D on [0, 1/2], and symmetry gives the only other maximizer of M at 1 −x0. Since
+A = G′(1) −G′(0) + 2G′(a) −2G′(b)
+and
+D(x0) = G′(1) −G′(1 −x0) −2G′(a) + G′(0) + G′(x0),
+(115) yields
+A < 3.3548,
+D(x0) < 2.1802,
+sup
+x∈[0,1]
+M(x) < 5.535.
+(116)
+All decimal inequalities above are rigorous rational interval consequences of (113); no floating-point
+estimate is used in (116).
+The primitive identity is therefore
+QG(q) = aG∥Q∥2
+2 −
+ZZ
+g(1 −|x −y|)Q(x)Q(y) dx dy.
+Schur’s test and (112)–(116) give
+QG(q) > (5.677 −5.535)∥Q∥2
+2 > 0.142∥Q∥2
+2 > 0.06Q△(q).
+By Lemma 6.11 the internal Dirichlet index has already been contracted by the principal Laurent
+functional. By Proposition 6.1, no nontrivial outer coordinate remains in the invariant contour
+source. Thus AG
+T and GT are pullbacks through the same normalized core map bUcore
+T
+of (107), and
+congruence preserves the whole-space Loewner inequality. This proves (110) without deleting any
+model spectral subspace.
+43
+
+
+Lemma 8.2 (The whole-space floor survives restriction). Let V be any subspace of the finite model
+coordinate space after the common positive pullback, and let PV be its orthogonal projection. Then
+PV AG
+T PV ⪰0.06 PV GT PV
+on V.
+(117)
+Thus every retained spectral restriction inherits the same numerical floor.
+Proof. For v ∈V , one has PV v = v. Proposition 8.1 gives
+⟨PV AG
+T PV v, v⟩= ⟨AG
+T v, v⟩≥0.06⟨GT v, v⟩= 0.06⟨PV GT PV v, v⟩.
+This is exactly (117).
+Remark 8.3 (Global positivity). Positivity of the finite-interval covariance for each fixed scalar ρ
+does not by itself imply positivity after replacing ρ by the pairwise lag ρ(r −s). Proposition 8.1
+instead applies the primitive identity (105) directly to the whole completed lag kernel, which yields
+the required global Loewner bound.
+For a Hermitian lag form B on the mean-zero fibre define its triangular form norm by
+∥B∥op,△:= sup
+q̸=0
+R
+q=0
+|⟨Bq, q⟩|
+Q△(q) .
+(118)
+Lemma 8.4 (Stability under the finite-T principal parameters). Let Kλ,µ,θ be the mean-zero lag
+form obtained from (67) after normalized curvature with
+ρ(x, y) = 1 + θ −|x −y|,
+0 ≤x, y ≤1.
+Uniformly for
+|λ −1| + |µ −1| + θ ≤η,
+θ ≥0,
+one has
+∥Kλ,µ,θ −K1,1,0∥op,△≪|λ −1| + |µ −1| + θ.
+(119)
+Proof. After taking [p2], the profile (67) is analytic in (λ, µ, ρ) on a fixed neighbourhood of
+(1, 1, [0, 1]). For θ ≥0 sufficiently small, ρ(x, y) remains in the fixed compact interval [0, 1 + η].
+Differentiation with respect to λ, µ, or θ therefore gives kernels whose diagonal derivative jumps
+and regular second lag derivatives are uniformly bounded. In particular, changing θ changes the
+cusp coefficient by O(θ) and the regular primitive kernel by O(θ) in Schur norm. Applying the
+primitive identity (165) and the mean-value theorem yields
+|⟨(Kλ,µ,θ −K1,1,0)q, q⟩| ≪(|λ −1| + |µ −1| + θ)Q△(q),
+which is (119).
+Proposition 8.5 (Finite-T principal comparison). On Vmean of (182),
+G−1/2
+T
+(PT −AG
+T )G−1/2
+T
+
+op ≪L−1 = o(1).
+(120)
+Consequently, for all sufficiently large T,
+PT ⪰c0GT
+(121)
+with any fixed c0 < 0.06; in particular one may take c0 = 0.03.
+44
+
+
+Proof. By Proposition 6.1, the invariant contour source has no nontrivial outer translation, divisor
+deformation, or outer-prefix excess. The finite HLZ Euler factor attached to the trivial outer twist
+is the empty Euler product and is identically one for all retained shifts. Thus the only finite-T
+deformation of the principal lag form is archimedean. Uniformly on the retained stable interior,
+λ(τ) = log(τ/2π)
+L
+= 1 + O(L−1),
+µb = λ(τ) + O(L−D−1) + O((TL)−1),
+and, by (62),
+θT := νT −1 = λ(τ) −1 = O(L−1),
+θT ≥0.
+Lemma 8.4 therefore gives an O(L−1) perturbation in the triangular metric. Pulling this form
+inequality back through the common normalized map bUcore
+T
+and using the definition of GT converts it
+exactly into the relative operator norm in (120). The full smooth packet profile and the finite Cauchy
+factors are contained in the common analysis and residue maps on both sides of the comparison,
+so they create no additional error. This proves (120). The exact–model local discrepancy (101)
+is excluded from this comparison by definition and belongs only to Rtri
+T . Combining (120) with
+Proposition 8.1 gives (121); no model spectral subspace is deleted.
+9
+Auxiliary finite divisor comparison
+The divisor maps in this section are finite auxiliary comparison coordinates. By Proposition 6.1,
+they are not part of the invariant contour source itself: the actual outer twist is trivial. They are
+used only to record finite comparison estimates for the general twisted family and are never inserted
+as an additional source factor or replaced by a scalar normalization.
+Lemma 9.1 (Hilbert-valued gcd identity). For b1, . . . , bY in a Hilbert space H,
+X
+m,n≤Y
+(m, n)
+mn ⟨bm, bn⟩=
+X
+d≤Y
+φ(d)
+
+X
+d|n
+bn
+n
+
+2
+≥0.
+(122)
+Proof. Insert the elementary identity
+(m, n) =
+X
+d|(m,n)
+φ(d)
+and interchange the finite sums.
+The inner double sum becomes the squared Hilbert norm in
+(122).
+Let Un be isometries on H and define
+(DY b)d :=
+p
+φ(d)
+X
+d|n
+Unbn
+n
+,
+d ≤Y.
+(123)
+Thus the auxiliary finite arithmetic Gram is
+Gar := D∗
+Y DY .
+(124)
+The isometries Un may contain the exact shell translations coming from the physical one-χ carrier;
+no scalarization is involved.
+45
+
+
+The common outer-divisor feature of Proposition 6.8 has the normalized analysis map
+(f
+Wac)(N) := N−1/2−a X
+d|N
+d≤Y
+cdda.
+(125)
+Its full output contains, in particular, the coordinates 1 ≤N ≤Y . Writing SN = N1/2+a(f
+Wac)(N),
+finite M¨obius inversion gives
+cnna =
+X
+k|n
+µ(k)Sn/k.
+(126)
+For bounded p and a = p/L, n±a = Lo(1) uniformly for n ≤Y . Cauchy–Schwarz in (126) therefore
+gives the conservative inverse estimate
+∥f
+W−1
+a ∥op,Ran f
+Wa ≤Y 1+o(1).
+(127)
+Thus the new unsummed factorization introduces no larger arithmetic inverse loss than the finite
+divisor maps below.
+Proposition 9.2 (Finite M¨obius inverse). The map DY is injective and
+∥D−1
+Y ∥op,Ran DY ≤Y τmax(Y )1/2 = Y 1+o(1).
+(128)
+The estimate is uniform in the ambient Hilbert space.
+Proof. Put
+cn := Unbn
+n
+,
+Sd := (DY b)d
+p
+φ(d)
+.
+Then
+Sd =
+X
+d|n
+cn.
+Finite M¨obius inversion on the divisibility poset gives
+cn =
+X
+k≤Y/n
+µ(k)Snk.
+(129)
+Since Un is an isometry,
+∥bn∥≤n
+X
+k≤Y/n
+∥(DY b)nk∥
+p
+φ(nk)
+≤
+√
+nY
+
+X
+k≤Y/n
+∥(DY b)nk∥2
+
+
+1/2
+.
+Squaring and summing in n yields
+X
+n≤Y
+∥bn∥2 ≤Y 2τmax(Y )∥DY b∥2,
+which proves (128). Injectivity follows either from this bound or directly by descending induction
+in d.
+46
+
+
+Lemma 9.3 (Conservative arithmetic transfer loss). For an auxiliary finite twisted family with
+1 ≤h, k, g ≤Y = Lκ and fixed κ > 0, the arithmetic label space has dimension
+dim Har ≤Y 3+o(1).
+(130)
+Every retained finite arithmetic pullback used in the small-outer comparison below contains at most
+three nonunitary divisibility maps in total; each is either the common map (125) or a finite auxiliary
+map of the form (123). Hence the inverse of one complete arithmetic analysis map on its range
+has norm at most
+Y 3+o(1).
+(131)
+Moreover, any Hermitian arithmetic-fibre kernel whose entries, after the common positive weights
+have been factored out, have operator norm at most ε transfers to the divisor-whitened metric with
+the deliberately coarse bound
+∥G−1/2
+ar
+RarG−1/2
+ar
+∥op ≪εY 10+o(1).
+(132)
+The exponent 10 is only a safety exponent. For the Hilbert–Schmidt norm on the same arithmetic
+fibre one also has
+∥G−1/2
+ar
+RarG−1/2
+ar
+∥S2 ≪εY 23/2+o(1),
+(133)
+by (130). In particular a polylogarithmic entrywise mixed-derivative bound remains polylogarithmic
+after arithmetic whitening.
+Proof. There are at most Y 3 triples (g, h, k), with divisor refinements contributing only Y o(1).
+Each nonunitary divisibility inverse has norm Y 1+o(1) by (127) or Proposition 9.2; three factors
+give (131).
+For the two-sided estimate, first take the crude operator norm of a normalized arithmetic matrix
+of entry size at most ε. By (130) it is at most εY 3+o(1). Whitening on the left and right costs
+at most one complete inverse factor (131) on each side, hence at most Y 6+o(1). Thus the total
+loss is εY 9+o(1), which is bounded by the safer displayed εY 10+o(1) for all large Y . Perturbations
+that factor through the common analysis map, or arise from a one-sided deformation of that map,
+actually cost less; throughout the proof we are free to use the uniform worst-case bound (132).
+Finally, on an arithmetic fibre of dimension at most Y 3+o(1),
+∥B∥S2 ≤(dim Har)1/2∥B∥op,
+so (132) implies (133).
+Lemma 9.4 (Operator-valued positive lift). If (Hmn) ⪰0 and Un are unitary, then for arbitrary
+scalars an,
+X
+m,n
+amanHmnU∗
+mUn ⪰0.
+Proof. Choose a Gram representation Hmn = P
+j xj,mxj,n and set Xj = P
+n anxj,nUn. The dis-
+played operator is P
+j X∗
+j Xj.
+10
+Stationary-shell frame and spectral compression
+The shell transform is built before the stationary restriction. This order is important: the full
+transform is exactly Parseval, and only the explicitly omitted nonstationary modes create a defect.
+47
+
+
+10.1
+Critical packet lattice, translation reserve, and Fourier trim
+Put
+Rpkt := Cpkt
+2
+log L,
+Lpkt = L + 2Rpkt.
+Use the full flat packet Fourier interval
+0 ≤u ≤Lpkt,
+whose central physical zeta band is Rpkt ≤u ≤Rpkt +L. By Proposition 6.1, the invariant contour
+source has no nontrivial outer-denominator translation. The logarithmic reserve is used only for the
+packet-dimension slack and the smooth transition caps; it does not encode an arithmetic truncation.
+For exact lattice centres
+τk = τ0 + 2πk
+Lpkt
+put
+Sv(u) := L−1/2
+pkt
+X
+k
+vkeiτku.
+(134)
+Fourier orthogonality gives the exact isometry
+Z Lpkt
+0
+|Sv(u)|2du = ∥v∥2
+2.
+(135)
+Recall WT , XT from (47).
+Let CT be the stable-core restriction of Definition 7.10.
+On packet
+coefficients its positive Gram is
+⟨PW v, v⟩:=
+Z Rpkt+WT
+Rpkt
+|Sv(u)|2du = ∥CT Sv∥2
+2.
+This is the same core restriction used in PT , AG
+T , and GT ; it is not an additional packet-coordinate
+deletion.
+Lemma 10.1 (Stable-core packet frame). For every admissible packet-coordinate compression there
+is a subspace Vcore such that
+codim Vcore ≪T log L = o(NT ),
+∥CT Sv∥2
+2 ≥ccore∥v∥2
+2
+(v ∈Vcore),
+(136)
+with a fixed ccore > 0. The corresponding bound for the diagonal multiplier vν 7→τ −1
+ν vν holds with
+the right side multiplied by T −2.
+Proof. For exact lattice centres, (135) is Parseval on an interval of length Lpkt. Its complement to
+the stable core has length
+Lpkt −WT = O(log L).
+If Dtail is the Gram of restriction to that complement, then each coordinate vector contributes
+O(log L/L) to its trace. Hence on a packet fibre of dimension O(TL),
+tr Dtail ≪T log L.
+Removing the spectral subspace of Dtail for eigenvalues at least 1/4 costs O(T log L) dimensions
+and leaves the core Gram at least 3/4 of the full flat Gram. Denote this good packet subspace by
+V0.
+48
+
+
+By Proposition 6.1 there is only the identity outer translation.
+For the primitive estimate
+intersect V0 with D−1
+τ V0, where Dτv = (τ −1
+ν vν)ν. Since Dτ is invertible and T ≤τν ≤2T + O(1),
+this preimage has the same codimension as V0, while
+∥Dτv∥2
+2 ≍T −2∥v∥2
+2.
+Thus the intersection has codimension O(T log L) and gives both lower bounds in (136). Moving
+every centre by at most T −100 changes these finite Grams by o(1) in operator norm, by the estimate
+in the proof of Lemma 3.3; the fixed lower bound therefore persists.
+10.2
+Logarithmic unitary and exact local Parseval
+On the retained physical band write
+eu := u −Rpkt,
+x = eeu,
+and define
+Fv(x) := x−1/2Sv(Rpkt + log x),
+1 ≤x ≤XT .
+(137)
+Since dx = x deu = x du,
+Z XT
+1
+|Fv(x)|2dx =
+Z Rpkt+WT
+Rpkt
+|Sv(u)|2du = ⟨PW v, v⟩.
+(138)
+We use an explicit fixed-overlap partition by length-one windows. Choose ϑ ∈C∞
+c ((−1/2, 1/2))
+which is positive on [−1/4, 1/4], put cj = j/2, and define
+D(x) :=
+
+X
+j∈Z
+ϑ(x −cj)2
+
+
+1/2
+,
+ψj(x) := ϑ(x −cj)
+D(x)
+.
+Because every real number lies within distance 1/4 of some cj, the 1/2-periodic function D is
+smooth and bounded above and below by positive constants. With
+Ij = [Jj, Jj + 1],
+Jj := cj −1
+2,
+we therefore have
+supp ψj ⊂Ij,
+X
+j∈Z
+ψj(x)2 = 1,
+∥ψ(r)
+j ∥∞≪r 1.
+(139)
+Extend Fv by zero outside [1, XT ] and retain shells with ψj̸ ≡0 on (1, XT ). The O(1) shells meeting
+the two core endpoints remain in the Parseval decomposition; their endpoint jets are treated by
+Proposition 11.2.
+Lemma 10.2 (Global triangular metric and shell-local primitives). Let g be Hilbert-valued on
+[0, WT ] with
+R WT
+0
+g = 0, and put
+R(u) :=
+Z u
+0
+g(v) dv,
+f(x) := x−1/2g(log x).
+49
+
+
+Then R(0) = R(WT ) = 0. Extend f and R(x) := R(log x) by zero outside [1, XT ]. After the
+normalization r = u/L, the flat triangular primitive form is
+Qglob(g) := 2
+L2
+Z WT
+0
+∥R(u)∥2 du = 2
+L2
+Z XT
+1
+
+Z x
+1
+y−1/2f(y) dy
+
+2 dx
+x .
+(140)
+Let JT denote these retained shells. For j ∈JT define
+qj(x) := ψj(x)x−1/2f(x),
+Qj(x) :=
+Z x
+Jj
+qj(y) dy,
+and
+Qloc(f) := 2
+L2
+X
+j∈JT
+Z
+Ij
+∥Qj(x)∥2 dx
+x .
+(141)
+Then there is an absolute constant C△such that
+Qloc(f) ≤C△Qglob(g).
+(142)
+The estimate is Hilbert-valued. If, in addition,
+R
+Ij qj = 0 for every shell and output component, then
+Qj vanishes at both endpoints and may be used in the two-variable primitive identity of Lemma 12.3.
+Proof. The zero extension of R is absolutely continuous because R(0) = R(WT ) = 0, and R′ =
+x−1/2f almost everywhere. Thus
+Qj(x) = ψj(x)R(x) −
+Z x
+Jj
+ψ′
+j(y)R(y) dy,
+because ψj vanishes at the shell endpoints. The windows have uniformly bounded first derivative
+and bounded overlap. On the physical part of a length-one shell, x−1 ≍(1 + Jj)−1, so Cauchy–
+Schwarz gives
+Z
+Ij
+∥Qj(x)∥2 dx
+x ≪
+Z
+Ij
+∥R(x)∥2 dx
+x .
+Summing in j proves (142) and is unchanged for Hilbert-valued functions.
+The final assertion
+follows directly from the definition of Qj.
+Define
+Qj,n(v) :=
+Z
+Ij
+ψj(x)Fv(x)e−2πinx dx.
+(143)
+Because each shell has length one, the integer exponentials are an orthonormal basis and Parseval
+gives
+X
+n∈Z
+|Qj,n(v)|2 = ∥ψjFv∥2
+2.
+Summing in j,
+∥Qfullv∥2
+2 = ⟨PW v, v⟩.
+(144)
+No stationary approximation has entered this identity.
+50
+
+
+10.3
+Stationary band and nonstationary leakage
+For one packet centre τ and one shell Fourier mode n, the phase is
+Φτ,n(x) = τ log x −2πnx,
+Φ′
+τ,n(x) = τ
+x −2πn.
+For T ≤τ ≤2T and x ∈Ij, a stationary point can occur only for
+Ij :=
+
+T
+2π(Jj + 1), 2T
+2πJj
+
+.
+(145)
+Choose the shell margin
+Rj := LB
+ 
+1 +
+√
+T
+Jj
+!
+(146)
+and let I+
+j contain the integers at distance at most Rj from Ij. Let Qshell retain only (j, n) with
+n ∈I+
+j and let Qout be its complement.
+Fix a packet basis vector ek. On a nonboundary shell put D = dist(n, Ij) ≥Rj. Then
+|Φ′| ≥2πD,
+|Φ(r)| ≪r T/Jr
+j ,
+|A(r)
+j,k| ≪r L−1/2
+pkt J−1/2
+j
+LCrJ−r
+j
+,
+T/J2
+j
+D2
+≪L−2B.
+Repeated integration by parts gives
+|Qj,n(ek)| ≪N L−1/2
+pkt J−1/2
+j
+LCN (1 + D)−N.
+(147)
+Thus the squared nonboundary contribution is
+≪N
+L2CN
+Lpkt
+X
+j
+J−1
+j
+R1−2N
+j
+.
+For a boundary shell, split instead at the physical endpoint b ∈{1, XT }. Repeating the same
+integration by parts N times gives a finite endpoint sum plus an interior remainder. The endpoint
+sum is a linear combination of
+∂r
+x
+ψj(x)Fv(x)
+
+x=b,
+0 ≤r < N,
+(148)
+with scalar coefficients depending on the Fourier mode and the phase; the interior remainder satisfies
+the same arbitrary-order bound as (147). Thus the physical endpoint contributes only finitely many
+packet jet functionals, while every nonstationary interior term remains in the regular integration-
+by-parts class.
+The shell enlargement itself has only o(NT ) extra rows. Indeed
+X
+j
+Rj ≪XT LB +
+√
+T LB log XT
+≪TLB−A0 +
+√
+T LB+1 = o(NT )
+when A0 > B + 3.
+51
+
+
+Proposition 10.3 (Terminal logarithmic tail). Let Xfull := eL = T/(2π). On the complementary
+logarithmic band
+WT < u ≤L,
+XT < x ≤Xfull,
+the vertical right-edge source and its adjoint decompose as
+Atail
+T
+= Etail
+T
++ Ebdry,tail
+T
++ Rtail
+T ,
+(149)
+where Ebdry,tail
+T
+is the tail-side subfamily of the split endpoint jets at x = XT and is included, exactly
+once, in the global boundary matrix Ebdry
+T
+of Proposition 11.2. Moreover
+rank Etail
+T
+≪T log L = o(NT ),
+(150)
+and, on Vcore ∩Vmean,
+∥G−1/2
+T
+Rtail
+T G−1/2
+T
+∥2
+S2 = o(NT ).
+(151)
+The same estimates include the core–tail cross terms.
+Proof. Use the same unit-shell Fourier transform on XT < x ≤Xfull, but put only the integers at
+distance at most 1 from Ij into the tail stationary range. Its total number of rows is
+X
+XT ≪Jj≪Xfull
+
+1 + T
+Jj
+
+≪T + T log Xfull
+XT
+≪T log L.
+By Proposition 6.1 there is no arithmetic fibre multiplicity. Every stationary tail term and every
+core–tail cross term therefore factors through a space of dimension O(T log L), which proves the
+rank bound.
+For the complementary modes let D = dist(n, Ij) > 1. Since Jj ≥XT = T/(2πLA0),
+T
+J2
+j
+≪L2A0
+T
+.
+The integration-by-parts argument of (147), now with the fixed tail margin 1, gives for every fixed
+N
+|Qj,n(ek)| ≪N L−1/2
+pkt J−1/2
+j
+LCN
+Jj
+N
+(1 + D)−N.
+Squaring this estimate and summing first in n gives a bounded P
+D>1(1+D)−2N. Since the retained
+unit shells satisfy Jj ≥XT ≍TL−A0,
+X
+Jj≥XT
+J−1−2N
+j
+≪X−2N
+T
+.
+After summing over the O(TL) packet coordinates, with no additional arithmetic multiplicity by
+Proposition 6.1, we obtain the sufficient absolute estimate
+∥Rtail
+T ∥2
+S2 ≪T 1−2NLCN,A0.
+(152)
+The same estimate holds for the nonstationary core–tail cross terms, since the core analysis map
+has fixed operator norm up to a power of L. Lemma 12.1 gives on Vcore ∩Vmean
+∥G−1/2
+T
+∥2
+op ≪T 2LCG.
+52
+
+
+Consequently
+∥G−1/2
+T
+Rtail
+T G−1/2
+T
+∥2
+S2 ≪T 5−2NLCN,A0+2CG = o(NT ),
+because the fixed order N chosen in Section 13 is in particular larger than 3. Endpoint jets at the
+physical endpoint x = Xfull factor through finitely many evaluation functionals and are included
+in Etail
+T . The tail-side split jets at x = XT are precisely Ebdry,tail
+T
+and belong only to the global
+boundary matrix Ebdry
+T
+of Proposition 11.2. This proves (149) and (151).
+11
+Macroscopic one-χ shifts have low edge rank
+For a direct stationary one-χ source on a unit shell write
+X
+m
+Wj,maj,m(y; p)e(−my),
+aj,m =
+X
+r
+baj,m(r; p)e(ry).
+Here m ∈Ij. The sideband r has effective carrier q = m −r, since e(ry)e(−my) = e(−qy). If Pj
+projects onto I+
+j
+and (Sqb)n = bn+q, its compression is PjSqPj. Only |r| ≤Rsb
+j
+enters the edge
+matrix; the complement is regular class (vii).
+Write
+Aj :=
+T
+2π(Jj + 1),
+Bj :=
+2T
+2πJj
+.
+If m ∈Ij, then PjSmPj can have nonzero range only on the common low-edge interval
+Aj −Rj ≤n ≤Bj + Rj −Aj.
+Thus all forward shifts share one edge space E−
+j with
+dim E−
+j ≪Bj −2Aj + 2Rj + 1 ≪T
+J2
+j
++ Rj + 1.
+(153)
+The adjoints lie in a high-edge space E+
+j of the same dimension. Therefore, for arbitrary scalar
+weights Wj,m,
+rank
+
+X
+m∈Ij
+Wj,mPjSmPj + adjoint
+
+≪T
+J2
+j
++ Rj + 1.
+(154)
+The same conclusion holds with coefficients acting on an auxiliary common fibre only when they
+preserve this shell-coordinate edge range; no such extra fibre is present in the invariant source by
+Proposition 6.1. For the parameter ϵL = L−σ fixed in Section 13, the low Fourier sidebands of a
+smooth stationary symbol replace m by the effective shift m −r with |r| ≤ϵLdj, where dj ≍T/Jj.
+Enlarging E±
+j by this amount therefore changes the right side of (154) only by O(ϵLdj). Now
+X
+j
+T
+J2
+j
+≪T,
+X
+j
+Rj ≪TLB−A0 +
+√
+T LB+1 = o(T),
+and
+X
+j
+ϵLdj ≪ϵLT log XT ≪TL1−σ.
+Thus the first two geometric edge contributions are O(T). The low-sideband enlargement con-
+tributes TL1−σ = o(T) once σ > 2. Hence
+53
+
+
+Proposition 11.1 (Uniform rank bound for low-sideband stationary shifts). Let Eshift
+T
+be any finite
+sum of the low-sideband stationary compressed shifts described above, with base carrier indices in
+the intervals Ij and sidebands |r| ≤Rsb
+j . Then
+rank Eshift
+T
+≪T = o(NT ).
+(155)
+The estimate depends only on the geometric range of the retained low-sideband shifts and is inde-
+pendent of their coefficients or signs. It also holds for norm-convergent sums of such shifts, since
+every partial sum has range in the same fixed finite-dimensional edge space. In particular it applies
+to the low-sideband part of each additional translated projector ΠΣtr,k: by Lemma 7.7, taking its
+Mellin residue changes only the radial coefficient and leaves the same total integer carrier M; the
+smooth stationary amplitude is then split at Rsb
+j
+exactly as above. The complementary sidebands
+are not part of this rank assertion.
+Proposition 11.2 (Stable-core endpoint terms have finite rank). Let Ebdry
+T
+be the sum of the
+endpoint terms produced by the fixed N integrations by parts on the O(1) shell windows meeting
+b ∈{1, XT }, including both one-sided contributions at the split x = XT . Denote the contribution
+from the tail side of this split by Ebdry,tail
+T
+, as in (149). Then
+rank Ebdry
+T
+≪LCbdry = o(NT )
+(156)
+for a fixed exponent Cbdry.
+Proof. For each boundary shell, fixed local-source label α, endpoint b, and 0 ≤r < N, let
+(JT v)b,r,α := ∂r
+x
+ψj(x)Fv,α(x)
+
+x=b.
+Equation (148) shows that every endpoint contribution with one boundary leg factors as J∗
+T BQ for
+some output operator B and some companion analysis Q; the reflected term factors as Q∗B∗JT .
+Hence each Hermitian pair has rank at most 2 rank JT . There are two physical endpoints, O(1)
+boundary shells, and the derivative order N is fixed. The fixed local-source labels contribute at
+most LCbdry coordinates. Thus
+rank JT ≪LCbdry = o(NT ).
+Define Eedge
+T
+to be the sum of the low-sideband centered stationary shift family, the high exact
+HLP low-sideband matrix EHLP,hi
+T
+, the low-sideband parts of the additional translated-pole terms,
+the boundary-shell matrix Ebdry
+T
+, and the terminal logarithmic tail matrix Etail
+T . The auxiliary
+outer-excess term is zero by Proposition 6.1; the horizontal packet-centre collars are handled only
+by Vend. Lemma 7.5 and Propositions 11.1, 11.2, and 10.3 give
+rank Eedge
+T
+≪T log L = o(NT ).
+(157)
+12
+Reference metric and regular remainder
+The final reference metric GT is the global flat-lag metric defined in (108). For the regular-remainder
+estimates it is convenient to use a shell-local auxiliary metric. Let Wloc
+T
+be the composition of
+54
+
+
+(i) packet synthesis followed by the logarithmic unitary and the fixed bounded-overlap shell
+windows, with the input weight x−1/2 appearing in (180);
+(ii) the invariant-source specialization of Proposition 6.1; the outer translation and divisor maps
+are the identity and introduce no additional arithmetic fibre;
+(iii) the local primitive qj 7→Qj of Lemma 10.2, with the endpoint mean constraint imposed only
+after restriction to Vmean;
+(iv) multiplication of the primitive output by
+√
+2 L−1x−1/2, so that its ordinary L2(dx) norm is
+exactly the weighted norm in (141), together with the remaining positive weights common to
+both normalizations.
+Put
+Gloc
+T
+:= (Wloc
+T )∗Wloc
+T .
+(158)
+The stationary Fourier restriction is not part of this reference map; it is an orthogonal compression
+applied to the source operators and can only decrease their Hilbert–Schmidt norms. The signed
+coefficient G(ρ) is part of neither reference metric. By Proposition 6.1 there is no nontrivial outer
+curvature deformation dp/L in the invariant source.
+Lemma 10.2, applied to the common packet/core map, gives on Vmean
+Gloc
+T
+⪯C△GT .
+(159)
+Both forms are positive definite on every finite packet-coordinate compression. Indeed, if Wloc
+T v =
+0, then every local primitive Qj vanishes; differentiation gives qj = 0.
+Since P
+j ψ2
+j = 1, the
+logarithmic-unitary output is zero on the open physical interval.
+Hence the underlying packet
+synthesis
+u 7−→
+X
+ν
+vνeiτνu
+vanishes on a nonempty open interval. It is a finite exponential polynomial; analytic uniqueness
+(equivalently the Vandermonde argument of Lemma 3.2) gives v = 0. The global map is injective
+by the same argument: vanishing of its primitive makes the packet synthesis zero on the global
+interval. The mean-zero conditions are needed for the endpoint identities, not for injectivity.
+Lemma 12.1 (Polynomial floor for the core reference metric). On Vcore ∩ker Mglob
+T
+there is a fixed
+exponent CG such that
+GT ⪰T −2L−CGI.
+(160)
+Proof. By (106), after translating the flat core to 0 ≤u ≤WT the global reference input is exactly
+g(u) = L−1/2
+pkt
+X
+ν
+evνeiτνu,
+evν = eiτνu0vν.
+The phase v 7→ev is unitary and commutes with Dτv = (τ −1
+ν vν)ν. Hence the two inequalities in
+Lemma 10.1, after translating the integration interval, apply directly to this synthesis and to its
+Dτ multiple.
+Write
+R(u) =
+Z u
+0
+g(s) ds = a + L−1/2
+pkt
+X
+ν
+evν
+iτν
+eiτνu.
+55
+
+
+Since T ≤τν ≤2T + O(1), Lemma 10.1 gives
+L−1/2
+pkt
+X
+ν
+evν
+iτν
+eiτνu
+
+2
+L2(0,WT )
+≫T −2∥v∥2
+2.
+The constant a cannot cancel this oscillatory norm. Indeed |
+R WT
+0
+eiτνudu| ≤2/|τν|; using dT =
+O(TL) and Lpkt ≍WT ≍L, the squared norm of the projection of the oscillatory sum onto the
+constants is O(T −3)∥v∥2
+2. Hence
+∥R∥2
+L2(0,WT ) ≫T −2∥v∥2
+2.
+Inserting the factor 2L−2 in the normalized triangular primitive gives (160), after enlarging the
+fixed exponent CG.
+The final perturbation will use only fixed-T compactness, but (160) is used for the direct
+terminal-tail estimate. All p-dependence excluded above belongs only to the principal comparison
+(120).
+The factor used in the shell normalization is fixed by the change from the normalized flat lag
+coordinate to the physical logarithmic coordinate. If r = u/L and bq(r) = L1/2g(Lr), then for every
+lag profile H,
+ZZ
+H(1 −|r −s|)bq(r)bq(s) dr ds = 1
+L
+ZZ
+H
+
+1 −|u −v|
+L
+
+g(u)g(v) du dv.
+(161)
+After x = eu, the logarithmic unitary and the input factor x−1/2 in (180) cancel the measure
+Jacobians. Thus every normalized local lag term carries the same external factor L−1; all remain-
+ing height, stationary, and fixed local-source factors are contained in its smooth operator-valued
+amplitude.
+Lemma 12.2 (Shell transport of the triangular normalization). Let Ij = [Jj, Jj + 1], x = Jj + t,
+y = Jj + s, and let
+ρj(t, s) = ν −| log x −log y|
+L
+,
+|ν −1| ≪L−1.
+Suppose a Hilbert-valued shell kernel is a finite sum of terms
+Dj(t, s) = 1
+L aj(t, s)H(ρj(t, s)),
+(162)
+where, for integers a, b ≥0 with a + b ≤2,
+∥∂a
+t ∂b
+saj(t, s)∥≪LCJ−a−b
+j
+,
+and H, H′, H′′ are bounded by a fixed power of L on the relevant compact interval. Then the diagonal
+derivative jump satisfies
+JDj(t) = ωj(t) aj(t, t)H′(ν),
+ωj(t) =
+2
+L2(Jj + t),
+(163)
+with the convention for JD in Lemma 12.3. Moreover the regular mixed derivative obeys
+ωj(t)−1/2Dreg
+j,ts(t, s)ωj(s)−1/2 ≪LC′
+(164)
+for a fixed C′. The same conclusions hold for finite sums with finite-dimensional operator-valued
+amplitudes aj.
+56
+
+
+Proof. Off the diagonal,
+∂tρj = −sgn(t −s)
+Lx
+,
+∂sρj = sgn(t −s)
+Ly
+.
+The derivatives of the smooth amplitude aj have no diagonal jump. The two one-sided values of
+∂tH(ρj) therefore differ by 2H′(ν)/(Lx), and the external factor L−1 in (162) gives (163).
+For the regular mixed derivative, Leibniz’ rule produces terms with two amplitude derivatives,
+one amplitude and one lag derivative, or two lag derivatives. On a length-one shell x, y ≍Jj; hence
+they are bounded, respectively, by fixed polylogarithmic multiples of
+L−1J−2
+j
+,
+L−2J−2
+j
+,
+L−3J−2
+j
+.
+Since
+ωj(t)1/2ωj(s)1/2 ≍L−2J−1
+j
+,
+division by the reference weights leaves at most a fixed factor LC′ (indeed the first class costs
+only O(L/Jj)). This proves (164). The argument is unchanged for finite-dimensional operator
+coefficients after taking operator or Hilbert–Schmidt norms.
+Lemma 12.3 (Two-variable primitive remainder criterion). Let I = [0, 1] and let q = Q′ with
+Q(0) = Q(1) = 0. Let D(x, y) be a Hermitian kernel which is continuous across the diagonal, C1
+on each open triangle, and whose regular mixed derivative is in L2(I2). Define the diagonal jump
+JD(x) := ∂xD(x, x+) −∂xD(x, x−).
+Then, distributionally,
+∂x∂yD = JD(x)δx=y + Dreg
+xy ,
+and two integrations by parts give
+ZZ
+D(x, y)q(x)q(y) dxdy =
+Z
+JD(x)|Q(x)|2dx +
+ZZ
+Dreg
+xy (x, y)Q(x)Q(y) dxdy.
+(165)
+For the global application, let Dj,T be the corresponding operator-valued kernel on the finite output
+fibre of the jth retained unit shell. All common positive output weights are already included in Wloc
+T ;
+by Proposition 6.1 there is no additional outer arithmetic metric. In the local coordinate 0 ≤t ≤1
+put
+ωj(t) :=
+2
+L2(Jj + t).
+(166)
+By (141), ωj(t) is the exact scalar primitive reference density on this output fibre.
+Define the
+normalized jump and regular mixed kernel by
+Jj,T (t) := ωj(t)−1JDj,T (t),
+Kj,T (t, s) := ωj(t)−1/2Dreg
+j,T,ts(t, s)ωj(s)−1/2.
+If
+sup
+j,x
+∥Jj,T (x)∥op = δT = o(1)
+(167)
+and
+MT :=
+X
+j∈JT
+ZZ
+∥Kj,T (x, y)∥2
+S2 dxdy = o(NT ),
+(168)
+57
+
+
+then every finite retained compression of total dimension O(NT ) satisfies
+∥G−1/2
+T
+RT G−1/2
+T
+∥2
+S2 ≪δ2
+T NT + MT = o(NT ).
+(169)
+In particular, a uniform per-shell estimate
+ZZ
+∥Kj,T (x, y)∥2
+S2 dxdy ≪LC
+for fixed C implies (168) whenever A0 > C + 2, since #JT = O(XT ) and XT = T/(2πLA0).
+Proof. The endpoint conditions kill all boundary terms in the two integrations by parts, proving
+(165). On the jth local primitive space the exact reference quadratic form is
+Z 1
+0
+ωj(t)∥Q(t)∥2 dt.
+Conjugating by multiplication with ωj(t)1/2 turns the diagonal term in (165) into the multiplication
+operator MJj,T and the regular term into the integral operator TKj,T . On the orthogonal direct
+sum of shell outputs put
+Bjump :=
+M
+j
+MJj,T ,
+Breg :=
+M
+j
+TKj,T .
+Then
+∥Bjump∥op ≤δT ,
+∥Breg∥2
+S2 ≤
+X
+j
+ZZ
+∥Kj,T (t, s)∥2
+S2 dt ds = MT .
+The multiplication operator Bjump need not itself be Hilbert–Schmidt on the continuous shell-
+output space; finite dimensionality enters only after pullback. Put Gloc := Gloc
+T
+on the retained
+compression, W := Wloc
+T , and
+V := WG−1/2
+loc
+.
+Then V is an isometry from the retained packet space, of dimension dT = O(NT ), into Ran W.
+Therefore
+∥V ∗BjumpV ∥2
+S2 ≤dT ∥Bjump∥2
+op ≪δ2
+T NT ,
+whereas the ideal property of the Hilbert–Schmidt norm gives
+∥V ∗BregV ∥S2 ≤∥Breg∥S2 ≤M1/2
+T
+.
+Since all common output weights are already contained in Wloc
+T , the pulled-back remainder is
+V ∗(Bjump + Breg)V , and we obtain
+∥G−1/2
+loc
+RT G−1/2
+loc
+∥2
+S2 ≪δ2
+T NT + MT .
+Finally (159) gives Gloc ⪯C△GT . With
+A := G1/2
+loc G−1/2
+T
+one has ∥A∥2
+op ≤C△and
+G−1/2
+T
+RT G−1/2
+T
+= A∗G−1/2
+loc
+RT G−1/2
+loc
+
+A.
+Thus global whitening costs only the fixed factor C△, proving (169).
+58
+
+
+Proposition 12.4 (Relative Hilbert–Schmidt bound for the regular remainder). After the com-
+plete principal cluster has been extracted and every additional nonprincipal translated pole has been
+separated from it and subjected to the same direct sideband split, the regular remainder is a sum of
+mutually exclusive pieces. After quadratic-form compression to Pret
+T , it satisfies
+(GT |Pret
+T )−1/2(Rtri
+T |Pret
+T )(GT |Pret
+T )−1/2
+2
+S2 = o(NT ).
+(170)
+Proof. We treat the primitive-controlled source classes with Lemma 12.3; the boundary nonsta-
+tionary and high-sideband classes are estimated directly in relative Hilbert–Schmidt norm below.
+Throughout, “normalized jump” and “normalized mixed kernel” mean the quantities Jj,T and Kj,T
+defined there, including the exact shell density (166). The common factor L−1 is fixed by (161).
+By Proposition 6.1 there is no arithmetic whitening in the invariant source. Lemma 12.2 converts
+the previously established lag-profile derivative bounds into these shell-normalized quantities. All
+remaining fixed losses are powers of L and are included in the exponents chosen in Section 13.
+(i) Exact/model local discrepancy. The matrix Rloc
+T
+is the low-level exact/model discrepancy
+defined by (101); it includes the model truncation tail (99). Its shell-local primitive normalization
+and relative estimate are exactly (102). The exact levels k > K0 are not part of class (i): Lemma 7.5
+assigns their low sidebands to Eedge
+T
+and their high sidebands to class (vii).
+(ii) Low-level freezing of the slow half-self factor. This class contains only the locally projected
+hierarchy k ≤K0; the exact levels k > K0 are never frozen and are owned by Lemma 7.5. By
+Lemma 7.4, the normalized jump and mixed kernel satisfy
+δT ≪L−D−1+Cfr = o(1),
+∥Kfreeze∥L2(S2) ≪L−D−1+Cfr = o(1).
+The bounded overlap of the smooth height partition preserves these estimates. Thus (169) applies
+to the complete block-freezing error.
+(iii) Hardy-gauge f′ source.
+This class is exactly Rsrc
+f′
+from (34), including the curvature,
+logarithmic-derivative, and quadratic f′ terms; none remains in the principal source. On the high
+strip,
+f′(s) = O(T −1),
+|f(s) −P(s)| ≍L
+on the safe right edge. The remaining factors are the same completed shifted zeta/Cauchy fac-
+tors already present in the principal master. A fixed number of stationary, packet and curvature
+derivatives therefore costs only LC, while every monomial in (34) retains at least one factor T −1.
+Thus
+∥Jf′∥op ≪T −1LC = o(1),
+∥Kf′∥L2(S2) ≪T −1LC.
+(iv) Horizontal connectors. By Lemma 3.6, after the endpoint-collar deletion already included
+in Vend we choose its arbitrary decay exponent as A = M∗+ Chor, where Chor dominates the fixed
+polynomial losses from the finite pullbacks and mixed derivatives. Hence
+Jhor = 0,
+∥Khor∥L2(S2) ≪T −M∗LC.
+No further decay order is chosen later.
+(v) First stationary and Stirling corrections to the lag-profile terms.
+The finite-T principal
+deformations of λ and the common endpoint remain inside PT and are compared with AG
+T only in
+(120); the exact/model Laurent discrepancy is already class (i). What remains here consists only
+of the first omitted stationary-phase and Stirling coefficients attached to the same local lag profiles.
+59
+
+
+By the stationary expansion in Lemma 5.1 and Stirling’s formula, each carries an additional factor
+T −1LC after the fixed derivatives. Lemma 12.2 therefore gives
+∥Jcorr∥op ≪T −1LC = o(1),
+∥Kcorr∥L2(S2) ≪T −1LC.
+The order-one complementary pole-free direct source is not included in this class; it is treated by
+the sideband decomposition in (vii).
+(vi) Nonstationary and smooth height-partition terms. Differentiate first. On every retained
+nonboundary shell j ∈JT , use the integration-by-parts order N and buffer exponent B fixed in
+Section 13. On a retained boundary shell meeting {1, XT }, first remove the finite endpoint sum
+(148); Proposition 11.2 assigns those terms only to Eedge
+T
+. The remaining interior integral obeys
+the same repeated integration-by-parts estimate. By (147), Rj ≥LB, and the bounded-overlap
+shell sum, the squared leakage before the fixed relative-normalization loss is
+≪NT L2CN−B(2N−1)+o(1).
+After the primitive normalization, whose squared fixed loss is at most LCreg, the choice of B and
+M∗in Section 13 gives
+Jnonstat = 0,
+X
+j
+ZZ
+∥Kj,nonstat(x, y)∥2
+S2 dxdy = o(NT ).
+(171)
+For the slow height decomposition choose a smooth partition P
+b ωb(t) = 1 on scale H = T/LD and
+insert it in the linear contour integral before stationary phase. The leading pieces sum exactly to
+the original amplitude. Every differentiated partition factor satisfies
+∂r
+t ωb(t) = Or(H−r) = Or(T −rLDr),
+so the non-leading partition terms have zero principal cusp and satisfy the same regular criterion.
+No block-boundary packet deletion is introduced.
+(vii) High sidebands of the direct one-χ source. This class contains the high sidebands of every
+stable direct one-χ family: exact HLP levels k > K0, the pole-free Ddir
+k
+and transition factors, and
+additional translated principal parts. The auxiliary outer-excess family is zero for the invariant
+source. Lemmas 5.1 and 7.3 cover all these families. On Ij = [Jj, Jj + 1] write
+aj,m(y; p) =
+X
+r∈Z
+baj,m(r; p)e(ry).
+Uniform fixed-order stationary phase gives, for every chosen N,
+|∂s
+pbaj,m(r; p)| ≪N,s LCN,s(1 + |r|)−N.
+Put dj ≍T/Jj and Rsb
+j
+:= ϵLdj with ϵL = L−σ. The choice A0 > σ + 3 gives Rsb
+j
+≥L3 on every
+retained shell. Place |r| ≤Rsb
+j
+in the common low-sideband edge range.
+For the high sidebands choose Fourier decay order Msb+4. Let cj,m be the normalized coefficient
+on the finite output fibre after the fixed mixed-kernel derivatives. Since the stationary interval has
+upper endpoint Bj ≍dj, Lemma 7.3 gives
+X
+m∈Ij
+∥cj,m∥2
+S2 ≪djLCsb.
+(172)
+60
+
+
+For the effective Fourier shift q = m −r put
+Hq,m := baj,m(m −q; p)1|q−m|>Rsb
+j .
+The Fourier decay gives both row and column Schur bounds
+sup
+m
+X
+q
+|Hq,m| + sup
+q
+X
+m
+|Hq,m| ≪LCsb(Rsb
+j )−Msb−3.
+Hence the Hilbert-space-valued Schur estimate implies
+X
+q
+
+X
+m
+Hq,mcj,m
+
+2
+S2
+≪LCsbdj(Rsb
+j )−2Msb−6.
+Distinct compressed shifts PjSqPj occupy distinct matrix diagonals and are Hilbert–Schmidt or-
+thogonal; moreover ∥PjSqPj∥2
+S2 ≪dj. Therefore
+∥Kj,hi∥2
+S2 ≪LCsbd2
+j(Rsb
+j )−2Msb−6,
+which, since dj, Rsb
+j ≥1, implies the deliberately weaker bound
+∥Kj,hi∥2
+S2 ≪LCsbd3
+j(Rsb
+j )−Msb.
+(173)
+Thus, since dj ≍T/Jj,
+X
+j
+∥Kj,hi∥2
+S2 ≪LCsb+σMsbT 3−Msb
+X
+Jj≤XT
+JMsb−3
+j
+≪TLCsb+σMsb−A0(Msb−2).
+By the prior choice (178), the logarithmic exponent is less than −3, so the right side is o(TL) =
+o(NT ). No derivative order is chosen at this stage. This piece has no diagonal jump because the
+local symbol is C∞.
+(viii) Local holomorphic complement.
+After the common and translated principal parts are
+removed, the local Mellin source is holomorphic inside the closed contour ΓL. Its local contour
+contribution therefore vanishes identically by (104). The smooth transition to the complementary
+pole-free contour belongs to the direct one-χ source whose high sidebands are class (vii), so this
+step contributes no additional remainder.
+(ix) HLZ diagonalization error.
+Choose the arbitrary logarithmic exponent A = Adiag in
+(41). Under the trivial outer-twist specialization of Proposition 6.1, the superlogarithmic term
+LO(1)T −2/ log3 T is smaller than every fixed negative power of L. The error in Lemma 6.3 remains in
+the common lag-profile channel: after the diagonal Mellin sum has been taken it has no independent
+stationary carrier index. Hence its fixed (ρ, p) derivatives produce a scalar smooth lag-profile error
+on each fixed local-source/refinement component. The number of such components is only polylog-
+arithmic, and its Hilbert–Schmidt square-root loss is included in Cdiag by definition. Consequently
+the packet-stable lemma gives
+εdiag ≪L−Adiag+Cdiag+o(1) = o(1),
+and Lemma 12.2 yields
+δT ≪εdiag,
+∥Kj,diag∥L2(S2) ≪εdiag
+61
+
+
+on one shell. In particular there is no factor dj: such a factor belongs to the direct one-χ carrier
+families of class (vii), not to the completed diagonal error. Consequently
+X
+j∈JT
+∥Kj,diag∥2
+L2(S2) ≪XT L−2Adiag+2Cdiag+o(1) = o(NT )
+by Adiag > Cdiag + 10. The error has no extracted local pole, so Lemma 12.3 applies with these
+bounds.
+(x) Terminal logarithmic tail. The nonstationary part of the complementary band WT < u ≤L
+is exactly Rtail
+T
+of Proposition 10.3, and already satisfies the required relative Hilbert–Schmidt
+bound. Its stationary and endpoint parts belong only to Eedge
+T
+.
+Class (i) has the relative bound (102). For (ii)–(v) and the smooth height-partition corrections
+in (vi), the squared relative Hilbert–Schmidt contribution is LCreg+o(1) per shell, so the total is
+≪XT LCreg+o(1) = TLCreg−A0+o(1) = o(NT )
+by (178). The nonstationary interior of (vi) is accounted for only by (171); its endpoint part is
+not a regular term at all and belongs to Ebdry
+T
+by Proposition 11.2.
+Class (vii) has (173) and
+its global sum, while (viii) vanishes. The primitive-controlled jump bounds are uniformly o(1), so
+Lemma 12.3 applies to those classes. Adding the separately controlled classes (i), the nonstationary
+part of (vi), (vii), (ix), and (x) gives squared Hilbert–Schmidt norm o(NT ), proving (170).
+Proposition 12.5 (Finite-T decomposition of the contour form). For the same normalized contour
+matrix AT of (7), the exact source evaluation has the identity
+AT = PT + Eedge
+T
++ Rtri
+T ,
+(174)
+where, after quadratic-form compression to Pret
+T
+of (186),
+PT |Pret
+T
+⪰c0 GT |Pret
+T ,
+rank(Eedge
+T
+|Pret
+T ) ≤rank Eedge
+T
+= o(NT ),
+(GT |Pret
+T )−1/2(Rtri
+T |Pret
+T )(GT |Pret
+T )−1/2
+2
+S2 = o(NT ).
+(175)
+Here PT is Definition 7.10, Eedge
+T
+is the edge matrix of (157), and Rtri
+T
+is the regular remainder
+of Proposition 12.4. Their disjointness is fixed first by the level split at K0: for k ≤K0 use (82),
+while Lemma 7.5 splits k > K0 into its low- and high-sideband parts. The signed passage from the
+truncated leading family to the full model is (99). Independently, the geometric source is split at
+the stable logarithmic core and its terminal complement. By Proposition 6.1, there is no additional
+outer arithmetic annulus in the invariant source.
+Proof. Start from the exact same-form identity (6) and the right-edge split (22). Proposition 6.1
+first fixes all auxiliary HLZ outer indices at their trivial values, so no outer arithmetic annulus
+or outer-translation source is present. On the stable logarithmic band, Proposition 7.11 gives the
+principal term, the low-sideband edge pieces of every direct one-χ family, and the complementary
+high-sideband/regular stationary pieces. The separated f′, horizontal, and nonstationary pieces are
+classes (iii), (iv), and (vi) of Proposition 12.4. Finally split 0 ≤u ≤L at WT ; the complementary
+terminal band is (149). These source classes are disjoint and exhaust the contour source, proving
+(174).
+The three estimates are respectively (121), (157), and (170).
+62
+
+
+13
+Reduced spectral space and parameter hierarchy
+Choose the parameters in the following order. First fix any constant Cpkt > 0, which determines
+the logarithmic packet reserve (10) before any stationary-buffer or symbol order is chosen. By
+Proposition 6.1, no arithmetic range parameter is required.
+Fix once and for all the finite derivative orders required for two curvature derivatives and two
+primitive mixed derivatives. Let Cfr be the freezing exponent in Lemma 7.4, and choose a fixed
+height partition exponent
+D > Cfr + 5,
+H := T/LD.
+(176)
+Let Cmean dominate the fixed local-source/refinement multiplicity.
+Let Creg dominate the log-
+arithmic exponents of the squared per-shell relative Hilbert–Schmidt contributions of the fixed
+lag-profile, freezing, f′, and stationary/Stirling correction classes, as well as the squared fixed loss
+in the shell primitive normalization. It does not include the nonstationary integration order or
+the high-sideband Fourier order, whose exponents CN and Csb are introduced only after those
+orders are chosen below. Let Cdiag dominate all fixed packet, curvature, shell, and fixed local-
+source/refinement-fibre losses (including the square root of that polylogarithmic fibre dimension in
+Hilbert–Schmidt norm) multiplying the arbitrary-log term in (41), and fix
+Adiag > Cdiag + 10.
+(177)
+Choose
+σ > 2,
+ϵL = L−σ.
+The direct high-sideband estimate below is obtained with the explicit shell power d3
+j; no additional
+shell-dimension exponent is assumed. Next fix M∗> 2Creg + 5. We use the same numerical target
+as a logarithmic saving exponent for the stable-core nonstationary leakage and, after increasing it if
+necessary, as a power-saving target for the horizontal connectors. Choose the integration-by-parts
+order N so that
+2N −1 > M∗+ 5,
+and then choose the stationary buffer exponent B so that
+B(2N −1) > 2CN + M∗.
+Independently choose one finite high-sideband order
+Msb > 5,
+and let Csb be the corresponding fixed logarithmic exponent in (173). Finally choose A0 so large
+that
+A0 > max
+
+B + 3, σ + 3, Cmean + 3, Creg + 3, Csb + σMsb + 3
+Msb −2
+
+.
+(178)
+With WT , XT defined by (47), these derivative orders and exponents are fixed once and for all
+before taking the limit T →∞.
+Lemma 13.1 (Global and local mean constraints). Let g(u; v), 0 ≤u ≤WT , denote the single
+packet-fibre output of (106) immediately before the global primitive. Define the global mean map
+Mglob
+T
+v :=
+Z WT
+0
+g(u; v) du.
+(179)
+63
+
+
+For the shell-local remainder analysis, let fα(x; v), 1 ≤x ≤XT , denote the finite-dimensional
+output components immediately before the local primitives, with α collecting the fixed local-source
+and bounded-overlap refinement labels. On Ij = [Jj, Jj + 1] set
+qj,α(t; v) := ψj(Jj + t)(Jj + t)−1/2fα(Jj + t; v),
+0 ≤t ≤1,
+(180)
+and define the local mean map
+Mloc
+T v :=
+Z 1
+0
+qj,α(t; v) dt
+
+j,α
+.
+(181)
+Finally put
+Vmean := ker Mglob
+T
+∩ker Mloc
+T .
+(182)
+Then
+codim Vmean ≪(1 + XT )LCmean = o(NT ).
+(183)
+For every v ∈Vmean, the global primitive
+R(u; v) :=
+Z u
+0
+g(s; v) ds
+satisfies R(0; v) = R(WT ; v) = 0, while every local primitive
+Qj,α(t; v) :=
+Z t
+0
+qj,α(s; v) ds
+satisfies Qj,α(0; v) = Qj,α(1; v) = 0. Thus the global model primitive identity and the shell-local
+remainder identity hold on the same retained subspace.
+Proof. Both mean maps are linear. The global mean map has one output component. The fixed
+local-source/refinement labels contribute at most LCmean components per retained shell, and there
+are O(XT ) retained unit shells. Thus the target of Mloc
+T
+has O(XT LCmean) coordinates, and the
+codimension of the intersection of the two kernels is bounded by 1 + O(XT LCmean). The choice
+A0 > Cmean + 3 in (178) makes this o(TL) = o(NT ). The endpoint identities for R and Qj,α are
+exactly the two kernel conditions in the definition of Vmean.
+All edge-rank, shell-row, and regular-remainder estimates above were proved on the full ad-
+missible near-lattice packet family.
+Passing to the stationary-node-sized subfamily selected in
+Lemma 15.1 is a coordinate compression. Rank and absolute Hilbert–Schmidt norm cannot in-
+crease, and the uniform output-fibre estimates used for the relative bounds may be rerun on the
+compressed packet family with the same asymptotics.
+It remains only to impose the horizontal endpoint restriction.
+Let Pend be the coordinate
+projection which removes the packet centres in the two collars of Lemma 3.6, and set
+Vend := Ran Pend.
+(184)
+Then
+codim Vend = O(T) = o(NT ).
+(185)
+This is a genuine packet-coordinate restriction, so Lemma 3.5 applies after intersection with Vend.
+The stationary buffer rows are not deleted. Their contribution is accounted for by the Rj enlarge-
+ment in the edge-rank estimate and by the complementary nonstationary remainder bounds.
+64
+
+
+Define the retained subspace by
+Pret
+T
+= Vcore ∩Vmean ∩Vend.
+(186)
+By Lemma 10.1, (183), and (185),
+codim Pret
+T
+= o(NT ).
+(187)
+The frozen model requires no further spectral deletion by Proposition 8.1. Stationary shell rows,
+the smooth height partition, and the low-sideband ranges are not additional subspace restrictions.
+The auxiliary outer-excess family is absent for the invariant source by Proposition 6.1.
+14
+Finite-dimensional inertia reduction
+Lemma 14.1 (Rank plus relative Hilbert–Schmidt min–max). Let V be finite dimensional. Let
+A, P, E, R, G be Hermitian on V , with G ≻0, and suppose
+A = P + E + R,
+P ⪰c0G,
+rank E ≤r,
+with
+s := ∥G−1/2RG−1/2∥2
+S2.
+Then there is a subspace Vgood ⊂V with
+codimV Vgood ≤r + 16c−2
+0 s,
+A|Vgood ⪰3c0
+4 G|Vgood.
+(188)
+Consequently
+n−(A|V ) ≤r + 16c−2
+0 s.
+(189)
+If V has codimension d in the ambient space, then
+n−(A) ≤d + r + 16c−2
+0 s.
+(190)
+Proof. Whiten by G:
+eP = G−1/2PG−1/2,
+eE = G−1/2EG−1/2,
+eR = G−1/2RG−1/2.
+Let SE = Ran eE. Since eE is Hermitian, S⊥
+E = ker eE, and dim SE ≤r. Let SR be the spectral
+subspace of eR for |λ| ≥c0/4. Then
+c2
+0
+16 dim SR ≤∥eR∥2
+S2 = s,
+so dim SR ≤16c−2
+0 s. Put
+eVgood := (SE + SR)⊥,
+Vgood := G−1/2 eVgood.
+On this space,
+eP + eE + eR ⪰c0I −c0
+4 I = 3c0
+4 I.
+This proves (188). Since A is positive on Vgood, every negative subspace of A|V meets Vgood trivially;
+hence its dimension is at most codimV Vgood ≤r + 16c−2
+0 s, proving (189).
+If V has ambient
+codimension d, the dimension inequality for the intersection of a maximal negative subspace with
+V gives (190).
+65
+
+
+15
+Multiplicity perturbation and proof of the main theorem
+Lemma 15.1 (Generic affine perturbation at fixed height). Fix T, the good horizontal contours,
+and the admissible T −100 intervals for the packet centres. Given any real neighbourhood U0 of (0, 0),
+there are parameters (η, ε) ∈U0, chosen compatibly with the Hardy conjugation symmetry, such that
+H(z) = F(z) + ηz + ε
+has only simple zeros and simple stationary zeros in ΩT , and H, H′ have no common zero. Choose
+one packet centre per stationary node so that Lemma 3.2 gives an evaluation isomorphism. On this
+packet space define Vcore by Lemma 10.1, Vmean by (182), Vend by (184), and Pret
+T
+by (186). Then
+(187) holds. Write
+Gret
+T
+:= GT |Pret
+T .
+Proposition 12.5 is therefore applied to the original function F on exactly the same finite packet
+space on which the zero-side evaluation of H is performed. Moreover the perturbation can be chosen
+so small that, on this selected Pret
+T ,
+(Gret
+T )−1/2(AH −AF )(Gret
+T )−1/2
+op < c0
+4 .
+(191)
+Proof. Fix T. The chosen boundary contains no zero of F or F ′. Intersecting U0 with a sufficiently
+small convex real neighbourhood of the origin gives U ⊂U0 on which H and H′ remain nonvanishing
+there for every point of the line segment from (0, 0) to (η, ε) ∈U. Hence homotopy invariance of
+the argument principle gives
+Ngood(H′) = Ngood(F ′) =: m
+((η, ε) ∈U).
+There are only finitely many admissible m-coordinate subsets, and each centre ranges over a com-
+pact T −100 interval. The corresponding reference Grams are continuous and positive definite by
+Section 12; hence
+γT :=
+inf
+admissible centres λmin(GT ) > 0.
+Restriction to Pret
+T
+can only increase the least eigenvalue. Uniform continuity of the contour inte-
+grand on the same compact centre set allows U to be shrunk so that
+sup
+(η,ε)∈U
+sup
+admissible centres
+∥AH −AF ∥op < c0γT
+4
+.
+(192)
+No asymptotic lower bound for γT is required.
+It remains to impose genericity inside this fixed neighbourhood. Since H′ = F ′+η and H′′ = F ′′,
+a multiple stationary zero would satisfy
+F ′′(z) = 0,
+η = −F ′(z).
+The zeros of F ′′ in the fixed rectangle are finite, so only finitely many real η are forbidden. Choose
+a nonzero real η in U outside this set. The stationary zeros z1, . . . , zm are then simple. For this
+fixed η, a common zero of H, H′ at zj would force
+ε = −F(zj) −ηzj.
+66
+
+
+Only finitely many real ε are therefore forbidden. Choose a real ε in U outside them. Then H has
+only simple zeros, H′ has only simple zeros, and H, H′ have no common zero. Real parameters
+preserve H(¯z) = H(z).
+Lemma 3.4 now supplies at least m admissible packet intervals after the endpoint collars are
+removed. Choose m distinct intervals and then, by Lemma 3.2, centres for which the evaluation
+map is an isomorphism.
+Lemma 3.5 preserves all preceding source, frame, rank, and relative-
+remainder estimates on this subfamily. Finally (192) and λmin(Gret
+T ) ≥γT give (191). The right-edge
+source evaluation remains that of the original function F; H is used only for the zero-coordinate
+representation and this finite-matrix comparison.
+Lemma 15.2 (Off-axis zero count for the generic perturbation). Let D(H) be the number of nonreal
+conjugate zero pairs of the straightened generic H in the chosen good rectangle ΩT . Then
+D(H) = B(H) + P(H′) + o(NT ).
+(193)
+Proof. Choose the perturbation in Lemma 15.1 within the boundary neighbourhood fixed in its
+proof. Homotopy invariance of the argument principle gives exact equality of the zero counts of
+F, H and of F ′, H′ inside the good rectangle:
+Ngood(H) = Ngood(F),
+Ngood(H′) = Ngood(F ′).
+By the good-rectangle form (17), equivalently its (F ′, F) version, it follows that
+Ngood(H′) −Ngood(H) = o(NT ).
+(194)
+The packet endpoint collar defining Vend is a coordinate restriction and does not enter this zero
+count. Because the perturbation preserves the real symmetry,
+Ngood(H) = Rgood(H) + 2D(H),
+Ngood(H′) = Rgood(H′) + 2P(H′).
+Applying Lemma 3.7 on the real interval [T1, T2] gives
+Rgood(H′) = Rgood(H) + 2B(H) + O(1).
+Subtracting the two good-rectangle count identities and using (194) yields
+2{B(H) + P(H′) −D(H)} = o(NT ),
+which proves (193).
+Proof of Theorem 1.1. Fix the good rectangle, and let Dgood(F) denote the number, with multi-
+plicity, of reflected nonreal zero pairs of F in its interior. Around each distinct nonreal zero of
+F choose a closed disk, disjoint from the real axis, the other chosen disks, and the boundary.
+There are finitely many such disks at fixed T. By compactness of their boundaries there is a real
+neighbourhood Udisk of (0, 0) such that
+|ηz + ε| < |F(z)|
+on every disk boundary whenever (η, ε) ∈Udisk.
+Choose H and the evaluation-isomorphic packet subfamily by Lemma 15.1, with U0 = Udisk.
+This fixes the packet space, GT , and Pret
+T
+before any inertia comparison, and gives (191). Proposi-
+tion 12.5, applied to the original Hardy-gauge matrix AF on this packet space, gives on Pret
+T
+AF = PT + Eedge
+T
++ Rtri
+T .
+67
+
+
+Put ∆T := AH −AF . By (191),
+PT + ∆T ⪰3c0
+4 GT
+on Pret
+T .
+Hence, after compression to Pret
+T ,
+AH|Pret
+T
+= (PT + ∆T )|Pret
+T
++ Eedge
+T
+|Pret
+T
++ Rtri
+T |Pret
+T .
+Set
+rT := rank(Eedge
+T
+|Pret
+T ),
+sT :=
+(Gret
+T )−1/2(Rtri
+T |Pret
+T )(Gret
+T )−1/2
+2
+S2 .
+By (157), (170), and (187), one has rT = o(NT ), sT = o(NT ), and codim Pret
+T
+= o(NT ). Apply the
+ambient-codimension conclusion (190) of Lemma 14.1 with the lemma’s floor parameter replaced
+by
+c∗:= 3c0
+4
+> 0.
+The resulting fixed constant 16c−2
+∗
+does not affect the o(NT ) bounds, and therefore
+n−(AH) = o(NT ).
+(195)
+The zero-coordinate pullback is exact for H, so (14) and (195) give
+B(H) + P(H′) = o(NT ).
+Lemma 15.2 then gives D(H) = o(NT ). By the defining choice (η, ε) ∈Udisk, Rouch´e’s theorem
+preserves, with multiplicity, the number of zeros in every chosen disk; all these disks are disjoint
+from the real axis. Consequently
+Dgood(F) ≤D(H).
+Let DT (F) denote the number, with multiplicity, of reflected nonreal zero pairs of F with height
+in [T, 2T]. Returning from the good rectangle to this dyadic interval changes the zero count only
+in two strips of length at most one. By Lemma 3.8,
+DT (F) ≤D(H) + O(log T) = o(NT ).
+Because c > 1, the symmetric rectangle (1) contains the whole critical strip; at these heights ζ has
+no nontrivial zeros on the complementary half-planes. Thus every noncritical zero in [T, 2T], apart
+from the endpoint adjustment already counted above, belongs to exactly one reflected pair. Hence
+NT = N0,T + 2DT (F) + o(NT ),
+so
+N0,T
+NT
+= 1 −o(1).
+Dyadic summation gives N0(T)/N(T) →1.
+68
+
+
+References
+[1] L. Alp¨oge and R. Furman, More than two thirds of the zeta zeros are simple and on the critical
+line, arXiv:2608.13637 (2026).
+[2] H. M. Bui, J. B. Conrey, and M. P. Young, More than 41% of the zeros of the zeta function
+are on the critical line, Acta Arith. 150 (2011), 35–64.
+[3] J. B. Conrey, More than two fifths of the zeros of the Riemann zeta function are on the critical
+line, J. Reine Angew. Math. 399 (1989), 1–26.
+[4] S. Feng, Zeros of the Riemann zeta function on the critical line, J. Number Theory 132 (2012),
+511–542.
+[5] G. H. Hardy, Sur les z´eros de la fonction ζ(s) de Riemann, C. R. Acad. Sci. Paris 158 (1914),
+1012–1014.
+[6] W. Heap, J. Li, and J. Zhao, Lower bounds for discrete negative moments of the Riemann zeta
+function, Algebr. Number Theory 16 (2022), 1589–1625; arXiv:2003.09368.
+[7] C. P. Hughes, S. Lugmayer, and A. Pearce-Crump, The second moment of the Riemann zeta
+function at its local extrema, J. London Math. Soc. 112 (2025), e70250.
+[8] N. Levinson, More than one third of zeros of Riemann’s zeta-function are on σ = 1/2, Adv.
+Math. 13 (1974), 383–436.
+[9] E. C. Titchmarsh, The Theory of the Riemann Zeta-Function, 2nd ed., revised by D. R. Heath-
+Brown, Clarendon Press, Oxford, 1986.
+[10] R. J. Anderson, Simple zeros of the Riemann zeta-function, J. Number Theory 17 (1983),
+176–182.
+[11] F. Aryan, On an extension of the Landau–Gonek formula, J. Number Theory 233 (2022),
+389–404.
+[12] R. Balasubramanian, J. B. Conrey, and D. R. Heath-Brown, Asymptotic mean square of the
+product of the Riemann zeta-function and a Dirichlet polynomial, J. Reine Angew. Math. 357
+(1985), 161–181.
+[13] S. A. C. Baluyot, D. A. Goldston, A. I. Suriajaya, and C. L. Turnage-Butterbaugh, An uncon-
+ditional Montgomery theorem for pair correlation of zeros of the Riemann zeta-function, Acta
+Arith. 214 (2024), 357–376.
+[14] S. Bettin and V. Chandee, Trilinear forms with Kloosterman fractions, Adv. Math. 328 (2018),
+1234–1262.
+[15] S. Bettin, V. Chandee, and M. Radziwi l l, The mean square of the product of ζ(s) with Dirichlet
+polynomials, J. Reine Angew. Math. 729 (2017), 51–79.
+[16] S. Bettin and S. M. Gonek, The θ = ∞conjecture implies the Riemann hypothesis, Mathe-
+matika 63 (2017), 29–33.
+[17] H. M. Bui, Large gaps between consecutive zeros of the Riemann zeta-function, J. Number
+Theory 131 (2011), 67–95.
+69
+
+
+[18] H. M. Bui and D. R. Heath-Brown, On simple zeros of the Riemann zeta-function,
+arXiv:1302.5018 (2013).
+[19] H. M. Bui and M. B. Milinovich, Gaps between zeros of the Riemann zeta-function, Q. J. Math.
+69 (2018), 403–423.
+[20] H. M. Bui, M. B. Milinovich, and N. Ng, A note on the gaps between consecutive zeros of the
+Riemann zeta-function, Proc. Amer. Math. Soc. 138 (2010), 4167–4175.
+[21] S. Chaubey, A. Malik, N. Robles, and A. Zaharescu, Zeros of normalized combinations of
+ξ(k)(s) on Re(s) = 1/2, J. Math. Anal. Appl. 461 (2018), 1771–1785.
+[22] A. Chirre, F. Gon¸calves, and D. de Laat, Pair correlation estimates for the zeros of the zeta
+function via semidefinite programming, Adv. Math. 361 (2020), 106926.
+[23] J. B. Conrey, Zeros of derivatives of Riemann’s ξ-function on the critical line, J. Number
+Theory 16 (1983), 49–74.
+[24] J. B. Conrey, The fourth moment of derivatives of the Riemann zeta-function, Quart. J. Math.
+Oxford Ser. (2) 39 (1988), 21–36.
+[25] J. B. Conrey, D. W. Farmer, J. P. Keating, M. O. Rubinstein, and N. C. Snaith, Autocorrelation
+of random matrix polynomials, Comm. Math. Phys. 237 (2003), 365–395.
+[26] J. B. Conrey, D. W. Farmer, J. P. Keating, M. O. Rubinstein, and N. C. Snaith, Integral
+moments of L-functions, Proc. Lond. Math. Soc. (3) 91 (2005), 33–104.
+[27] J. B. Conrey, D. W. Farmer, and M. R. Zirnbauer, Autocorrelation of ratios of L-functions,
+Commun. Number Theory Phys. 2 (2008), 593–636.
+[28] J. B. Conrey and A. Ghosh, A mean value theorem for the Riemann zeta-function at its relative
+extrema on the critical line, J. London Math. Soc. (2) 32 (1985), 193–202.
+[29] J. B. Conrey and A. Ghosh, On mean values of the zeta-function, II, Acta Arith. 52 (1989),
+367–371.
+[30] J. B. Conrey and A. Ghosh, A conjecture for the sixth power moment of the Riemann zeta-
+function, Int. Math. Res. Not. 1998 (1998), no. 15, 775–780.
+[31] J. B. Conrey, A. Ghosh, and S. M. Gonek, Simple zeros of the Riemann zeta-function, Proc.
+London Math. Soc. (3) 76 (1998), 497–522.
+[32] J. B. Conrey and S. M. Gonek, High moments of the Riemann zeta-function, Duke Math. J.
+107 (2001), 577–604.
+[33] J. B. Conrey, H. Iwaniec, and K. Soundararajan, Critical zeros of Dirichlet L-functions, J.
+Reine Angew. Math. 681 (2013), 175–198.
+[34] J. B. Conrey and N. C. Snaith, Applications of the L-functions ratios conjectures, Proc. Lond.
+Math. Soc. (3) 94 (2007), 594–646.
+[35] J.-M. Deshouillers and H. Iwaniec, Power mean values of the Riemann zeta function II, Acta
+Arith. 48 (1987), 305–312.
+70
+
+
+[36] D. W. Farmer, Long mollifiers of the Riemann zeta-function, Mathematika 40 (1993), 71–87.
+[37] S. Feng and X. Wu, On gaps between zeros of the Riemann zeta-function, J. Number Theory
+132 (2012), 1385–1397.
+[38] R. Garunkˇstis and J. Steuding, Simple zeros and discrete moments of the derivative of the
+Riemann zeta-function, J. Number Theory 115 (2005), 310–321.
+[39] S. M. Gonek, Mean values of the Riemann zeta-function and its derivatives, Invent. Math. 75
+(1984), 123–141.
+[40] D. A. Goldston and A. I. Suriajaya, Zeta zeros on the critical line, arXiv:2511.20059 (2025).
+[41] D. A. Goldston and A. I. Suriajaya, Zeta zeros in a narrow vertical box, arXiv:2603.28104
+(2026).
+[42] D. R. Heath-Brown, Simple zeros of the Riemann zeta-function on the critical line, Bull.
+London Math. Soc. 11 (1979), 17–18.
+[43] C. P. Hughes, Random matrix theory and discrete moments of the Riemann zeta function,
+arXiv:math/0207236 (2002).
+[44] C. P. Hughes, G. Martin, and A. Pearce-Crump, A heuristic for discrete mean values of the
+derivative of the Riemann zeta function, Integers 24 (2024), A83.
+[45] C. P. Hughes and A. Pearce-Crump, Complex moments of the derivative of the Riemann zeta
+function, arXiv:2509.07788 (2025).
+[46] A. Ivi´c, On the asymptotic formulas for a generalization of von Mangoldt’s function, Rend.
+Mat. (6) 10 (1977), 51–59.
+[47] J. P. Keating and N. C. Snaith, Random matrix theory and ζ(1/2 + it), Comm. Math. Phys.
+214 (2000), 57–89.
+[48] S. Kirila, An upper bound for discrete moments of the derivative of the Riemann zeta-function,
+arXiv:1804.08826 (2018).
+[49] M. B. Milinovich, Upper bounds for moments of ζ′(ρ), Bull. London Math. Soc. 42 (2010),
+28–44.
+[50] M. B. Milinovich, Moments of the Riemann zeta-function at its relative extrema on the critical
+line, Bull. London Math. Soc. 43 (2011), 1119–1129.
+[51] H. L. Montgomery, The pair correlation of zeros of the zeta function, in Analytic Number
+Theory, Proc. Sympos. Pure Math. 24, Amer. Math. Soc., Providence, RI, 1973, 181–193.
+[52] N. Ng, A discrete mean value of the derivative of the Riemann zeta function, Mathematika 54
+(2007), 113–155.
+[53] A. M. Odlyzko, On the distribution of spacings between zeros of the zeta function, Math. Comp.
+48 (1987), 273–308.
+[54] A. Pearce-Crump, Moments of the Riemann zeta function at its local extrema, Mathematika
+71 (2025), e70035.
+71
+
+
+[55] K. Pratt and N. Robles, Perturbed moments and a longer mollifier for critical zeros of ζ, Res.
+Number Theory 4 (2018), 9.
+[56] K. Pratt, N. Robles, A. Zaharescu, and D. Zeindler, More than five-twelfths of the zeros of ζ
+are on the critical line, Res. Math. Sci. 7 (2020), Paper No. 2.
+[57] Z. Rudnick and P. Sarnak, Zeros of principal L-functions and random matrix theory, Duke
+Math. J. 81 (1996), 269–322.
+[58] A. Selberg, On the zeros of Riemann’s zeta-function, Skr. Norske Vid. Akad. Oslo I 10 (1942),
+1–59.
+[59] K. Sono, An application of generalized mollifiers to the Riemann zeta-function, Kyushu J.
+Math. 72 (2018), 35–69.
+[60] M. P. Young, A short proof of Levinson’s theorem, Arch. Math. (Basel) 95 (2010), 539–548.
+72
