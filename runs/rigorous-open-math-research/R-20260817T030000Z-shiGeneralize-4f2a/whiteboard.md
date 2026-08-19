@@ -14,22 +14,25 @@
 ## Route history
 
 - Audit of Shi candidate `[SUCCEEDED]`: PLAUSIBLE-WITH-GAPS (see shiAudit run).
-- Generalization run `[IN PROGRESS]`.
+- Generalization run `[COMPLETED]`: reproduced m=219 optimum; wrote
+  multi-certificate LP scanner and `GENERALIZATION.md`. No new certified
+  constant found because no third certified certificate is pinned.
 
 ## Ideas to return to
 
-- Multi-certificate supporting plane (three or more local inequalities).
+- Obtain/audit a third certified local certificate with the same `H_cert`
+  baseline, then rerun `multi_cert_scan.py` with three or more certificates.
 - Formalize the spectral split `hTrace` in Lean to machine-verify the method's core.
-- Explore other block lengths and pairings.
+- Make the multi-certificate LP exact (rational simplex or formal interval LP).
 
 ## Open obligations
 
-- Reproduce candidate's `joint_check.py` results.
-- Search for higher candidate constant.
-- Write absorption/generalization report.
+- ~~Reproduce candidate's `joint_check.py` results.~~ Done.
+- ~~Search for higher candidate constant.~~ Done for the pinned input set.
+- ~~Write absorption/generalization report.~~ Done (`GENERALIZATION.md`).
 
 ## Key artifacts
 
 - `problem_contract.md`
-- `reproducibility/` (joint_check.py, exact_check.py, RESULT.json)
-- (to be added) generalization scripts/report
+- `GENERALIZATION.md`
+- `reproducibility/` (joint_check.py, exact_check.py, multi_cert_scan.py, explore_R.py, RESULT.json)

@@ -1,0 +1,9 @@
+{
+  "schema_version": 1,
+  "run_id": "R-20260817T030000Z-shiGeneralize-4f2a",
+  "task_packet_id": "Q-20260814-criticalline-p1-507bb5",
+  "status": "NUMERICAL_EVIDENCE",
+  "formalization": "skipped",
+  "formalization_reason": "No new theorem or certified constant was produced; the run reproduced the Shi 0.673316977... candidate and developed a numerical multi-certificate LP scanner. Formalization of the underlying method is tracked in the Shi audit run (PLAUSIBLE-WITH-GAPS, Lean partial).",
+  "created_at": "2026-08-17T03:30:00Z"
+}
