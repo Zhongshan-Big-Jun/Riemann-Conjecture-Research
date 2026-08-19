@@ -225,6 +225,32 @@
       "updated_at": "2026-08-14T04:20:00Z",
       "lifecycle": "active",
       "paper_id": "P-2025-glss-pcc-d8a559"
+    },
+    {
+      "title": "A two-certificate trace-energy deduction for simple zeros of the Riemann zeta function",
+      "authors": [
+        "Shi, Yuhang"
+      ],
+      "year": 2026,
+      "kind": "research_draft",
+      "canonical_identity": "github.com/yuhangshi888/zeta-simple-zeros-673316977 v0.1.0",
+      "versions": [
+        {
+          "version": "v0.1.0",
+          "date": "2026-08-14",
+          "locator": "https://github.com/yuhangshi888/zeta-simple-zeros-673316977",
+          "doi": "10.5281/zenodo.21926962",
+          "preferred": true
+        }
+      ],
+      "main_theorems": [
+        "N0^s/N >= 0.6733169771424713... (two-certificate supporting-plane method; PLAUSIBLE-WITH-GAPS)"
+      ],
+      "audit_status": "PLAUSIBLE-WITH-GAPS; imported certificates/interface not replayed; Lean hTrace spectral split not formalized",
+      "created_at": "2026-08-17T03:00:00Z",
+      "updated_at": "2026-08-17T03:00:00Z",
+      "lifecycle": "active",
+      "paper_id": "P-2026-shi-twocert-673316977"
     }
   ]
 }
