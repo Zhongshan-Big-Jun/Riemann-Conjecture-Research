@@ -12,5 +12,6 @@
   - the spectral case split supplying `hTrace` (Lemma 1 in the manuscript),
   - the imported analytic interface,
   - the upstream interval certificates.
-- Our environment's Lean build of the candidate's `lean/` project is in progress (mathlib
-  clone/fetch); result to be appended.
+- Our environment's Lean build of the candidate's `lean/` project was attempted but did not
+  complete within the environment's time limits (Mathlib build is large). Static inspection
+  only; no independent build exit status was obtained.

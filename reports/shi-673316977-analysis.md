@@ -82,8 +82,9 @@ The repository's `lean/` project formalizes:
 - `TwoCertificate.Exact.tax_affine`
 - `TwoCertificate.Exact.final_strict_bound`
 
-Static inspection found no `sorry`/`admit`. The Lean build in our environment is still
-fetching/building Mathlib; when it settles, this report will be updated with the exit status.
+Static inspection found no `sorry`/`admit`. An independent Lean build in our environment
+was attempted but did not complete within the environment's time limits (Mathlib build is
+large); the audit therefore relies on static inspection plus the repository's own CI claims.
 The known trust boundary is exactly the `hTrace` assumption.
 
 ## 6. Comparison with our project
