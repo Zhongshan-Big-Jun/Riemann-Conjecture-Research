@@ -1,0 +1,9 @@
+{
+  "schema_version": 1,
+  "run_id": "R-20260817T040000Z-shiSpectralLean-6d3a",
+  "task_packet_id": "Q-20260814-criticalline-p1-507bb5",
+  "status": "SCAFFOLD",
+  "formalization": "scaffold",
+  "formalization_manifest": "reproducibility/TwoCertificateSpectral.scaffold.lean",
+  "created_at": "2026-08-17T04:30:00Z"
+}

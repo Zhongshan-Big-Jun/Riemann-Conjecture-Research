@@ -30,14 +30,20 @@
     "R-20260814T041219Z-extpress-2f36ae",
     "R-20260814T131528Z-f9push-d3b58c",
     "R-20260816T080000Z-g2proof-a24d",
-    "R-20260816T110000Z-m7exact-ea0a"
+    "R-20260816T110000Z-m7exact-ea0a",
+    "R-20260817T010500Z-zenodoAudit-9b2c",
+    "R-20260817T020000Z-shiAudit-7c1e",
+    "R-20260817T030000Z-shiGeneralize-4f2a",
+    "R-20260817T040000Z-shiSpectralLean-6d3a"
   ],
   "latest_checkpoint_path": null,
   "next_actions": [
-    "HANDOFF COMPLETE 2026-08-17T01:00Z — research stopped by user; all current results committed and pushed.",
-    "T1c-2a block-energy CLOSED (blockEnergyFromF8_fact machine-proved); T3 AtOne facts 5/5 machine-proved; T1c-2c/2d paper-level analysis written.",
-    "T2 full counting pass interrupted; next action is to run verify_kpoint_parallel_t2count.py to completion (~70k core-s) and record accepted terminal-box count (see handoff-interrupted-20260817T010000Z.md in f9push run).",
-    "SL G2: M1 done, b=2 proven, b=3 reduced; k=7 b4/b5 exact verification interrupted (see handoff-interrupted-20260817T010000Z.md in g2proof run).",
+    "HANDOFF COMPLETE 2026-08-17T04:30:00Z — all work state committed (one commit ac3f93e may need push if network recovers).",
+    "T1c-2a block-energy CLOSED; T3 AtOne facts 5/5; T1c-2c/2d analysis written.",
+    "Zenodo 22008814 audit: NOT ESTABLISHED (see R-20260817T010500Z-zenodoAudit-9b2c).",
+    "Shi 0.673316977 candidate: PLAUSIBLE-WITH-GAPS; absorbed in FRONTIER/index; generalization scan reproduced m=219, no higher constant (R-...shiAudit / shiGeneralize).",
+    "Spectral hTrace Lean: SCAFFOLD only; q>=2/q=1 cases open (R-...shiSpectralLean handoff).",
+    "T2 counting pass interrupted; SL G2/k7 verification interrupted; see existing handoffs in f9push/g2proof runs.",
     "Resume points: run handoffs + state/RESUME.md."
   ],
   "blockers": [],
@@ -47,5 +53,5 @@
     "remaining_hours": null
   },
   "last_literature_cutoff": "2026-08-14",
-  "updated_at": "2026-08-17T01:00:00Z"
+  "updated_at": "2026-08-17T04:30:00Z"
 }

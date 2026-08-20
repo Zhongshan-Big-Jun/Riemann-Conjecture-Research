@@ -2,12 +2,16 @@
 
 - **Project:** Riemann Conjecture: Critical-Line Zero Proportion
 - **Project ID:** `MRP-20260814-riemann-critical-line-c13b8d`
-- **Updated:** 2026-08-17T01:00:00Z
-- **STATUS: HANDOFF — research stopped by user on 2026-08-17T01:00Z.** All current results
-  are committed and pushed. Resume from the two run-level handoffs:
-  `runs/rigorous-open-math-research/R-20260814T131528Z-f9push-d3b58c/handoff-interrupted-20260817T010000Z.md`
-  and
-  `runs/rigorous-open-math-research/R-20260816T080000Z-g2proof-a24d/handoff-interrupted-20260817T010000Z.md`.
+- **Updated:** 2026-08-17T04:30:00Z
+- **STATUS: HANDOFF — research stopped by user on 2026-08-17T04:30:00Z.** Current work state
+  includes:
+  - f9push T2 counting interrupted (handoff in f9push run)
+  - SL G2/k7 verification interrupted (handoff in g2proof run)
+  - Zenodo 22008814 audit complete: NOT ESTABLISHED (R-...zenodoAudit-9b2c)
+  - Shi 0.673316977 candidate absorbed: PLAUSIBLE-WITH-GAPS; generalization scan
+    reproduced m=219, no higher constant (R-...shiAudit / shiGeneralize)
+  - hTrace Lean formalization: SCAFFOLD only (R-...shiSpectralLean handoff)
+- Resume from the run-level handoffs above and `state/current.json`.
 
 ## Current objective
 
