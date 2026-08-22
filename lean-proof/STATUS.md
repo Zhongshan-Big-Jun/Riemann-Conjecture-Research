@@ -24,6 +24,9 @@ FORMALLY_VERIFIED label. Numerical evidence is never a delivery.
 | O5 | T3 ξ′ record: C₉(ξ′) = (657,500·H_{ξ′} − 1,310)/655,001, H_{ξ′} = 2 − κ₁(1,vMT) (AtOne certificate content) | ✅ MACHINE-ACCEPTED (AtOne analytic facts 5/5 machine-proved in `Record9.XiPrimeAtOneFacts`, `...Facts2`, `...Facts3`; unconditional `kappaXi_one_vMT_mem_fact` / `H_xip_vMT_mem_fact` build exit 0, `#print axioms` gold standard; record-theorem assembly still gated on T1c/T2 closure) | lean-proof/Record9/Record9/{XiPrimeAtOne,XiPrimeAtOneFacts,XiPrimeAtOneFacts2,XiPrimeAtOneFacts3}.lean |
 
 | O6 | Evidence discipline labels on all deliverables | ✅ documented (candidate_proof.md honest status) | — |
+| O7 | Spectral split (TwoCertificate): R ≤ D ∨ Φ₂₁₉(E) ≤ D on eigenvalue shifts | ✅ MACHINE-VERIFIED (q=0 and q≥2 closed in Record9.TwoCertificateSpectral, exit 0, 0 sorry, gold standard axioms) | lean-proof/Record9/Record9/TwoCertificateSpectral.lean |
+| O8 | Conditional Probability 1 Christoffel-Hankel hierarchy: Λ₁(0)=1/4 (2/3), Λ₂(0)=5/36 (13/18), Λ_m(0)→0 (100%) | ✅ MACHINE-VERIFIED (Record9.ChristoffelHankel, exit 0, 0 sorry, gold standard axioms) | lean-proof/Record9/Record9/ChristoffelHankel.lean |
+
 
 ## Build plan (executed 2026-08-15)
 

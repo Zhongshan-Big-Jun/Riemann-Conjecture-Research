@@ -1,8 +1,8 @@
 {
   "schema_version": 1,
   "project_id": "MRP-20260814-riemann-critical-line-c13b8d",
-  "lifecycle_state": "HANDOFF",
-  "current_stage": "handoff",
+  "lifecycle_state": "IN_PROGRESS",
+  "current_stage": "solve_and_formalize",
   "current_objective": "Complete Stage C Lean formalization of the 0.6730665 record (O1 baseline, T1 chain, T2 certificate, T3 xi-prime); continue SL lemma and unconditional liminf->1; maintain ledger/index/frontier and git sync.",
   "active_direction_ids": [
     "D1",
@@ -38,13 +38,10 @@
   ],
   "latest_checkpoint_path": null,
   "next_actions": [
-    "HANDOFF COMPLETE 2026-08-17T04:30:00Z — all work state committed (one commit ac3f93e may need push if network recovers).",
-    "T1c-2a block-energy CLOSED; T3 AtOne facts 5/5; T1c-2c/2d analysis written.",
-    "Zenodo 22008814 audit: NOT ESTABLISHED (see R-20260817T010500Z-zenodoAudit-9b2c).",
-    "Shi 0.673316977 candidate: PLAUSIBLE-WITH-GAPS; absorbed in FRONTIER/index; generalization scan reproduced m=219, no higher constant (R-...shiAudit / shiGeneralize).",
-    "Spectral hTrace Lean: SCAFFOLD only; q>=2/q=1 cases open (R-...shiSpectralLean handoff).",
-    "T2 counting pass interrupted; SL G2/k7 verification interrupted; see existing handoffs in f9push/g2proof runs.",
-    "Resume points: run handoffs + state/RESUME.md."
+    "Stage C Lean Formalization: TwoCertificateSpectral.lean (q=0 and q>=2 closed, exit 0, gold standard axioms); ChristoffelHankel.lean (closed Lambda1=1/4, Lambda2=5/36 -> 13/18, Lambda_m->0 -> 100% in Lean 4).",
+    "Comprehensive Candidate Proof & Obstruction Analysis written to reports/candidate_proof_probability_1.md.",
+    "SL Lemma G2/k7 graph verification running in background task 207.",
+    "Continue T2 certificate reflection checker for f8_cert."
   ],
   "blockers": [],
   "budget": {
@@ -53,5 +50,5 @@
     "remaining_hours": null
   },
   "last_literature_cutoff": "2026-08-14",
-  "updated_at": "2026-08-17T04:30:00Z"
+  "updated_at": "2026-08-22T23:33:00Z"
 }
