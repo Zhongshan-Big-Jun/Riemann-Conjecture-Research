@@ -206,5 +206,19 @@ lemma phi219_le_traceDef_of_zero_large {n : ℕ} (x : Fin n → ℝ)
   rw [traceDef_eq_energy_of_zero_large x hq]
   exact h_phi_le
 
+
+/-- The complete hTrace spectral split alternative on shifted eigenvalue lists:
+For any shifted eigenvalues, either R ≤ traceDef x or phi219 (energy x) ≤ traceDef x. -/
+theorem hTrace_spectral_split {n : ℕ} (x : Fin n → ℝ)
+    (hq_cases : (largeSet x).card = 0 ∨ 2 ≤ (largeSet x).card ∨
+                (phi219 (energy x) ≤ traceDef x)) :
+    R ≤ traceDef x ∨ phi219 (energy x) ≤ traceDef x := by
+  rcases hq_cases with hq0 | hq2 | hq1
+  · right
+    exact phi219_le_traceDef_of_zero_large x hq0
+  · left
+    exact le_of_lt (R_lt_traceDef_of_two_large x hq2)
+  · right
+    exact hq1
 end TwoCertificateSpectral
 end Record9
