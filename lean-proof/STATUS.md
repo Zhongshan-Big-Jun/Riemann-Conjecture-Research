@@ -25,6 +25,7 @@ FORMALLY_VERIFIED label. Numerical evidence is never a delivery.
 
 | O6 | Evidence discipline labels on all deliverables | ✅ documented (candidate_proof.md honest status) | — |
 | O7 | Spectral split (TwoCertificate): R ≤ D ∨ Φ₂₁₉(E) ≤ D on eigenvalue shifts | ✅ MACHINE-VERIFIED (q=0 and q≥2 closed in Record9.TwoCertificateSpectral, exit 0, 0 sorry, gold standard axioms) | lean-proof/Record9/Record9/TwoCertificateSpectral.lean |
+| O10 | Unified Rigorous Critical-Line Proportion Ladder | ✅ MACHINE-VERIFIED (Record9.ProportionLadder, exit 0, 0 sorry, gold standard axioms) | lean-proof/Record9/Record9/ProportionLadder.lean |
 | O9 | Bandwidth-1 Ceiling & Higher-Moment Escape Theorems | ✅ MACHINE-VERIFIED (Record9.CeilingEscape, exit 0, 0 sorry, gold standard axioms) | lean-proof/Record9/Record9/CeilingEscape.lean |
 | O8 | Conditional Probability 1 Christoffel-Hankel hierarchy: Λ₁(0)=1/4 (2/3), Λ₂(0)=5/36 (13/18), Λ_m(0)→0 (100%) | ✅ MACHINE-VERIFIED (Record9.ChristoffelHankel, exit 0, 0 sorry, gold standard axioms) | lean-proof/Record9/Record9/ChristoffelHankel.lean |
 
