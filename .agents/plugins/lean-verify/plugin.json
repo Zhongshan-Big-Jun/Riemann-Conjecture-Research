@@ -1,0 +1,17 @@
+{
+  "name": "lean-verify",
+  "version": "1.3.0",
+  "description": "Verify and audit Lean 4 mathematical formalizations in Google Antigravity: environment pinning, Lake build execution, sorry/admit/axiom scanning, statement fidelity audits, and structured JSON verdicts.",
+  "author": {
+    "name": "xsoc1"
+  },
+  "repository": "https://github.com/xsoc1/antigravity-math-research",
+  "license": "MIT",
+  "keywords": [
+    "lean4",
+    "formal-verification",
+    "proof-audit",
+    "mathlib",
+    "antigravity"
+  ]
+}

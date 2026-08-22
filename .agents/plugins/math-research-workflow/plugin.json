@@ -1,0 +1,18 @@
+{
+  "name": "math-research-workflow",
+  "version": "1.3.0",
+  "description": "Orchestrates the full mathematics research pipeline in Google Antigravity: program management to rigorous problem research to Lean formal verification, with native subagents, interactive artifacts, and automated gates.",
+  "author": {
+    "name": "xsoc1"
+  },
+  "repository": "https://github.com/xsoc1/antigravity-math-research",
+  "license": "MIT",
+  "keywords": [
+    "mathematics",
+    "workflow",
+    "pipeline",
+    "orchestration",
+    "antigravity",
+    "gemini"
+  ]
+}

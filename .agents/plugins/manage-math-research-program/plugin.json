@@ -1,0 +1,18 @@
+{
+  "name": "manage-math-research-program",
+  "version": "1.3.0",
+  "description": "Manage sustained mathematics research programs in Google Antigravity: workspace initialization, literature curation, problem portfolios, reusable tool libraries, accepted knowledge bases, and arXiv-style LaTeX deliveries.",
+  "author": {
+    "name": "xsoc1"
+  },
+  "repository": "https://github.com/xsoc1/antigravity-math-research",
+  "license": "MIT",
+  "keywords": [
+    "mathematics",
+    "program-management",
+    "literature",
+    "knowledge-base",
+    "latex",
+    "antigravity"
+  ]
+}

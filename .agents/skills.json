@@ -1,0 +1,16 @@
+{
+  "entries": [
+    {
+      "path": "plugins/math-research-workflow/skills/math-research-workflow"
+    },
+    {
+      "path": "plugins/rigorous-open-math-research/skills/rigorous-open-math-research"
+    },
+    {
+      "path": "plugins/manage-math-research-program/skills/manage-math-research-program"
+    },
+    {
+      "path": "plugins/lean-verify/skills/lean-verify"
+    }
+  ]
+}

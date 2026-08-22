@@ -1,0 +1,16 @@
+{
+  "entries": [
+    {
+      "path": "plugins/math-research-workflow"
+    },
+    {
+      "path": "plugins/rigorous-open-math-research"
+    },
+    {
+      "path": "plugins/manage-math-research-program"
+    },
+    {
+      "path": "plugins/lean-verify"
+    }
+  ]
+}
