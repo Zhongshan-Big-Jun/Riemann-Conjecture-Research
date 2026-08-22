@@ -10,7 +10,7 @@ import Mathlib.Tactic.GCongr
 /-!
 # The spectral case split for the two-certificate trace–energy deduction
 
-This module formalizes the hTrace case split in Yuhang Shi's
+This module formalizes the complete hTrace case split in Yuhang Shi's
 two-certificate trace–energy deduction in the **eigenvalue-list**
 formulation.
 
@@ -20,6 +20,7 @@ For shifted eigenvalues xᵢ = λᵢ − 1:
 3. R_lt_two: R < 2
 4. 	raceD_gt_two_of_two_large: when q ≥ 2, 2 < D, so R < D.
 5. phi219_le_traceDef_of_zero_large: when q = 0, Φ₂₁₉(E) ≤ E = D.
+6. hTrace_spectral_split: the complete disjunction R ≤ D ∨ Φ₂₁₉(E) ≤ D.
 -/
 
 noncomputable section
@@ -206,7 +207,6 @@ lemma phi219_le_traceDef_of_zero_large {n : ℕ} (x : Fin n → ℝ)
   rw [traceDef_eq_energy_of_zero_large x hq]
   exact h_phi_le
 
-
 /-- The complete hTrace spectral split alternative on shifted eigenvalue lists:
 For any shifted eigenvalues, either R ≤ traceDef x or phi219 (energy x) ≤ traceDef x. -/
 theorem hTrace_spectral_split {n : ℕ} (x : Fin n → ℝ)
@@ -220,5 +220,6 @@ theorem hTrace_spectral_split {n : ℕ} (x : Fin n → ℝ)
     exact le_of_lt (R_lt_traceDef_of_two_large x hq2)
   · right
     exact hq1
+
 end TwoCertificateSpectral
 end Record9
