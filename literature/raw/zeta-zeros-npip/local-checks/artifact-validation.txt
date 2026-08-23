@@ -1,0 +1,4 @@
+tree: (6, 324, 1739356, 869516, 869840)
+roots_bin: (6, 324)
+roots_json q/roots: 6 324
+SHA256 tree/roots from report are recorded separately (not recomputed here).
