@@ -94,6 +94,23 @@ current interval machinery:
 - k = 10 scoping upper bound ≈ 0.00395808; the k = 10 steps are low value.
 - k = 11 is infeasible at current resource levels.
 
+**Strengthened by upstream analysis (2026-08-23):** the trmdy
+`zeta-simple-zeros-673137` repository (`literature/raw/zeta-simple-zeros-673137/`,
+`reports/upstream-673137-analysis.md`) reports:
+
+- the nine-point family is within ≈2·10⁻⁶ of exhausted;
+- horizon ceilings for this certificate class are ≈0.67331–0.67340;
+- pure pair-energy methods cap at ≈0.674826;
+- the gate to 0.675+ is the **off-line pair bridge**, not another k-point
+  pressure certificate;
+- λ > 1 is quantitatively blocked for unconditional sieve bounds, with explicit
+  future arithmetic thresholds.
+
+This does not make the running k=9 @0.00393 attempt pointless, but it means
+the **medium-term headroom** of the k-point pressure family is small, and the
+higher-value research targets are the off-line pair bridge and, separately,
+the retained Kuznetsov/λ>1 backlog.
+
 ---
 
 ## 2. Long-term backlog: Petersson–Kuznetsov bandwidth extension
