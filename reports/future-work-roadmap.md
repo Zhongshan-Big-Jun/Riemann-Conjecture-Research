@@ -25,6 +25,9 @@ Status: ACTIVE PLAN — not a claim of verified mathematical results.
   family requires at least one **additional certified local certificate**
   (e.g. k=10 / q=9, or a stronger q=8 certificate), not just re-weighting the
   current two.
+  A direct mapping of our canonical `f₉=392/100000` into the Shi LP is
+  arithmetically correct but **weaker** than the retuned 7+9 operating points
+  already used by the LP; see `reports/multi-cert-integration-analysis.md`.
 - **T2 reflection:** the detailed implementation plan is
   `reports/t2-reflection-plan.md`. A first concrete T2 data artifact is now
   available:
