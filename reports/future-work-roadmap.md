@@ -151,4 +151,8 @@ Therefore λ > 1 is a genuine frontier, not a formula substitution.
 
 - Conditional higher-moment / Christoffel–Hankel direction (`HL*(k)`, 13/18, probability 1)
   is correct but conditional; keep as theory, not an unconditional record.
+- **Off-line pair bridge** is now documented as the main high-payoff long-shot:
+  `reports/offline-pair-bridge-plan.md`. Upstream evidence indicates the
+  k-point pressure family is near exhaustion and that 0.675+ would need this
+  bridge.
 - The `SuperTheorem` / "combined >74%" idea remains archived and is not a mathematical route.
