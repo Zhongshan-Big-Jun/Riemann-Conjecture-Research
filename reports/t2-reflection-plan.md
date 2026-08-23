@@ -144,3 +144,9 @@ Conclusion: merely lowering the grid does not materially reduce the terminal-box
 count. Direct emission of the full B&B terminal boxes for k=9 is therefore likely
 infeasible; the next concrete action is **Step 1b**: a coarser certified partition
 or another compact certificate representation.
+
+**Extrapolation for k=9 (rough, evidence):** the certified k=9 grid-2000 run has
+64,748,524 nodes. If the accepted-box/node ratio is similar to k=7
+(355,567 / 710,405 ≈ 0.50), that would be roughly **30–33 million** accepted
+terminal boxes, far too many to emit as a Lean literal. This strengthens the
+case for a coarser/alternative certificate representation.
