@@ -18,9 +18,11 @@ Date: 2026-08-23
 
 ## Active investigation
 
-- Off-line pair bridge research subagent started (2026-08-23), id
-  `dc7cccd6-e5df-404f-b844-ad10c92b5fa3`. Expected output:
-  `reports/offline-pair-bridge-investigation.md`.
+- Off-line pair bridge investigation written to
+  `reports/offline-pair-bridge-investigation.md` (2026-08-23). Central
+  multi-pair composition lemma remains open; new numerical evidence suggests
+  actual MT-kernel Gram matrices may satisfy the required superadditivity
+  (arbitrary PSD matrices do not).
 
 ## T2 / reflection progress
 
