@@ -31,6 +31,10 @@ Status: ACTIVE PLAN — not a claim of verified mathematical results.
   `runs/rigorous-open-math-research/R-20260814T131528Z-f9push-d3b58c/reproducibility/kernel_table_exact_grid2000.json`
   (31,368 exact-rational kernel-table entries; binary64 sha256 matches the
   certified k=9 f₉=392/100000 table `39a209d3e4a897d982023ab49db27a206401824c769980572433dc4c47387297`).
+  The generated Lean file
+  `runs/.../reproducibility/KernelTableGrid2000.lean`
+  is chunked into 123 defs and **compiles successfully with `lake env lean`**
+  (tested 2026-08-23).
   The remaining bottleneck is the terminal-box count and the Lean checker.
 
 Current certified record: **k = 9, f₉ = 392/100000 = 0.00392** (grid-2000, 64,748,524 nodes,
