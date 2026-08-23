@@ -26,8 +26,12 @@ Status: ACTIVE PLAN — not a claim of verified mathematical results.
   (e.g. k=10 / q=9, or a stronger q=8 certificate), not just re-weighting the
   current two.
 - **T2 reflection:** the detailed implementation plan is
-  `reports/t2-reflection-plan.md`; the concrete bottleneck is the terminal-box
-  count for the k=9 certificate and the exact-rational kernel table.
+  `reports/t2-reflection-plan.md`. A first concrete T2 data artifact is now
+  available:
+  `runs/rigorous-open-math-research/R-20260814T131528Z-f9push-d3b58c/reproducibility/kernel_table_exact_grid2000.json`
+  (31,368 exact-rational kernel-table entries; binary64 sha256 matches the
+  certified k=9 f₉=392/100000 table `39a209d3e4a897d982023ab49db27a206401824c769980572433dc4c47387297`).
+  The remaining bottleneck is the terminal-box count and the Lean checker.
 
 Current certified record: **k = 9, f₉ = 392/100000 = 0.00392** (grid-2000, 64,748,524 nodes,
 128-bit Arb branch-and-bound), giving
