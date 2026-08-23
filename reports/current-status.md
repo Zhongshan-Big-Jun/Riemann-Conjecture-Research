@@ -25,6 +25,9 @@ Date: 2026-08-23
   - `Z23TREE1` forest exporter works locally;
   - audit of npip report: 1,739,356 nodes / 869,516 splits / 869,840 leaves.
 - T2 adaptation plan: `reports/t2-adapt-npip-pipeline.md`.
+- Trace exporter prototype: attempted on k=7; instrumented copy diverged
+  from the original verifier on the same certificate (unresolved), so the
+  prototype was not committed.
 - Remaining: trace-event emission from our verifier; k=9 forest size; tangent
   leaf semantics.
 
