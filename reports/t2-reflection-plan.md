@@ -132,5 +132,15 @@ a months-scale task. Not preferred.
 
 ## Status
 
-Not started. This plan is the scoping deliverable for T2; next concrete action is the
-instrumentation/counting pass (Step 1) in `verify_kpoint_parallel.py`.
+Partially advanced. The instrumentation/counting path is working, and two
+benchmarks were measured 2026-08-23:
+
+- k=7, grid-2000, 4 workers: `T2 accepted terminal boxes = 355567`, ~80s
+  (`runs/.../R-20260814T131528Z-f9push-d3b58c/reproducibility/t2_count_k7.log`).
+- k=7, grid-500, 2 workers: `T2 accepted terminal boxes = 352879`, ~140s
+  (`.../t2_count_k7_g500.log`).
+
+Conclusion: merely lowering the grid does not materially reduce the terminal-box
+count. Direct emission of the full B&B terminal boxes for k=9 is therefore likely
+infeasible; the next concrete action is **Step 1b**: a coarser certified partition
+or another compact certificate representation.
