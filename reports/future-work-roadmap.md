@@ -126,6 +126,7 @@ Therefore λ > 1 is a genuine frontier, not a formula substitution.
   unconditional bound on the required shifted-prime/off-diagonal sums in the relevant range?
 - **Expected payoff if solved:** potentially a large jump (the current Bandwidth-1 ceiling is
   ≈ 0.6818, and λ > 1 would live beyond it).
+- **Detailed backlog note:** `reports/kuznetsov-bandwidth-backlog.md`.
 
 ---
 
