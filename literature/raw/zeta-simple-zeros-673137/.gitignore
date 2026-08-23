@@ -1,0 +1,12 @@
+__pycache__/
+*.pyc
+.venv*/
+*.egg-info/
+build/
+dist/
+.audit-venv/
+paper/*.aux
+paper/*.fdb_latexmk
+paper/*.fls
+paper/*.log
+paper/*.out

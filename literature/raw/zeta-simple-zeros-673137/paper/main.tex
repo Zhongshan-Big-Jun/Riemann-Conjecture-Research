@@ -1,0 +1,421 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1.05in]{geometry}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{booktabs}
+\usepackage[hidelinks]{hyperref}
+\hypersetup{
+  pdftitle={A certified 67.32001 percent lower-bound candidate for simple zeros of the Riemann zeta function},
+  pdfauthor={Vivaswat Ojha}
+}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+
+\newcommand{\tr}{\operatorname{tr}}
+\newcommand{\liminfT}{\liminf_{T\to\infty}}
+
+\title{A certified $67.32001\%$ lower-bound candidate for simple zeros of
+the Riemann zeta function on the critical line}
+\author{Vivaswat Ojha\thanks{This work was developed in a ChatGPT Work
+conversation between the author and OpenAI Codex.  Codex performed the
+numerical search, implementation, interval-certificate construction, and much
+of the initial drafting under the author's direction.  The result builds on
+the $67.31376\%$ construction credited in Appendix~\ref{app:provenance}; full
+AI and upstream provenance is recorded there and in
+\texttt{docs/provenance.md}.  This contributor draft does not presume the
+authorship arrangement of any merged or published version.}}
+\date{August 11, 2026}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+Let $N(T,2T)$ count nontrivial zeros of the Riemann zeta function with
+$T<\gamma\le 2T$, with multiplicity, and let $N_0^s(T,2T)$ count the simple
+zeros on the critical line.  We give machine-certified finite data which,
+through the arbitrary-window Gabor interface of Anthropic and the stability
+refinement of \texttt{ainta/zeta-simple-zeros}, imply
+\[
+\liminfT\frac{N_0^s(T,2T)}{N(T,2T)}
+\ge 0.6732001170127618568\ldots
+>\frac{1683}{2500}.
+\]
+This improves the preceding $0.673137630699\ldots$ construction.  The new
+finite ingredient is a retuned position-weighted seven-point gap inequality,
+proved by exhaustive interval subdivision, combined with the existing
+re-optimized window and sharp square-root Gram-defect profile.  The finite
+inequality, window estimates, span capacities, and final arithmetic are
+certified with Arb.  The new assembly has not been formalized end to end in
+Lean, so the result is presented as a research-draft record candidate pending
+independent mathematical review.
+\end{abstract}
+
+Two independent same-day repositories, located after the finite certificate
+and initial draft were complete, report candidates
+$0.673192911473\ldots$ and $0.673195198901\ldots$
+\cite{Tawan2026,Pipitone2026}.  The present value is numerically higher than
+the latter by $0.0000049181112412813\ldots$ in proportion.  Neither artifact
+was an input to this construction, and the numerical comparison establishes
+neither accepted priority nor independent validity.
+
+\section{Statement and proof boundary}
+
+\begin{theorem}[certified reduction]\label{thm:main}
+Assume the arbitrary-admissible-window asymptotic interface stated in
+\cite[\S7.1]{Claude2026} and the stability and shifted-block interfaces of
+\cite{Ainta2026}, with their stated uniformity.  Then
+\[
+\liminfT\frac{N_0^s(T,2T)}{N(T,2T)}
+\ge 0.6732001170127618568\ldots
+>\frac{1683}{2500}.
+\]
+\end{theorem}
+
+The hypothesis in Theorem~\ref{thm:main} is a proof boundary, not a numerical
+assumption.  The cited works supply those analytic statements; this
+repository certifies every new finite assertion needed to instantiate them.
+Unlike the headline theorems in the Anthropic Lean artifact, however, this
+particular window, the stability refinement, and the square-root assembly
+have not yet been joined in one formal proof.
+
+The framework of \cite{Claude2026,Ainta2026} uses Weil's explicit formula on
+a Gabor family of windowed test functions.  It produces a real symmetric
+matrix $\widetilde G$ whose zero side splits into a positive-semidefinite part
+from on-line zeros and signature-$(1,1)$ blocks from off-line pairs.
+Montgomery's first and second moments evaluate $\tr\widetilde G$ and
+$\|\widetilde G\|_F^2$.  The refinement of \cite{Ainta2026} retains a
+stability defect $\tr\Psi(M)$, where $M$ is the Gram matrix of the simple-zero
+atoms and
+\[
+\Psi(t)=
+\begin{cases}
+(t-1)^2,&0\le t\le2,\\
+2t-3,&t\ge2.
+\end{cases}
+\]
+We import the explicit-formula and trace asymptotics, the tail estimates, and
+the compact-uniform Gram-entry asymptotic from \cite{Claude2026}; from
+\cite{Ainta2026} we import the stability rank--trace inequality,
+convex pinching, and shifted-block averaging.
+
+\section{The window}\label{sec:window}
+
+For an even profile $v\ge0$ on $[-\tfrac12,\tfrac12]$ (the square of the
+taper, before the standard boundary ramp), define
+\[
+c_1(v)=\frac{(\int v)^2}
+{\int v^2+\iint|s-s'|v(s)v(s')\,ds\,ds'},
+\qquad H(v)=2-\frac1{c_1(v)},
+\]
+and the normalized overlap kernel
+\[
+k_v(x)=\frac{K_v(x)}{K_v(0)},\qquad
+K_v(x)=\int_{-1/2}^{1/2}v(t)\cos(2\pi xt)\,dt.
+\]
+The Montgomery--Taylor profile maximizes $H$ alone.  The defect term below
+responds at first order to a profile perturbation while the loss in $H$ is
+second order, creating a small net improvement.
+
+We use $v(s)=\sum_{j=0}^{6}c_j\cos(\omega_js)$ with
+\[
+\omega=(\sqrt2,2\pi,4\pi,6\pi,8\pi,10\pi,12\pi)
+\]
+and exact rational coefficients
+\[
+c=\frac1{10^9}
+(10^9,3322500,-7609135,1190194,-731476,-1680572,1141360).
+\]
+
+\begin{proposition}[certified]\label{prop:window}
+On $[-\tfrac12,\tfrac12]$,
+\[
+\frac34\le v\le1,
+\qquad \frac{v'(s)}s<-0.7763\quad(0<s\le\tfrac12),
+\]
+and
+\[
+H(v)=0.6724570414145442887\ldots
+\ge H_{\rm cert}:=\frac{3362285207}{5000000000}.
+\]
+In particular, $v$ is nonincreasing on $[0,\tfrac12]$.
+\end{proposition}
+
+\begin{proof}
+Arb interval evaluation on an $8192$-cell subdivision proves the range and
+monotonicity bounds.  At the removable zero,
+\[
+\frac{v'(s)}s=-\sum_jc_j\omega_j^2\operatorname{sinc}(\omega_js),
+\qquad \operatorname{sinc}(z)=\frac{\sin z}{z}.
+\]
+The functional is evaluated from the closed forms
+\[
+\int v=\sum_jc_j\operatorname{sinc}(\omega_j/2),
+\quad
+\int\cos(as)\cos(bs)\,ds=\frac12\left[
+\operatorname{sinc}\frac{a-b}{2}+\operatorname{sinc}\frac{a+b}{2}
+\right],
+\]
+and the corresponding exact expression for
+$\iint|s-t|\cos(as)\cos(bt)\,ds\,dt$.  The recorded Arb enclosure is
+\texttt{certificates/fast-parts.txt}.
+\end{proof}
+
+Because $v$ is positive and nonincreasing, $\sqrt v$ followed by the fixed
+outward-monotone boundary ramp of \cite[\S2.2]{Claude2026} has total variation
+at most $2$; the same holds for its square.  Positivity $v\ge3/4$, the finite
+trigonometric expansion, and the fixed ramp give the required first- and
+second-derivative bounds with a profile-dependent constant.  The fourth
+moment condition also holds eventually: away from the $O(1)$ ramp,
+$\int v^2\ge9/16>1/2$.  Thus the cited arbitrary-window interface gives, for
+$S=N_0^s(T,2T)$ and $N=N(T,2T)$,
+\begin{equation}\label{eq:interface}
+S\ge H(v)N+\tr\Psi(M)-o(N).
+\end{equation}
+Writing an explicit Lean \texttt{AdmWindow} instance remains future work.
+
+\section{A sharp square-root tail for the block defect}
+
+Write $w=k_v^2$.  For a positive-semidefinite block $G$ set
+\[
+E=2\sum_{i<j}|G_{ij}|^2,
+\qquad \Delta=\tr\Psi(G).
+\]
+
+\begin{lemma}\label{lem:sqrt}
+$\Delta\ge h(E)$, where
+\[
+h(E)=
+\begin{cases}
+E,&0\le E\le1,\\
+2\sqrt E-1,&E\ge1.
+\end{cases}
+\]
+The profile is sharp.
+\end{lemma}
+
+\begin{proof}
+Use $\Psi(t)=(t-1)^2-(t-2)_+^2$.  For the eigenvalues $\lambda_i\ge0$ put
+$X=\sum_i(\lambda_i-2)_+^2$.  Then
+\[
+E\le\sum_i(\lambda_i-1)^2=\Delta+X.
+\]
+If $X=0$, then $\Delta\ge E$.  If $X>0$, each $\lambda_i>2$ contributes
+$1+2z_i$ to $\Delta$, where $z_i=(\lambda_i-2)_+$.  Consequently
+$\sum_i z_i\le(\Delta-1)/2$ and
+$X\le(\sum_i z_i)^2\le(\Delta-1)^2/4$.  Thus
+$E\le(\Delta+1)^2/4$, so $\Delta\ge2\sqrt E-1$; moreover
+$\Delta\ge1\ge E$ when $E\le1$.  Sharpness follows from one eigenvalue
+$a>2$ and $n-1$ equal eigenvalues $(n-a)/(n-1)$, conjugated to constant
+diagonal, and then letting $n\to\infty$.
+\end{proof}
+
+Since $h$ is increasing and concave with $h(0)=0$, for every $A>0$ and
+$\eta=h(A)/A$,
+\begin{equation}\label{eq:chord}
+h(E)\ge\eta\min(E,A).
+\end{equation}
+
+\section{The certified seven-point inequality}\label{sec:certificate}
+
+For gaps $g_1,\ldots,g_6\ge0$ between seven consecutive simple zeros put
+$y_0=0$ and $y_j=g_1+\cdots+g_j$.  Define
+\begin{equation}\label{eq:F}
+F(g)=\frac1{2736}\sum_{i=1}^{6}g_i
++\sum_{0\le i<j\le6}a_{ij}w(y_j-y_i).
+\end{equation}
+The exact numerators $10^6a_{ij}$ are
+\[
+\setlength{\arraycolsep}{10pt}
+\begin{array}{c|rrrrrr}
+i\backslash j&1&2&3&4&5&6\\ \hline
+0&236484&535224&969656&1000000&1000000&2000000\\
+1&&381281&464776&30344&0&1000000\\
+2&&&382235&0&30344&1000000\\
+3&&&&382235&464776&969656\\
+4&&&&&381281&535224\\
+5&&&&&&236484
+\end{array}
+\]
+and are reflection symmetric.  Direct rational summation gives, for every
+span $1\le r\le6$,
+\begin{equation}\label{eq:capacity}
+\sum_{i=0}^{6-r}a_{i,i+r}=2.
+\end{equation}
+
+\begin{proposition}[certified]\label{prop:F}
+For every $g\in[0,\infty)^6$,
+\[
+F(g)\ge\frac{891}{200000}=0.004455.
+\]
+\end{proposition}
+
+\begin{proof}
+An exhaustive interval subdivision with grid $1/4000$ visited
+$2{,}168{,}370$ boxes and certified every one, reaching maximum depth $50$.
+Arb constructs the kernel and derivative tables; all conversions to binary64
+are rounded outward.  The branch-and-bound proof uses pressure, direct
+interval, and convex-tangent lower bounds.  Near removable singularities in
+the sinc derivatives, it switches to exact-sign rational branch tests and
+alternating series with explicit tail bounds.  The complete transcript and
+table hashes are in
+\texttt{certificates/retuned-p2736-grid4000.txt}.  The observed floating-point
+minimum $0.0044623605595\ldots$ is used only as a discovery diagnostic; it is
+about $0.16\%$ above the certified target.
+\end{proof}
+
+\section{Deduction of Theorem~\ref{thm:main}}
+
+Set
+\[
+q=6,\quad m=272,\quad \varepsilon=\frac{891}{200000},\quad
+p=\frac1{2736},\quad B_p=qp=\frac1{456}.
+\]
+
+\emph{Step 1 (window sum).}
+For a block $B$ of $m$ consecutive simple zeros, sum \eqref{eq:F} over its
+$m-q$ consecutive seven-point windows.  A pair spanning $r$ gaps receives
+total weight at most $2$ by \eqref{eq:capacity}, and each gap appears in at
+most $q$ windows.  With $E_B=2\sum_{i<j}w(y_j-y_i)$ and
+$A:=\varepsilon(m-q)=1.18503$, this gives
+\begin{equation}\label{eq:block-energy}
+E_B+B_p\operatorname{span}(B)\ge A.
+\end{equation}
+
+\emph{Step 2 (bounded-span case split).}
+Put
+\[
+R=h(A)=2\sqrt A-1=1.177181664446\ldots,
+\qquad \eta=\frac RA=0.993377099690\ldots.
+\]
+If $B_p\operatorname{span}(B)\ge A$, then
+$\eta B_p\operatorname{span}(B)\ge R$, so the pressure term alone wins.
+Otherwise
+$\operatorname{span}(B)<A/B_p$, a fixed constant.  The compact-uniform
+Gram-kernel asymptotic therefore applies simultaneously to all pairs in the
+fixed-size block, and the Gram off-diagonal energy equals $E_B-o(1)$
+uniformly.  Equations \eqref{eq:chord} and \eqref{eq:block-energy} then yield
+\begin{equation}\label{eq:block-defect}
+\tr\Psi(G_B)+\eta B_p\operatorname{span}(B)\ge R-o(1).
+\end{equation}
+Indeed, if $E_B\ge A$ the defect supplies $R-o(1)$; otherwise the two terms
+supply at least $\eta(E_B+B_p\operatorname{span}(B))-o(1)$.
+
+\emph{Step 3 (averaging).}
+Remove the standard endpoint strips of normalized width $L^2$ in the
+mesoscopic notation of \cite{Ainta2026}; their contribution is $o(N)$.
+Convex spectral pinching gives
+$\tr\Psi(M)\ge\sum_B\tr\Psi(G_B)$ for disjoint blocks.  Average
+\eqref{eq:block-defect} over the $m$ shifted block partitions.  Every
+interior gap is charged in at most $m-1$ offsets, the total normalized span
+is $N+o(N)$, and leftover endpoint blocks contain only $O(m)$ points per
+offset.  Therefore
+\begin{equation}\label{eq:average}
+\tr\Psi(M)\ge
+\frac RmS-\eta B_p\frac{m-1}{m}N-o(N).
+\end{equation}
+
+\emph{Step 4 (assembly).}
+Insert \eqref{eq:average} into \eqref{eq:interface}, use
+$H(v)\ge H_{\rm cert}$, and rearrange:
+\[
+\frac SN\ge
+\frac{272H_{\rm cert}-\eta(1/456)271}{272-R}-o(1)
+=0.6732001170127618568\ldots
+>\frac{1683}{2500}.
+\]
+The final Arb enclosure has width below $10^{-50}$ and is recorded in
+\texttt{certificates/fast-parts.txt}.  Replacing the data by the preceding
+$67.313763\%$ design reproduces its value, while the separate gate reproduces
+the \cite{Ainta2026} seven-point certificate.
+
+\begin{remark}
+This optimization does not offer a route to $100\%$.  The obstruction for
+certificates using only the bandwidth-one data in the Anthropic Lean artifact
+is $0.68182868746\ldots$, while the subsequent Campaign~2 analysis gives the
+narrower pure pair-energy class a ceiling near $0.674826$.  A $100\%$ liminf
+result would require qualitatively stronger information; even then it would
+establish a density-one statement, not rule out every exceptional zero.
+\end{remark}
+
+\appendix
+
+\section{Verification summary}\label{app:verification}
+
+\begin{center}
+\begin{tabular}{lll}
+\toprule
+Claim & Method & Record \\
+\midrule
+$3/4\le v\le1$ and monotonicity & 8192-cell Arb evaluation
+  & \texttt{fast-parts.txt} \\
+$H(v)\ge3362285207/(5\cdot10^9)$ & closed forms in Arb
+  & \texttt{fast-parts.txt} \\
+$F\ge891/200000$ & $2{,}168{,}370$-box subdivision
+  & \texttt{retuned-p2736-grid4000.txt} \\
+final arithmetic & Arb, 256-bit & \texttt{fast-parts.txt} \\
+gate: ainta seven-point & $707{,}797$ boxes
+  & \texttt{gate-repro-seven.txt} \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+Reproduction requires Python 3.10 or newer.  After
+\texttt{pip install -e .}, run
+\[
+\texttt{zeta-673200-verify all}.
+\]
+The dependency \texttt{python-flint==0.9.0} is pinned, and the main
+certificate records hashes of its outward-rounded tables.  The verifier
+fails closed if any terminal grid cell remains unresolved.
+
+\section{Provenance}\label{app:provenance}
+
+This repository revision starts from commit \texttt{e0a2266} of
+\cite{Trmdy2026}.  That work supplied the perturbed window, square-root
+profile, generalized verifier, and the preceding $67.313763\%$ design; its
+multi-model contribution record is preserved in \texttt{docs/provenance.md}.
+The present follow-up was initiated and directed by Vivaswat Ojha in a
+ChatGPT Work conversation with OpenAI Codex.  It keeps the window fixed and
+retunes the pressure, exact pair weights, and block length.  Codex carried out
+the numerical search, implementation, certificate construction, verifier
+hardening, and much of the initial drafting; Ojha is the human author and
+takes responsibility for submitting this contributor draft.  The upstream
+maintainer is invited to determine how any merged or published version should
+be organized and attributed, without disturbing this contribution record.
+The revision also makes the bounded-span case split and endpoint bookkeeping explicit.
+Numerical optimization was used only to discover a rational candidate.  The
+exhaustive interval certificate is the decision procedure.
+
+\begin{thebibliography}{9}
+\bibitem{Claude2026} Anthropic,
+\emph{More than two thirds of the zeros of the Riemann zeta function lie on
+the critical line}, August 2026.  Paper and Lean~4 artifact,
+\url{https://github.com/anthropics/zeta-23-lean}.
+\bibitem{Ainta2026} \texttt{ainta/zeta-simple-zeros},
+\emph{A 67.30085\% lower bound for simple zeros of the Riemann zeta
+function}, 2026.  Research repository,
+\url{https://github.com/ainta/zeta-simple-zeros}.
+\bibitem{Trmdy2026} \texttt{trmdy/zeta-simple-zeros-673137},
+\emph{A 67.31376\% lower-bound candidate for simple zeros of the Riemann
+zeta function}, 2026.  Research repository,
+\url{https://github.com/trmdy/zeta-simple-zeros-673137}.
+\bibitem{Tawan2026} \texttt{tawanerguo-cn/zeta-simple-zeros},
+\emph{Certified unconditional 67.3192911473\% lower bound for simple zeros
+of the Riemann zeta function}, 2026.  Research archive,
+\url{https://github.com/tawanerguo-cn/zeta-simple-zeros}.
+\bibitem{Pipitone2026} N.~Pipitone,
+\emph{A 67.3195\% lower bound for simple zeros of the Riemann zeta
+function}, 2026.  Research repository,
+\url{https://github.com/npip99/zeta-zeros}.
+\bibitem{Mon75} H.~L.~Montgomery, \emph{The pair correlation of zeros of the
+zeta function}, 1973; H.~L.~Montgomery and R.~M.~Taylor, 1975.
+\bibitem{BGSTB24} S.~A.~C.~Baluyot, D.~A.~Goldston, A.~I.~Suriajaya,
+C.~L.~Turnage-Butterbaugh, \emph{An unconditional Montgomery theorem for
+pair correlation of zeros of the Riemann zeta-function}, Acta Arith.\ 214
+(2024).
+\end{thebibliography}
+
+\end{document}

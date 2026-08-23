@@ -1,0 +1,17 @@
+verified=True
+target=F >= 19/5000
+grid=4000
+nodes=707797
+pruned=354263
+splits=353534
+maximum_depth=37
+initial_boxes=729
+elapsed_seconds=11.463
+cutoff_cells=45602
+interval_pruned=257471
+pressure_pruned=3087
+tangent_pruned=93705
+w_second_table_sha256=c6589132605c42e7a4f9b847e557f94acb8e8acfe70e0a68b6a41193670cc6ad
+w_table_sha256=fdad1bfe67a1d1383c2eb9a5cf39aa2893294a27e6c88d7dca8371f5fafb4d96
+workers=8
+expected_nodes=707797 (matches ainta's committed run up to table tightness; their run records 707901)

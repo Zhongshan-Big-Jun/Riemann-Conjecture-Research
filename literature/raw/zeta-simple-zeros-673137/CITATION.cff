@@ -1,0 +1,8 @@
+cff-version: 1.2.0
+title: "A 67.3137630699% lower bound for simple zeros of the Riemann zeta function"
+message: "Research draft produced by a coordinated multi-model AI session; please cite alongside the Anthropic paper and ainta/zeta-simple-zeros."
+type: software
+date-released: 2026-08-11
+license: MIT
+authors:
+  - name: "Claude Fable (Anthropic), GPT-5.6 Sol (OpenAI), Grok (xAI); session operated by Tormod Haugland"

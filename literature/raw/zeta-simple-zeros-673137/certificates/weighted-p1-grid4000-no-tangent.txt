@@ -1,0 +1,17 @@
+# Hardening re-verification: tangent pruning disabled (pure interval subdivision).
+# Certifies F >= 1/200 using only the w-value tables, where enclosure errors
+# can only cause false failure, never false certification.
+nodes=40511110
+pruned=20255717
+splits=20255393
+maximum_depth=52
+initial_boxes=324
+elapsed_seconds=236.380
+cutoff_cells=46002
+interval_pruned=20251700
+pressure_pruned=4017
+tangent_pruned=0
+w_second_table_sha256=dc4d8e4cf943d503563c911512b48820c1801d432a4204ecb342188382b72bdf
+w_table_sha256=aa033a60ee16f226e657c146c7f5a425320de8d8cd79465a48ef2ff33f6ffbcd
+workers=10
+wall=236s

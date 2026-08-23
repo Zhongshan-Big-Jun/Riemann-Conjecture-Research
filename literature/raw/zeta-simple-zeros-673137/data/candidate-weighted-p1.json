@@ -1,0 +1,73 @@
+{
+  "description": "Reflection-symmetric position-weighted seven-point certificate candidate for the rationalized P1 kernel.",
+  "s": 7,
+  "pressure": {
+    "numerator": 1,
+    "denominator": 2300
+  },
+  "target_epsilon": {
+    "numerator": 1,
+    "denominator": 200
+  },
+  "window_coefficient_denominator": 1000000000,
+  "window_coefficient_numerators": [
+    1000000000,
+    3322500,
+    -7609135,
+    1190194,
+    -731476,
+    -1680572,
+    1141360
+  ],
+  "pair_order": [
+    [0, 1], [0, 2], [0, 3], [0, 4], [0, 5], [0, 6],
+    [1, 2], [1, 3], [1, 4], [1, 5], [1, 6],
+    [2, 3], [2, 4], [2, 5], [2, 6],
+    [3, 4], [3, 5], [3, 6],
+    [4, 5], [4, 6],
+    [5, 6]
+  ],
+  "pair_weight_denominator": 1000000,
+  "pair_weight_numerators": [
+    239252, 528172, 965879, 1000000, 1000000, 2000000,
+    381335, 465776, 34121, 0, 1000000,
+    379413, 12104, 34121, 1000000,
+    379413, 465776, 965879,
+    381335, 528172,
+    239252
+  ],
+  "span_capacity_numerators": [
+    2000000, 2000000, 2000000, 2000000, 2000000, 2000000
+  ],
+  "float_minimum_observed": 0.005091029057205618,
+  "float_minimizing_gaps": [
+    1.028928388983084,
+    1.038370020284632,
+    1.977089334525999,
+    1.977089334525999,
+    1.038370020284631,
+    1.028928388983083
+  ],
+  "zero_enumeration_validation": {
+    "pressure_feasible_ordered_zero_tuples_polished": 462,
+    "supplementary_starts_polished": 2501,
+    "exchange_master_before_rounding": 0.005091110951795553,
+    "exchange_adversary_before_rounding": 0.005091028756023067,
+    "exchange_gap_before_rounding": 8.2195772486e-8
+  },
+  "baseline_certification_target": {
+    "numerator": 672457,
+    "denominator": 1000000
+  },
+  "window_positivity_target": {
+    "numerator": 3,
+    "denominator": 4
+  },
+  "recommended_block_length": 257,
+  "cap_scheme": "sqrt-tail-with-optimal-chord",
+  "projected_bound_if_certified": 0.6731376306993446,
+  "simple_rational_bound": {
+    "numerator": 420711,
+    "denominator": 625000
+  }
+}
