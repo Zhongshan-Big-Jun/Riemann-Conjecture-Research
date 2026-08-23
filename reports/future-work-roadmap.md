@@ -40,6 +40,13 @@ Status: ACTIVE PLAN — not a claim of verified mathematical results.
   (tested 2026-08-23).
   The remaining bottleneck is the terminal-box count and the Lean checker.
 
+  **T2 counting benchmark (2026-08-23):** a k=7, grid-2000 counting pass gives
+  `T2 accepted terminal boxes = 355567` (4 workers, ~80s; log at
+  `runs/.../R-20260814T131528Z-f9push-d3b58c/reproducibility/t2_count_k7.log`).
+  For k=9 the terminal-box count will be much larger, so dumping the full B&B
+  terminal boxes directly is likely infeasible; the coarser certified partition
+  (Step 1b in `reports/t2-reflection-plan.md`) is the next T2 route.
+
 Current certified record: **k = 9, f₉ = 392/100000 = 0.00392** (grid-2000, 64,748,524 nodes,
 128-bit Arb branch-and-bound), giving
 
