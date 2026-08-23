@@ -46,6 +46,10 @@ Status: ACTIVE PLAN — not a claim of verified mathematical results.
   For k=9 the terminal-box count will be much larger, so dumping the full B&B
   terminal boxes directly is likely infeasible; the coarser certified partition
   (Step 1b in `reports/t2-reflection-plan.md`) is the next T2 route.
+  A second benchmark with grid=500 gave `T2 accepted terminal boxes = 352879`
+  (`.../t2_count_k7_g500.log`), i.e. merely lowering the grid resolution does
+  **not** significantly reduce the terminal-box count. A genuinely different
+  certified-partition construction is needed, not just a coarser grid.
 
 Current certified record: **k = 9, f₉ = 392/100000 = 0.00392** (grid-2000, 64,748,524 nodes,
 128-bit Arb branch-and-bound), giving
