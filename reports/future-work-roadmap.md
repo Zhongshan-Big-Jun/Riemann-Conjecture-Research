@@ -39,6 +39,10 @@ Status: ACTIVE PLAN — not a claim of verified mathematical results.
   is chunked into 123 defs and **compiles successfully with `lake env lean`**
   (tested 2026-08-23).
   The remaining bottleneck is the terminal-box count and the Lean checker.
+  A major reference is now preserved: `literature/raw/zeta-zeros-npip/`
+  contains an existing proof-certificate pipeline (export forest topology,
+  Lean decoders, roots) for a seven-point certificate; see
+  `reports/npip-proof-certificate-infrastructure.md`.
 
   **T2 counting benchmark (2026-08-23):** a k=7, grid-2000 counting pass gives
   `T2 accepted terminal boxes = 355567` (4 workers, ~80s; log at
