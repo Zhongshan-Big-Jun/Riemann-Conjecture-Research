@@ -15,6 +15,20 @@ Status: ACTIVE PLAN — not a claim of verified mathematical results.
 
 ## 1. Active work: k-point pressure certificates
 
+### Current status (2026-08-23)
+
+- **k=9, f₉ = 0.00393, grid-4000 attempt is running in the background**
+  (8 workers, 128-bit). This is the last borderline same-class k=9 step.
+- **Multi-certificate LP (Shi generalization):** the existing two-certificate
+  supporting-plane scan already reaches `B = 0.673316977142471313480…`
+  (`R-20260817T030000Z-shiGeneralize-4f2a`). Further improvement within this
+  family requires at least one **additional certified local certificate**
+  (e.g. k=10 / q=9, or a stronger q=8 certificate), not just re-weighting the
+  current two.
+- **T2 reflection:** the detailed implementation plan is
+  `reports/t2-reflection-plan.md`; the concrete bottleneck is the terminal-box
+  count for the k=9 certificate and the exact-rational kernel table.
+
 Current certified record: **k = 9, f₉ = 392/100000 = 0.00392** (grid-2000, 64,748,524 nodes,
 128-bit Arb branch-and-bound), giving
 
