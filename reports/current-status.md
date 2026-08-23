@@ -8,11 +8,11 @@ Date: 2026-08-23
 - C₉(ζ)  = `0.673066472675939665848…`
 - C₉(ξ′) = `0.86920009109661916184…`
 
-## Background jobs running
+## Background jobs
 
 | Job | Purpose |
 |---|---|
-| `bash-36` | k=9 f₉=0.00393 grid-4000 certificate attempt |
+| `bash-36` | ~~k=9 f₉=0.00393 grid-4000 certificate attempt~~ **FAILED** (exit 2; see `runs/.../k9-f393-grid4000-failure.log`) |
 | `bash-39` | k=9 T2 terminal-box counting |
 | `bash-41` | independent upstream verification of canonical k=9 |
 

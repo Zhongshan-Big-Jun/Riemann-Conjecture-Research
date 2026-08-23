@@ -1,0 +1,20 @@
+# k=9 f=0.00393 grid-4000 attempt — FAILED (2026-08-23)
+
+Command:
+  py -3.10 verify_kpoint_parallel.py 9 393/100000 --grid 4000 --precision 128 --workers 8
+
+Exit code: 2 (loud fail)
+
+Terminal box that could not be pruned:
+  ((4181,4181), (7917,7917), (4163,4163), (7932,7932), (7944,7944), (4163,4163), (7904,7904), (4181,4181))
+  lower = 0x1.00bd2bf22dc87p-8
+
+Interpretation:
+  The rigorous lower bound at the terminal leaf is below the target
+  393/100000 = 0.00393. This is consistent with the earlier feasibility
+  analysis: f=0.00393 has margin on the order of the interval bound loss,
+  so it is borderline/infeasible with the current verifier.
+
+Result:
+  The certified record remains f9 = 392/100000:
+  C9(zeta) = 0.673066472675939665848...
