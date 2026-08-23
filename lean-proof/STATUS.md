@@ -34,6 +34,14 @@ FORMALLY_VERIFIED label. Numerical evidence is never a delivery.
 | O14 | Route 4: Multi-Frequency Shifted Convolution Mollifiers | 🧪 NUMERICAL/ARITHMETIC ONLY — archived; no shifted-convolution proof | lean-proof/Record9/archive-nonverified/ShiftedConvolution.lean |
 | O15 | Unified Multi-Paradigm Super-Theorem (Combined > 74%) | 🧪 NUMERICAL/ARITHMETIC ONLY — archived; only arithmetic from hardcoded route constants | lean-proof/Record9/archive-nonverified/SuperTheorem.lean |
 
+## Future-work roadmap
+
+- **Active:** continue the k-point pressure-certificate family. See
+  `reports/future-work-roadmap.md` for the launch packet and priority table.
+- **Long-term backlog:** keep the Petersson–Kuznetsov bandwidth-extension idea
+  (Route 1). It is not verified; it is retained for future research use.
+- Overclaimed / archived modules are in `lean-proof/Record9/archive-nonverified/`.
+
 
 ## Build plan (executed 2026-08-15)
 

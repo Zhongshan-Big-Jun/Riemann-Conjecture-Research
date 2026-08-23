@@ -4,6 +4,13 @@
 - **Pipeline Stage:** `rigorous-open-math-research` (New Paradigm Exploration)
 - **Status:** `STRATEGIC_RESEARCH_PROPOSAL` & `MATHEMATICAL_BLUEPRINT`
 
+> **Status update (2026-08-23):** This document is a **future-work / research backlog**,
+> not a verified result. All four routes are archived from the active Lean library
+> (`lean-proof/Record9/archive-nonverified/`). The Petersson–Kuznetsov bandwidth idea
+> (Route 1) is explicitly **retained for future use**; see
+> `reports/future-work-roadmap.md`. None of the constants in this file are currently
+> machine-verified as theorems about the Riemann zeta function.
+
 ---
 
 ## 1. Executive Summary: The Four New Frontiers
