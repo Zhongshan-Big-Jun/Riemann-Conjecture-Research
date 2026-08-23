@@ -16,6 +16,12 @@ Date: 2026-08-23
 | `bash-39` | k=9 T2 terminal-box counting |
 | `bash-41` | independent upstream verification of canonical k=9 |
 
+## Active investigation
+
+- Off-line pair bridge research subagent started (2026-08-23), id
+  `dc7cccd6-e5df-404f-b844-ad10c92b5fa3`. Expected output:
+  `reports/offline-pair-bridge-investigation.md`.
+
 ## T2 / reflection progress
 
 - Exact rational kernel table generated (31,368 entries; binary64 hash matches
